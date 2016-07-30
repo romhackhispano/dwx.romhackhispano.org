@@ -1,0 +1,106 @@
+<html>
+<head>
+<title>C&oacute;mo aplicar un parche IPS</title>
+<link href="../art.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<center><h1>C&oacute;mo aplicar un parche IPS</h1></center>
+
+<p>(No te asustes, es f&aacute;cil realmente xDDD)</p>
+<p>¡Hoooooolaaa pequeño videojugador! :D xDDD</p>
+<p>En este simple tutorial explicaré cómo aplicar un parche IPS para insertar un hack o una traducción a ese juego que tanto intentaste jugar en inglés (o 
+japonés, o quién sabe xD), por supuesto que para lograr esto el parche debe estar hecho 
+para ESE juego, es decir, si tienes un parche que traduce al español el &quot;Final Fantasy IV&quot; de SNES, no podrás usarlo para traducir al español el &quot;Chrono 
+Trigger&quot; de SNES. Actualmente puedes encontrar una lista (con enlaces y tó :D) a 
+la mayoría de traducciones hechas por los grupos de traducción hispanos en <a href="http://www.romhackhispano.org">RomhackHispano.org</a> 
+;D</p>
+
+<p>Aprenderemos cómo aplicar parches de dos maneras: con SnesTool/SegaTool (da lo mismo cuál uses, los dos aplican los parches de igual 
+manera para cualquier tipo de ROM) y Lunar IPS. SnesTool y SegaTool corren sobre 
+D.O.S, mientras que Lunar IPS sobre Windows. Si necesitas algún parcheador para 
+otra plataforma (Linux, Mac, etc.) te recomiendo buscar en <a href="http://www.romhacking.net">RHDN</a>. 
+También puedes descargar ambos programas en <a href="http://dwx.romhackhispano.org">mi web</a>.</p>
+
+<p>(Importante: El siguiente anexo sólo es válido para ROMs de SNES, si el 
+parche que quieres aplicar es de otra plataforma puedes salteártelo)</p>
+
+<h2>ANTES DE APLICAR UN PARCHE (Sólo SNES)</h2>
+
+<p>Antes de aplicar un parche para un juego de SNES hay un pequeño detalle que 
+tienes que tener en cuenta, algunos dumps (copias) de la ROM poseen una cabecera 
+de 512 bytes, y si se da la casualidad de que el parche fue hecho sobre una ROM 
+sin cabecera y lo aplicas sobre una ROM con cabecera no funcionará como debe, 
+así que antes de aplicar el parche lee el archivo &quot;léeme&quot; adjunto (ya 
+prácticamente todos los traductores los incluyen), que debería informar si el 
+parche debe aplicarse a la ROM con o sin cabecera. Una vez que sepas esto debes 
+saber si tu ROM tiene cabecera, puedes darte cuenta a simple vista si el tamaño 
+(en KB) como te lo muestra Windows es impar.</p>
+
+<p>Los tamaños más comunes en ROMs de SNES (en KB) son:</p>
+
+<ul>
+  <li>512</li>
+  <li>1024</li>
+  <li>1536</li>
+  <li>2048</li>
+  <li>2560</li>
+  <li>3072</li>
+  <li>3584</li>
+  <li>4096</li>
+</ul>
+
+<p>(Hay algunas ROMs más grandes, pero estas son las más comunes).</p>
+
+<p>Si tu ROM es, por ejemplo, de 513 KB, entonces es una ROM con cabecera, 
+deberás eliminar la cabecera manualmente (borrando los primeros 512 bytes con un editor 
+hexadecimal) o, la forma más fácil, usando un programa para ello (como SnesTool).</p>
+
+<p>
+<img border="0" src="aplica2.gif" width="397" height="71"></p>
+
+<p>
+Como puedes ver en la imagen la ROM (de nombre chrono.smc) es de 4097 KB, uno 
+más que 4096, por lo que es una ROM con cabecera, vamos a abrir el SnesTool para 
+quitarla, eligiendo la opción &quot;Delete Header&quot;.</p>
+
+<p>
+<img border="0" src="aplica4.gif" width="604" height="171"></p>
+
+<p>
+(por si no la ves es la última de la columna central :P)</p>
+
+<p>
+Una vez hecho esto, elegimos nuestra ROM en el menú de la izquierda y le quitará 
+el cabezal automáticamente, no te preocupes si te confundes de ROM, ya que si 
+ésta no tiene cabezal el programa no hará nada.</p>
+
+<h2>Cómo aplicar un parche con SnesTool/SegaTool</h2>
+
+<p>Para aplicar un parche con este programa debes reunir en una misma carpeta: 
+el programa (Snestool.exe o Segatool.exe), el parche (nombredelparche.ips) y la 
+ROM (nombrederom.extension), la extensión de la ROM varía según la consola a la 
+que pertenezca (Gameboy, Sega, Super nintendo, etc.). Una vez que tengas todo 
+junto ejecuta el programa, una vez abierto selecciona la opción &quot;Use IPS&quot; (como 
+puedes ver en la imagen que usé en el anexo anterior, es la primera opción de la 
+columna central), a continuación elige el parche que quieres aplicar del menú a 
+la izquierda, y luego de eso la ROM a la cual aplicar el parche.<br>
+En la barra inferior te aparecerá &quot;IPS patched ok.&quot;, lo que significa que ya se 
+aplicó el parche con éxito y puedes probar tu juego.</p>
+
+<h2>Cómo aplicar un parche con Lunar IPS</h2>
+
+<p>Con Lunar IPS es bastante más fácil, tan solo ejecuta el programa, y 
+selecciona la opción &quot;Apply IPS Patch&quot;:</p>
+<p><img border="0" src="aplica5.jpg" width="229" height="95"> <br>
+(No hace falta que remarque que es el primer botón, ¿verdad? :P)</p>
+<p>Una vez que lo pulses deberás buscar el parche .ips y luego la ROM.</p>
+<p>Tardará muy poco, y aparecerá un mensaje diciendo &quot;The file was successfully 
+patched!&quot;, lo que indica que ya puedes jugar con tu ROM parcheada :D</p>
+<h2>¿Ya está?</h2>
+<p>Sí, era fácil, ¿verdad?  ahora puedes disfrutar de las geniales 
+traducciones de la CHR (Comunidad de Romhackers Hispanos) ;D</p>
+<p>¡Saludos!<br>
+-DaRKWiZaRDX</p>
+
+</body>
+</html>

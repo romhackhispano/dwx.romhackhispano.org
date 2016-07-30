@@ -1,0 +1,154 @@
+<html>
+<head>
+<title>Curso de ASM 6502 [NES] - Numeraci&oacute;n binaria</title>
+
+<link href="estilo.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>CURSO de ASM 6502 [NES]</h1>
+<h2>NUMERACI&Oacute;N BINARIA</h2>
+<p>Por <a href="mailto:drkwzrdx@hotmail.com">DaRKWiZaRDX</a></p>
+
+
+<p>En esta sección nos adentraremos un poco en el sistema de numeración 
+utilizado por los aparatos electrónicos, el sistema binario. En realidad si eres mayor de 12 años deberías saber el sistema binario, pero 
+por si acaso lo voy a explicar rápidamente. Este sistema cuenta con sólo 2 
+números, 1 o 0, &quot;encendido&quot; o &quot;apagado&quot;, &quot;seteado&quot; o &quot;reseteado&quot;, etc. Con esos 
+números debes representar cualquier otro, el método para pasar un número decimal 
+a binario es el siguiente:</p>
+
+
+<p>&quot;Divides el número por dos (guardando los restos separados) hasta que ya no 
+pueda ser dividido, entonces tomas el resultado final, y le juntas a la derecha 
+todos los restos del último al primero y así se conforma el número.&quot; <br>
+...dicho así es algo complicado, pero veamos un ejemplo para entenderlo bien.<br>
+<br>
+(En realidad las fórmulas que doy aquí abajo no es necesario hacerlas, ya que 
+puedes usar la calculadora de Windows en modo binario o alguna otra utilidad, 
+pero es algo útil para saberlo :P)<br>
+Supongamos que quiero pasar 215 a binario:<br>
+(Aquí los números de resto los pongo entre paréntesis debajo del resultado)<br>
+<br>
+Entonces tendría : <br>
+<br>
+215 / 2 = 107 / 2 = 53 / 2 = 26 / 2 = 13 / 2 = 6 / 2 = 3 / 2 = 1 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (0)&nbsp;&nbsp;&nbsp;&nbsp; 
+(1)&nbsp;&nbsp;&nbsp;&nbsp; (0)&nbsp;&nbsp;&nbsp;&nbsp; (1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</p>
+<p>Ya tenemos todos los restos y el resultado final, ponemos primero el 
+resultado final, entonces tenemos: 1XXXXXXX, y si le agregamos todos los restos 
+en orden de derecha a izquierda tendremos 11010111, ese número es 215 en 
+decimal, ¿cómo comprobarlo? Muy simple, pasándolo de nuevo a decimal (por si no 
+me crees xD)<br>
+<br>
+Si queremos pasar un número binario a decimal tendremos que hacer la siguiente 
+operación:<br>
+&quot;Tomar cada uno de derecha a izquierda y multiplicarlos por 2 elevado a una 
+potencia que comienza en 0 y suma de a 1.&quot;<br>
+¡¡¡¡¡¡¡EJEMPLO!!!!! xD<br>
+<br>
+&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp; 
+0&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp; 1<br>
+x 2^7&nbsp; 2^6&nbsp; 2^5&nbsp; 2^4&nbsp; 2^3&nbsp; 2^2&nbsp; 2^1&nbsp; 2^0<br>
+-----------------------------------------<br>
+&nbsp; 128&nbsp;&nbsp; 64&nbsp;&nbsp; 0&nbsp;&nbsp; 16&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 
+4&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp; 1 </p>
+<p>Espero que hayas entendido la cuenta, el 1 de más a la derecha multiplica por 
+2 elevado a 0, y como todo número elevado a 0 da un resultado de 1, la cuenta 
+final es 1 x 1 = 1. En el segundo 1 de derecha a izquierda se lo multiplica por 
+2^1. Y como 2 elevado a la 1 da un resultado de 2, la cuenta sería 1 x 2 = 2. Y 
+así sucesivamente.<br>
+<br>
+Y ahora sumamos todos los números que nos dio:<br>
+<br>
+128 + 64 + 16 + 4 + 2 + 1 = 215<br>
+<br>
+¡Voila! ^^ Ahí tenemos el número, o podemos hacerlo de la manera fácil, 
+escribimos 215 con la calculadora de Windows en modo decimal, y hacemos clic en 
+el botón para pasar a binario, ¡y ahí lo tenemos! ^^</p>
+<h2>Operaciones lógicas de binario</h2>
+<p>El acceso a información a nivel de bit se usa principalmente para 
+comparaciones y poner flags de registros (lo veremos más adelante)</p>
+<p>OPERACIÓN AND: (&amp;)<br>
+<br>
+Consiste en comparar los bits de los operandos y comparar cuando 2 son 1 da 1 de 
+resultado, pero como yo soy muy malo para explicarlo con palabras pondré un 
+ejemplo :)<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 0 1 1 0 0 1 1 1<br>
+AND&nbsp; 0 1 0 1 1 1 0 1<br>
+----------------------<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 0 1 0 0 0 1 0 1<br>
+<br>
+Como ves sólo cuando los dos bits son 1 da de resultado 1.<br>
+<br>
+OPERACIÓN OR: (|)<br>
+<br>
+Consiste en comparar los bits de los operandos y comparar cuando alguno de los 2 
+es 1, entonces dará 1 de resultado, pero por el mismo motivo pondré otro ejemplo 
+:P<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 0 1 1 0 0 1 0 1<br>
+OR&nbsp;&nbsp; 0 1 0 1 0 1 0 1<br>
+----------------------<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 0 1 1 1 0 1 0 1<br>
+<br>
+Como ves cuando alguno es 1 el resultado es 1.<br>
+<br>
+OPERACIÓN XOR:<br>
+<br>
+Igual a un OR excepto que para que el resultado sea 1, solo 1 de los bits debe 
+ser positivo (1).<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 0 1 1 0 0 0 1 1<br>
+XOR&nbsp; 0 1 0 1 1 0 0 1<br>
+----------------------<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 0 0 1 1 1 0 1 0<br>
+<br>
+Sólo cuando un bit es 1, el resultado es 1 :)<br>
+<br>
+¿Y qué resultado obtengo si hago un XOR entre dos números iguales?<br>
+<br>
+... El resultado es 0, simplemente:<br>
+<br>
+Ej:&nbsp; 1 1 0 0 1 0 0 1<br>
+XOR&nbsp; 1 1 0 0 1 0 0 1<br>
+----------------------<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 0 0 0 0 0 0 0 0</p>
+<h3>NÚMEROS NEGATIVOS</h3>
+<p>Aunque con 8 bits (1 byte) se pueda llegar a un rango de 0-255 se usan 
+también en bucles y otras cosas los números negativos, que se representan como 
+números más arriba del tope de los números positivos (128). Para hacerlo más 
+fácil, si el MSB (Most significant bit), es decir, el bit de mayor peso (¡el de 
+la izquierda! xD) es 1, entonces lo más probable es que se trate de un número 
+negativo (digo más probable porque 10000000 es $80 = +128), los números mayores 
+a $80 (128 decimal) son negativos mientras que todos los demás son positivos.<br>
+<br>
+$01 -&gt; +1<br>
+$02 -&gt; +2<br>
+...<br>
+$7D -&gt; +125<br>
+$7E -&gt; +126<br>
+$7F -&gt; +127<br>
+$80 -&gt; +128 * ESTE ES EL TOPE DE LOS POSITIVOS)<br>
+$81 -&gt; -127<br>
+$82 -&gt; -126<br>
+$83 -&gt; -125<br>
+...<br>
+$FE -&gt; -2<br>
+$FF -&gt; -1<br>
+<br>
+Espero que se entienda, es realmente simple, igual la NES tiene un flag negativo 
+para<br>
+saber cuándo la última operación dio resultado negativo, pero eso se verá 
+después, en el<br>
+registro P.</p>
+<p>Y así concluye este capítulo xDDD. Fue fácil, ¿no? Aunque, en este momento te preguntarás qué tiene esto que ver con el ASM, lo veremos 
+dentro de muy poco, casi toda la comunicación con hardware se realiza a nivel de 
+bits. Y además es así como se verifican los flags de estado contenidos en el 
+registro P, que veremos en el próximo capítulo. ¡Hasta entonces!</p>
+<center><a href="index.html">Índice</a> - <a href="regs.html">Siguiente &gt;&gt;</a></center>
+
+</body>
+</html>

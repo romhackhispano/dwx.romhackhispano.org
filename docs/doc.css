@@ -1,0 +1,9 @@
+body {
+	font-family: courier;
+	color: #ffffff;
+	background-color: #000000;
+}
+
+table {
+	border: 2px double red;
+}

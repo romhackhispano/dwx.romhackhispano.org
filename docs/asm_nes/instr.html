@@ -1,0 +1,274 @@
+<html>
+<head>
+<title>Curso de ASM 6502 [NES] - Instrucciones</title>
+
+<link href="estilo.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>CURSO de ASM 6502 [NES]</h1>
+<h2>Instrucciones básicas</h2>
+
+
+<p>Por DaRKWiZaRDX</p>
+<p>¡Hola! ^^ Aquí toy de nuevo xD... Ahora vamos a estudiar (aunque 
+probablemente no te hará falta estudiar, se aprenden solas xD) algunas de las instrucciones más importantes del 
+6502 (todas son importantes, pero estas las usarás más :P)</p>
+<h4>INSTRUCCIONES QUE ACTÚAN SOBRE EL ACUMULADOR</h4>
+<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#FFFFFF" width="100%" id="AutoNumber1" height="287">
+  <tr>
+    <td width="107" height="13">
+    <h3>INSTRUCCIÓN</h3>
+    </td>
+    <td width="85" height="13">
+    <h3>EJEMPLO</h3>
+    </td>
+    <td width="80%" height="13">
+    <h3>DESCRIPCIÓN</h3>
+    </td>
+  </tr>
+  <tr>
+    <td width="107" height="15">LDA</td>
+    <td width="85" height="15">LDA #$14</td>
+    <td width="80%" height="15">Carga el valor en el acumulador, si el valor 
+    tiene un $ antes significa que se trata de un valor hexadecimal (casi siempre :P).<br>
+    Cuando hay un # (numeral) significa que estamos cargando un valor constante, si no está significa que estamos cargando el valor que está dentro de ese offset. <br>
+    En el ejemplo estamos cargando el valor $14, si no estuviera el # estaríamos cargando lo que haya dentro del offset $14 en memoria.</td>
+  </tr>
+  <tr>
+    <td width="107" height="15">STA</td>
+    <td width="85" height="15">STA $2112</td>
+    <td width="80%" height="15">Guarda el valor contenido en A en el offset del operando.<p>&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="107" height="15">ASL</td>
+    <td width="85" height="15">ASL A (*)</td>
+    <td width="80%" height="15">Gira todos los bits de A una vez a la izquierda, 
+    y pone el bit más significativo (el que está más a la izquierda) en el flag 
+    de carry, y el bit menos significativo (el de más a la derecha) pasará a ser 
+    0. Esto es equivalente a multiplicar por 2</td>
+  </tr>
+  <tr>
+    <td width="107" height="15">LSR</td>
+    <td width="85" height="15">LSR A (*)</td>
+    <td width="80%" height="15">Gira todos los bits de A una vez a la derecha, y 
+    pone el bit menos significativo (el que está más a la derecha) en el flag de 
+    carry, y el bit más significativo (el de más a la izquierda) pasará a ser 0. 
+    Esto es equivalente a dividir por 2</td>
+  </tr>
+  <tr>
+    <td width="107" height="15">PHA</td>
+    <td width="85" height="15">PHA</td>
+    <td width="80%" height="15">Mete A en la pila (mira la sección de la pila 
+    para más detalles).</td>
+  </tr>
+  <tr>
+    <td width="107" height="15">PLA</td>
+    <td width="85" height="15">PLA</td>
+    <td width="80%" height="15">Saca el último valor puesto en la pila y lo 
+    coloca en A.</td>
+  </tr>
+  <tr>
+    <td width="107" height="15">AND</td>
+    <td width="85" height="15">AND #$80</td>
+    <td width="80%" height="15">Hace un AND lógico entre A y el operando.</td>
+  </tr>
+  <tr>
+    <td width="107" height="15">ORA</td>
+    <td width="85" height="15">ORA #$80</td>
+    <td width="80%" height="15">Hace un OR lógico entre A y el operando.</td>
+  </tr>
+  <tr>
+    <td width="107" height="15">EOR</td>
+    <td width="85" height="15">EOR #$80</td>
+    <td width="80%" height="15">Hace un XOR lógico entre A y el operando.</td>
+  </tr>
+  <tr>
+    <td width="107" height="15">ROR</td>
+    <td width="85" height="15">ROR (*)</td>
+    <td width="80%" height="15">Similar a LSR, la única diferencia es que en 
+    lugar de poner el bit más significativo a 0 lo pone al valor del carry.</td>
+  </tr>
+  <tr>
+    <td width="107" height="15">ROL</td>
+    <td width="85" height="15">ROL (*)</td>
+    <td width="80%" height="15">Similar a ASL, la única diferencia es que en 
+    lugar de poner el bit menos significativo a 0 lo pone a lo que haya en el 
+    carry.</td>
+  </tr>
+  <tr>
+    <td width="107" height="15">SBC</td>
+    <td width="85" height="15">SBC #$15</td>
+    <td width="80%" height="15">Resta un valor del acumulador, según cómo 
+    resulte la resta se &quot;setearán&quot; o &quot;resetearán&quot; algunos flags del registro P. 
+    En la sección de branches y saltos veremos esto con más detalles.</td>
+  </tr>
+  <tr>
+    <td width="107" height="15">ADC</td>
+    <td width="85" height="15">ADC #$15</td>
+    <td width="80%" height="15">Suma un valor al acumulador, según cómo resulte 
+    la suma se &quot;setearán&quot; o &quot;resetearán&quot; algunos flags del registro P. En la 
+    sección de branches y saltos veremos esto con más detalles.</td>
+  </tr>
+</table>
+<p>(*) Algunos ensambladores piden que especifiques A como operando. Por 
+ejemplo: LSR A (ya que LSR puede usarse sobre direcciones de memoria también, no 
+sólo sobre el acumulador) mientras que otros asumirán que un LSR sin operandos 
+actúa sobre A.</p>
+<h4>INSTRUCCIONES QUE ACTÚAN SOBRE Y y/o X</h4>
+<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#FFFFFF" width="100%" id="AutoNumber2">
+  <tr>
+    <td width="108">
+    <h3>INSTRUCCIÓN</h3>
+    </td>
+    <td width="76">
+    <h3>EJEMPLO</h3>
+    </td>
+    <td width="81%">
+    <h3>DESCRIPCIÓN</h3>
+    </td>
+  </tr>
+  <tr>
+    <td width="108">LDX</td>
+    <td width="76">LDX #$14</td>
+    <td width="81%">Como un LDA, pero actúa sobre X.</td>
+  </tr>
+  <tr>
+    <td width="108">LDY</td>
+    <td width="76">LDY #$14</td>
+    <td width="81%">Como un LDA, pero actúa sobre Y.</td>
+  </tr>
+  <tr>
+    <td width="108">STX</td>
+    <td width="76">STX $1248</td>
+    <td width="81%">Guarda en valor contenido en X en el offset del operando 
+    (como STA).</td>
+  </tr>
+  <tr>
+    <td width="108">STY</td>
+    <td width="76">STY $1248</td>
+    <td width="81%">Guarda en valor contenido en Y en el offset del operando 
+    (como STA).</td>
+  </tr>
+  <tr>
+    <td width="108">INX</td>
+    <td width="76">INX</td>
+    <td width="81%">Incrementa X por 1.</td>
+  </tr>
+  <tr>
+    <td width="108">INY</td>
+    <td width="76">INY</td>
+    <td width="81%">Incrementa Y por 1.</td>
+  </tr>
+  <tr>
+    <td width="108">DEX</td>
+    <td width="76">DEX</td>
+    <td width="81%">Decrementa X por 1.</td>
+  </tr>
+  <tr>
+    <td width="108">DEY</td>
+    <td width="76">DEY</td>
+    <td width="81%">Decrementa Y por 1.</td>
+  </tr>
+</table>
+<h4>TRANSFERENCIAS</h4>
+<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#FFFFFF" width="100%" id="AutoNumber3">
+  <tr>
+    <td width="1">
+    <h3>INSTRUCCIÓN</h3>
+    </td>
+    <td width="1">
+    <h3>EJEMPLO</h3>
+    </td>
+    <td width="122%">
+    <h3>DESCRIPCIÓN</h3>
+    </td>
+  </tr>
+  <tr>
+    <td width="108">TAX</td>
+    <td width="134">TAX</td>
+    <td width="75%">Transfiere A a X.</td>
+  </tr>
+  <tr>
+    <td width="108">TAY</td>
+    <td width="134">TAY</td>
+    <td width="75%">Transfiere A a Y.</td>
+  </tr>
+  <tr>
+    <td width="108">TXA</td>
+    <td width="134">TXA</td>
+    <td width="75%">Transfiere X a A.</td>
+  </tr>
+  <tr>
+    <td width="108">TYA</td>
+    <td width="134">TYA</td>
+    <td width="75%">Transfiere Y a A.</td>
+  </tr>
+</table>
+<h4>OTRAS INSTRUCCIONES:</h4>
+<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#FFFFFF" width="100%" id="AutoNumber4">
+  <tr>
+    <td width="1">
+    <h3>INSTRUCCIÓN</h3>
+    </td>
+    <td width="1">
+    <h3>EJEMPLO</h3>
+    </td>
+    <td width="163%">
+    <h3>DESCRIPCIÓN</h3>
+    </td>
+  </tr>
+  <tr>
+    <td width="108">SEC</td>
+    <td width="134">SEC</td>
+    <td width="75%">Pone el Carry a 1. Hay que poner el carry a 1 antes de hacer 
+    una resta.</td>
+  </tr>
+  <tr>
+    <td width="108">CLC</td>
+    <td width="134">CLC</td>
+    <td width="75%">Pone el Carry a 0. Hay que poner el carry a 0 antes de hacer 
+    una suma.</td>
+  </tr>
+  <tr>
+    <td width="108">SEI</td>
+    <td width="134">SEI</td>
+    <td width="75%">Pone el flag de interrupción a 1.</td>
+  </tr>
+  <tr>
+    <td width="108">CLI</td>
+    <td width="134">CLI</td>
+    <td width="75%">Pone el flag de interrupción a 0.</td>
+  </tr>
+  <tr>
+    <td width="108">CLV</td>
+    <td width="134">CLV</td>
+    <td width="75%">Pone el flag de desbordamiento (overflow) a 0.</td>
+  </tr>
+  <tr>
+    <td width="108">NOP</td>
+    <td width="134">NOP</td>
+    <td width="75%">No hace nada ¬¬ Útil para anular rutinas.</td>
+  </tr>
+</table>
+<p>Aclaro un poco el funcionamiento de SBC y ADC. La ecuación real que se hace 
+es:</p>
+<p>ADC -&gt; <span class="enfasis">A = A + operando + carry</span> (por eso hay que 
+poner el carry a 0 antes de hacer una suma).</p>
+<p>SBC -&gt; <span class="enfasis">A = A - operando + 1 - carry</span> (por eso 
+al poner el carry a 0 se nulifica el +1)</p>
+
+
+<p>¡Oops! Por ahí lei también que la operación del SBC es <span class="enfasis">
+A = A - operando - 1 + carry</span>, pero bueno, lo importante es que hay que 
+poner el carry a 1 para hacer una resta y ponerlo a 0 para hacer una suma.</p>
+
+
+<p>También están las instrucciones de control de flujo del programa, que nos 
+permitirán controlar qué código debe ejecutarse y qué no, pero esas las veremos 
+con más detalle en la sección de saltos y branches ^^. Pero por ahora seguiremos 
+con lo más básico, lo que nos lleva a la siguiente sección, la pila ^^.</p>
+<center><a href="regs.html">&lt;&lt; Anterior</a> - <a href="stack.html">Siguiente &gt;&gt;</a></center>
+
+
+</body>
+</html>

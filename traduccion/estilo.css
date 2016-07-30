@@ -1,0 +1,36 @@
+BODY {
+	font-family: verdana, georgia, arial, courier;
+}
+A {
+	color: #0000a0;
+	text-decoration: none;
+}
+A:hover {
+	color: #a00000;
+}
+
+
+h1 {
+	text-align: center;
+	color: #FF0000;
+}
+
+h2 {
+	text-align: center;
+	color: #F08000;
+}
+
+h3 {
+	text-align: center;
+	color: #FF2020;
+}
+	
+
+span.adver {
+	color: #FF2000;
+}
+#indice {
+	font-family: verdana;
+	margin-left: 30%;
+	width: 50%;
+}

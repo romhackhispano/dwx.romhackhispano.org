@@ -1,0 +1,709 @@
+LISTA COMPLETA DE OPCODES PARA 65816 (SNES)
+
+V1.1 [31/01/2006 23:45]: Arreglados algunos opcodes errónes.
+                         Cambiado el diseño general, ahora es más vistoso y es más fácil
+                         encontrar una instrucción específica.
+
+La lista está en órden alfabético para que sea más fácil ubicar la instrucción, si quieres
+buscar el opcode simplemente dale a buscar y ponlo, porque no pondré ejemplos con los que
+se pueda repetir el caracter hex :)
+
+Leyenda de Modos de direccionamiento:
+imm8/16      Immediate (valor de 8 o 16 bits)
+dp           Direct Page
+abs          Absolute
+long         Absolute Long
+A            Accumulador
+(dp), y      Direct Page Indirect Indexado c/Y
+[dp], y      Direct Page Indirect Indexado Long c/Y
+(dp, x)      Direct Page Indexado c/X Indirect
+dp, x        Direct Page Indexado c/X
+dp, y        Direct Page Indexado c/Y
+abs, x       Absolute Indexado c/X
+long, x      Absolute Long Indexado c/X
+abs, y       Absolute Indexado c/Y
+pcr          Program Counter Relative
+pcrlong      Program Counter Relative Long
+(abs)        Absolute Indirect
+(abs, x)     Absolute Indexado c/X Indirect
+(dp)         Direct Page Indirect
+[dp]         Direct Page Indirect Long
+sr, s        Stack Relative
+(sr, s), y   Stack Relative Indirect Indexado c/Y
+
+INSTRUCCIONES:
+
+=-=-=-=-=-=-=-=-
+TIPOS DE BRANCHS
+-=-=-=-=-=-=-=-=
++-----+-------------------------------------+
+| BCC | Salta si flag Carry = 0             |
+| BCS | Salta si flag Carry = 1             |
+| BEQ | Salta si flag Zero = 1              |
+| BNE | Salta si flag Zero = 0              |
+| BMI | Salta si flag Negativo = 1          |   (BLT y BGR son iguales a
+| BPL | Salta si flag Negativo = 0          |   BCC y BCS respectivamente)
+| BVS | Salta si flag Overflow = 1          |
+| BVC | Salta si flag Overflow = 0          |
+| BRA | Salta siempre                       |
+| BRL | Salta siempre (operando de 2 bytes) |
++-----+-------------------------------------+
+
+Opcodes:
+
++----------------+-------------+
+| BCC pcr        | 90 xx       |
+| BCS pcr        | B0 xx       |
+| BEQ pcr        | F0 xx       |
+| BNE pcr        | DO xx       |
+| BMI pcr        | 30 xx       |
+| BPL pcr        | 10 xx       |
+| BRA pcr        | 80 xx       |
+| BRL pcrlong    | 82 xx xx    |
+| BVC pcr        | 50 xx       |
+| BVS pcr        | 70 xx       |
++----------------+-------------+
+
+=-=-=-=-=-=-=-=-=-=-=-=
+TIPOS DE TRANSFERENCIAS
+-=-=-=-=-=-=-=-=-=-=-=-
++-----+--------------------------------------+
+| TAX | Transfiere A a X                     |
+| TAY | Transfiere A a Y                     |
+| TCD | Transfiere A al registro D           |
+| TCS | Transfiere A al registro de pila (S) |
+| TSC | Transfiere registro de pila (S) a A  |
+| TDC | Transfiere D al registro A           |
+| TSX | Transfiere registro de pila (S) a X  |
+| TXA | Transfiere X a A                     |
+| TXS | Transfiere X al registro de pila (S) |
+| TXY | Transfiere X a Y                     |
+| TYA | Transfiere Y a A                     |
+| TYX | Transfiere Y a X                     |
++-----+--------------------------------------+
+
+Opcodes:
+
++----------------+-------------+
+| TAX            | AA          |
+| TAY            | A8          |
+| TCD            | 5B          |
+| TCS            | 1B          |
+| TSC            | 3B          |
+| TDC            | 7B          |
+| TSX            | BA          |
+| TXA            | 8A          |
+| TXS            | 9A          |
+| TXY            | 9B          |
+| TYA            | 98          |
+| TYX            | BB          |
++----------------+-------------+
+
+*****************************************************************
+* ADC: ADd with Carry -> Suma al acumulador el operando + carry *
+*****************************************************************
++----------------+-------------+
+| ADC inm8/16    | 69 xx xx    |
+| ADC dp         | 65 xx       |
+| ADC abs        | 6D xx xx    |
+| ADC long       | 6F xx xx xx |
+| ADC dp, x      | 75 xx       |
+| ADC abs, x     | 7D xx xx    |
+| ADC abs, y     | 79 xx xx    |
+| ADC long, x    | 7F xx xx xx |
+| ADC (dp)       | 72 xx       |
+| ADC (dp), y    | 71 xx       |
+| ADC [dp]       | 67 xx       |
+| ADC [dp], y    | 77 xx       |
+| ADC (dp, x)    | 61 xx       |
+| ADC sr, s      | 63 xx       |
+| ADC (sr, s), y | 73 xx       |
++----------------+-------------+
+
+********************************************************************************
+* AND: AND Accumulator with Memory -> Hace un AND lógico entre A y el operando *
+********************************************************************************
++----------------+-------------+
+| AND imm8/16    | 29 xx xx    |
+| AND dp         | 35 xx       |
+| AND abs        | 2D xx xx    |
+| AND long       | 2F xx xx xx |
+| AND dp, x      | 35 xx       |
+| AND abs, x     | 3D xx xx    |
+| AND abs, y     | 39 xx xx    |
+| AND long, x    | 3F xx xx xx |
+| AND (dp)       | 32 xx       |
+| AND (dp), y    | 31 xx       |
+| AND [dp]       | 27 xx       |
+| AND [dp], y    | 37 xx       |
+| AND (dp, x)    | 21 xx       |
+| AND sr, s      | 23 xx       |
+| AND (sr, s), y | 33 xx       |
++----------------+-------------+
+
+**********************************************************************************
+* ASL: Arithmetic Shift Left -> Pasa todos los bits un lugar a la izquierda      *
+*          (Puede usarse para multiplicar por 2 de una forma muy rápida)         *
+**********************************************************************************
++----------------+-------------+
+| ASL A          | 0A          |
+| ASL dp         | 06 xx       |
+| ASL dp, x      | 16 xx       |
+| ASL abs        | 0E xx xx    |
+| ASL abs, x     | 1E xx xx    |
++----------------+-------------+
+
+***************************************************************************************
+* BIT: BIT Test -> Hace un AND entre A y el operando, no modifica A pero sí los flags *
+***************************************************************************************
++----------------+-------------+
+| BIT imm8/16    | 89 xx xx    |
+| BIT dp         | 24 xx       |
+| BIT dp, x      | 34 xx       |
+| BIT abs        | 2C xx xx    |
+| BIT abs, x     | 3C xx xx    |
++----------------+-------------+
+
+*****************************************************
+* BRK: Software BReaK -> Forza una interrupción BRK *
+*****************************************************
++----------------+-------------+
+| BRK imm8       | 00 xx       |
++----------------+-------------+
+
+*******************************************************
+* CLC: CLear Carry Flag -> Pone el flag c (carry) a 0 *
+*******************************************************
++----------------+-------------+
+| CLC            | 18          |
++----------------+-------------+
+
+***********************************************************
+* CLD: CLear Decimal Flag -> Pone el flag d (decimal) a 0 *
+***********************************************************
++----------------+-------------+
+| CLD            | D8          |
++----------------+-------------+
+
+***************************************************************
+* CLI: CLear Interrupt Flag -> Pone el flag i (interrupt) a 0 *
+***************************************************************
++----------------+-------------+
+| CLI            | 58          |
++----------------+-------------+
+
+*************************************************************
+* CLV: CLear oVerflow Flag -> Pone el flag v (overflow) a 0 *
+*************************************************************
++----------------+-------------+
+| CLV            | B8          |
++----------------+-------------+
+
+*********************************************************************************
+* CMP: CoMPare Accumulator with Memory -> Compara el Acumulador con el operando *
+*********************************************************************************
++----------------+-------------+
+| CMP imm8/16    | C9 xx xx    |
+| CMP dp         | C5 xx       |
+| CMP abs        | CD xx xx    |
+| CMP long       | CF xx xx xx |
+| CMP dp, x      | D5 xx       |
+| CMP abs, x     | DD xx xx    |
+| CMP abs, y     | D9 xx xx    |
+| CMP long, x    | DF xx xx xx |
+| CMP (dp)       | D2 xx       |
+| CMP (dp), y    | D1 xx       |
+| CMP [dp]       | C7 xx       |
+| CMP [dp], y    | D7 xx       |
+| CMP (dp, x)    | C1 xx       |
+| CMP sr, s      | C3 xx       |
+| CMP (sr, s), y | D3 xx       |
++----------------+-------------+
+
+***********************************************************
+* CPX: ComPare X with Memory -> Compara X con el operando *
+***********************************************************
++----------------+-------------+
+| CPX imm8/16    | E0 xx xx    |
+| CPX dp         | E4 xx       |
+| CPX abs        | EC xx xx    |
++----------------+-------------+
+
+***********************************************************
+* CPY: ComPare Y with Memory -> Compara Y con el operando *
+***********************************************************
++----------------+-------------+
+| CPY imm8/16    | C0 xx xx    |
+| CPY dp         | C4 xx       |
+| CPY abs        | CC xx xx    |
++----------------+-------------+
+
+**********************************************************************
+* DEC: DECrement Accumulator or Memory -> Disminuye en 1 el operando *
+**********************************************************************
++----------------+-------------+
+| DEC A          | 3A          |
+| DEC dp         | C6 xx       |
+| DEC dp, x      | D6 xx       |
+| DEC abs        | CE xx xx    |
+| DEC abs, x     | DE xx xx    |
++----------------+-------------+
+
+****************************************************
+* DEX: DEcrement X -> Disminuye en 1 el registro X *
+****************************************************
++----------------+-------------+
+| DEX            | CA          |
++----------------+-------------+
+
+****************************************************
+* DEY: DEcrement Y -> Disminuye en 1 el registro Y *
+****************************************************
++----------------+-------------+
+| DEY            | 88          |
++----------------+-------------+
+
+*****************************************************************************************
+* EOR: Exclusive OR Accumulator with Memory -> Hace un XOR lógico entre A y el operando *
+*****************************************************************************************
++----------------+-------------+
+| EOR imm8/16    | 49 xx xx    |
+| EOR dp         | 45 xx       |
+| EOR abs        | 4D xx xx    |
+| EOR long       | 4F xx xx xx |
+| EOR dp, x      | 55 xx       |
+| EOR abs, x     | 5D xx xx    |
+| EOR abs, y     | 59 xx xx    |
+| EOR long, x    | 5F xx xx xx |
+| EOR (dp)       | 52 xx       |
+| EOR (dp), y    | 51 xx       |
+| EOR [dp]       | 47 xx       |
+| EOR [dp], y    | 57 xx       |
+| EOR (dp, x)    | 41 xx       |
+| EOR sr, s      | 43 xx       |
+| EOR (sr, s), y | 53 xx       |
++----------------+-------------+
+
+********************************************************************
+* INC: INCrement Accumulator or Memory -> Aumenta en 1 el operando *
+********************************************************************
++----------------+-------------+
+| INC A          | 1A          |
+| INC dp         | E6 xx       |
+| INC dp, x      | F6 xx       |
+| INC abs        | EE xx xx    |
+| INC abs, x     | FE xx xx    |
++----------------+-------------+
+
+*****************************************************
+* INX: INcrement X -> Incrementa en 1 el registro X *
+*****************************************************
++----------------+-------------+
+| INX            | E8          |
++----------------+-------------+
+
+*****************************************************
+* INY: INcrement Y -> Incrementa en 1 el registro Y *
+*****************************************************
++----------------+-------------+
+| INY            | C8          |
++----------------+-------------+
+
+***********************************************************************************
+* JML: JuMp Long -> Salta a una posición para ejecutar código (offset de 3 bytes) *
+***********************************************************************************
++----------------+-------------+
+| JML long       | 5C xx xx xx |
+| JML [abs]      | DC xx xx    |
++----------------+-------------+
+
+**********************************************************
+* JMP: JuMP -> Salta a una posición para ejecutar código *
+**********************************************************
++----------------+-------------+
+| JMP abs        | 4C xx xx    |
+| JMP (abs)      | 6C xx xx    |
+| JMP (abs, x)   | 7C xx xx    |
++----------------+-------------+
+
+*****************************************************************************
+* JSL: Jump to Subroutine Long -> Salta a una subrutina (offset de 3 bytes) *
+*****************************************************************************
++----------------+-------------+
+| JSL long       | 22 xx xx xx |
++----------------+-------------+
+
+****************************************************
+* JSR: Jump to SubRoutine -> Salta a una subrutina *
+****************************************************
++----------------+-------------+
+| JSR abs        | 20 xx xx    |
+| JSR (abs, x)   | FC xx xx    |
++----------------+-------------+
+
+*************************************************************************
+* LDA: LoaD Accumulator from Memory -> Carga el acumulador con un valor *
+*************************************************************************
++----------------+-------------+
+| LDA imm8/16    | A9 xx xx    |
+| LDA dp         | A5 xx       |
+| LDA abs        | AD xx xx    |
+| LDA long       | AF xx xx xx |
+| LDA dp, x      | B5 xx       |
+| LDA abs, x     | BD xx xx    |
+| LDA abs, y     | B9 xx xx    |
+| LDA long, x    | BF xx xx xx |
+| LDA (dp)       | B2 xx       |
+| LDA (dp), y    | B1 xx       |
+| LDA [dp]       | A7 xx       |
+| LDA [dp], y    | B7 xx       |
+| LDA (dp, x)    | A1 xx       |
+| LDA  sr, s     | A3 xx       |
+| LDA (sr, s), y | B3 xx       |
++----------------+-------------+
+
+***************************************************************
+* LDX: LoaD X from Memory -> Carga el registro X con un valor *
+***************************************************************
++----------------+-------------+
+| LDX imm8/16    | A2 xx xx    |
+| LDX dp         | A6 xx       |
+| LDX dp, y      | B6 xx       |
+| LDX abs        | AE xx xx    |
+| LDX abs, y     | BE xx xx    |
++----------------+-------------+
+
+***************************************************************
+* LDY: LoaD Y from Memory -> Carga el registro Y con un valor *
+***************************************************************
++----------------+-------------+
+| LDY imm8/16    | A0 xx xx    |
+| LDY dp         | A4 xx       |
+| LDY dp, y      | B4 xx       |
+| LDY abs        | AC xx xx    |
+| LDY abs, y     | BC xx xx    |
++----------------+-------------+
+
+*****************************************************************************************
+* LSR: Logial Shift Right Accumulator or Memory -> Mueve los bits un lugar a la derecha *
+*****************************************************************************************
++----------------+-------------+
+| LSR A          | 4A          |
+| LSR dp         | 46 xx       |
+| LSR dp, x      | 56 xx       |
+| LSR abs        | 4E xx xx    |
+| LSR abs, x     | 5E xx xx    |
++----------------+-------------+
+
+*************************************
+* NOP: No OPeration -> No hace nada *
+*************************************
++----------------+-------------+
+| NOP            | EA          |
++----------------+-------------+
+
+******************************************************************************
+* ORA: OR Accumulator with Memory -> Hace un OR lógico entre A y el operando *
+******************************************************************************
++----------------+-------------+
+| ORA imm8/16    | 09 xx xx    |
+| ORA dp         | 05 xx       |
+| ORA abs        | 0D xx xx    |
+| ORA long       | 0F xx xx xx |
+| ORA dp, x      | 15 xx       |
+| ORA abs, x     | 1D xx xx    |
+| ORA abs, y     | 19 xx xx    |
+| ORA long, x    | 1F xx xx xx |
+| ORA (dp)       | 12 xx       |
+| ORA (dp), y    | 11 xx       |
+| ORA [dp]       | 07 xx       |
+| ORA [dp], y    | 17 xx       |
+| ORA (dp, x)    | 01 xx       |
+| ORA sr, s      | 03 xx       |
+| ORA (sr, s), y | 13 xx       |
++----------------+-------------+
+
+**********************************************************************************
+* PEA: Push Effective Address -> Apila un valor de 16bits (el byte alto primero) *
+**********************************************************************************
++----------------+-------------+
+| PEA abs        | F4 xx xx    |
++----------------+-------------+
+
+************************************************
+* PHA: PusH Accumulator -> Apila el registro A *
+************************************************
++----------------+-------------+
+| PHA            | 48          |
++----------------+-------------+
+
+*********************************************************
+* PHB: PusH data Bank register -> Apila el registro DBR *
+*********************************************************
++----------------+-------------+
+| PHB            | 8B          |
++----------------+-------------+
+
+*********************************************************
+* PHD: PusH Direct page register -> Apila el registro D *
+*********************************************************
++----------------+-------------+
+| PHD            | 0B          |
++----------------+-------------+
+
+************************************************************
+* PHK: PusH program banK register -> Apila el registro PBR *
+************************************************************
++----------------+-------------+
+| PHK            | 4B          |
++----------------+-------------+
+
+***********************************************************
+* PHP: PusH Processor Status Flags -> Apila el registro P *
+***********************************************************
++----------------+-------------+
+| PHP            | 08          |
++----------------+-------------+
+
+**************************************
+* PHX: PusH X -> Apila el registro X *
+**************************************
++----------------+-------------+
+| PHX            | DA          |
++----------------+-------------+
+
+**************************************
+* PHY: PusH Y -> Apila el registro Y *
+**************************************
++----------------+-------------+
+| PHY            | 5A          |
++----------------+-------------+
+
+*******************************************************************************
+* PLA: Pull Accumulator -> Saca el último valor en la pila y lo deposita en A *
+*******************************************************************************
++----------------+-------------+
+| PLA            | 68          |
++----------------+-------------+
+
+****************************************************************************************
+* PLB: Pull Data Bank Register -> Saca el último valor en la pila y lo deposita en DBR *
+****************************************************************************************
++----------------+-------------+
+| PLB            | AB          |
++----------------+-------------+
+
+****************************************************************************************
+* PLD: Pull Direct Page Register -> Saca el último valor en la pila y lo deposita en D *
+****************************************************************************************
++----------------+-------------+
+| PLD            | 2B          |
++----------------+-------------+
+
+******************************************************************************************
+* PLP: PuLl Processor status flags -> Saca el último valor en la pila y lo deposita en P *
+******************************************************************************************
++----------------+-------------+
+| PLP            | 28          |
++----------------+-------------+
+
+*********************************************************************
+* PLX: PuLl X -> Saca el último valor en la pila y lo deposita en X *
+*********************************************************************
++----------------+-------------+
+| PLX            | FA          |
++----------------+-------------+
+
+*********************************************************************
+* PLY: PuLl Y -> Saca el último valor en la pila y lo deposita en Y *
+*********************************************************************
++----------------+-------------+
+| PLY            | 7A          |
++----------------+-------------+
+
+********************************************************************************
+* REP: REset Processor status -> Pone los flags indicados (a nivel de bit) a 0 *
+********************************************************************************
++----------------+-------------+
+| REP imm8       | C2 xx       |
++----------------+-------------+
+
+****************************************************************************************
+* ROL: ROtate Left accumulator or memory -> Rota los bits del operando a la izquierda) *
+****************************************************************************************
++----------------+-------------+
+| ROL A          | 2A          |
+| ROL dp         | 26 xx       |
+| ROL dp, X      | 36 xx       |
+| ROL abs        | 2E xx xx    |
+| ROL abs, x     | 3E xx xx    |
++----------------+-------------+
+
+***************************************************************************************
+* ROR: ROtate Right accumulator or memory -> Rota los bits del operando a la derecha) *
+***************************************************************************************
++----------------+-------------+
+| ROR A          | 6A          |
+| ROR dp         | 66 xx       |
+| ROR dp, X      | 76 xx       |
+| ROR abs        | 6E xx xx    |
+| ROR abs, x     | 7E xx xx    |
++----------------+-------------+
+
+************************************************************
+* RTI: ReTurn from Interrupt -> Vuelve de una interrupción *
+************************************************************
++----------------+-------------+
+| RTI            | 40          |
++----------------+-------------+
+
+******************************************************************************************
+* RTL: ReTurn from subroutine Long -> Vuelve de una subrutina (offset de 24bits en pila) *
+******************************************************************************************
++----------------+-------------+
+| RTL            | 6B          |
++----------------+-------------+
+
+**********************************************************
+* RTS: ReTurn from Subroutine -> Vuelve de una subrutina *
+**********************************************************
++----------------+-------------+
+| RTS            | 60          |
++----------------+-------------+
+
+****************************************************************************
+* SBC: SuBstract with Carry -> Resta al acumulador el operando - 1 + carry *
+****************************************************************************
++----------------+-------------+
+| SBC imm8/16    | E9 xx xx    |
+| SBC dp         | E5 xx       |
+| SBC abs        | ED xx xx    |
+| SBC long       | EF xx xx xx |
+| SBC dp, x      | F5 xx       |
+| SBC abs, x     | FD xx xx    |
+| SBC abs, y     | F9 xx xx    |
+| SBC long, x    | FF xx xx xx |
+| SBC (dp)       | F2 xx       |
+| SBC (dp), y    | F1 xx       |
+| SBC [dp]       | E7 xx       |
+| SBC [dp], y    | F7 xx       |
+| SBC (dp, x)    | E1 xx       |
+| SBC sr, s      | E3 xx       |
+| SBC (sr, s), y | F3 xx       |
++----------------+-------------+
+
+********************************************************
+* SEC: SEt Carry flag -> Pone el flag de carry (c) a 1 *
+********************************************************
++----------------+-------------+
+| SEC            | 38          |
++----------------+-------------+
+
+************************************************************
+* SED: SEt Decimal flag -> Pone el flag de decimal (d) a 1 *
+************************************************************
++----------------+-------------+
+| SED            | F8          |
++----------------+-------------+
+
+****************************************************************
+* SEI: SEt Interrupt flag -> Pone el flag de Interrupt (i) a 1 *
+****************************************************************
++----------------+-------------+
+| SEI            | 78          |
++----------------+-------------+
+
+******************************************************************************
+* SEP: SEt Processor status -> Pone los flags indicados (a nivel de bit) a 1 *
+******************************************************************************
++----------------+-------------+
+| SEP imm8       | E2 xx       |
++----------------+-------------+
+
+************************************************************
+* STA: STore Accumulator to Memory -> Guarda el registro A *
+************************************************************
++----------------+-------------+
+| STA imm8/16    | 89 xx xx    |
+| STA dp         | 85 xx       |
+| STA abs        | 8D xx xx    |
+| STA long       | 8F xx xx xx |
+| STA dp, x      | 95 xx       |
+| STA abs, x     | 9D xx xx    |
+| STA abs, y     | 99 xx xx    |
+| STA long, x    | 9F xx xx xx |
+| STA (dp)       | 92 xx       |
+| STA (dp), y    | 91 xx       |
+| STA [dp]       | 87 xx       |
+| STA [dp], y    | 97 xx       |
+| STA (dp, x)    | 81 xx       |
+| STA sr, s      | 83 xx       |
+| STA (sr, s), y | 93 xx       |
++----------------+-------------+
+
+**************************************************
+* STX: STore X to Memory -> Guarda el registro X *
+**************************************************
++----------------+-------------+
+| STX dp         | 86 xx       |
+| STX dp, y      | 96 xx       |
+| STX abs        | 8E xx xx    |
++----------------+-------------+
+
+**************************************************
+* STY: STore Y to Memory -> Guarda el registro Y *
+**************************************************
++----------------+-------------+
+| STY dp         | 84 xx       |
+| STY dp, x      | 94 xx       |
+| STY abs        | 8C xx xx    |
++----------------+-------------+
+
+**********************************************************
+* STZ: STore Zero to memory -> Guarda $00 en el operando *
+**********************************************************
++----------------+-------------+
+| STZ dp         | 64 xx       |
+| STZ dp, x      | 74 xx       |
+| STZ abs        | 9C xx xx    |
+| STZ abs, x     | 9E xx xx    |
++----------------+-------------+
+
+************************************************************************************
+* WAI: WAit for Interrupt -> Detiene el procesador hasta que haya una interrupción *
+************************************************************************************
++----------------+-------------+
+| WAI            | CB          |
++----------------+-------------+
+
+**************************************************************************************
+* WDM: William D. Mensch, JR. (creador del 65816) -> No hace nada, no debe ser usada *
+**************************************************************************************
++----------------+-------------+
+| WDM            | 42          |
++----------------+-------------+
+
+***********************************************************************************
+* XBA: eXchange Bytes on Accumulator -> Cambia los bytes altos por los bajos en A *
+***********************************************************************************
++----------------+-------------+
+| XBA            | EB          |
++----------------+-------------+
+
+******************************************************************************
+* XCE: eXchange Carry and Emulation flags -> Intercambia los flags 'c' y 'e' *
+******************************************************************************
++----------------+-------------+
+| XCE            | FB          |
++----------------+-------------+
+
+El formato de los modos de direccionamientolos saqué de la guía de referencia del SNES
+Professional ASM Development Kit v0.99. 
+Cualquier error o comentario puedes enviarmelo a drkwzrdx@hotmail.com
+
+DaRKWiZaRDX
+http://www.dwxtrad.cjb.net
+31/01/2006 23:45
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=[E o D]=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+=-=-=-=--=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-

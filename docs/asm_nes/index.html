@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>Curso de ASM 6502 [NES] - Introducción</title>
+
+<link href="estilo.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>CURSO de ASM 6502 [NES]</h1>
+<h2>INTRODUCCIÓN</h2>
+Por <a href="mailto:drkwzrdx@hotmail.com">DaRKWiZaRDX</a>
+<p>¡Bienvenid@ a mi curso de ASM de 6502! Aquí explicaré cómo manipular el 
+procesador Motorola 6502 (más bien el 65c02), utilizado en la célebre consola de 
+videojuegos &quot;Nintendo Entertainment System&quot; (NES). Si eres romhacker (lo más 
+probable) esto te servirá para poder modificar más a fondo un juego que con los 
+métodos tradicionales (editor gráfico, de texto, etc.) . Durante este curso 
+intentaré ir algo acelerado pero intentando dejar las bases bien puestas en cada 
+sección, si aun así no entiendes algo puedes enviarme un mail, buscar en otro 
+documento o preguntar en foros, que para eso están. También intentaré que la 
+guía sea lo más comprensible que pueda, usando ejemplos simples. Algo que 
+debes tener en cuenta es que esto no es para principiantes (tampoco es una cosa 
+avanzadísima, pero alguien que recién comienza con el romhacking puede perderse 
+fácilmente), así que si crees que tienes suficiente experiencia con el 
+romhacking y quieres avanzar, sigue leyendo, de lo contrario, adquiere 
+experiencia, sube nivel, evoluciona y .... er, digo... empieza por algo más 
+básico.</p>
+<h2>INTRODUCCIÓN A LA NES</h2>
+<h3>Características básicas de la NES:</h3>
+<p>(Sólo las que nos interesan xD)</p>
+<p><span class="enfasis">* Velocidad de reloj de procesador</span>: 1.7897725 
+MHz (NTSC) o 1.773447 MHz (PAL)<br>
+<span class="enfasis">* Direccionamiento de 16bits</span>.<br>
+<span class="enfasis">* $800 bytes de RAM</span>, sí, es bastante poco, pero la 
+mayoría de las veces puedes usar también 2 kB más (en $6000).<br>
+<span class="enfasis">* Tres registros de 8bits</span> a disposición del 
+programador.<br>
+<span class="enfasis">* &quot;Picture processing unit&quot;</span> (Unidad procesadora de 
+gráficos) con 4 kB de memoria de video separada de la RAM del procesador.<br>
+<span class="enfasis">* Lectura Big-Endian:</span> Esto significa que al 
+leer números de 16bits se lee primero el byte más bajo y luego el alto. <br>
+<br>
+Por supuesto tiene muchas características más, algunas las explicaré (en cuanto 
+sea necesario para el curso), mientras que las más avanzadas tendrías que 
+buscarlas en internet (aunque a menos que planees escribir un emulador o algo 
+así, no creo que las necesites).</p>
+<div id="indice">
+<h2>INDICE</h2>
+<center>
+<a href="bin.html">Numeración binaria</a><br>
+<a href="regs.html">Registros</a><br>
+<a href="instr.html">Instrucciones b&aacute;sicas</a><br>
+<a href="stack.html">La pila</a><br>
+<a href="mds.html">Modos de direccionamiento</a><br>
+<a href="saltos.html">Saltos y branchs</a><br>
+<a href="fin.html">Fin</a><h4>Apéndices</h4>
+<p>
+<a href="apend1.html">I - Encontrar una rutina de texto con FCEUXD</a><br>
+<a href="apend2.html">II - Mapa de memoria</a><br />
+</p>
+</div>
+</center></body>
+</html>

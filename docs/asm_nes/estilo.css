@@ -1,0 +1,52 @@
+BODY {
+	font-family: georgia, verdana, arial, fixedsys;
+}
+A {
+	color: #0000a0;
+	text-decoration: none;
+}
+A:hover {
+	color: #a00000;
+}
+
+h1 {
+	text-align: center;
+	color: #FF0000;
+}
+
+h2 {
+	text-align: center;
+	color: #F08000;
+}
+
+h3 {
+	text-align: center;
+	color: #FF2020;
+}
+
+h4 {
+	color: #008000;
+}
+
+span.adver {
+	color: #FF2000;
+}
+
+span.enfasis {
+	font-weight: 800;
+}
+
+#indice {
+	font-family: verdana;
+	margin-left: 30%;
+	width: 50%;
+}
+
+table {
+	border: 1px solid black;
+}
+
+div.codigo {
+	border: 1px solid black;
+        background-color: #e0e0e0;
+}

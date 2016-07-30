@@ -1,0 +1,40 @@
+BODY {
+	margin-left: 15%;
+	margin-right: 15%;
+	font-family: verdana, georgia, "courier", "fixedsys";
+}
+
+a {
+	color: #0000FF;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #006000;
+}
+
+h1 {
+	color: #FF4000;
+}
+
+h2 {
+	color: #804080;
+}
+
+div {
+	display: block;
+}
+
+div.codigoasm {
+	white-space:pre;
+	background-color: #ebebeb;
+	font-family: "fixedsys";
+	border: 1px solid black;
+}
+div.codigoc {
+	white-space:pre;
+	background-color: #000040;
+	font-size: smaller;
+	font-family: "Courier New";
+	color: #FFFFFF;
+}

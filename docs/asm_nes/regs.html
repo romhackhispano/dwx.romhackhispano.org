@@ -1,0 +1,109 @@
+<html>
+<head>
+<title>Curso de ASM 6502 [NES] - REGISTROS</title>
+
+<link href="estilo.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>CURSO de ASM 6502 [NES]</h1>
+<h2>Registros</h2>
+<p>Por <a href="mailto:drkwzrdx@hotmail.com">DaRKWiZaRDX</a></p>
+
+
+<p>La mayoría de movimiento de datos que harás en ASM será a través de 
+registros. Se trata de pequeñas zonas de memoria (8 bits cada uno) que están 
+contenidas DENTRO del procesador y no están en la RAM, su tiempo es acceso es 
+miles de veces más corto que el acceso a ROM o a RAM, por lo que se los usa para 
+casi todo, en la NES cuentas con varios registros y cada uno tiene su utilidad.</p>
+<p><span class="enfasis">A (Acumulador)</span><br>
+</font>Éste será el registro que más uses, por lejos, ya que es el único registro sobre el 
+que se pueden
+hacer operaciones aritméticas, y además suele usarse para modificar a los que no 
+pueden
+usarse con tal fin, una vez que veas algo de código (si no lo viste aún) verás 
+lo útil que
+llega a ser este registro (realmente es vital :P).</p>
+<p><span class="enfasis">X (Indexer X) / Y (indexer Y)</span><br>
+Son registros muy útiles, que se usan para &quot;indexar&quot; direcciones (ya veremos qué 
+significa
+eso más adelante), para hacer bucles (tambien llamados &quot;ciclos&quot;),  no 
+puedes
+realizar ninguna operación aritmética sobre X e Y, excepto las de incremento y decremento 
+(por 1),
+que es lo útil para los bucles, cuando empecemos a ver direcciones indexadas 
+veremos la utilidad de estos registro.</p>
+<p><span class="enfasis">S (puntero de pila)</span><br>
+Es un registro ***QUE NO DEBE SER MODIFICADO A MENOS QUE SEPAS MUY BIEN LO QUE 
+HACES***,
+contiene la dirección de memoria del último lugar usado en la pila, es el 
+puntero al
+próximo valor que se sacará con un PLA. A menos que te dediques a la 
+programación alienígena deja este registro en paz, que se controla bastante bien 
+solito :)</p>
+<p><span class="enfasis">PC (Program counter)</span><br>
+Es un registro que contiene la dirección actual del código que se ejecuta, 
+generalmente
+está constantemente cambiando a alta velocidad, por lo que para ver su actual 
+valor habría
+que detener al procesador de alguna manera (un bucle infinito tal vez).</p>
+
+
+<h3>REGISTRO P</h3>
+
+
+<p>El registro P es también conocido como registro de flags, y tiene varios usos, 
+los 8 bits
+de este byte tienen cada uno una función distinta, en realidad se usan para ver 
+los
+resultados de una operación aritmética y hacer bucles y otras cosas, aunque 
+tiene usos
+muy variados.<br>
+Los flags son cada uno de los valores (bits), que pueden ser 1 o 0, si el flag 
+está
+&quot;activado&quot; es 1, y &quot;desactivado&quot; es 0.<br>
+<br>
+Bits&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7 6 5 4 3 2 1 0<br>
+Nombres&nbsp;&nbsp; S V&nbsp;&nbsp; B D I Z C<br>
+<br>
+<span class="enfasis">Bit 0 -&gt; Carry flag:</span> Este bit se activa si la última operación 
+dio un
+acarreo y de lo contrario se pone a 0, si en una comparación el operando es
+mayor al registro utilizado se pone a 1, si es menor se pone a 0.<br>
+<br>
+<span class="enfasis">Bit 1 -&gt; Zero flag:</span> Éste bit se activa si la última operación 
+dio como
+resultado 0, y se desactiva si el resultado no fue 0.<br>
+<br>
+<span class="enfasis">Bit 2 -&gt; Interrupt flag:</span> Éste es el flag de anulación de interrupciones. Si este 
+flag
+está a 1, los interrupciones están desactivadas, sino están activadas (duh).<br>
+<br>
+<span class="enfasis">Bit 3 -&gt; Decimal flag:</span> Éste es el flag de modo decimal. Si está activado, las 
+operaciones
+ADC y SBC usan los valores fuentes como BCD (binary coded decimal).<br>
+<br>
+<span class="enfasis">Bit 4 -&gt; Break flag:</span> Éste flag se pone a 1 si se está ejecutando una 
+interrupción de
+software (BRK).<br>
+<br>
+<span class="enfasis">Bit 5 -&gt;</span> No se utiliza, supuestamente debe estar siempre a 1.<br>
+<br>
+<span class="enfasis">Bit 6 -&gt; Overflow flag:</span> Cuando una operación aritmética produce un resultado que 
+no se
+puede representar en 1 byte, el flag se activa.<br>
+<br>
+<span class="enfasis">Bit 7 -&gt; Sign flag:</span> Se activa si el último resultado 
+fue negativo, se
+desactiva si fue positivo.<br>
+<br>
+Los flags usados más comúnmente son C, Z, y V.</p>
+
+
+<p>Es importante que entiendas la importancia de los registros y cuáles no deben 
+ser modificados (lo digo más que nada por el registro de pila, S). A, X e Y 
+serán, por lejos, los registros que más uses, pero eso lo entenderás mejor 
+cuando veas algo de código.</p>
+<center><a href="bin.html">&lt;&lt; Anterior</a> - <a href="instr.html">Siguiente &gt;&gt;</a></center>
+
+</body>
+</html>

@@ -1,0 +1,1 @@
+<p align="center"><img alt="DaRKWiZaRDX translations" src="imgs/dwxt.gif" height="67" width="600" /></p>

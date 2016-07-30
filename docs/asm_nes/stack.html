@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>Curso de ASM 6502 [NES] - La pila</title>
+
+<link href="estilo.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>CURSO de ASM 6502 [NES]</h1>
+<h2>La pila</h2>
+
+
+<p>Por <a href="mailto:drkwzrdx@hotmail.com">DaRKWiZaRDX</a></p>
+
+
+<p>En esta corta lección explicaré de qué se trata la pila, uno de los recursos 
+más importantes del programador (de ASM, C, lo que sea xD).</p>
+
+
+<p><span class="enfasis">¿Qué es?</span></p>
+
+
+<p>La pila es un espacio de memoria (entre $100 y $1FF) usado para 
+almacenamiento temporal de datos que, obviamente, no deben perderse. La pila 
+utiliza un sistema LIFO (Last in first out), que significa que el último 
+elemento que introduzcamos (push) en la pila será el primero que extraigamos (pull). 
+El procesador sabe dónde está el último valor que se insertó y dónde poner un 
+nuevo valor en la pila gracias al registro de pila (S, por eso decía antes que 
+no hay que tocarlo a menos que sepas muy bien lo que haces). Por ejemplo, si 
+tenemos la pila vacía, y hacemos lo siguiente:</p>
+<p>LDA #$40&nbsp;&nbsp;&nbsp;&nbsp; ; carga A con el valor $40<br>
+PHA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; mete A ($40) en la 
+pila<br>
+PHA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; mete A ($40) en la 
+pila<br>
+LDA #$00&nbsp;&nbsp;&nbsp;&nbsp; ; carga A con el valor $00<br>
+PHA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; mete A ($00) en la 
+pila</p>
+<p>Hemos metido en la pila los valores $40 $40 $00 (en ese orden), cuando 
+comencemos a extraer bytes de la pila no sacaremos primero el $40 que pusimos al 
+principio, sino el $00 que pusimos al final:</p>
+<p>PLA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; carga A con el 
+valor de la pila<br>
+PLA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; ídem<br>
+PLA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; ídem</p>
+<p>Después del primer PLA tendremos en A el valor $00, después del segundo A 
+quedará en $40 y después del tercero A quedará en $40 (otra vez). Y la pila 
+quedará nuevamente vacía.</p>
+<p><span class="enfasis">De arriba hacia abajo</span></p>
+<p>Como ya dije, la pila guarda los valores que se le introducen en una zona de 
+memoria ente $100 - $1FF, pero no empieza poniendo el primer valor (suponiendo 
+que la pila esté vacía) en $100, y luego en $101, NO. Todo lo contrario, siempre 
+se recomienda al escribir programas de NES, poner el puntero de pila a #$FF (el 
+1 de la unidad de centenas no hace falta ponerlo) 
+mediante <span class="enfasis">LDX #$FF y TXS.</span> El puntero de pila debe 
+apuntar siempre (cuando la pila está vacía) a $1FF, cada vez que introduzcamos 
+un valor en la pila pasará algo así:</p>
+<p>(suponiendo que la pila está vacía y el puntero es $1FF)<br>
+En los comentarios pondré cómo quedarían los registros DESPUÉS de ejecutarse la 
+instrucción.</p>
+<p>LDA #$00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+; A = $00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; S = $FF&nbsp;&nbsp;&nbsp;&nbsp; PILA = 
+(vacía)<br>
+PHA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+; A = $00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; S = $FE&nbsp;&nbsp;&nbsp;&nbsp; PILA = 
+$00<br>
+PHA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+; A = $00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; S = $FD&nbsp;&nbsp;&nbsp;&nbsp; PILA = 
+$00 $00<br>
+LDA #$20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+; A = $20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; S = $FD&nbsp;&nbsp;&nbsp;&nbsp; PILA = 
+$00 $00<br>
+PHA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+; A = $20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; S = $FC&nbsp;&nbsp;&nbsp;&nbsp; PILA = 
+$00 $00 $20<br>
+LDA #$60&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+; A = $60&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; S = $FC&nbsp;&nbsp;&nbsp;&nbsp; PILA = 
+$00 $00 $20<br>
+; ya terminamos de meter valores en la pila<br>
+PLA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+; A = $20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; S = $FD&nbsp;&nbsp;&nbsp;&nbsp; PILA = 
+$00 $00<br>
+PLA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+; A = $00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; S = $FE&nbsp;&nbsp;&nbsp;&nbsp; PILA = 
+$00<br>
+PLA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+; A = $00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; S = $FF&nbsp;&nbsp;&nbsp;&nbsp; PILA = 
+(vacía)</p>
+<p>Espero que haya quedado claro con ese ejemplo.</p>
+<p><span class="adver">Una recomendación: Cuando escribas código (demos, rutinas, lo que sea) 
+recuerda siempre que guardes un valor en la pila SACARLO antes de volver de la 
+rutina, o puede causar varios errores.</span></p>
+<p>Además del uso que le da el programador (guardar valores) la pila también es 
+usada por el procesador para guardar direcciones de regreso para subrutinas, 
+pero eso lo veremos con más detalle en su sección correspondiente.</p>
+<center><a href="instr.html">&lt;&lt; Anterior</a> - <a href="mds.html">Siguiente &gt;&gt;</a></center>
+
+
+</body>
+</html>

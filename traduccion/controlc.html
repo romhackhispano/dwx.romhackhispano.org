@@ -1,0 +1,93 @@
+<html>
+<head>
+<title>Guía de traducción de Roms por DaRKWiZaRDX</title>
+</head>
+<link href="estilo.css" type=text/css rel=stylesheet>
+<body>
+
+<center><h1>GU&Iacute;A DE TRADUCCI&Oacute;N DE ROMS</h1></center>
+<p>Por <a href="mailto:drkwzrdx@hotmail.com">DaRKWiZaRDX</a> </p>
+<center><h2>CÓDIGOS DE CONTROL</h2></center>
+
+<p>Pues ya hemos modificado la primera ROM con codificación propia (es decir, no 
+ASCII), esta lección se dedicará a develar qué hacen ciertos caracteres hex que 
+vimos en el ejemplo anterior (el pokémon silver).<br>
+A éstos caracteres se les denomina &quot;códigos de control&quot;, y justamente hacen eso, 
+controlan la salida de texto,<br>
+veamos qué pasa en el caso del pokémon silver, aquí tenemos una imagen del 
+trabajo de la sección anterior:<br>
+<img border="0" src="imagenes/j_tabl9.gif" width="648" height="335"><br>
+Como ves, después del signo de interrogación de la primera frase (el de después 
+de &quot;Wha...?&quot;) hay un caracter hex que no tenemos en la tabla, la mejor forma de 
+saber qué representa (o mas bien que HACE) este caracter es mirando en la ROM:<br>
+<img border="0" src="imagenes/j_tabl10.gif" width="324" height="293"><br>
+Podemos ver que después del signo de interrogación el juego baja una línea, 
+entonces sabemos que ése byte es usado para bajar una línea de texto, miramos en 
+el editor qué valor hex tiene, en este caso es $4F y lo agregamos a la tabla de 
+la siguiente forma:<br>
+*43&nbsp;&nbsp; &lt;-- <font color="#0040FF">Éstos códigos (los que bajan una 
+línea) se denominan &quot;line break&quot;</font><br>
+No hay que agregarlo de la forma normal ( 43=* ) ya que sino lo tomaría como el 
+caracter '*', si usamos editor hex para traducir no será mucho problema, pero si 
+traducimos con scripts (eso lo veremos más tarde) en lugar de mostrar un salto 
+de línea mostrará un asterisco ( * ) y eso nos hará la traducción bastante tediosa.<br>
+También tenemos otro valor desconocido: El que está después de &quot;you woke me up!&quot; 
+(o &quot;Me despertaste!&quot; si lo traduciste), vemos en la ROM lo que hace... El texto 
+queda en pantalla hasta que pulsamos un botón, y luego avanza para mostrar el 
+texto que falta.</p>
+
+<p>NOTA IMPORTANTE: La mayoría de editores hex no manejan un código especial para 
+realizar esto, como sí lo hacen por ejemplo para el salto de línea (como 
+acabamos de ver), yo recomiendo hacer lo siguiente:<br>
+Si vas a traducir utilizando editor hex (como lo he estado demostrando en lo que 
+va de la guía), asígnale un caracter que uses muy poco, para usarlo 
+específicamente para esta tarea, por ejemplo, un guión bajo _ ).<br>
+En cambio, si vas a traducir utilizando scripts, recomiendo que lo agregues como 
+(## es el código hex):<br>
+##=(NEXT)\n<br>
+y utilices para extraer los scripts algún programa que admita el &quot;\n&quot; como salto 
+de línea (RomJuice es uno de ellos). Es tu decisión.</p>
+
+<p>En fin, volviendo al tema, el código hex es $51, así que lo agregamos a la tabla 
+como prefiramos.<br>
+Por ahora lo haremos como:<br>
+51=_&nbsp; &lt;-- <font color="#0040FF">Éstos códigos (los que esperan 
+pulsación de botón para seguir mostrando texto) se denominan &quot;section break&quot;<br>
+</font>Agregamos esos caracteres a la tabla y abrimos el editor en el offset del 
+texto:<br>
+<img border="0" src="contro1.gif" width="648" height="334"><br>
+Como ves reemplaza los caracteres por asteriscos y guiones bajos (esto supongo que ya 
+lo sabrías...), ahora pulsa la barra espaciadora en la 'Z' y vuelve a pulsar en 
+el '!' y escribe algo como: &quot;Fin linea<font color="#0040FF">*</font>Fin mensaje<font color="#0040FF">_</font>Hola!&nbsp;&nbsp; 
+&quot; en el editor (sólo para probar :D)<br>
+<img border="0" src="contro2.gif" width="647" height="334"><br>
+Probamos la Rom en el emulador y vemos qué pasó:<br>
+<img border="0" src="imagenes/contro3.gif" width="323" height="292">
+<img border="0" src="imagenes/contro4.gif" width="322" height="291"><br>
+¡Weee! ¡Modificamos los códigos de control! Éstos códigos te ayudarán a hacer 
+una traducción de mejor calidad, ya que el espacio que te sobra en una línea lo 
+puedes usar en la siguiente, así traducciones cortas ocupan menos y las 
+traducciones más largas pueden ocupar ese espacio.</p>
+
+<p>Ahora nos queda un código más por agregar a la tabla... ¿Cómo sabe el juego 
+en dónde acaba un diálogo y comienza en siguiente, que se dará en otra parte del 
+juego? Mediante un código especial, denominado &quot;<font color="#0040FF">message 
+break</font>&quot;, para encontrarlo debemos buscar el valor hex que está después de 
+la última letra que sale por pantalla, en nuestro caso, viene después de &quot;Hola!&nbsp;&nbsp; 
+&quot; y es el código hex $00. Deberás agregarlo a la tabla de la siguiente manera:</p>
+
+<p>/00</p>
+
+<p>Quizás si traduces en editor hex no encuentres diferencia entre darle este 
+caracter (la barra) o darle otro, pero sí hace una gran diferencia al momento de 
+traducir con scripts. Algunos traductores prefieren usar este código para los 
+section break, es tu decisión. Yo recomiendo agregar los caracteres a la tabla 
+como lo expliqué aquí.</p>
+
+<p>Pues bueno, fue bastante corta esta sección, supongo que habrá quedado claro, 
+cualquier cosa que no se entienda puedes preguntarme a mi mail. ¡Nos vemos en la 
+siguiente lección!</p>
+<center><a href="j_tabla.html">&lt;&lt; Anterior</a> - <a href="index.html">Indice</a> - <a href="dte_mte.html">Siguiente &gt;&gt;</a></center>
+
+</body>
+</html>

@@ -1,0 +1,474 @@
+<html>
+<head>
+<title>Guía de traducción de Roms por DaRKWiZaRDX</title>
+</head>
+<link href="estilo.css" type=text/css rel=stylesheet>
+<body>
+
+<center><h1>GU&Iacute;A DE TRADUCCI&Oacute;N DE ROMS</h1></center>
+<p>Por <a href="mailto:drkwzrdx@hotmail.com">DaRKWiZaRDX</a> </p>
+<center><h2>MODIFICANDO JUEGOS CON TABLA</h2></center>
+
+<p>¡Vamos que ya tenemos buenas bases! ^^ Ya modificamos un juego ASCII y es 
+hora de atacar la fortaleza enemiga de Mord... Err... Es decir, ahora atacaremos 
+los juegos con tabla, es decir, juegos que no utilizan la codificación ASCII que 
+vimos en el ejemplo del Zelda.<br>
+Para poder modificar el texto de un juego que no está en ASCII necesitaremos una 
+tabla de valores (o tabla de caracteres) que nos dirá que X valor significa X 
+caracter, y así se facilita la traducción a una codificación diferente desde el 
+ASCII que nuestros teclados utilizan -en DOS- xD. Primero haré una explicación 
+rápida sobre qué son las tablas:</p>
+<h3>LAS TABLAS</h3>
+<p>Las tablas son ficheros comunes de texto (solo que con extensión .tbl) que 
+sirven para &quot;traducir&quot; de una codificación a ASCII para poder editar el texto 
+más fácilmente, las tablas tienen un formato para indicar las equivalencias:</p>
+<p>&lt;valor hex&gt;=&lt;letra&gt;<br>
+P.Ej: 01=A</p>
+<p>Entonces cuando abramos la ROM y elijamos la tabla (ya veremos como hacerlo 
+más adelante) en cada lugar donde aparezca el hex $01 en la ventana de texto nos 
+aparecerá 'A', por lo tanto, sabremos que el $02 será la 'B' y así continuamente 
+hasta que tengas todo el abecedario (alfabeto). Las tablas pueden almacenar 
+hasta 256 caracteres como puedes ver aquí:</p>
+<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#00FF00" width="432" id="AutoNumber1" bordercolorlight="#FFFFFF" bordercolordark="#FFFFFF">
+  <tr>
+    <td width="11">&nbsp;</td>
+    <td width="23"><font color="#0040FF">0</font></td>
+    <td width="23"><font color="#0040FF">1</font></td>
+    <td width="24"><font color="#0040FF">2</font></td>
+    <td width="25"><font color="#0040FF">3</font></td>
+    <td width="25"><font color="#0040FF">4</font></td>
+    <td width="26"><font color="#0040FF">5</font></td>
+    <td width="26"><font color="#0040FF">6</font></td>
+    <td width="27"><font color="#0040FF">7</font></td>
+    <td width="24"><font color="#0040FF">8</font></td>
+    <td width="25"><font color="#0040FF">9</font></td>
+    <td width="27"><font color="#0040FF">A</font></td>
+    <td width="29"><font color="#0040FF">B</font></td>
+    <td width="27"><font color="#0040FF">C</font></td>
+    <td width="26"><font color="#0040FF">D</font></td>
+    <td width="24"><font color="#0040FF">E</font></td>
+    <td width="22"><font color="#0040FF">F</font></td>
+  </tr>
+  <tr>
+    <td width="11"><font color="#0040FF">0</font></td>
+    <td width="23">00</td>
+    <td width="23">01</td>
+    <td width="24">02</td>
+    <td width="25">03</td>
+    <td width="25">04</td>
+    <td width="26">05</td>
+    <td width="26">06</td>
+    <td width="27">07</td>
+    <td width="24">08</td>
+    <td width="25">09</td>
+    <td width="27">0A</td>
+    <td width="29">0B</td>
+    <td width="27">0C</td>
+    <td width="26">0D</td>
+    <td width="24">0E</td>
+    <td width="22">0F</td>
+  </tr>
+  <tr>
+    <td width="11"><font color="#0040FF">1</font></td>
+    <td width="23">10</td>
+    <td width="23">11</td>
+    <td width="24">12</td>
+    <td width="25">13</td>
+    <td width="25">14</td>
+    <td width="26">15</td>
+    <td width="26">16</td>
+    <td width="27">17</td>
+    <td width="24">18</td>
+    <td width="25">19</td>
+    <td width="27">1A</td>
+    <td width="29">1B</td>
+    <td width="27">1C</td>
+    <td width="26">1D</td>
+    <td width="24">1E</td>
+    <td width="22">1F</td>
+  </tr>
+  <tr>
+    <td width="11"><font color="#0040FF">2</font></td>
+    <td width="23">20</td>
+    <td width="23">21</td>
+    <td width="24">22</td>
+    <td width="25">23</td>
+    <td width="25">24</td>
+    <td width="26">25</td>
+    <td width="26">26</td>
+    <td width="27">27</td>
+    <td width="24">28</td>
+    <td width="25">29</td>
+    <td width="27">2A</td>
+    <td width="29">2B</td>
+    <td width="27">2C</td>
+    <td width="26">2D</td>
+    <td width="24">2E</td>
+    <td width="22">2F</td>
+  </tr>
+  <tr>
+    <td width="11"><font color="#0040FF">3</font></td>
+    <td width="23">30</td>
+    <td width="23">31</td>
+    <td width="24">32</td>
+    <td width="25">33</td>
+    <td width="25">34</td>
+    <td width="26">35</td>
+    <td width="26">36</td>
+    <td width="27">37</td>
+    <td width="24">38</td>
+    <td width="25">39</td>
+    <td width="27">3A</td>
+    <td width="29">3B</td>
+    <td width="27">3C</td>
+    <td width="26">3D</td>
+    <td width="24">3E</td>
+    <td width="22">3F</td>
+  </tr>
+  <tr>
+    <td width="11"><font color="#0040FF">4</font></td>
+    <td width="23">40</td>
+    <td width="23">41</td>
+    <td width="24">42</td>
+    <td width="25">43</td>
+    <td width="25">44</td>
+    <td width="26">45</td>
+    <td width="26">46</td>
+    <td width="27">47</td>
+    <td width="24">48</td>
+    <td width="25">49</td>
+    <td width="27">4A</td>
+    <td width="29">4B</td>
+    <td width="27">4C</td>
+    <td width="26">4D</td>
+    <td width="24">4E</td>
+    <td width="22">4F</td>
+  </tr>
+  <tr>
+    <td width="11"><font color="#0040FF">5</font></td>
+    <td width="23">50</td>
+    <td width="23">51</td>
+    <td width="24">52</td>
+    <td width="25">53</td>
+    <td width="25">54</td>
+    <td width="26">55</td>
+    <td width="26">56</td>
+    <td width="27">57</td>
+    <td width="24">58</td>
+    <td width="25">59</td>
+    <td width="27">5A</td>
+    <td width="29">5B</td>
+    <td width="27">5C</td>
+    <td width="26">5D</td>
+    <td width="24">5E</td>
+    <td width="22">5F</td>
+  </tr>
+  <tr>
+    <td width="11"><font color="#0040FF">6</font></td>
+    <td width="23">60</td>
+    <td width="23">61</td>
+    <td width="24">62</td>
+    <td width="25">63</td>
+    <td width="25">64</td>
+    <td width="26">65</td>
+    <td width="26">66</td>
+    <td width="27">67</td>
+    <td width="24">68</td>
+    <td width="25">69</td>
+    <td width="27">6A</td>
+    <td width="29">6B</td>
+    <td width="27">6C</td>
+    <td width="26">6D</td>
+    <td width="24">6E</td>
+    <td width="22">6F</td>
+  </tr>
+  <tr>
+    <td width="11"><font color="#0040FF">7</font></td>
+    <td width="23">70</td>
+    <td width="23">71</td>
+    <td width="24">72</td>
+    <td width="25">73</td>
+    <td width="25">74</td>
+    <td width="26">75</td>
+    <td width="26">76</td>
+    <td width="27">77</td>
+    <td width="24">78</td>
+    <td width="25">79</td>
+    <td width="27">7A</td>
+    <td width="29">7B</td>
+    <td width="27">7C</td>
+    <td width="26">7D</td>
+    <td width="24">7E</td>
+    <td width="22">7F</td>
+  </tr>
+  <tr>
+    <td width="11"><font color="#0040FF">8</font></td>
+    <td width="23">80</td>
+    <td width="23">81</td>
+    <td width="24">82</td>
+    <td width="25">83</td>
+    <td width="25">84</td>
+    <td width="26">85</td>
+    <td width="26">86</td>
+    <td width="27">87</td>
+    <td width="24">88</td>
+    <td width="25">89</td>
+    <td width="27">8A</td>
+    <td width="29">8B</td>
+    <td width="27">8C</td>
+    <td width="26">8D</td>
+    <td width="24">8E</td>
+    <td width="22">8F</td>
+  </tr>
+  <tr>
+    <td width="11"><font color="#0040FF">9</font></td>
+    <td width="23">90</td>
+    <td width="23">91</td>
+    <td width="24">92</td>
+    <td width="25">93</td>
+    <td width="25">94</td>
+    <td width="26">95</td>
+    <td width="26">96</td>
+    <td width="27">97</td>
+    <td width="24">98</td>
+    <td width="25">99</td>
+    <td width="27">9A</td>
+    <td width="29">9B</td>
+    <td width="27">9C</td>
+    <td width="26">9D</td>
+    <td width="24">9E</td>
+    <td width="22">9F</td>
+  </tr>
+  <tr>
+    <td width="11"><font color="#0040FF">A</font></td>
+    <td width="23">A0</td>
+    <td width="23">A1</td>
+    <td width="24">A2</td>
+    <td width="25">A3</td>
+    <td width="25">A4</td>
+    <td width="26">A5</td>
+    <td width="26">A6</td>
+    <td width="27">A7</td>
+    <td width="24">A8</td>
+    <td width="25">A9</td>
+    <td width="27">AA</td>
+    <td width="29">AB</td>
+    <td width="27">AC</td>
+    <td width="26">AD</td>
+    <td width="24">AE</td>
+    <td width="22">AF</td>
+  </tr>
+  <tr>
+    <td width="11"><font color="#0040FF">B</font></td>
+    <td width="23">B0</td>
+    <td width="23">B1</td>
+    <td width="24">B2</td>
+    <td width="25">B3</td>
+    <td width="25">B4</td>
+    <td width="26">B5</td>
+    <td width="26">B6</td>
+    <td width="27">B7</td>
+    <td width="24">B8</td>
+    <td width="25">B9</td>
+    <td width="27">BA</td>
+    <td width="29">BB</td>
+    <td width="27">BC</td>
+    <td width="26">BD</td>
+    <td width="24">BE</td>
+    <td width="22">BF</td>
+  </tr>
+  <tr>
+    <td width="11"><font color="#0040FF">C</font></td>
+    <td width="23">C0</td>
+    <td width="23">C1</td>
+    <td width="24">C2</td>
+    <td width="25">C3</td>
+    <td width="25">C4</td>
+    <td width="26">C5</td>
+    <td width="26">C6</td>
+    <td width="27">C7</td>
+    <td width="24">C8</td>
+    <td width="25">C9</td>
+    <td width="27">CA</td>
+    <td width="29">CB</td>
+    <td width="27">CC</td>
+    <td width="26">CD</td>
+    <td width="24">CE</td>
+    <td width="22">CF</td>
+  </tr>
+  <tr>
+    <td width="11"><font color="#0040FF">D</font></td>
+    <td width="23">D0</td>
+    <td width="23">D1</td>
+    <td width="24">D2</td>
+    <td width="25">D3</td>
+    <td width="25">D4</td>
+    <td width="26">D5</td>
+    <td width="26">D6</td>
+    <td width="27">D7</td>
+    <td width="24">D8</td>
+    <td width="25">D9</td>
+    <td width="27">DA</td>
+    <td width="29">DB</td>
+    <td width="27">DC</td>
+    <td width="26">DD</td>
+    <td width="24">DE</td>
+    <td width="22">DF</td>
+  </tr>
+  <tr>
+    <td width="11"><font color="#0040FF">E</font></td>
+    <td width="23">E0</td>
+    <td width="23">E1</td>
+    <td width="24">E2</td>
+    <td width="25">E3</td>
+    <td width="25">E4</td>
+    <td width="26">E5</td>
+    <td width="26">E6</td>
+    <td width="27">E7</td>
+    <td width="24">E8</td>
+    <td width="25">E9</td>
+    <td width="27">EA</td>
+    <td width="29">EB</td>
+    <td width="27">EC</td>
+    <td width="26">ED</td>
+    <td width="24">EE</td>
+    <td width="22">EF</td>
+  </tr>
+  <tr>
+    <td width="11"><font color="#0040FF">F</font></td>
+    <td width="23">F0</td>
+    <td width="23">F1</td>
+    <td width="24">F2</td>
+    <td width="25">F3</td>
+    <td width="25">F4</td>
+    <td width="26">F5</td>
+    <td width="26">F6</td>
+    <td width="27">F7</td>
+    <td width="24">F8</td>
+    <td width="25">F9</td>
+    <td width="27">FA</td>
+    <td width="29">FB</td>
+    <td width="27">FC</td>
+    <td width="26">FD</td>
+    <td width="24">FE</td>
+    <td width="22">FF</td>
+  </tr>
+</table>
+<p>Bueno, ahora volvamos al Romhacking :D</p>
+<h3>COMPLETANDO LAS TABLAS</h3>
+<p>Para completar las tablas deberemos hacer una búsqueda relativa, hay varios 
+programas especializados (p.ej: SearchrX) pero en este caso usaremos la utilidad 
+de búsqueda relativa del HEX-Calibur que además de ser muy buena y rápida 
+permite crear una tabla con los valores encontrados para ahorrarnos trabajo, en 
+este caso usaremos la rom del Pokemon silver de GBC:</p>
+<ol>
+  <li>Busca en el juego algún texto y anótalo, en este caso usaremos &quot;You woke me 
+  up!&quot;.</li>
+  <li>Crea un fichero de texto vacío, y grábalo con extensión .tbl (por simpleza 
+  aquí lo llamaré pksilver.tbl)</li>
+  <li>Abre el HEX-Calibur.</li>
+  <li>Escribe el nombre de la Rom en la primera caja, avanza de caja con el 
+  Intro y en la segunda escribe el nombre de la tabla (en nuestro caso 
+  pksilver.tbl). TODO DEBE ESTAR EN UNA MISMA CARPETA. Debe quedar algo parecido 
+  a esto:<br>
+  <img border="0" src="imagenes/j_tabl5.gif" width="647" height="333"></li>
+  <li>Pulsa enter hasta que entre al programa ya que las otras cajas no las 
+  usaremos, entonces te aparecerá el editor hex.</li>
+  <li>Pulsa F5 para entrar en modo de búsqueda relativa y escribe lo que quieras 
+  buscas, en nuestro caso &quot;You woke&quot;.</li>
+  <li>El programa mostrará en un menú los lugares en que encontró la frase y a 
+  la derecha un poco más de texto para saber si es el bloque de texto que 
+  buscamos, en este caso no se mostrará texto ya que se encontró una sola 
+  ocurrencia.<br>
+  <img border="0" src="imagenes/j_tabl6.gif" width="648" height="337"></li>
+  <li>Pulsemos enter ya que es la única vez que se encuentra eso en la ROM, 
+  también sería recomendable que anotes el offset (es decir, la dirección que 
+  aparece a la izquierda) para saber luego donde se encontró el texto. (1638765)</li>
+  <li>El programa te pregunta si debe hacer una tabla, pulsa 'Y' para decirle 
+  que sí.</li>
+  <li>Te preguntará si debe extender la tabla anterior (la que nosotros hicimos 
+  vacía), generalmente es mejor poner esto en 'Y' pero en nuestro caso no 
+  importa, dale a 'N' o a 'Y'.</li>
+  <li>Pregunta si debe escribir en la primera o segunda tabla, como al principio 
+  no elegimos ninguna segunda tabla dale al '1'.</li>
+  <li>Por último preguntará si debe guardar los cambios a la tabla en el HD, 
+  dile que Yes 'Y' XD.</li>
+  <li>Ya tenemos nuestra tabla lista, saquemos este editor, ya que no lo 
+  usaremos para modificar texto, pulsa la Q y ponle que 'Y' o 'N' cuando te 
+  pregunta si quieres que guarde los cambios, ya que no importa, pues no hicimos 
+  ningún cambio a la ROM misma.</li>
+</ol>
+<p>Ya tenemos la tabla con los caracteres básicos, cabe destacar que es mucho 
+más efectivo usar una frase en la que aparezcan mayúsculas y minúsculas, porque 
+así completamos los dos alfabetos de una vez.</p>
+<p>Ahora abramos la ROM en un editor, en este caso el ThingyV y cambiémosle algo 
+de texto</p>
+<ol>
+  <li>Abre el ThingyV</li>
+  <li>Elige la ROM del menú.</li>
+  <li>Elige la tabla del menú.</li>
+  <li>Cuando te pida una tabla secundaria pulsa ESC ya que nosotros no tenemos 
+  una.</li>
+  <li>Cuando aparezca la ventana del editor, pulsa la J y elige &quot;Posición 
+  manual&quot; para saltar a una posición que nosotros queramos. Escribe 1638765 (el 
+  número que nos dio la búsqueda relativa) y el programa saltará a esa posición.<br>
+  Es recomendable que hagas un &quot;bookmark&quot; para llegar rápido al texto, para 
+  hacerlo escribe en la tabla en una línea vacía: (offset en hexadecimal +h) &lt;nombre del 
+  bookmark&gt;. Si no agregas la 'h' tras el offset será tratado como decimal.<br>
+  P.ej: En este caso, algo apropiado sería: &quot;(19016Dh) Elegir Hora&quot;, luego en el 
+  menú Bookmark o Jump de casi cualquier editor puedes saltar directamente a 
+  esta posición, varios programas pueden escribir bookmarks de forma más 
+  sencilla, pero por ahora estará bien así. Para pasar de decimal a hexadecimal 
+  usa la calculadora de Windows en modo científico, escribe el número en modo 
+  decimal y pulsa el botón radio (redondo) &quot;Hex&quot; para pasarlo a Hexadecimal.</li>
+  <li>Aparecerá algo así:<br>
+  <img border="0" src="imagenes/j_tabl8.gif" width="652" height="338"><br>
+  ¿Qué son todos esos '#'s? Son los caracteres que no tienen equivalente en la 
+  tabla, así que aparecerán repesentados de esa forma, ¿Y cómo los quitamos? 
+  Poniendo en la tabla cual es su equivalencia, ¿Y cómo hacemos eso? Mirando en 
+  el juego, por ejemplo, entre &quot;You&quot; y &quot;woke&quot; ¿Qué hay? Un espacio, entonces 
+  miramos el valor, $7F, y en la tabla ponemos:<br>
+  7F= <br>
+  (hay un espacio después del = ). Después&nbsp; de &quot;up&quot; hay un signo de 
+  exclamación, miramos el valor, $E7 y agregamos a la tabla:<br>
+  E7=!<br>
+  Y así deberemos seguir hasta que tengamos en la tabla suficientes caracteres 
+  para poder traducir de una forma mas o menos decente, aquí te facilitaré unos 
+  cuantos hex con sus equivalencias en ASCII:<br>
+  54=POKé<br>
+  75=...<br>
+  D4='s<br>
+  E6=?<br>
+  Agrega eso a la tabla y ahora abre la ROM con el ThingyV.</li>
+  <li>Ahora verás el texto algo distinto:<br>
+  <img border="0" src="imagenes/j_tabl9.gif" width="648" height="335"><br>
+  ¿Notas que algunas letras y caracteres aparecen en diferentes colores? Es que 
+  se tratan de DTEs/MTEs, es decir, son más de una letra/caracter que se usa con 
+  un solo byte hex, sirven para ahorrar espacio en la rom, pero por ahora no 
+  profundizaremos mucho en los DTE/MTE, eso lo haremos en su sección. También 
+  notarás que algunos hex ($4F, $00 y $51 para ser más exactos) no los he puesto 
+  en la tabla, es que son códigos de control, que indican cuando hay que bajar 
+  una línea o pulsar un botón para cambiar de cuadro, por ahora tampoco los 
+  tocaremos, ya que son la siguiente sección de la guía.</li>
+  <li>Vamos a editar texto, sitúate en la 'Z' (la mayúscula, es decir, la 
+  primera) y pulsa la barra espaciadora, ahora muévete hasta el '!' después de 
+  &quot;up&quot; y vuelve a pulsar la barra espaciadora y te aparecerá una pantalla en la 
+  que debes poner el texto modificado, escribe algo como &quot;Zzz... Uh? Que...?&quot; &lt;- 
+  Eso te ocupará exactamente el mismo espacio ;) y pulsa enter para aceptar y 
+  volver al editor y verás que el cambio está hecho en la ROM, ya que estamos 
+  cerca cambia también &quot;You woke me up&quot; por &quot;Me despertaste!&quot;. Quizás</li>
+  <li>Pulsa la 'Q' y luego la 'S' para guardar los cambios y salir del ThingyV.</li>
+  <li>Abre la Rom con cualquier emulador y mira la diferencia:<br>
+  <img border="0" src="imagenes/j_tabl10.gif" width="324" height="293">
+  <img border="0" src="imagenes/j_tabl11.gif" width="324" height="293"><br>
+  ¡Misión cumplida! ^^</li>
+</ol>
+<p>Pero, después de esta sección, aunque logramos nuestro objetivo, quedaron 
+varios cabos sueltos, como los códigos de control, los DTE/MTE, así que habrá 
+que seguir para poder entenderlos y utilizarlos a nuestro favor para hacer una 
+traducción más fácil (por el espacio del que dispones) y con mejor calidad (por 
+el modo en que usas ese espacio).</p>
+<center><a href="j_ascii.html">&lt;&lt; Anterior</a> - <a href="index.html">Indice</a> - <a href="controlc.html">Siguiente &gt;&gt;</a></center>
+
+</body>
+</html>

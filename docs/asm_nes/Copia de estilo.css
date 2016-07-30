@@ -1,0 +1,48 @@
+BODY {
+	background-color: #000050;
+	color: #FFFFFF;
+	font-family: fixedsys, verdana;
+}
+A {
+	color: #B0B000;
+	text-decoration: none;
+}
+A:hover {
+	color: #FFFF00;
+	text-decoration: underline overline;
+}
+
+h1 {
+	text-align: center;
+	color: #FFFF00;
+	font-size: 40;
+}
+
+h2 {
+	text-align: center;
+	color: #F0A000;
+}
+
+h3 {
+	text-align: center;
+	color: #FF2020;
+	font-size: 2;
+}
+
+h4 {
+	color: #80FF80;
+}
+
+span.adver {
+	color: #FF2000;
+}
+
+span.enfasis {
+	color: #00FFFF;
+	font-size: 1.1em;
+}
+#indice {
+	font-family: verdana;
+	margin-left: 30%;
+	width: 50%;
+}

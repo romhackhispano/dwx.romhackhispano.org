@@ -1,0 +1,274 @@
+<html>
+<head>
+<title>Curso de ASM 6502 [NES] - Modos de direccionamiento</title>
+
+<link href="estilo.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>CURSO de ASM 6502 [NES]</h1>
+<h2>Modos de direccionamiento</h2>
+
+
+<p>Por <a href="mailto:drkwzrdx@hotmail.com">DaRKWiZaRDX</a></p>
+
+
+<p>Aquí estoy de nuevo (para el lamento de tantos... xDDD), esta vez la lección 
+será bastante corta, ya que se trata de un tema bastante simple, pero MUY 
+importante.<br>
+Se trata de los modos de direccionamiento, que son las formas que tiene el 
+programador de decirle al procesador dónde leer/escribir, de forma que el 
+procesador no termine leyendo o escribiendo datos donde no debe. de hecho, en el 
+poco código que hemos visto hasta ahora ya vimos algunos modos de 
+direccionamiento:</p>
+<p>LDA #$00&nbsp;&nbsp;&nbsp; ; carga el valor $00 en A</p>
+<p>Este es un modo de direccionamiento, el más simple de todos, denominado &quot;Immediate&quot;, 
+carga un valor dado por el programador (una constante) en un registro, sea A, X 
+o Y.</p>
+<p>Veámoslos todos juntos:</p>
+<table>
+  <tr>
+    <td width="224">
+    <h4>MODO DE DIRECCIONAMIENTO</h4>
+    </td>
+    <td width="108">
+    <h4>EJEMPLO</h4>
+    </td>
+    <td width="528">
+    <h4>DESCRIPCIÓN</h4>
+    </td>
+  </tr>
+  <tr>
+    <td width="224">Immediate</td>
+    <td width="108">LDA #$80</td>
+    <td width="528">El programador le da un valor constante. No debe leer de 
+    memoria.</td>
+  </tr>
+  <tr>
+    <td width="224">Accumulator</td>
+    <td width="108">ASL A</td>
+    <td width="528">Actúa siempre sobre el acumulador (A).</td>
+  </tr>
+  <tr>
+    <td width="224">Implied</td>
+    <td width="108">SEI</td>
+    <td width="528">No recibe parámetros, la instrucción de por sí sabe sobre 
+    qué registros actuar (si es que actúa sobre alguno).</td>
+  </tr>
+  <tr>
+    <td width="224">Zero Page</td>
+    <td width="108">LDA $80</td>
+    <td width="528">Actúa sobre el valor contenido en un offset de 8bits (1 
+    byte).</td>
+  </tr>
+  <tr>
+    <td width="224">Absolute</td>
+    <td width="108">LDA $6100</td>
+    <td width="528">Actúa sobre el valor contenido en un offset de 16bits (2 
+    bytes)</td>
+  </tr>
+  <tr>
+    <td width="224">Zero Page indexed X</td>
+    <td width="108">LDA $80,X</td>
+    <td width="528">Actúa sobre el valor contenido en un offset de 8bits + X.</td>
+  </tr>
+  <tr>
+    <td width="224">Zero Page indexed Y</td>
+    <td width="108">LDA $80,Y</td>
+    <td width="528">Actúa sobre el valor contenido en un offset de 8bits + Y.</td>
+  </tr>
+  <tr>
+    <td width="224">Absolute indexed X</td>
+    <td width="108">LDA $6100,X</td>
+    <td width="528">Actúa sobre el valor contenido en un offset de 16bits + X.</td>
+  </tr>
+  <tr>
+    <td width="224">Absolute indexed Y</td>
+    <td width="108">LDA $6100,Y</td>
+    <td width="528">Actúa sobre el valor contenido en un offset de 16bits + Y.</td>
+  </tr>
+  <tr>
+    <td width="224">Indexed indirect</td>
+    <td width="108">LDA ($80,X)</td>
+    <td width="528">Ver abajo.</td>
+  </tr>
+  <tr>
+    <td width="224">Indirect indexed</td>
+    <td width="108">LDA ($80),Y</td>
+    <td width="528">Ver abajo.</td>
+  </tr>
+  <tr>
+    <td width="224">Indirect absolute</td>
+    <td width="108">JMP ($6100)</td>
+    <td width="528">Ver abajo.</td>
+  </tr>
+  <tr>
+    <td width="224">Relative</td>
+    <td width="108">BRA $FE (je)</td>
+    <td width="528">Ver abajo.</td>
+  </tr>
+</table>
+
+
+<h4>Modos de direccionamiento indexados:</h4>
+
+
+<p>Como verás hay cuatro modos que usan indexado, ¿Qué significa esto? Que además 
+de
+utilizar la dirección que le da el programador para leer/escribir, le sumarán a 
+esa
+dirección el valor de un registro (sea X o Y) y usarán el resultado de esa 
+cuenta para
+saber en qué dirección realmente van a leer/escribir. Veamos un ejemplo:<br>
+<br>
+Supongamos que quiero poner un valor (supongamos que $10) en 10 direcciones 
+distintas,
+esto podría ser que estoy &quot;limpiando&quot; memoria que usaré luego. El valor lo 
+pondré en el
+acumulador y lo guardaré en 10 direcciones comenzando en $200.<br>
+<br>
+Podría hacer:<br>
+<br>
+LDA #$10&nbsp;&nbsp;&nbsp; ;cargamos el valor en A<br>
+STA $200&nbsp;&nbsp;&nbsp; ;lo guardamos en la primera<br>
+STA $201&nbsp;&nbsp;&nbsp; ;en la segunda<br>
+STA $202&nbsp;&nbsp;&nbsp; ;etc.<br>
+STA $203<br>
+STA $204<br>
+STA $205<br>
+STA $206<br>
+STA $207<br>
+STA $208<br>
+STA $209&nbsp;&nbsp;&nbsp; ;en la décima<br>
+<br>
+Pero haciendo esto ocuparíamos MUCHÍSIMO espacio de la ROM, cuando es mucho más 
+simple
+hacer una rutina con el modo de direccionamiento indexado.<br>
+<br>
+Al usar indexado sumaremos al offset (que en este ejemplo comienza en $200) el 
+valor
+actual del registro X o Y. Es decir que si por ejemplo tenemos en el registro X 
+el valor
+$16, si hacemos algo como &quot;LDA $10,X&quot; la operación real sería &quot;LDA $10+$16&quot;, por 
+lo que
+realmente no estaríamos leyendo de la dirección de memoria $10 sino de la $26.<br>
+Pero sigamos entonces con nuestro ejemplo, sabiendo ya lo del indexado haremos 
+lo
+siguiente:<br>
+<br>
+LDA #$10&nbsp;&nbsp;&nbsp;&nbsp; ;el valor a guardar<br>
+LDX #$00&nbsp;&nbsp;&nbsp;&nbsp; ;X comienza en 0, será nuestro contador<br>
+repetir:<br>
+STA $200,X&nbsp;&nbsp; ;guardamos en $200+X<br>
+INX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;instrucción que incrementa X por 1<br>
+CPX #10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ;comparamos X con #10 (decimal) (esto lo veremos en detalle más adelante)<br>
+BNE repetir&nbsp; ;si no es igual vuelve al principio (también lo veremos más 
+adelante)<br>
+<br>
+Cada vez que se llega al INX se incrementa X por 1, y el &quot;<span class="enfasis">CPX #$10</span> |
+<span class="enfasis">BNE 
+repetir</span>&quot;
+verifica si ya se llegó a 10 (nota que no puse #$10 sino #10, ya que no es un 
+valor
+hexadecimal sino uno decimal).</p>
+
+
+<h4>Modos de direccionamiento indirectos:</h4>
+<p>Estos modos no actúan directamente sobre el parámetro que les da el 
+programador, sino sobre el que está contenido EN LA DIRECCIÓN QUE LE DA EL 
+PROGRAMADOR. Por ejemplo:</p>
+<p>LDX #$00<br>
+LDA ($80,X)</p>
+<p>Esta instrucción no leerá el valor que está en $80 y lo guardará en el 
+acumulador (eso lo haría <span class="enfasis">LDA $80</span>), lo que hará esta 
+instrucción será sumar el valor del registro X a $80, lo que da como resultado 
+$80, y entonces leer un valor de 16bits (2 bytes) de $80 - $81, y usar ese 
+valor para determinar el offset del que debe leer.<br>
+Si en el ejemplo anterior en $80-$81 estuviera almacenado (en orden invertido, 
+claro) $6589 entonces
+<span class="enfasis">LDA ($80)</span> sería igual a <span class="enfasis">LDA 
+$6589</span>.</p>
+<p>La razón por la que usaríamos LDA ($80) y no LDA $6589 es porque podríamos 
+volver a utilizar el <span class="enfasis">LDA ($80)</span> para leer de OTRA 
+posición de memoria simplemente cambiando el contenido de $80-$81, lo que no 
+podríamos hacer si hubiéramos utilizado <span class="enfasis">LDA $6589</span>.</p>
+
+
+<h4>Modo de direccionamiento indirecto indexado:</h4>
+
+
+<p>LDA ($80),Y</p>
+
+
+<p>Lo que hace este modo de direccionamiento es leer un valor de 16bits de 
+$80-$81, supongamos que en este caso el valor que leyó era <span class="enfasis">
+$6589</span>, entonces a ese número le suma el valor del índice Y (supongamos 
+que sea <span class="enfasis">$14</span>), y el valor que se cargue en A será el 
+contenido en la dirección <span class="enfasis">$659D</span> ($6589 + $14).
+<span class="enfasis">Sólo puede usarse como índice en este modo de 
+direccionamiento el registro Y</span>.</p>
+
+
+<h4>Modo de direccionamiento indexado indirecto:</h4>
+
+
+<p>LDA ($80,X)</p>
+
+
+<p>En este modo de direccionamiento se suma el operando (en este caso es
+<span class="enfasis">$80</span>) más el contenido del registro X (supongamos 
+que es <span class="enfasis">$14</span>), entonces la operación sería
+<span class="enfasis">LDA ($94)</span>, por lo tanto, el valor que se cargará en 
+A será el contenido en el valor que tenga <span class="enfasis">$94</span> (<span class="enfasis">si 
+el offset $94 contiene $18, entonces $18 se carga en A</span>). Sólo puede 
+usarse como índice en este modo de direccionamiento el registro X.</p>
+
+
+<h4>Modos de direccionamiento relativos:</h4>
+
+
+<p>Los modos de direccionamiento se basan en la posición actual del PC (el 
+registro que contiene el offset de la instrucción que se está por ejecutar),
+<span class="enfasis">al valor que le da el programador se le suma 1 para que un 
+BRA $00 no salte hacia sí mismo.</span> Por ejemplo:</p>
+<p>LDA #$14<br>
+STA $86<br>
+BRA $02&nbsp;&nbsp;&nbsp;&nbsp; ; este #$02 + 1 da #$03, lo que saltea el 
+<span class="enfasis">LDX #$20</span><br>
+LDX #$20<br>
+STX $87</p>
+<p>Como señalé en el comentario, en el <span class="enfasis">BRA</span> 
+(instrucción para saltar, que lo hace siempre, sin condición), sabemos que
+<span class="enfasis">si el parámetro hubiera sido 0 habría seguido hacia el LDX 
+#$20</span>, ya que siempre se le suma 1 al parámetro, pero como el parámetro es 
+#$02, y 2 + 1 = 3, entonces sabemos que <span class="enfasis">el branch 
+adelantará 3 bytes, lo que lo dejará en el STX $87</span>. Espero que haya 
+quedado claro, la verdad es que es bastante simple, pero por mi forma de 
+explicar...</p>
+
+
+<p>Pero igualmente cuando escribas código probablemente usarás etiquetas. Por 
+ejemplo:</p>
+
+
+<p>LDA #$00<br>
+TAX<br>
+<span class="enfasis">loop:</span><br>
+STA $4000,X<br>
+INX<br>
+CPX #$20<br>
+BNE <span class="enfasis">loop</span><br>
+&lt;sigue el código&gt;&nbsp;&nbsp;&nbsp; ; por si no lo entendiste este código 
+llena con $00 una zona de 32 bytes (20 hex) a partir de $4000.</p>
+
+
+<p>Como ves en lugar de poner un número puedes poner una etiqueta, todos los 
+ensambladores que conozco soportan etiquetas, si el tuyo no lo hace, pues cambia de 
+ensamblador :P</p>
+
+
+<p>Vamos, que falta poco, una lección más y ya terminamos xD</p>
+<center><a href="stack.html">&lt;&lt; Anterior</a> - <a href="saltos.html">Siguiente &gt;&gt;</a></center>
+
+
+</body>
+</html>

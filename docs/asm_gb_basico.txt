@@ -1,0 +1,336 @@
+                   BIEVENID@S AL CURSO BÁSICO DE ASM DE GAMEBOY POR DARKWIZARDX
+                                    <drkwzrdx@hotmail.com>
+
+v1.0: [13/04/2006 19:48] Primera versión.
+
+En este tutorial aprenderás (o al menos la idea es esa :P) cómo trabaja el procesador
+de la Gameboy, sirve para tanto SGB (Super Gameboy) como GBC (Gameboy Color) ya que el
+procesador es el mismo. Como siempre empezaremos por lo más básico, registros, flags,
+posiciones de memoria, etc.
+
+INDICE:
+    0) Características del Gameboy
+    I) Introducción al ASM.
+   Ia) Sistema Binario.
+   Ib) Operaciones lógicas de binario.
+   II) Registros.
+  IIa) Registro F.
+  III) Instrucciones.
+   IV) Saltos y branchs.
+    V) Fin.
+
+0)                            CARACTERÍSTICAS DEL GAMEBOY
+
+Procesador:                  Zilog Z-80 (modificado) (8bits)
+Endianess:                   Little-Endian
+Velocidad de procesador:     4.194304 MHz (El Super Gameboy llega a 4.295454 MHz)
+Tamaño de pantalla:          2.6" (pulgadas, serían unos 6,60 centímetros)
+Máximos colores disponibles: GB: 4 Tonos de gris - GBC: 32.768
+Máximos colores en pantalla: 56
+Resolución:                  160 x 144 píxeles (20x18 tiles)
+Máximo tamaño de sprites:    8 x 16 píxeles (1x2 tiles)
+Máximos sprites:             40
+Tamaño de cartucho:          256kBits (32Kilobytes) a 8MBits (1 Megabyte)
+Chip de sonido:              Cuatro canales stereo integrados
+
+I)                                 INTRODUCCION AL ASM
+
+El ASM (o assembler o en español, ensamblador) es un lenguaje denominado de bajo nivel
+porque trabaja a nivel máquina, (lenguajes como Visual Basic y C/C++ son considerados de
+alto nivel) ya que el programador opera directamente con el hardware mediante direcciones
+de memoria, (esto lo veremos más adelante) en ASM se maneja más que nada el sistema
+binario, ya que con él se pueden "encender" o "apagar" bits (poner a 1 o a 0), que es lo
+que más se utiliza para los flags por ejemplo, pero todo eso lo veremos más adelante :)
+El ensamblador no es precisamente "facil" de aprender, a decir verdad, si no pones
+atención al principio y dejas las bases bien puestas después no entenderás nada de nada,
+es simplemente prestar atención y entender desde el principio como el lenguaje funciona.
+
+Ia)                                 SISTEMA BINARIO
+
+En realidad si eres mayor de 12 años deberías saber el sistema binario, pero por si acaso
+lo voy a explicar rápidamente. El sistema binario cuenta con solo 2 números, 1 o 0,
+"encendido" o "apagado", "seteado" o "reseteado", etc.
+Con esos números debes representar cualquier otro, y se hace de la siguiente manera:
+Divides cada número por 2 y guardas el resultado, y el resto lo sigues dividiendo por 2
+hasta que ya no pueda dividirse, entonces tomas el resultado final y los restos de abajo
+para arriba y así conformas el número....
+...dicho así es algo complicado, pero veamos un ejemplo para entenderlo bien.
+
+(En realidad las fórmulas que doy aquí abajo no es necesario hacerlas, ya que puedes usar
+la calculadora de Windows en modo binario o alguna otra utilidad, pero es algo útil para
+saberlo :P)
+Supongamos que quiero pasar 215 a binario:
+(Aquí los números de resto los pongo entre paréntesis)
+
+Entonces tendría :     
+
+215 |_2_
+ (1)  107 |_2_
+      (1)  53  |_2_
+           (1)   26 |_2_
+                 (0)  13 |_2_
+                      (1)  6  |_2_
+                          (0)   3  |_2_
+                               (1)   1
+
+Ya tenemos todos los restos y el resultado final
+ahora los tomamos de abajo hacia arriba:
+11010111
+
+Y ese es 215 en binario, si queremos pasarlo de binario a decimal haremos la siguiente
+operación:
+"Tomar cada uno de derecha a izquierda y multiplicarlos por 2 elevado a una potencia que
+arranca de 0 y suma de a 1."
+EJEMPLO!!!!!
+XD
+
+       1    1    0    1    0    1    1    1
+x     2^7  2^6  2^5  2^4  2^3  2^2  2^1  2^0
+      --------------------------------------
+      128   64   0   16    0    4    2    1      
+
+Y ahora sumamos todos los números que nos dio:
+
+128 + 64 + 16 + 4 + 2 + 1 = 215
+
+Voila! ^^ Ahí tenemos el número, o podemos hacerlo de la manera fácil, escribimos 215 con
+la calculadora de Windows en modo decimal, y hacemos clic en el botón para pasar a
+binario, y ahí lo tenemos! ^^.
+
+1b)                          OPERACIONES LÓGICAS DE BINARIO
+
+El acceso a información a nivel de bit se usa principalmente para comparaciones y poner
+flags del registro P a 1 o 0. Ahora veremos cómo se hace.
+
+OPERACIÓN AND: (&)
+
+Consiste en comparar los bits de los operandos y comparar cuando 2 son 1 da 1 de
+resultado, pero como yo soy muy malo para explicarlo con palabras pondré un ejemplo :)
+
+       01100111
+   AND 01011101
+  --------------
+       01000101
+
+Como ves solo cuando los dos bits son 1 da de resultado 1.
+
+OPERACIÓN OR: (|)
+
+Consiste en comparar los bits de los operandos y comparar cuando alguno de los 2 es 1,
+entonces dará 1 de resultado, pero por el mismo motivo pondré otro ejemplo :P
+
+      01100101
+   OR 01010101
+  -------------
+      01110101
+
+Como ves cuando alguno es 1 el resultado es 1.
+
+OPERACIÓN XOR:
+
+Igual a un OR excepto que para que el resultado dé 1, solo 1 de los bits debe ser
+positivo (1).
+
+       01100011
+   XOR 01011001
+  ----------------
+       00111010
+
+Solo cuando un bit es 1, el resultado es 1 :)
+
+II)                                    REGISTROS
+
+En ASM no se trabaja con variables (sí con constantes) sino con registros y posiciones
+de memoria, los registros que posee el Gameboy son 8 (ocho) de 8bits cada uno, es decir,
+8 bytes, que son los siguientes:
+
+***************************************************
+* REGISTROS A LOS QUE TIENE ACCESO EL PROGRAMADOR *
+***************************************************
+
+[A] (Acumulador)
+Este registro será el que más usaremos, ya que en él se pueden cargar valores
+directamente Y realizar operaciones aritméticas sobre él. Aunque al resto de los
+registros también se les pueden cargar valores (con la excepción de F) no se pueden
+realizar operaciones aritméticas de suma/resta, etc. sobre ellos, por lo que usaremos A.
+
+[B] y [C]: Se usan generalmente como contadores para loops, es decir, bucles o
+repeticiones para copiar datos o similar, se los puede usar también para sostener
+valores temporales (recuerda que siempre es más rápido el acceso al contenido de algún
+registro que a alguna dirección de RAM).
+
+[D] y [E]: Similares a B y C, pero estos dos se usan generalmente conjuntos (como DE)
+para indicar direcciones de 16bits para el movimientos de datos. al igual que B y C
+pueden también usarse para guardar variables temporales (aunque para eso está la pila :P)
+
+[H] y [L]: También se usan como conjunto en 16 bits para direccionar, solo que estos dos
+están práctica y exclusivamente para ello, ya que incluso hay instrucciones para cargar
+de ellos y aumentarlos para hacer lectura indirecta (eso lo veremos más adelante xD), es
+decir en lugar de hacer:
+
+     LD A,(DE)   ; cargaría en A el contenido de la dirección que contiene DE
+     INC DE      ; incrementa el indice DE
+     LD A,(DE)   ; carga el siguiente byte.
+
+podríamos hacer:
+
+     LDI A,(HL)  ; carga el contenido de la dirección contenida en HL y lo incrementa.
+     LDI A,(HL)  ; carga el siguiente byte y vuelve a incrementar HL.
+
+     o
+
+     LD A,(HL+) ; ]_ Esto tiene el mismo efecto que las dos lineas anteriores
+     LD A,(HL+) ; ]
+
+Siendo esto lo más rápido y que menos lugar ocupa.
+
+Estos son los registros a los que tiene acceso el programador, como verás dije que eran
+ocho y sólo nombré siete, el registro que falta (F) lo veremos un poco más detallado
+después.
+
+TODOS estos registros pueden juntarse con otro para formar un registro de 16bits
+(como la fusión de DBZ pero sin baile ni pendientes :D), quedarían:
+
+A + F = AF
+B + C = BC
+D + E = DE
+H + L = HL
+
+Como verás no hay mucha ciencia en el tema xD
+
+También hay un grupo de registros que sirven solo para el procesador y por los que el
+programador no debería preocuparse, ya que se manejan por sí solos, son los siguientes:
+
+******************************************************************************
+* REGISTROS DE HARDWARE (NO ES NECESARIO QUE EL PROGRAMADOR LOS TOQUETEE xD) *
+******************************************************************************
+
+[SP]: El registro SP es el puntero de pila (stack), es decir, apunta a la dirección donde
+va a ponerse el próximo valor que se ponga un valor en la pila y el valor que se va a
+sacar cuando se saque algo de la pila (duh =P).
+
+Las pilas son regiones de memoria que se utilizan para guardar datos y poder recuperarlos
+después, el último dato que es introducido es el último en sacarse, es decir:
+
+    LD AF,1234
+    PUSH AF
+    LD AF,5678
+    PUSH AF
+
+Ahora en la pila se encuentra lo siguiente: 56 78 12 34
+Después de:
+
+    POP AF      ; Ahora -> AF = 5678
+
+En la pila quedaría: 12 34
+
+    POP AF      ; Ahora -> AF = 1234
+
+En general se utiliza la pila para salvaguardar registros en llamadas a rutinas, y
+contiene la dirección de regreso de una subrutina (eso lo veremos con más detalle más
+adelante)
+
+[PC]: El registro PC (Program counter) es como indica su nombre el contador del programa,
+este registro contiene el offset de la instrucción que se está ejecutando, por lo que
+cambia constantemente, la única forma que tiene el programador de modificarlo (y tendrá
+que hacerlo en algún momento ;) es usando saltos y branches.
+
+IIa)                                  REGISTRO F
+
+Como dije antes, faltaba explicar un registro al que tiene acceso el programador, se
+trata del registro F, se puede leer de él pero no escribirse, ya que se usa como registro
+de flags, es decir banderas, que son BITS que usa el procesador para obtener ciertos
+datos sobre el resultado de la última operación ejecutada.
+
+F = 1 byte = 8 bits
+
+bits:  7   6   5   4   3   2   1   0
+       
+       Z   N   H   C   -   -   -   -
+
+Flag Z: Se pone a 1 si el resultado de la última operación fue 0 (las comparaciones
+ponen este flag a 1 si los bytes comparados son iguales).
+
+Flag N: Se pone a 1 si el resultado de la última operación fue negativo.
+
+Flag H: Half-Carry: Se pone a 1 si el carry fue resultado de la comparación de un
+nybble (4bits) y un byte (8bits). Por si no se nota no entiendo todavía muy bien el
+uso de este flag :P
+
+Flag C: Carry: Se pone a 1 si el resultado de la última operación es más grande que
+el registro de destino.
+P.Ej:
+
+     LD  A,F0
+     ADD A,10 ; $F0 + $10 = $100 lo que no entra en un registro, el carry se pone a 1
+
+Los otros cuatro bits no se usan.
+
+III)                                  INSTRUCCIONES
+
+Bueno, esto va a ser largo xD, vamos a ver algunas instrucciones del Gameboy, las más
+básicas pero que se usan y sus correspondientes modos de direccionamiento.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~ OPERACIONES DE MOVIMIENTO DE DATOS ~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+******
+* LD *
+******
+La operación más básica y que más verás (por lejos), se usa de la siguiente forma:
+
+     LD destino,origen
+
+Es decir, podemos hacer:
+
+     LD A,C0  ; esta básica operación carga el valor $C0 en A
+
+La operación LD puede usarse tanto para poner datos en registros como en direcciones de
+memoria, es decir, si queremos guardar algo en una dirección de memoria.
+
+     LD 9512,A ; guarda el contenido de A en el offset 9512
+
+Puede utilizarse también para cargar los registros "juntados" (o fusionados como me gusta
+decirles a mí :P)
+
+     LD AF,4502
+
+
+
+
+cuando se compara A, si el operando es MAYOR el carry se pone a 1 (al revés que los 65xx)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*********************************************************
+*  IMPOSIBLE ES SÓLO UNA PALABRA QUE USAN LOS HOMBRES   *
+* DÉBILES PARA VIVIR FÁCILMENTE EN EL MUNDO QUE SE LES  *
+*   DIO, SIN ATREVERSE A EXPLORAR EL PODER QUE TIENEN   *
+*   PARA CAMBIARLO. IMPOSIBLE NO ES UN HECHO, ES UNA    * (c) Adidas xD
+* OPINIÓN. IMPOSIBLE NO ES UNA DECLARACIÓN, ES UN RETO. *
+*     IMPOSIBLE ES POTENCIAL. IMPOSIBLE ES TEMPORAL.    *
+*********************************************************
+
+*****************************************
+* NADA ES IMPOSIBLE, TODO ES TRADUCIBLE * (c) Emunixs
+*****************************************
+
+**********************************
+* ALL YOUR BASE ARE BELONG TO US * (c) 
+**********************************
