@@ -1,25 +1,25 @@
                       COMO CREAR UNA ROM DE NES EN 6502 POR DARKWIZARDX
                                      <drkwzrdx@hotmail.com>
 
-v1.0: [26/03/2005 20:18]: Primera versiÛn.
-v1.1: [30/01/2006 22:18]: Arreglados varios errores ortogr·ficos.
+v1.0: [26/03/2005 20:18]: Primera versi√≥n.
+v1.1: [30/01/2006 22:18]: Arreglados varios errores ortogr√°ficos.
 
 Antes que nada muchas gracias a TFG por solucionarme varios problemas de compilador y 
 otras cosas :)
 
-En este curso aprender·s cÛmo hacer tu propia demo para NES. AsÌ como varios los registros
+En este curso aprender√°s c√≥mo hacer tu propia demo para NES. As√≠ como varios los registros
 internos y los puertos I/O para salida por pantalla, antes que nada, te sugieron que
 cuando vayas entendiendo lo de este curso tengas un papel o un fichero de texto con tus
-apuntes, que es algo bastante ˙til cuando se escribe el cÛdigo de la ROM para no tener que
-abrir el documento y tener que buscar dentro de Èl :)
+apuntes, que es algo bastante √∫til cuando se escribe el c√≥digo de la ROM para no tener que
+abrir el documento y tener que buscar dentro de √©l :)
 
 INDICE:
     I) Antes de empezar.
-   Ia) øQuÈ queremos hacer?
-   II) TÈrminos
+   Ia) ¬øQu√© queremos hacer?
+   II) T√©rminos
   III) Haciendo la ROM :)
  IIIa) Header
- IIIb) Vectores de InterrupciÛn
+ IIIb) Vectores de Interrupci√≥n
  IIIc) Inicializando PPU
  IIId) Paletas
  IIIe) Incluyendo los CHR
@@ -27,28 +27,28 @@ INDICE:
    IV) Fin
 
 
-NOTA: Necesitar·s un compilador, yo recomiendo x816, busca en google.
+NOTA: Necesitar√°s un compilador, yo recomiendo x816, busca en google.
 
 I)                                  ANTES DE EMPEZAR
 
-¡ntes que nada voy a aclarar algunos puntos :)
+√Åntes que nada voy a aclarar algunos puntos :)
 
 * La pantalla se compone de tiles (cuadros de 8x8 pixels), lo que se muestra en pantalla
   es la Name Table mas los sprites.
   Los tiles son guardados en la Pattern Table y en la Name Table se les pone el valor que
-  se les asignÛ al guardarlos en la Pattern table para ser mostrados en Ûrden en pantalla.
-  Por ejemplo, el tile de la letra 'A' est· guardada con el valor (ID) $A8 en la Pattern
-  Table, por lo que si en la Name table escribimos $A8 saldr· por la pantalla una 'A'.
+  se les asign√≥ al guardarlos en la Pattern table para ser mostrados en √≥rden en pantalla.
+  Por ejemplo, el tile de la letra 'A' est√° guardada con el valor (ID) $A8 en la Pattern
+  Table, por lo que si en la Name table escribimos $A8 saldr√° por la pantalla una 'A'.
 
-* No se escribe a pantalla utilizando una funciÛn, p.ej: no puedes poner dibuja(x,y,color)
+* No se escribe a pantalla utilizando una funci√≥n, p.ej: no puedes poner dibuja(x,y,color)
   sino que nosotros solo le damos las instrucciones a la PPU y el dispositivo lo pasa a
   pantalla.
 
-* Para escribir a VRAM sÛlo hay una manera, mediante los puertos ubicados en $2006/2007,
+* Para escribir a VRAM s√≥lo hay una manera, mediante los puertos ubicados en $2006/2007,
   que funcionan de la siguiente manera:
   - Se guarda en $2006 el offset de VRAM al cual se quiere acceder.
-  - Se lee/escribe en $2007, que leer·/escribir· de/sobre el offset guardado en $2006.
-  Por ejemplo, si queremos escribir el byte $4F en la direcciÛn $2034 de VRAM:
+  - Se lee/escribe en $2007, que leer√°/escribir√° de/sobre el offset guardado en $2006.
+  Por ejemplo, si queremos escribir el byte $4F en la direcci√≥n $2034 de VRAM:
 
   LDA #$20
   STA $2006
@@ -59,15 +59,15 @@ I)                                  ANTES DE EMPEZAR
   STA $2007
 
   Si queremos leer de VRAM, primero deberemos descartar la primer lectura, la segunda
-  nos dar· los datos que buscamos.
+  nos dar√° los datos que buscamos.
 
-* °°No hay que escribir a la VRAM durante el VBlank, hay que esperar a que acabe!!
-  El VBlank (Vertical Blank - Barrido vertical) es el perÌodo en que se est· dibujando la
-  pantalla, una vez que se ha dibujado toda la pantalla, hay un perÌodo (muy corto para
-  nosotros, pero en el que una m·quina puede hacer muchÌsimas cosas) en el que se puede
-  escribir a VRAM para que la prÛxima vez que se dibuje la imagen, Èsta sea la que el
-  programador especificÛ. Si se escribe a VRAM durante el VBlank lo m·s probable es que
-  veas gr·ficos basura, y no creo que Èse sea tu objetivo ;)
+* ¬°¬°No hay que escribir a la VRAM durante el VBlank, hay que esperar a que acabe!!
+  El VBlank (Vertical Blank - Barrido vertical) es el per√≠odo en que se est√° dibujando la
+  pantalla, una vez que se ha dibujado toda la pantalla, hay un per√≠odo (muy corto para
+  nosotros, pero en el que una m√°quina puede hacer much√≠simas cosas) en el que se puede
+  escribir a VRAM para que la pr√≥xima vez que se dibuje la imagen, √©sta sea la que el
+  programador especific√≥. Si se escribe a VRAM durante el VBlank lo m√°s probable es que
+  veas gr√°ficos basura, y no creo que √©se sea tu objetivo ;)
   Lo que hay que hacer es esperar el VBlank, y luego escribir, si quieres hacer una
   subrutina que espere el vblank simplemente pon:
 wvblank:
@@ -75,40 +75,40 @@ wvblank:
 	BPL wvblank
 	RTS
   
-  Esa rutina se volver· a ejecutar hasta que se encuentre un VBlank, el BPL salta si el
+  Esa rutina se volver√° a ejecutar hasta que se encuentre un VBlank, el BPL salta si el
   resultado no es negativo, cuando termina el VBlank el bit 7 (el de mayor peso) se pone
-  a 1, lo que hace negativo al n˙mero y entonces termina la rutina.
+  a 1, lo que hace negativo al n√∫mero y entonces termina la rutina.
 
 * Los mirrors (o shadows) son zonas de memoria, que como su nombre (espejo) lo indica, son
   congruentes a las zonas que representan (o sea que dan al mismo resultado). Por ejemplo:
-  Supongamos que tenemos $0D2E y $0D3E, tambiÈn supongamos que $0D3E es mirror de $0D2E.
-  Si hacemos un LDA #$14 - STA $0D2E tambiÈn $0D3E ser· modificado. Si no lo entendiste no
-  tendr· mucha importancia, ya que no usaremos mirroring para nada, pero hay que entender
+  Supongamos que tenemos $0D2E y $0D3E, tambi√©n supongamos que $0D3E es mirror de $0D2E.
+  Si hacemos un LDA #$14 - STA $0D2E tambi√©n $0D3E ser√° modificado. Si no lo entendiste no
+  tendr√° mucha importancia, ya que no usaremos mirroring para nada, pero hay que entender
   el concepto :)
 
-* El cÛdigo comienza en $C000 o en $8000 en el banco 0. AquÌ yo usarÈ siempre $C000.
+* El c√≥digo comienza en $C000 o en $8000 en el banco 0. Aqu√≠ yo usar√© siempre $C000.
   No importa lo que pongas, ya que si la ROM es de 32k, se "mapea" (mueve) a $8000, y si
-  es de 16k se carga dos veces (una en $8000 y otra en $C000), para las roms m·s grandes
+  es de 16k se carga dos veces (una en $8000 y otra en $C000), para las roms m√°s grandes
   se utilizan "mappers", pero eso no se va a explicar por ahora :P
 
-Ia)                                øQU… QUEREMOS HACER?
+Ia)                                ¬øQU√â QUEREMOS HACER?
 
 A decir verdad es bastante simple lo que haremos, vamos a hacer una rom que nos muestre un
 simple texto en pantalla.
 
-II)                                     T…RMINOS
+II)                                     T√âRMINOS
 
-PPU : Unidad de procesado de imagen, Èste es el dispositivo que escribe a la pantalla,
-nosotros le pasamos las instrucciones a travÈs de $2006/$2007. Al principio ser· una
-relaciÛn difÌcil, pero bueno, es lo que hay, habr· que tratar con ello :)
+PPU : Unidad de procesado de imagen, √©ste es el dispositivo que escribe a la pantalla,
+nosotros le pasamos las instrucciones a trav√©s de $2006/$2007. Al principio ser√° una
+relaci√≥n dif√≠cil, pero bueno, es lo que hay, habr√° que tratar con ello :)
 La PPU posee sus propios 16k de memoria, separados de la memoria principal.
 
-PRG-ROM : El PRG-ROM es todo el cÛdigo que hemos escrito.
+PRG-ROM : El PRG-ROM es todo el c√≥digo que hemos escrito.
 
 VROM / CHR-ROM : Es la memoria de solo lectura que guarda los tiles para que sean pasados
 a la Pattern Table.
 
-VRAM : AsÌ se denomina a los 16k de memoria que posee la PPU. La VRAM se divide de la
+VRAM : As√≠ se denomina a los 16k de memoria que posee la PPU. La VRAM se divide de la
 siguiente manera:
 
 $0000 - $0FFF : Pattern Table #0
@@ -129,17 +129,17 @@ $4000 - $FFFF : Mirrors de $0000-$3FFF.
 
 En realidad NO TENEMOS 4 Name Tables, realmente tenemos 2, puesto que la #2 es un mirror
 de la #0 y la #3 mirror de la #1.
-Dependiendo de quÈ tipo de mirroring (horizontal o vertical) especifiquemos en el header
-se nos mapear·. Igualmente no le damos mucha importancia a Èsto dado que usaremos una
-sola name table, y en la mayorÌa de los casos ser· asÌ.
+Dependiendo de qu√© tipo de mirroring (horizontal o vertical) especifiquemos en el header
+se nos mapear√°. Igualmente no le damos mucha importancia a √©sto dado que usaremos una
+sola name table, y en la mayor√≠a de los casos ser√° as√≠.
 
-Pattern Table : La Pattern table contiene los tiles que luego ser·n ordenados en la
+Pattern Table : La Pattern table contiene los tiles que luego ser√°n ordenados en la
 Name Table y mostrados por pantalla.
 
 Attribute Table : La attribute table (como su nombre lo indica) define los atributos de
-los tiles, los atributos son los colores que podr·n usarse, cada byte de la tabla de
+los tiles, los atributos son los colores que podr√°n usarse, cada byte de la tabla de
 atributos representa un cuadro de 4 tiles de 8x8.
-Para que se entienda mejor pondrÈ un gr·fico:
+Para que se entienda mejor pondr√© un gr√°fico:
 
 +-------------------------+
 |  Cuadro 0  |  Cuadro 1  |  #0-F representa un tile de 8x8.
@@ -162,77 +162,77 @@ Byte de Atributo
       ||++------ Mayores dos bits de color del cuadro 2 (Tiles #8,9,A,B)
       ++-------- Mayores dos bits de color del cuadro 3 (Tiles #C,D,E,F)
 
-(Gr·ficos y explicaciones extraÌdos de NESTech.txt por Y0shi/Yoshi)
+(Gr√°ficos y explicaciones extra√≠dos de NESTech.txt por Y0shi/Yoshi)
 
-Name Table : AquÌ es donde se ordenan los tiles de la Pattern Table para ser mostrados por
-pantalla. Como est· explicado m·s arriba, no se dispone en realidad de 4 Name tables, sino
+Name Table : Aqu√≠ es donde se ordenan los tiles de la Pattern Table para ser mostrados por
+pantalla. Como est√° explicado m√°s arriba, no se dispone en realidad de 4 Name tables, sino
 de solo 2, puesto que los otros dos son solo mirrors de los dos primeros.
 
-Paleta : Pues eso son, paletas, sÛlo que aquÌ se usan m·s que nada para saber quÈ colores
+Paleta : Pues eso son, paletas, s√≥lo que aqu√≠ se usan m√°s que nada para saber qu√© colores
 son cada valor de la tabla de atributos, la paleta de NES permite 16 colores para fondo y
 16 para sprites, pero se pueden usar solo 4 por tile :P
 
-Fondo : Bueno, supongo que no tengo que explicarlo :P es el color o imagen que se ver·
-detr·s de los sprites.
+Fondo : Bueno, supongo que no tengo que explicarlo :P es el color o imagen que se ver√°
+detr√°s de los sprites.
 
-Sprite : Los sprites son todos los objetos animados que ver·s por pantalla, lo dem·s forma
+Sprite : Los sprites son todos los objetos animados que ver√°s por pantalla, lo dem√°s forma
 parte del fondo, para sprites tienes una zona separada de memoria de 256 bytes, la 
-SPR-RAM. Cada sprite tomar· 4 bytes para su manejo, por lo que se pueden mostrar 
-simult·neamente 64 sprites por pantalla. En esta guÌa NO manipularemos sprites.
+SPR-RAM. Cada sprite tomar√° 4 bytes para su manejo, por lo que se pueden mostrar 
+simult√°neamente 64 sprites por pantalla. En esta gu√≠a NO manipularemos sprites.
 
 III)                                 HACIENDO LA ROM (:D)
 
-Para esta rom usÈ un archivo .chr con fuentes que saquÈ del Pokemon Red de GB, puedes
+Para esta rom us√© un archivo .chr con fuentes que saqu√© del Pokemon Red de GB, puedes
 bajarlo de mi web: http://www.dwxtrad.cjb.net.
 
-Pues llegÛ el momento, si no te ha quedado claro algo de lo anterior m·ndame un mail o
-busca en otro documento, puesto que sino no entender·s algunas cosas de lo que sigue :)
+Pues lleg√≥ el momento, si no te ha quedado claro algo de lo anterior m√°ndame un mail o
+busca en otro documento, puesto que sino no entender√°s algunas cosas de lo que sigue :)
 
 IIIa)                                     HEADER
 
-El header lo haremos separado en un archivo .bin para luego juntarlo con el cÛdigo, los
-gr·ficos y de ahÌ sale la rom:
+El header lo haremos separado en un archivo .bin para luego juntarlo con el c√≥digo, los
+gr√°ficos y de ah√≠ sale la rom:
 
-La estructura de un header iNES (est·ndar para ROMs de NES) es la siguiente:
+La estructura de un header iNES (est√°ndar para ROMs de NES) es la siguiente:
 
-  4 bytes: 'NES',$1A -> …sto siempre es igual, es lo primero que se vÈ en un header iNES.
-                        El $1A es el cÛdigo fin de mensaje.
+  4 bytes: 'NES',$1A -> √âsto siempre es igual, es lo primero que se v√© en un header iNES.
+                        El $1A es el c√≥digo fin de mensaje.
   1 byte: cantidad de bancos de 16k de PRG-ROM: Pues eso, para empezar usaremos siempre 1,
-                                                o sea, un banco de 16k de cÛdigo.
+                                                o sea, un banco de 16k de c√≥digo.
   1 byte: cantidad de bancos de 8k de CHR-ROM: Especificamos la cantidad de bancos de 8k de
                                                CHR-ROM, para empezar 1 ^^
   1 byte: (4 bits mayores) # de mapper usado
           (4 bits menores) cosas como mirroring que por el momento no tienen importancia.
 
   El resto se llena todo con $00 hasta que sea de 16 bytes.
-°AsÌ que vamos a hacer nuestro header!
+¬°As√≠ que vamos a hacer nuestro header!
 
 	;archivo header.asm
-	.mem 8          ;]_ Ponemos acumulador e Ìndices a 8 bits,  
+	.mem 8          ;]_ Ponemos acumulador e √≠ndices a 8 bits,  
 	.index 8        ;]  ya que x816 es de snes y eso es 16 bits.
 	.base $0000     ;esto no importa ya que siempre va antes que la rom
 	.db 'NES',$1A   ;NES + final de mensaje
-	.db $01,$01     ;definimos nuestros bytes (1 p·g. de PRG-ROM y CHR-ROM)
+	.db $01,$01     ;definimos nuestros bytes (1 p√°g. de PRG-ROM y CHR-ROM)
 	.db $00,$00,$00,$00,$00,$00,$00,$00,$00,$00 ; llenamos con $00 hasta 16 bytes
 	.end
 
 Listo, compilamos esto con x816 y tenemos nuestro header.bin que luego juntaremos con
 otras cosas para formar la rom :)
 
-IIIb)                               VECTORES DE INTERRUPCI”N
+IIIb)                               VECTORES DE INTERRUPCI√ìN
 
 La NES tiene tres tipos de interrupciones:
 
 *NMI (Non-Maskable interrupt) -> se ejecuta cada VBlank si lo especificamos en el bit 7 de
                                 $2000. (60 veces por segundo en NTSC)
 *RESET -> Se ejecuta cuando se enciende la consola o se pulsa el boton "reset".
-          Debe apuntar al principio del cÛdigo.
-*IRQ/BRK -> Se ejecuta por dos motivos, por un opcode 00 (BRK) o por una interrupciÛn
+          Debe apuntar al principio del c√≥digo.
+*IRQ/BRK -> Se ejecuta por dos motivos, por un opcode 00 (BRK) o por una interrupci√≥n
             externa (IRQ), si ponemos SEI hacemos que se ignoren las interrupciones
             de este tipo.
 
 Los vectores de interrupcion (las direcciones de memoria a las que saltar cuando se
-producen las interrupciones) se encuentran en $FFFA en el ˙ltimo banco de PRG-ROM y son
+producen las interrupciones) se encuentran en $FFFA en el √∫ltimo banco de PRG-ROM y son
 valores "word" (2 bytes).
 
 Para definir la tabla de interrupciones basta con:
@@ -241,19 +241,19 @@ Para definir la tabla de interrupciones basta con:
   .org $FFFA		                              ; nos situamos en $FFFA
   .dw rutina_nmi,rutina_inicio,rutina_irqbrk  ; declaramos las "word"s.
 
-AquÌ necesitaremos luego hacer rutinas para ejecutar luego de cada interrupciÛn, la menos
-importante es IRQ y la m·s importante RESET, ya que le dice al ensamblador en dÛnde
-comienza nuestro cÛdigo. AquÌ estamos suponiendo que la etiqueta que marca el principio de
-nuestro cÛdigo se llama "start", para volver de una interrupciÛn IRQ/BRK o NMI usamos RTI.
+Aqu√≠ necesitaremos luego hacer rutinas para ejecutar luego de cada interrupci√≥n, la menos
+importante es IRQ y la m√°s importante RESET, ya que le dice al ensamblador en d√≥nde
+comienza nuestro c√≥digo. Aqu√≠ estamos suponiendo que la etiqueta que marca el principio de
+nuestro c√≥digo se llama "start", para volver de una interrupci√≥n IRQ/BRK o NMI usamos RTI.
 
-AsÌ que en nuestro cÛdigo tendrÌamos:
+As√≠ que en nuestro c√≥digo tendr√≠amos:
 
   .mem 8
   .index 8
   .base $C000
 
   start:
-    ;el cÛdigo va aquÌ :) 
+    ;el c√≥digo va aqu√≠ :) 
     jmp start
   			   
   wvblank:		 ;Rutina para esperar el VBlank.
@@ -271,27 +271,27 @@ AsÌ que en nuestro cÛdigo tendrÌamos:
   .dw dummy,start,dummy   
   .end
 
-Bueno, si compilamos Èsto (que sÌ se puede) obtendremos una pantalla negra, pero bueno,
+Bueno, si compilamos √©sto (que s√≠ se puede) obtendremos una pantalla negra, pero bueno,
 eso es porque no hemos comenzado a pasar imagen :) Y a eso vamos.
 
 IIIc)                              INICIALIZANDO PPU
 
-Para comenzar a mostrar imagen necesitaremos manipular registros de PPU, aquÌ listarÈ los
-m·s importantes:
+Para comenzar a mostrar imagen necesitaremos manipular registros de PPU, aqu√≠ listar√© los
+m√°s importantes:
 
 +-----+
 |$2000|
 +-----+
 
 76543210
-||||||+-----> DirecciÛn de Name Table (00 = $2000, 01 = $2400, 10 = $2800, 11 = $2C00)
-|||||+------> Incrementado de direcciÛn de PPU (contenida en $2006) (0 = incrementa por 1,
+||||||+-----> Direcci√≥n de Name Table (00 = $2000, 01 = $2400, 10 = $2800, 11 = $2C00)
+|||||+------> Incrementado de direcci√≥n de PPU (contenida en $2006) (0 = incrementa por 1,
 |||||                                                               1 = Incrementa por 32)
-||||+-------> DirecciÛn de Pattern table para Sprites (0 = $0000, 1 = $1000)
-|||+--------> DirecciÛn de Pattern table para fondo ( 0 = $0000, 1 = $1000)
-||+---------> TamaÒo de Sprites (0 = 8x8 pixels, 1 = 8x16 pixels)
+||||+-------> Direcci√≥n de Pattern table para Sprites (0 = $0000, 1 = $1000)
+|||+--------> Direcci√≥n de Pattern table para fondo ( 0 = $0000, 1 = $1000)
+||+---------> Tama√±o de Sprites (0 = 8x8 pixels, 1 = 8x16 pixels)
 |+----------> No se usa.
-+-----------> Ejecutar interrupciÛn NMI en cada VBlank (1 = activado, 0 = desactivado)
++-----------> Ejecutar interrupci√≥n NMI en cada VBlank (1 = activado, 0 = desactivado)
 
 +-----+
 |$2001|
@@ -307,7 +307,7 @@ m·s importantes:
    +--------> Mostrar sprires (1 = Si, 0 = No)
 
 Los bits 5, 6 y 7 tienen efecto diferente dependiendo si el bit 0 es 1 o 0.
-(si se est· con colores o escala de grises).
+(si se est√° con colores o escala de grises).
 
 Si bit 0 = 1.
 
@@ -327,16 +327,16 @@ Define intensidad del color.
 010=Azul intenso
 100=Rojo intenso
 
-No creo que tenga que explicar nada m·s sobre estos dos registros :)
+No creo que tenga que explicar nada m√°s sobre estos dos registros :)
 
-Ahora sabemos cÛmo "setear" el PPU. AsÌ que tenemos nuestro cÛdigo asÌ:
+Ahora sabemos c√≥mo "setear" el PPU. As√≠ que tenemos nuestro c√≥digo as√≠:
 
   .mem 8
   .index 8
   .base $C000
   start:		    
     sei ;nada de IRQ/BRK
-    lda #%10001000  ;interrupciÛn NMI activada, pattern table de fondo $0000, y pattern
+    lda #%10001000  ;interrupci√≥n NMI activada, pattern table de fondo $0000, y pattern
                     ;table de sprites $1000
     sta $2000
     lda #%00011110  ;Ningun color de fondo, mostrar sprites y fondo, nada de clipping
@@ -361,25 +361,25 @@ Ahora sabemos cÛmo "setear" el PPU. AsÌ que tenemos nuestro cÛdigo asÌ:
   .end
 
 Pues bien, ya iniciamos los registros de video, pero seguimos viendo una pantalla negra,
-es bastante simple, no hemos definido la paleta, ni el fondo, ni nada :P asÌ que a eso vamos.
+es bastante simple, no hemos definido la paleta, ni el fondo, ni nada :P as√≠ que a eso vamos.
 
 IIId)                                                 PALETAS
 
 La paleta del fondo se encuenta en $3F00-$3F0F y la paleta de sprites se encuentra en
-$3F10-3F1F, para hacer m·s f·cil la inicializaciÛn de paletas usaremos un loop y un
-archivo externo, llamado paleta.pal, que contendr· los colores y lo har· m·s f·cil de
-editar (para no tener que hacer todo en el cÛdigo). El archivo de paleta debe ser de 32
+$3F10-3F1F, para hacer m√°s f√°cil la inicializaci√≥n de paletas usaremos un loop y un
+archivo externo, llamado paleta.pal, que contendr√° los colores y lo har√° m√°s f√°cil de
+editar (para no tener que hacer todo en el c√≥digo). El archivo de paleta debe ser de 32
 bytes.
-…ste es el contenido de mi paleta.pal (en hex, h·zlo con un editor hexadecimal):
+√âste es el contenido de mi paleta.pal (en hex, h√°zlo con un editor hexadecimal):
 
 0D 00 28 01 0D 00 10 20 0D 20 08 06 0D 22 28 2D 0D 38 0D 01 0D 30 07 1A 0D 06 16 26 
 0D 31 32 33
 
-Gr·balo con el nombre "paleta.pal" en la misma carpeta del ensamblador y las dem·s cosas :)
+Gr√°balo con el nombre "paleta.pal" en la misma carpeta del ensamblador y las dem√°s cosas :)
 
-…sta paleta contiene varios colores importantes.
+√âsta paleta contiene varios colores importantes.
 Si quieres una tabla con los colores y sus correspondientes valores busca en mi web.
-AsÌ que hagamos el bucle, veamos el cÛdigo:
+As√≠ que hagamos el bucle, veamos el c√≥digo:
 
   .mem 8
   .index 8
@@ -401,7 +401,7 @@ AsÌ que hagamos el bucle, veamos el cÛdigo:
   ldx #$00          ; |
   stx $2006         ;-+
 
-  ;ac· viene el bucle
+  ;ac√° viene el bucle
 
 - lda pal,x         ;carga el contenido de la paleta + indexado X 
   sta $2007         ;lo guarda en el offset contenido en $2006
@@ -411,7 +411,7 @@ AsÌ que hagamos el bucle, veamos el cÛdigo:
   rts               ;termina la subrutina
   			    
   pal:		    
-    .incbin "paleta.pal" ; en la etiqueta "paleta" est·n los datos del fichero externo
+    .incbin "paleta.pal" ; en la etiqueta "paleta" est√°n los datos del fichero externo
   			    
   wvblank:		    
     lda $2002	    
@@ -430,31 +430,31 @@ AsÌ que hagamos el bucle, veamos el cÛdigo:
 
 IIIe)                                INCLUYENDO LOS CHR
 
-Los tiles de los bytes, gr·ficos, fondos, etc. los tendremos en un archivo separado para
-facilitar su ediciÛn. A Èste archivo lo llamaremos "tiles.chr". El archivo siempre tiene
-que ser de 8kb, por lo que serÌa conveniente hacer un archivo de 8k lleno de 00s y luego
-hacerle una copia para cada CHR que quieras y editarlo f·cilmente.
+Los tiles de los bytes, gr√°ficos, fondos, etc. los tendremos en un archivo separado para
+facilitar su edici√≥n. A √©ste archivo lo llamaremos "tiles.chr". El archivo siempre tiene
+que ser de 8kb, por lo que ser√≠a conveniente hacer un archivo de 8k lleno de 00s y luego
+hacerle una copia para cada CHR que quieras y editarlo f√°cilmente.
 
 Una cosa MUY importante, agregamos los tiles al final de la ROM y al cargarla en el emulador
-se los pasa AUTOM¡TICAMENTE a la pattern table, si quisiÈramos pasarlos nosotros (o cargar
-otro juego de tiles) tendrÌamos que hacer la rutina que los pase a VRAM.
+se los pasa AUTOM√ÅTICAMENTE a la pattern table, si quisi√©ramos pasarlos nosotros (o cargar
+otro juego de tiles) tendr√≠amos que hacer la rutina que los pase a VRAM.
 
 Hay dos formas de insertarlos en la rom, una es poniendo tras la tabla de vectores lo
 siguiente:
 
 .incbin <nombre del archivo de tiles>
  (Incluye el fichero al compilar el programa ASM)
-Es mejor (al menos para mÌ) tenerlas separadas y juntarlas con la rom al momento en
+Es mejor (al menos para m√≠) tenerlas separadas y juntarlas con la rom al momento en
 que se ensambla junto con el header, es decir, cuando juntamos el header al principio,
-luego el cÛdigo, luego insertamos el .chr y tenemos la rom. 
+luego el c√≥digo, luego insertamos el .chr y tenemos la rom. 
 
 Bueno, ahora tenemos que pasar esos tiles de tiles.chr a la name table para mostrarlos
-por pantalla, eso nos lleva a la siguiente secciÛn :)
+por pantalla, eso nos lleva a la siguiente secci√≥n :)
 
 IIIf)                          PASANDO TILES A NAME TABLE (VRAM)
 
-Ahora simplemente cuando querramos mostrar alg˙n tile pondremos el n˙mero del Ûrden en el
-que fuÈ colocado en la Pattern table en $2020 (Name Table #0) o $2420 (Name Table #1).
+Ahora simplemente cuando querramos mostrar alg√∫n tile pondremos el n√∫mero del √≥rden en el
+que fu√© colocado en la Pattern table en $2020 (Name Table #0) o $2420 (Name Table #1).
 Se le agrega el $20 porque los primeros 32 bytes se ignoran para que no se vean las
 diferencias entre PAL y NTSC. Por ejemplo, en nuestro programa tenemos la A como segundo
 tile en tiles.chr, el primero era un tile vacio (un espacio). Entonces pondremos:
@@ -465,7 +465,7 @@ sta $2006
 lda #$01     ; $01 es el segundo tile, $00 era el primero
 sta $2007 
 
-y el caracter ser· mostrado en pantalla. Entonces en nuestro cÛdigo quedarÌa:
+y el caracter ser√° mostrado en pantalla. Entonces en nuestro c√≥digo quedar√≠a:
 
   .mem 8
   .index 8
@@ -521,15 +521,15 @@ y el caracter ser· mostrado en pantalla. Entonces en nuestro cÛdigo quedarÌa:
   .dw dummy,start,dummy 
   .end   
   			    
-Pero claro, serÌa difÌcil ponerse a escribir un texto poniendo los valores hex uno al lado
-el otro, por lo que hay dos formas m·s sencillas.
-1- hacemos el archivo .CHR seg˙n ascii, es decir, ponemos 'A' en el byte 65 ($41), 'B' en
-66 ($42), luego 'a' en 97 ($61) y asÌ sucesivamente, luego ponemos el texto en ASCII en
-nuestra rom y lo mostrar· correctamente, eso es lo que harÈ en nuestra rom de pruebas, y
-la otra forma es: "cada caracter que quieras mostrar deber· rest·rsele la diferencia entre
-el valor ASCII y el nuestro (dependiendo cu·l sea m·s grande)". En nuestra rom quedarÌa:
-(En este ejemplo usarÈ una rutina para mostrar texto algo m·s compleja, si quieres cÛpiala
- y pÈgala en tu cÛdigo y trata de descifrar xD)
+Pero claro, ser√≠a dif√≠cil ponerse a escribir un texto poniendo los valores hex uno al lado
+el otro, por lo que hay dos formas m√°s sencillas.
+1- hacemos el archivo .CHR seg√∫n ascii, es decir, ponemos 'A' en el byte 65 ($41), 'B' en
+66 ($42), luego 'a' en 97 ($61) y as√≠ sucesivamente, luego ponemos el texto en ASCII en
+nuestra rom y lo mostrar√° correctamente, eso es lo que har√© en nuestra rom de pruebas, y
+la otra forma es: "cada caracter que quieras mostrar deber√° rest√°rsele la diferencia entre
+el valor ASCII y el nuestro (dependiendo cu√°l sea m√°s grande)". En nuestra rom quedar√≠a:
+(En este ejemplo usar√© una rutina para mostrar texto algo m√°s compleja, si quieres c√≥piala
+ y p√©gala en tu c√≥digo y trata de descifrar xD)
 
   .mem 8
   .index 8
@@ -575,7 +575,7 @@ el valor ASCII y el nuestro (dependiendo cu·l sea m·s grande)". En nuestra rom q
     stx $2007     ;guardamos el caracter contenido en X en la name table
     bne -         ;volvemos al bucle
 +   lda #$00      ;cargamos A con $00
-    sta $2005     ;]_ Lo guardamos en $2005 para anular el scrolling (esto se ver· m·s tarde)
+    sta $2005     ;]_ Lo guardamos en $2005 para anular el scrolling (esto se ver√° m√°s tarde)
     sta $2005     ;]
     lda #%00011110 ;]_ Encendemos de
     sta $2001      ;]  nuevo el display
@@ -594,8 +594,8 @@ el valor ASCII y el nuestro (dependiendo cu·l sea m·s grande)". En nuestra rom q
 
   cadena:
       ;12345678901234567890123456789012
-  .db "   Demo de NES que muestra un   "     ; Tenemos un lÌmite de 32 tiles por lÌnea
-  .db "       texto por pantalla       ",$00 ;termino la cadena en $00 para que el cÛdigo reconozca el final.
+  .db "   Demo de NES que muestra un   "     ; Tenemos un l√≠mite de 32 tiles por l√≠nea
+  .db "       texto por pantalla       ",$00 ;termino la cadena en $00 para que el c√≥digo reconozca el final.
   			    
   ;Tabla de vectores	    
   			    
@@ -604,32 +604,32 @@ el valor ASCII y el nuestro (dependiendo cu·l sea m·s grande)". En nuestra rom q
     .dw dummy,start,dummy    
   .end
 
-TodavÌa debemos agregar el archivo .chr manualmente, Èsto lo hacemos de varias formas,
-pero la m·s facil usar el comando "copy" del DOS al formar la rom, P.Ej:
+Todav√≠a debemos agregar el archivo .chr manualmente, √©sto lo hacemos de varias formas,
+pero la m√°s facil usar el comando "copy" del DOS al formar la rom, P.Ej:
 C:\EMUS\ASM\6502\copy /B header.bin+demo.bin+demo.chr demo.nes
-…ste comando juntarÌa los archivos uno detr·s del otro para conformar el archivo .NES, 
-header.bin es en Èste caso el nombre que yo le dÌ al header separado que hice, y demo.bin
-y demo.chr son los correspondientes archivos de PRG-ROM y CHR-ROM. Simple, øno? :)
+√âste comando juntar√≠a los archivos uno detr√°s del otro para conformar el archivo .NES, 
+header.bin es en √©ste caso el nombre que yo le d√≠ al header separado que hice, y demo.bin
+y demo.chr son los correspondientes archivos de PRG-ROM y CHR-ROM. Simple, ¬øno? :)
 El modificador /B sirve para darle a entender que son archivos binarios, ya que sino
-pondrÌa un cÛdigo extra entre el final de un archivo y el principio del prÛximo, y no
+pondr√≠a un c√≥digo extra entre el final de un archivo y el principio del pr√≥ximo, y no
 queremos eso :)
 
 Puedes encontrar la rom completa en http://www.dwxtrad.cjb.net
 
 IV)                                                       FIN
 
-ConclusiÛn:
+Conclusi√≥n:
 
-Bueno... Se terminÛ el nivel b·sico/intermedio de ASM 6502 gr·fico, con Èsto deberÌas
+Bueno... Se termin√≥ el nivel b√°sico/intermedio de ASM 6502 gr√°fico, con √©sto deber√≠as
 poder ya crear tus roms de pruebas, probar a extraer tiles de otro juego y ponerlos en tu
 demo y otras cosas, probablemente haga otro documento para explicar los sprites, aunque no
-es nada difÌcil, es como el fondo pero con movimiento, pero creo que con esto es suficiente
+es nada dif√≠cil, es como el fondo pero con movimiento, pero creo que con esto es suficiente
 por ahora xD
 
 Contacto:
 
-Si has encontrado alg˙n error en esta guÌa (Que es muy probable porque soy de equivocarme
-MUCHO :p) envÌame un mail a drkwzrdx@hotmail.com.
+Si has encontrado alg√∫n error en esta gu√≠a (Que es muy probable porque soy de equivocarme
+MUCHO :p) env√≠ame un mail a drkwzrdx@hotmail.com.
 
 DaRKWiZaRDX
 http://www.dwxtrad.cjb.net

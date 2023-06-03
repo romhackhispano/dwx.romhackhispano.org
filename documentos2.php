@@ -26,26 +26,26 @@ include("modulos/secciones.php");
 
 
 <h1>DOCUMENTOS</h1>
-<p>En esta secciÛn encontrar·s algunos documentos que escribÌ sobre romhacking, si 
-hay algo que no entiendas o simplemente quieres hacer una correcciÛn o crÌtica 
+<p>En esta secci√≥n encontrar√°s algunos documentos que escrib√≠ sobre romhacking, si 
+hay algo que no entiendas o simplemente quieres hacer una correcci√≥n o cr√≠tica 
 no dudes en enviarme un mail.</p>
-			<p><a href="docs/traduccion.zip">GuÌa de traducciÛn de Roms</a> (ZIP, documentos en HTML) <a target="_blank" href="traduccion/index.html"> VER EN L&Iacute;NEA</a><br>
-			 Explica b·sicamente como traducir Roms, comienza desde lo m·s b·sico 
-			hasta llegar a temas m·s avanzados como punteros o scripts.</p>
+			<p><a href="docs/traduccion.zip">Gu√≠a de traducci√≥n de Roms</a> (ZIP, documentos en HTML) <a target="_blank" href="traduccion/index.html"> VER EN L√çNEA</a><br>
+			 Explica b√°sicamente como traducir Roms, comienza desde lo m√°s b√°sico 
+			hasta llegar a temas m√°s avanzados como punteros o scripts.</p>
 			<p><a href="docs/asm_nes.zip">Curso de ASM 6502</a> (ZIP, 
-            documentos en HTML) <a href="docs/asm_nes/" target="_blank">VER EN LÕNEA</a><br />
-			 Explica cÛmo programar el procesador 6502 (utilizado por la NES) 
-            desde los temas m·s b·sicos hasta saltos y branches.</p>
-			<p><a href="docs/crear_rom_nes.txt">CÛmo crear una ROM de NES en ASM 6502</a> (TXT) o <a href="docs/crear_rom_nes.zip">ZIP</a><br>
-			 Explica cÛmo crear una ROM de NES en 6502, tambiÈn explica el 
+            documentos en HTML) <a href="docs/asm_nes/" target="_blank">VER EN L√çNEA</a><br />
+			 Explica c√≥mo programar el procesador 6502 (utilizado por la NES) 
+            desde los temas m√°s b√°sicos hasta saltos y branches.</p>
+			<p><a href="docs/crear_rom_nes.txt">C√≥mo crear una ROM de NES en ASM 6502</a> (TXT) o <a href="docs/crear_rom_nes.zip">ZIP</a><br>
+			 Explica c√≥mo crear una ROM de NES en 6502, tambi√©n explica el 
 			funcionamiento de varios registros de video.</p>
 			<p><a href="docs/opcodes6502.txt">Opcodes del 6502</a> (TXT) o <a href="docs/op6502.zip">ZIP</a><br>
 			 Listado de opcodes e instrucciones del 6502.</p>
 			<p><a href="docs/hacks6502.txt">Como hacer hacks de valores en 6502</a> (TXT) o <a href="docs/hacks6502.zip">ZIP</a><br>
-			 Explica cÛmo hacer hacks de valores (n˙meros) en Roms de NES, cÛmo hacer 
-			que la energÌa de un personaje no baje, empezar con m·s vidas, etc.</p>
-			<p><a href="docs/65816basico.txt">Tutorial b·sico de ASM 65816</a> (TXT) o <a href="docs/65816b.zip">ZIP</a><br>
-			 B·sicas del ASM 65816, operaciones binarias, opcodes, algunas 
+			 Explica c√≥mo hacer hacks de valores (n√∫meros) en Roms de NES, c√≥mo hacer 
+			que la energ√≠a de un personaje no baje, empezar con m√°s vidas, etc.</p>
+			<p><a href="docs/65816basico.txt">Tutorial b√°sico de ASM 65816</a> (TXT) o <a href="docs/65816b.zip">ZIP</a><br>
+			 B√°sicas del ASM 65816, operaciones binarias, opcodes, algunas 
 			instrucciones (las esenciales).</p>
 			<p><a href="docs/opcodes65816.txt">Opcodes del 65816</a> (TXT) o <a href="docs/op65816.zip">ZIP</a><br>
 			 Lista de opcodes e instrucciones del 65816.</p>
@@ -57,7 +57,7 @@ no dudes en enviarme un mail.</p>
 include("modulos/pie_de_pagina.php");
 ?>
 
-</div>  <!-- Cierra divisiÛn "contenido" -->
+</div>  <!-- Cierra divisi√≥n "contenido" -->
 
 </body>
 </html>

@@ -93,6 +93,6 @@ $template_prev_next = <<<HTML
 <p align="center">[prev-link]<< Recientes[/prev-link] {pages} [next-link]Antiguas >>[/next-link]</p>
 HTML;
 $template_comments_prev_next = <<<HTML
-<p align="center">[prev-link]<< M&aacute;s viejas[/prev-link] ({pages}) [next-link]M&aacute;as nuevas >>[/next-link]</p>
+<p align="center">[prev-link]<< Más viejas[/prev-link] ({pages}) [next-link]Más nuevas >>[/next-link]</p>
 HTML;
 ?>

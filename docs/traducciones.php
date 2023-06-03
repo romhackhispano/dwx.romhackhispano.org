@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Language" content="es">
 
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>DaRKWiZaRDX translations</title>
 <link href="estilo.css" rel="stylesheet" type="text/css" />
 </head>
@@ -47,11 +47,11 @@
             <a target="_blank" href="tradus/lotr.html">J.R.R. TOLKIEN'S THE LORD OF THE RINGS (SNES)</a><br />
             MEGAMAN ZERO 2 (GBA)<br />
             <hr />
-            <center><a href="docs/aplica_ips/aplicaips.html" target="_blank">&iquest;No sabes c&oacute;mo aplicar un parche? Pulsa aqu&iacute;</a></center><br /><br />
+            <center><a href="docs/aplica_ips/aplicaips.html" target="_blank">¿No sabes cómo aplicar un parche? Pulsa aquí</a></center><br /><br />
 
             <div id="pie">
 			(c) 2007 DaRKWiZaRDX. Algunos derechos reservados<br />
-			Mejor visto en IE6 (1024x768) Qu&eacute; triste, &iquest;no?
+			Mejor visto en IE6 (1024x768) Qué triste, ¿no?
 </div>
 </div>
 

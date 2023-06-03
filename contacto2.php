@@ -27,20 +27,20 @@ include("modulos/secciones.php");
 
 <h1>CONTACTO</h1>
 
-      <p>Puedes contactar conmigo (DaRKWiZaRDX) vía mail, pero por favor lee lo 
+      <p>Puedes contactar conmigo (DaRKWiZaRDX) vÃ­a mail, pero por favor lee lo 
       que sigue:<p>CORREOS QUE NO DEBES ENVIARME <strong>(y sus consecuencias):</strong></p>
       
         <li>Instrucciones sobre como aplicar parches (En la seccion de "Proyectos" al fondo hay un link a un tutorial). <strong>Borrado del mail.</strong></li>
 	<li>Pedidos de ROMs. <strong>Borrado del mail, y si insistes, bloqueo de 
-        dirección.</strong></li>
+        direcciÃ³n.</strong></li>
         <li>Pedidos de traducciones, cada uno traduce el juego que le gusta. 
         <strong>Borrado del mail.</strong></li>
         <li>Cosas sobre traducciones de otros autores, se les pregunta a ellos 
         :P. <strong>Borrado del mail.</strong></li>
-        <li>Spam (obviamente).&nbsp;  <strong>Lo más sangriento que se me ocurra.</strong></li>
+        <li>Spam (obviamente).&nbsp;  <strong>Lo mÃ¡s sangriento que se me ocurra.</strong></li>
 
 <p>Si tu mail no es ninguna de las anteriores, adelante:</p>
-      <p>drkwzrdx [arroba] hotmail [punto] com<p>Se aceptan con gusto críticas 
+      <p>drkwzrdx [arroba] hotmail [punto] com<p>Se aceptan con gusto crÃ­ticas 
         constructivas, felicitaciones (xD), reportes de bugs o errores en las 
         traducciones, etc.
 
@@ -52,7 +52,7 @@ include("modulos/secciones.php");
 include("modulos/pie_de_pagina.php");
 ?>
 
-</div>  <!-- Cierra división "contenido" -->
+</div>  <!-- Cierra divisiÃ³n "contenido" -->
 
 </body>
 </html>

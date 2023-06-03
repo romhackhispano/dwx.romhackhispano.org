@@ -1,154 +1,154 @@
 <html>
 <head>
-<title>GuÌa de traducciÛn de Roms por DaRKWiZaRDX</title>
+<title>Gu√≠a de traducci√≥n de Roms por DaRKWiZaRDX</title>
 </head>
 <link href="estilo.css" type=text/css rel=stylesheet>
 <body>
 
-<center><h1>GU&Iacute;A DE TRADUCCI&Oacute;N DE ROMS</h1></center>
+<center><h1>GU√çA DE TRADUCCI√ìN DE ROMS</h1></center>
 <p>Por <a href="mailto:drkwzrdx@hotmail.com">DaRKWiZaRDX</a> </p>
-<center><h2>USANDO PUNTEROS</h2><p><font color="#FF2000">°ANTES QUE NADA 
+<center><h2>USANDO PUNTEROS</h2><p><font color="#FF2000">¬°ANTES QUE NADA 
 RECUERDA SIEMPRE HACER COPIAS DE SEGURIDAD DE LA ROM!</font></p></center>
 
-<h3>INTRODUCCI”N A LOS PUNTEROS</h3>
-<p>Te preguntar·s quÈ son los punteros, ya que apenas los he mencionado en lo 
-que va de la guÌa y, si has estado leyendo alg˙n foro o simplemente noticias 
-sobre traducciÛn, seguramente habr·s escuchado algo sobre ellos, pues bueno, 
-aquÌ harÈ una simple explicaciÛn de su utilidad y cÛmo funcionan.</p>
+<h3>INTRODUCCI√ìN A LOS PUNTEROS</h3>
+<p>Te preguntar√°s qu√© son los punteros, ya que apenas los he mencionado en lo 
+que va de la gu√≠a y, si has estado leyendo alg√∫n foro o simplemente noticias 
+sobre traducci√≥n, seguramente habr√°s escuchado algo sobre ellos, pues bueno, 
+aqu√≠ har√© una simple explicaci√≥n de su utilidad y c√≥mo funcionan.</p>
 <p>Los punteros son valores hexadecimales que indican al juego el offset (la 
-direcciÛn) de donde tiene que leer un texto (o una rutina, o valor de RAM, pero 
-como esto se trata de traducciones de texto dejÈmoslo ahÌ). Son valores 
+direcci√≥n) de donde tiene que leer un texto (o una rutina, o valor de RAM, pero 
+como esto se trata de traducciones de texto dej√©moslo ah√≠). Son valores 
 hexadecimales (en muchos casos de 2 bytes, pero los hay de 1, 2, 3 y 4 bytes 
-hasta donde sÈ) que el juego lee en una rutina (la rutina de escribir texto) y 
+hasta donde s√©) que el juego lee en una rutina (la rutina de escribir texto) y 
 lee para poner en pantalla.</p>
-<p>&quot;øY quÈ tiene que ver esto con la traducciÛn?&quot; - te preguntar·s. Es bastante 
+<p>&quot;¬øY qu√© tiene que ver esto con la traducci√≥n?&quot; - te preguntar√°s. Es bastante 
 simple, modificando punteros podemos indicarle al juego donde comienza tal 
-di·logo, y asÌ podremos aprovechar el espacio que nos sobrÛ de traducciones en 
-la que ganamos lugar y aprovecharlo para traducciones m·s largas.<br>
-ImagÌnate el siguiente caso: (los numerales (#) son cÛdigos de fin de bloque o 
+di√°logo, y as√≠ podremos aprovechar el espacio que nos sobr√≥ de traducciones en 
+la que ganamos lugar y aprovecharlo para traducciones m√°s largas.<br>
+Imag√≠nate el siguiente caso: (los numerales (#) son c√≥digos de fin de bloque o 
 message break):</p>
 <p><font face="Courier">&quot;Hi.<font color="#FF2000">#</font>What the hell is going on?<font color="#FF2000">#</font>&quot;. </font>
-PodrÌamos traducirlo como:<br>
-<font face="Courier">&quot;Hola.<font color="#FF2000">#</font>øQuÈ demonios sucede?<font color="#FF2000">####</font>&quot; </font>
-y nos sobre espacio, pero si probamos el juego despuÈs de realizar tal 
-modificaciÛn seguramente el juego nos mostrar· bien el primer di·logo, pero si 
-vas en el juego a la secciÛn donde dirÌa &quot;What the hell is going on?&quot; te 
-aparecer· &quot;.&quot; ... Veamos quÈ fue lo que sucediÛ...</p>
-<p>En la ROM se encuentran ciertos valores que indican en quÈ offset est· el 
-inicio del di·logo, nosotros cambiamos el tamaÒo de los di·logos (cambiando de 
-lugar el byte de fin de bloque, aquÌ representado con un numeral '#') pero no 
-modificamos los punteros, para hacerlo m·s f·cil, a estos bytes es adonde 
+Podr√≠amos traducirlo como:<br>
+<font face="Courier">&quot;Hola.<font color="#FF2000">#</font>¬øQu√© demonios sucede?<font color="#FF2000">####</font>&quot; </font>
+y nos sobre espacio, pero si probamos el juego despu√©s de realizar tal 
+modificaci√≥n seguramente el juego nos mostrar√° bien el primer di√°logo, pero si 
+vas en el juego a la secci√≥n donde dir√≠a &quot;What the hell is going on?&quot; te 
+aparecer√° &quot;.&quot; ... Veamos qu√© fue lo que sucedi√≥...</p>
+<p>En la ROM se encuentran ciertos valores que indican en qu√© offset est√° el 
+inicio del di√°logo, nosotros cambiamos el tama√±o de los di√°logos (cambiando de 
+lugar el byte de fin de bloque, aqu√≠ representado con un numeral '#') pero no 
+modificamos los punteros, para hacerlo m√°s f√°cil, a estos bytes es adonde 
 &quot;apuntaban&quot; los punteros.</p>
 <p><font face="Courier">&quot;<font color="#008000">H</font>i.<font color="#FF2000">#</font><font color="#008000">W</font>hat 
 the hell is going on?<font color="#FF2000">#</font>&quot;<br>
-&quot;<font color="#008000">H</font>ola<font color="#008000">.</font><font color="#FF2000">#</font>øQuÈ 
+&quot;<font color="#008000">H</font>ola<font color="#008000">.</font><font color="#FF2000">#</font>¬øQu√© 
 demonios sucede?<font color="#FF2000">####</font>&quot;</font></p>
 <p>(Las letras en <font color="#008000">verde</font> son los offsets a los que apuntaban los punteros).</p>
 <p>Como ves el puntero apuntaba al punto, =P entonces escribe el punto en 
-pantalla, luego encuentra el cÛdigo de fin de bloque y deja de escribir, es por 
+pantalla, luego encuentra el c√≥digo de fin de bloque y deja de escribir, es por 
 eso que solo vemos &quot;.&quot; ... Lo que debemos hacer es cambiar el puntero para que 
-apunte al 'ø' que da comienzo a la frase.</p>
+apunte al '¬ø' que da comienzo a la frase.</p>
 <h3>CALCULANDO PUNTEROS</h3>
-<p>Para calcular un punteros hay varias formas, Èsta es la m·s com˙n y efectiva:<br>
-(NOTA: …sta es la fÛrmula para punteros de 16bits, es decir, 2 bytes, busca m·s 
+<p>Para calcular un punteros hay varias formas, √©sta es la m√°s com√∫n y efectiva:<br>
+(NOTA: √âsta es la f√≥rmula para punteros de 16bits, es decir, 2 bytes, busca m√°s 
 adelante  las diferencia para encontrar punteros de 24bits, es decir, de 3 bytes =P)<br>
-(NOTA 2: En esta fÛrmula restarÈ $200 bytes de header (mira m·s adelante si no 
+(NOTA 2: En esta f√≥rmula restar√© $200 bytes de header (mira m√°s adelante si no 
 se entiende) pero recomiendo que para las roms de SNES quites el header (hay 
-muchas utilidades para hacerlo) ya que en este momento la mayorÌa de emuladores 
-soportan ROMs sin cabezal y la verdad te ahorrar·s varios dolores de cabeza asÌ 
-=P, y claro, si la ROM no tiene header deber·s saltearte el  segundo paso).</p>
+muchas utilidades para hacerlo) ya que en este momento la mayor√≠a de emuladores 
+soportan ROMs sin cabezal y la verdad te ahorrar√°s varios dolores de cabeza as√≠ 
+=P, y claro, si la ROM no tiene header deber√°s saltearte el  segundo paso).</p>
 <p>(PRIMERO HAY QUE DETERMINAR EL PUNTERO ORIGINAL)<br>
 1. Tomar el offset del primer byte del texto (P.Ej: $02C241).<br>
 2. Resta el header de la ROM (las ROMs de SNES tienen $200 bytes, las de NES 
 $10) ($02C241 - $200 = $02C041)<br>
-3. Deja los ˙ltimos dos bytes ($02C041 pasa a ser $C041)<br>
-4. Sep·ralos en parejas de dos dÌgitos ($C041 pasa a ser $C0 y $41).<br>
+3. Deja los √∫ltimos dos bytes ($02C041 pasa a ser $C041)<br>
+4. Sep√°ralos en parejas de dos d√≠gitos ($C041 pasa a ser $C0 y $41).<br>
 5. Invierte los bytes ($C0 $41 pasan a ser $41 $C0)<br>
 6. Busca ese valor (en este caso $41C0) en la ROM.<br>
-7. Lo m·s probable es que lo encuentres junto a varios valores parecidos ($<font color="#800000">41</font><font color="#008000">C0</font> 
+7. Lo m√°s probable es que lo encuentres junto a varios valores parecidos ($<font color="#800000">41</font><font color="#008000">C0</font> 
 $<font color="#800000">80</font><font color="#008000">C0</font> $<font color="#800000">02</font><font color="#008000">C1</font>). 
-En ese caso lo m·s seguro es que hayas encontrado la tabla de punteros, anota la 
-direcciÛn (un bookmark es m·s que recomendable) de esa tabla.<br>
+En ese caso lo m√°s seguro es que hayas encontrado la tabla de punteros, anota la 
+direcci√≥n (un bookmark es m√°s que recomendable) de esa tabla.<br>
 8. Es probable que encuentres varias veces el valor en la ROM, si lo encuentras 
-como en el paso 7 lo m·s probable es que ese sea el puntero que buscas, pero 
-sino puedes intentar probando a modificar los valores (Por ejemplo $41C0 podrÌas 
-cambiarlo por $40C0 y mira en el juego si el texto cambiÛ en algo).</p>
+como en el paso 7 lo m√°s probable es que ese sea el puntero que buscas, pero 
+sino puedes intentar probando a modificar los valores (Por ejemplo $41C0 podr√≠as 
+cambiarlo por $40C0 y mira en el juego si el texto cambi√≥ en algo).</p>
 <p>Si encontramos el valor que buscamos (probamos a modificarlo y en la ROM el 
 texto sale diferente) entonces tenemos nuestro puntero, ahora vamos a 
 modificarlo. Repite los pasos del 1 al 5 pero con el offset del byte de inicio 
-del di·logo modificado. Una vez que lo hayas determinado (en nuestro caso serÌa 
+del di√°logo modificado. Una vez que lo hayas determinado (en nuestro caso ser√≠a 
 $43C0) vuelve a la tabla de punteros o al lugar donde hayas encontrado al 
-puntero original y c·mbialo por el nuevo valor (en nuestro ejemplo $41C0 pasarÌa 
+puntero original y c√°mbialo por el nuevo valor (en nuestro ejemplo $41C0 pasar√≠a 
 a ser $43C0). El ThingyV permite editar bytes hexadecimalmente pulsandoe &quot;Alt+T&quot;.</p>
-<p>Prueba la ROM y ver·s que el texto se muestra bien. Si no es asÌ revisa el 
-siguiente apartado que quiz·s el problema estÈ citado ahÌ.</p>
+<p>Prueba la ROM y ver√°s que el texto se muestra bien. Si no es as√≠ revisa el 
+siguiente apartado que quiz√°s el problema est√© citado ah√≠.</p>
 <h3>TIPOS DE PUNTEROS</h3>
-<p>Quiz·s no todos los punteros con los que nos encontremos sean de 16bits y tan 
-f·ciles de encontrar como Èstos:</p>
+<p>Quiz√°s no todos los punteros con los que nos encontremos sean de 16bits y tan 
+f√°ciles de encontrar como √©stos:</p>
 <h4>Punteros de 24bits:</h4>
 <p>Funcionan igual que los de 16bits, excepto que en el paso 3 no debes dejar 2 
-sino 3 bytes. Al invertirlos el primer byte debe quedar ˙ltimo, el del medio 
-queda en su lugar, y el ˙ltimo queda primero. P.Ej: 0328C4 pasa a ser C42803.</p>
+sino 3 bytes. Al invertirlos el primer byte debe quedar √∫ltimo, el del medio 
+queda en su lugar, y el √∫ltimo queda primero. P.Ej: 0328C4 pasa a ser C42803.</p>
 <h4>Punteros de 8bits:</h4>
 <p>Funcionan de una manera diferente, lo que hacen estos punteros es, en la 
-mayorÌa de los casos, tener en su valor el n˙mero de bytes que contiene el 
+mayor√≠a de los casos, tener en su valor el n√∫mero de bytes que contiene el 
 bloque hasta el final, entonces si alargamos el bloque deberemos aumentar el 
-valor en el puntero, y disminuirlo si el bloque es m·s chico que el original. 
+valor en el puntero, y disminuirlo si el bloque es m√°s chico que el original. 
 Ruega no encontrarte con estos porque son realmente complicados.</p>
 <h4>Texto sin punteros:</h4>
-<p>TambiÈn puede que encuentres en ocasiones texto que parece no tener tabla de 
+<p>Tambi√©n puede que encuentres en ocasiones texto que parece no tener tabla de 
 punteros, en estos casos lo mejor es probar cambiando el largo de un bloque y 
 ver si en el juego el siguiente bloque se ve afectado. Algunos juegos lo usan 
-cuando cargan las opciones de men˙.</p>
+cuando cargan las opciones de men√∫.</p>
 <h4>Texto de ancho fijo:</h4>
-<p>Es bastante com˙n para los nombres de enemigos y/o armas, objetos, etc. en 
+<p>Es bastante com√∫n para los nombres de enemigos y/o armas, objetos, etc. en 
 los RPGs, se trata de texto sin punteros, el juego carga una cantidad de bytes 
 fija para representar el texto, entonces mientras no nos salgamos de 
 ese rango podremos alargar la cantidad de letras, un claro ejemplo de esto puede 
 verse en el Final Fantasy IV de SNES en los nombres de las armas.<br>
-M·s informaciÛn sobre Èste tipo de punteros puede encontrarse en el documento de 
+M√°s informaci√≥n sobre √©ste tipo de punteros puede encontrarse en el documento de 
 Anus P (busca en google).</p>
-<p>Hay muchos tipos m·s de punteros que no se han logrado descifrar todavÌa, 
-pero Èstos son los m·s frecuentemente te encontrar·s.</p>
+<p>Hay muchos tipos m√°s de punteros que no se han logrado descifrar todav√≠a, 
+pero √©stos son los m√°s frecuentemente te encontrar√°s.</p>
 <h3>EJEMPLO</h3>
 <p>Veamos un poco de Final Fantasy I (US) de NES:</p>
 <p><img border="0" src="imagenes/punter1.jpg" width="743" height="592"></p>
 <p>El primer texto (&quot;Nothing here&quot;) aparece cuando &quot;hablamos&quot; con el aire en 
-alg˙n pueblo. Hagamos que en lugar de ese texto aparezca &quot;The Princess always 
-worries about you.&quot; (marquÈ los dos inicios de bloque con un cuadro rojo para 
-que sean m·s f·ciles de encontrar).</p>
+alg√∫n pueblo. Hagamos que en lugar de ese texto aparezca &quot;The Princess always 
+worries about you.&quot; (marqu√© los dos inicios de bloque con un cuadro rojo para 
+que sean m√°s f√°ciles de encontrar).</p>
 <p>Primero calculamos el offset del primer texto, el offset de la 'N' es $28210.<br>
-- Restamos los $10 bytes del header (es una ROM de NES). AsÌ que queda $28200<br>
-- Separamos en parejas de dos dÌgitos ($02 $82 $00)<br>
-- Nos quedamos las ˙ltimas dos (son punteros de 16bits) ($82 $00)<br>
+- Restamos los $10 bytes del header (es una ROM de NES). As√≠ que queda $28200<br>
+- Separamos en parejas de dos d√≠gitos ($02 $82 $00)<br>
+- Nos quedamos las √∫ltimas dos (son punteros de 16bits) ($82 $00)<br>
 - Las invertimos ($00 $82)<br>
-- Buscamos eso en la ROM (hacia arriba es m·s com˙n que se encuentren los 
+- Buscamos eso en la ROM (hacia arriba es m√°s com√∫n que se encuentren los 
 punteros).</p>
 <p><img border="0" src="imagenes/punter2.jpg" width="745" height="593"></p>
-<p>Como ves el primer byte de esa lÌnea es el puntero, y estamos 99% seguros 
-porque est· junto a otros valores similares, asÌ que encontramos la tabla de 
-punteros del juego. Lo que haremos ser· cambiar este puntero para que muestre 
+<p>Como ves el primer byte de esa l√≠nea es el puntero, y estamos 99% seguros 
+porque est√° junto a otros valores similares, as√≠ que encontramos la tabla de 
+punteros del juego. Lo que haremos ser√° cambiar este puntero para que muestre 
 otro texto.</p>
-<p>Lo que debemos hacer a continuaciÛn es averiguar el puntero del di·logo que 
+<p>Lo que debemos hacer a continuaci√≥n es averiguar el puntero del di√°logo que 
 queremos que aparezca.</p>
 <p>El offset es $282CD<br>
 - Restamos $10 ($282BD)<br>
 - Separamos en parejas ($02 $82 $BD)<br>
-- Dejamos las ˙ltimas dos ($82 $BD)<br>
+- Dejamos las √∫ltimas dos ($82 $BD)<br>
 - Invertimos ($BD $82)</p>
 <p>Ya tenemos nuestro segundo puntero, ahora vamos al primer puntero que 
 encontramos ($0082) y lo cambiamos por $BD82. Guardamos los cambios y probamos 
 la ROM:</p>
 <p><img border="0" src="imagenes/punter3.gif" width="257" height="225"></p>
-<p>°MisiÛn cumplida!</p>
-<h3>CONCLUSI”N</h3>
-<p>Los punteros son herramientas muy ˙tiles, ya que nos permitir·n aprovechar 
-mejor el espacio que nos sobre de un di·logo para otro, pero si realmente 
-quieres explotarlos para hacerte la traducciÛn mucho m·s f·cil, te recomiendo 
-leas el siguiente y ˙ltimo (w00t!) capÌtulo de esta guÌa, el de los scripts, ya 
-que enseÒa como editar el texto de una ROM con un editor de textos com˙n y luego 
-reinsertarlo y recalcular (autom·ticamente) los punteros para que todo quede en 
-orden. °Ya terminamoooooos! :D</p>
+<p>¬°Misi√≥n cumplida!</p>
+<h3>CONCLUSI√ìN</h3>
+<p>Los punteros son herramientas muy √∫tiles, ya que nos permitir√°n aprovechar 
+mejor el espacio que nos sobre de un di√°logo para otro, pero si realmente 
+quieres explotarlos para hacerte la traducci√≥n mucho m√°s f√°cil, te recomiendo 
+leas el siguiente y √∫ltimo (w00t!) cap√≠tulo de esta gu√≠a, el de los scripts, ya 
+que ense√±a como editar el texto de una ROM con un editor de textos com√∫n y luego 
+reinsertarlo y recalcular (autom√°ticamente) los punteros para que todo quede en 
+orden. ¬°Ya terminamoooooos! :D</p>
 <center><a href="graficos.html">&lt;&lt; Anterior</a> - <a href="index.html">Indice</a> - <a href="scripts.html">Siguiente &gt;&gt;</a></center>
 
 </body>

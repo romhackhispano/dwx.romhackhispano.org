@@ -15,15 +15,15 @@ table.MsoTableGrid {
 </head>
 <body>
 <h1>CURSO de ASM 6502 [NES]</h1>
-<h2>Apéndice II - Mapa de memoria de la NES</h2>
+<h2>ApÃ©ndice II - Mapa de memoria de la NES</h2>
 
 
 <p>Por <a href="mailto:drkwzrdx@hotmail.com">DaRKWiZaRDX</a></p>
 
 
-<p>IMPORTANTE: Verás algunos términos aquí que no he explicado en la guía, ya 
+<p>IMPORTANTE: VerÃ¡s algunos tÃ©rminos aquÃ­ que no he explicado en la guÃ­a, ya 
 que son cosas internas de la consola y no eran necesarias para aprender el 
-lenguaje, cosas tales como sprites, fondo, pAPU, etc. Si necesitas información 
+lenguaje, cosas tales como sprites, fondo, pAPU, etc. Si necesitas informaciÃ³n 
 sobre estos temas te recomiendo buscar documentos en Romhacking.net o en Google.</p>
 
 
@@ -34,16 +34,16 @@ sobre estos temas te recomiendo buscar documentos en Romhacking.net o en Google.
     <h3>RANGO DE MEMORIA</h3>
     </td>
     <td width="74">
-    <h3>TAMAÑO</h3>
+    <h3>TAMAÃ‘O</h3>
     </td>
     <td width="715">
-    <h3>DESCRIPCIÓN</h3>
+    <h3>DESCRIPCIÃ“N</h3>
     </td>
   </tr>
   <tr>
     <td width="196">$0000 - $07FF</td>
     <td width="74">$800</td>
-    <td width="715">Espacio de RAM... ¡Aprovéchala bien que es poca! xD</td>
+    <td width="715">Espacio de RAM... Â¡AprovÃ©chala bien que es poca! xD</td>
   </tr>
   <tr>
     <td width="196">$0800 - $1FFF</td>
@@ -58,13 +58,13 @@ sobre estos temas te recomiendo buscar documentos en Romhacking.net o en Google.
   <tr>
     <td width="196">$2008 - $3FFF</td>
     <td width="74">$1FF7</td>
-    <td width="715">Mirroring de los registros del PPU... más desperdicio de 
-    espacio todavía.</td>
+    <td width="715">Mirroring de los registros del PPU... mÃ¡s desperdicio de 
+    espacio todavÃ­a.</td>
   </tr>
   <tr>
     <td width="196">$4000 - $4015</td>
     <td width="74">$15</td>
-    <td width="715">Registros de pAPU (chip de sonido). CON EXCEPCIÓN DE $4014, 
+    <td width="715">Registros de pAPU (chip de sonido). CON EXCEPCIÃ“N DE $4014, 
     QUE ES EL REGISTRO DE SPRITE-DMA.</td>
   </tr>
   <tr>
@@ -75,23 +75,23 @@ sobre estos temas te recomiendo buscar documentos en Romhacking.net o en Google.
   <tr>
     <td width="196">$5000 - $5FFF</td>
     <td width="74">$1000</td>
-    <td width="715">Espacio de expansión de memoria para el chip MMC5 de Nintendo.</td>
+    <td width="715">Espacio de expansiÃ³n de memoria para el chip MMC5 de Nintendo.</td>
   </tr>
   <tr>
     <td width="196">$6000 - $7FFF</td>
     <td width="74">$2000</td>
-    <td width="715">Save-RAM para juegos que lo usen, además de ser una extensa 
+    <td width="715">Save-RAM para juegos que lo usen, ademÃ¡s de ser una extensa 
     zona de RAM para el juego.</td>
   </tr>
   <tr>
     <td width="196">$8000 - $FFFA</td>
     <td width="74">$7FFA</td>
-    <td width="715">PRG-ROM. Acá va cargado el código que compone el juego.</td>
+    <td width="715">PRG-ROM. AcÃ¡ va cargado el cÃ³digo que compone el juego.</td>
   </tr>
   <tr>
     <td width="196">$FFFA - $FFFF</td>
     <td width="74">6</td>
-    <td width="715">Vectores de interrupción, indican a la NES cómo reaccionar 
+    <td width="715">Vectores de interrupciÃ³n, indican a la NES cÃ³mo reaccionar 
     ante ciertas situaciones (VBLank, Reset y IRQ/BRK respectivamente). Cada 
     vector es un valor de 16bits.</td>
   </tr>
@@ -105,61 +105,61 @@ sobre estos temas te recomiendo buscar documentos en Romhacking.net o en Google.
     <h3>RANGO DE MEMORIA</h3>
     </td>
     <td width="65" height="34">
-    <h3>TAMAÑO</h3>
+    <h3>TAMAÃ‘O</h3>
     </td>
     <td width="73%" height="34">
-    <h3>DESCRIPCIÓN</h3>
+    <h3>DESCRIPCIÃ“N</h3>
     </td>
   </tr>
   <tr>
     <td width="20%" height="15">$0000 - $0FFF</td>
     <td width="65" height="15">$1000</td>
-    <td width="73%" height="15">Pattern table nº 0</td>
+    <td width="73%" height="15">Pattern table nÂº 0</td>
   </tr>
   <tr>
     <td width="20%" height="15">$1000 - $1FFF</td>
     <td width="65" height="15">$1000</td>
-    <td width="73%" height="15">Pattern table nº 1</td>
+    <td width="73%" height="15">Pattern table nÂº 1</td>
   </tr>
   <tr>
     <td width="20%" height="14">$2000 - $23BF</td>
     <td width="65" height="14">$03BF</td>
-    <td width="73%" height="14">Name table nº 0</td>
+    <td width="73%" height="14">Name table nÂº 0</td>
   </tr>
   <tr>
     <td width="20%" height="15">$23C0 - $23FF</td>
     <td width="65" height="15">$003F</td>
-    <td width="73%" height="15">Attribute table nº 0</td>
+    <td width="73%" height="15">Attribute table nÂº 0</td>
   </tr>
   <tr>
     <td width="20%" height="15">$2400 - $27BF</td>
     <td width="65" height="15">$03BF</td>
-    <td width="73%" height="15">Name table nº 1 (Mirror) *</td>
+    <td width="73%" height="15">Name table nÂº 1 (Mirror) *</td>
   </tr>
   <tr>
     <td width="20%" height="15">$27C0 - $27FF</td>
     <td width="65" height="15">$003F</td>
-    <td width="73%" height="15">Attribute table nº 1 (Mirror) *</td>
+    <td width="73%" height="15">Attribute table nÂº 1 (Mirror) *</td>
   </tr>
   <tr>
     <td width="20%" height="15">$2800 - $2BBF</td>
     <td width="65" height="15">$03BF</td>
-    <td width="73%" height="15">Name table nº 2 (Mirror) *</td>
+    <td width="73%" height="15">Name table nÂº 2 (Mirror) *</td>
   </tr>
   <tr>
     <td width="20%" height="15">$2BC0 - $2BFF</td>
     <td width="65" height="15">$003F</td>
-    <td width="73%" height="15">Attribute table nº 2 (Mirror) *</td>
+    <td width="73%" height="15">Attribute table nÂº 2 (Mirror) *</td>
   </tr>
   <tr>
     <td width="20%" height="15">$2C00 - $2FBF</td>
     <td width="65" height="15">$03BF</td>
-    <td width="73%" height="15">Name table nº 3 (Mirror) *</td>
+    <td width="73%" height="15">Name table nÂº 3 (Mirror) *</td>
   </tr>
   <tr>
     <td width="20%" height="15">$2FC0 - $2FFF</td>
     <td width="65" height="15">$003F</td>
-    <td width="73%" height="15">Attribute table nº 3 (Mirror) *</td>
+    <td width="73%" height="15">Attribute table nÂº 3 (Mirror) *</td>
   </tr>
   <tr>
     <td width="20%" height="15">$3000 - $3EFF</td>
@@ -185,11 +185,11 @@ sobre estos temas te recomiendo buscar documentos en Romhacking.net o en Google.
 <p class="MsoNormal">(*) El mirroring depende de lo que se haya definido en el 
 header.<br>
 - Si el mirroring es vertical tendremos las tablas 0 y 2, y las tablas 1 y 3 
-respectivamente serán sus mirrors.<br>
+respectivamente serÃ¡n sus mirrors.<br>
 - Si el mirroring es horizontal tendremos las tablas 0 y 1, y las tablas 2 y 3 
-respectivamente serán sus mirrors.<br>
+respectivamente serÃ¡n sus mirrors.<br>
 - Si usamos una sola pantalla tenemos la 0, y las otras tres son mirrors de 
-ésta.<br>
+Ã©sta.<br>
 - Si optamos por el modo de cuatro ventanas en el header tendremos cuatro Name 
 Tables independientes.</p>
 

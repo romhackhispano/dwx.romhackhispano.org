@@ -29,30 +29,30 @@ include("modulos/secciones.php");
 <!--
 CONTENIDO
 -->
-<p>En esta secciÛn encontrar·s algunas de las utilidades de romhacking m·s usadas 
-por mÌ y muchos otros traductores.
+<p>En esta secci√≥n encontrar√°s algunas de las utilidades de romhacking m√°s usadas 
+por m√≠ y muchos otros traductores.
 <h2>EDITORES HEXADECIMALES</h2>
-<li><a href="files/thingyv20.zip">ThingyV</a>: VersiÛn modificada por Vegetal Gibber del cl·sico editor 
-Thingy. Es bastante bueno, r·pido aunque tiene algunas pequeÒas limitaciones.</li>
-<li><a href="files/translhextion.zip">Translhextion</a>: Un ya antiguo editor hex, con muchas funciones ˙tiles 
-(extracciÛn, optimizaciÛn e inserciÛn de scripts, copiar y pegar, etc.), tiene 
-algunos bugs, pero es una opciÛn recomendable.</li>
-<li><a href="files/hexcalibur.zip">Hex-Calibur</a>: Un editor poco conocido pero muy bueno (al menos para mÌ =P), 
-tiene b˙squeda relativa y generaciÛn de tablas.</li><br />
-<h2>EDITORES GR¡FICOS</h2>
-<li><a href="files/tlp.zip">Tile Layer Pro</a>: Excelente editor gr·fico, posee varios codecs y la 
-posibilidad de copiar gr·ficos de un formato a otro.</li>
-<li><a href="files/yy-chr.zip">YY-CHR</a>: Otro excelente editor gr·fico, con varios codecs. Recomendado.</li>
+<li><a href="files/thingyv20.zip">ThingyV</a>: Versi√≥n modificada por Vegetal Gibber del cl√°sico editor 
+Thingy. Es bastante bueno, r√°pido aunque tiene algunas peque√±as limitaciones.</li>
+<li><a href="files/translhextion.zip">Translhextion</a>: Un ya antiguo editor hex, con muchas funciones √∫tiles 
+(extracci√≥n, optimizaci√≥n e inserci√≥n de scripts, copiar y pegar, etc.), tiene 
+algunos bugs, pero es una opci√≥n recomendable.</li>
+<li><a href="files/hexcalibur.zip">Hex-Calibur</a>: Un editor poco conocido pero muy bueno (al menos para m√≠ =P), 
+tiene b√∫squeda relativa y generaci√≥n de tablas.</li><br />
+<h2>EDITORES GR√ÅFICOS</h2>
+<li><a href="files/tlp.zip">Tile Layer Pro</a>: Excelente editor gr√°fico, posee varios codecs y la 
+posibilidad de copiar gr√°ficos de un formato a otro.</li>
+<li><a href="files/yy-chr.zip">YY-CHR</a>: Otro excelente editor gr√°fico, con varios codecs. Recomendado.</li>
 <li>Tile Molester: Uno de los mejores, posee una cantidad descomunal de codecs. Recomendado.
-NOTA: Requiere las <a href="http://java.sun.com" target="_blank">librerÌas de Java</a> para funcionar. Puedes bajarlo de su <a target="_blank" href="http://www.stud.ntnu.no/~kenth/tm/">WEB</a></li><br />
+NOTA: Requiere las <a href="http://java.sun.com" target="_blank">librer√≠as de Java</a> para funcionar. Puedes bajarlo de su <a target="_blank" href="http://www.stud.ntnu.no/~kenth/tm/">WEB</a></li><br />
 <h2>SCRIPTS</h2>
-<li><a href="files/romjuice.zip">RomJuice</a>: Vers·til extractor de scripts. 
+<li><a href="files/romjuice.zip">RomJuice</a>: Vers√°til extractor de scripts. 
 Recomendado.</li>
-<li><a href="files/s-ext.zip">Script Extractor</a>: Extractor b·sico de scripts. Bastante bueno, pero hay mejores alternativas.</li>
-<li><a href="files/s-ins.zip">Script Inserter</a>: Insertador (se dice asÌ? xD) b·sico de scripts. Bastante bueno, pero hay mejores alternativas.</li><br />
+<li><a href="files/s-ext.zip">Script Extractor</a>: Extractor b√°sico de scripts. Bastante bueno, pero hay mejores alternativas.</li>
+<li><a href="files/s-ins.zip">Script Inserter</a>: Insertador (se dice as√≠? xD) b√°sico de scripts. Bastante bueno, pero hay mejores alternativas.</li><br />
 <li><a href="files/dteseek.zip">DTESeek</a>: Programa que revisa el texto que le 
-indicas y crea un fichero con las combinaciones de letras (DTE) m·s usadas. Muy 
-˙til cuando modificas la tabla DTE para poder introducir m·s texto.
+indicas y crea un fichero con las combinaciones de letras (DTE) m√°s usadas. Muy 
+√∫til cuando modificas la tabla DTE para poder introducir m√°s texto.
 <h2>ASM</h2>
 <li><a href="files/laddress.zip">Lunar Address</a>: Conversor de Offsets de SNES, Lo-ROM, Hi-ROM, PC, savestates de ZSNES... Recomendado.</li>
 <li><a href="files/x816.zip">X816</a>: El mejor ensamblador de 6502/65816. Recomendado.</li><br />
@@ -69,7 +69,7 @@ agrega y quita headers, aplica y crea parches IPS. Muy completo. Recomendado.</l
 include("modulos/pie_de_pagina.php");
 ?>
 
-</div>  <!-- Cierra divisiÛn "contenido" -->
+</div>  <!-- Cierra divisi√≥n "contenido" -->
 
 </body>
 </html>

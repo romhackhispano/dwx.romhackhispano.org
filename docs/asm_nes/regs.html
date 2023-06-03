@@ -10,99 +10,99 @@
 <p>Por <a href="mailto:drkwzrdx@hotmail.com">DaRKWiZaRDX</a></p>
 
 
-<p>La mayorÌa de movimiento de datos que har·s en ASM ser· a travÈs de 
-registros. Se trata de pequeÒas zonas de memoria (8 bits cada uno) que est·n 
-contenidas DENTRO del procesador y no est·n en la RAM, su tiempo es acceso es 
-miles de veces m·s corto que el acceso a ROM o a RAM, por lo que se los usa para 
+<p>La mayor√≠a de movimiento de datos que har√°s en ASM ser√° a trav√©s de 
+registros. Se trata de peque√±as zonas de memoria (8 bits cada uno) que est√°n 
+contenidas DENTRO del procesador y no est√°n en la RAM, su tiempo es acceso es 
+miles de veces m√°s corto que el acceso a ROM o a RAM, por lo que se los usa para 
 casi todo, en la NES cuentas con varios registros y cada uno tiene su utilidad.</p>
 <p><span class="enfasis">A (Acumulador)</span><br>
-</font>…ste ser· el registro que m·s uses, por lejos, ya que es el ˙nico registro sobre el 
+</font>√âste ser√° el registro que m√°s uses, por lejos, ya que es el √∫nico registro sobre el 
 que se pueden
-hacer operaciones aritmÈticas, y adem·s suele usarse para modificar a los que no 
+hacer operaciones aritm√©ticas, y adem√°s suele usarse para modificar a los que no 
 pueden
-usarse con tal fin, una vez que veas algo de cÛdigo (si no lo viste a˙n) ver·s 
-lo ˙til que
+usarse con tal fin, una vez que veas algo de c√≥digo (si no lo viste a√∫n) ver√°s 
+lo √∫til que
 llega a ser este registro (realmente es vital :P).</p>
 <p><span class="enfasis">X (Indexer X) / Y (indexer Y)</span><br>
-Son registros muy ˙tiles, que se usan para &quot;indexar&quot; direcciones (ya veremos quÈ 
+Son registros muy √∫tiles, que se usan para &quot;indexar&quot; direcciones (ya veremos qu√© 
 significa
-eso m·s adelante), para hacer bucles (tambien llamados &quot;ciclos&quot;),  no 
+eso m√°s adelante), para hacer bucles (tambien llamados &quot;ciclos&quot;),  no 
 puedes
-realizar ninguna operaciÛn aritmÈtica sobre X e Y, excepto las de incremento y decremento 
+realizar ninguna operaci√≥n aritm√©tica sobre X e Y, excepto las de incremento y decremento 
 (por 1),
-que es lo ˙til para los bucles, cuando empecemos a ver direcciones indexadas 
+que es lo √∫til para los bucles, cuando empecemos a ver direcciones indexadas 
 veremos la utilidad de estos registro.</p>
 <p><span class="enfasis">S (puntero de pila)</span><br>
 Es un registro ***QUE NO DEBE SER MODIFICADO A MENOS QUE SEPAS MUY BIEN LO QUE 
 HACES***,
-contiene la direcciÛn de memoria del ˙ltimo lugar usado en la pila, es el 
+contiene la direcci√≥n de memoria del √∫ltimo lugar usado en la pila, es el 
 puntero al
-prÛximo valor que se sacar· con un PLA. A menos que te dediques a la 
-programaciÛn alienÌgena deja este registro en paz, que se controla bastante bien 
+pr√≥ximo valor que se sacar√° con un PLA. A menos que te dediques a la 
+programaci√≥n alien√≠gena deja este registro en paz, que se controla bastante bien 
 solito :)</p>
 <p><span class="enfasis">PC (Program counter)</span><br>
-Es un registro que contiene la direcciÛn actual del cÛdigo que se ejecuta, 
+Es un registro que contiene la direcci√≥n actual del c√≥digo que se ejecuta, 
 generalmente
-est· constantemente cambiando a alta velocidad, por lo que para ver su actual 
-valor habrÌa
+est√° constantemente cambiando a alta velocidad, por lo que para ver su actual 
+valor habr√≠a
 que detener al procesador de alguna manera (un bucle infinito tal vez).</p>
 
 
 <h3>REGISTRO P</h3>
 
 
-<p>El registro P es tambiÈn conocido como registro de flags, y tiene varios usos, 
+<p>El registro P es tambi√©n conocido como registro de flags, y tiene varios usos, 
 los 8 bits
-de este byte tienen cada uno una funciÛn distinta, en realidad se usan para ver 
+de este byte tienen cada uno una funci√≥n distinta, en realidad se usan para ver 
 los
-resultados de una operaciÛn aritmÈtica y hacer bucles y otras cosas, aunque 
+resultados de una operaci√≥n aritm√©tica y hacer bucles y otras cosas, aunque 
 tiene usos
 muy variados.<br>
 Los flags son cada uno de los valores (bits), que pueden ser 1 o 0, si el flag 
-est·
+est√°
 &quot;activado&quot; es 1, y &quot;desactivado&quot; es 0.<br>
 <br>
 Bits&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7 6 5 4 3 2 1 0<br>
 Nombres&nbsp;&nbsp; S V&nbsp;&nbsp; B D I Z C<br>
 <br>
-<span class="enfasis">Bit 0 -&gt; Carry flag:</span> Este bit se activa si la ˙ltima operaciÛn 
+<span class="enfasis">Bit 0 -&gt; Carry flag:</span> Este bit se activa si la √∫ltima operaci√≥n 
 dio un
-acarreo y de lo contrario se pone a 0, si en una comparaciÛn el operando es
+acarreo y de lo contrario se pone a 0, si en una comparaci√≥n el operando es
 mayor al registro utilizado se pone a 1, si es menor se pone a 0.<br>
 <br>
-<span class="enfasis">Bit 1 -&gt; Zero flag:</span> …ste bit se activa si la ˙ltima operaciÛn 
+<span class="enfasis">Bit 1 -&gt; Zero flag:</span> √âste bit se activa si la √∫ltima operaci√≥n 
 dio como
 resultado 0, y se desactiva si el resultado no fue 0.<br>
 <br>
-<span class="enfasis">Bit 2 -&gt; Interrupt flag:</span> …ste es el flag de anulaciÛn de interrupciones. Si este 
+<span class="enfasis">Bit 2 -&gt; Interrupt flag:</span> √âste es el flag de anulaci√≥n de interrupciones. Si este 
 flag
-est· a 1, los interrupciones est·n desactivadas, sino est·n activadas (duh).<br>
+est√° a 1, los interrupciones est√°n desactivadas, sino est√°n activadas (duh).<br>
 <br>
-<span class="enfasis">Bit 3 -&gt; Decimal flag:</span> …ste es el flag de modo decimal. Si est· activado, las 
+<span class="enfasis">Bit 3 -&gt; Decimal flag:</span> √âste es el flag de modo decimal. Si est√° activado, las 
 operaciones
 ADC y SBC usan los valores fuentes como BCD (binary coded decimal).<br>
 <br>
-<span class="enfasis">Bit 4 -&gt; Break flag:</span> …ste flag se pone a 1 si se est· ejecutando una 
-interrupciÛn de
+<span class="enfasis">Bit 4 -&gt; Break flag:</span> √âste flag se pone a 1 si se est√° ejecutando una 
+interrupci√≥n de
 software (BRK).<br>
 <br>
 <span class="enfasis">Bit 5 -&gt;</span> No se utiliza, supuestamente debe estar siempre a 1.<br>
 <br>
-<span class="enfasis">Bit 6 -&gt; Overflow flag:</span> Cuando una operaciÛn aritmÈtica produce un resultado que 
+<span class="enfasis">Bit 6 -&gt; Overflow flag:</span> Cuando una operaci√≥n aritm√©tica produce un resultado que 
 no se
 puede representar en 1 byte, el flag se activa.<br>
 <br>
-<span class="enfasis">Bit 7 -&gt; Sign flag:</span> Se activa si el ˙ltimo resultado 
+<span class="enfasis">Bit 7 -&gt; Sign flag:</span> Se activa si el √∫ltimo resultado 
 fue negativo, se
 desactiva si fue positivo.<br>
 <br>
-Los flags usados m·s com˙nmente son C, Z, y V.</p>
+Los flags usados m√°s com√∫nmente son C, Z, y V.</p>
 
 
-<p>Es importante que entiendas la importancia de los registros y cu·les no deben 
-ser modificados (lo digo m·s que nada por el registro de pila, S). A, X e Y 
-ser·n, por lejos, los registros que m·s uses, pero eso lo entender·s mejor 
-cuando veas algo de cÛdigo.</p>
+<p>Es importante que entiendas la importancia de los registros y cu√°les no deben 
+ser modificados (lo digo m√°s que nada por el registro de pila, S). A, X e Y 
+ser√°n, por lejos, los registros que m√°s uses, pero eso lo entender√°s mejor 
+cuando veas algo de c√≥digo.</p>
 <center><a href="bin.html">&lt;&lt; Anterior</a> - <a href="instr.html">Siguiente &gt;&gt;</a></center>
 
 </body>

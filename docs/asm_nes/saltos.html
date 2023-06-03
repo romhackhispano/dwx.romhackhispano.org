@@ -10,42 +10,42 @@
 
 
 <p>Por <a href="mailto:drkwzrdx@hotmail.com">DaRKWiZaRDX</a></p>
-<p>La ˙ltima lecciÛn, y una de las m·s importantes... :)~~~ °Adelante! xD</p>
+<p>La √∫ltima lecci√≥n, y una de las m√°s importantes... :)~~~ ¬°Adelante! xD</p>
 <p>En ASM no existen sentencias de if...then...else (como en Visual Basic) sino saltos, y no existen while, for,
 etc. sino que se usan branchs.
 Y eso es precisamente lo que sigue :)</p>
 
 
-<h4>INTRODUCCI”N A BUCLES Y SUBRUTINAS</h4>
+<h4>INTRODUCCI√ìN A BUCLES Y SUBRUTINAS</h4>
 
 
 <p>Cuando en un programa (programado en el lenguaje que sea) hay cierto trozo de 
-cÛdigo que deber· ser llamado varias veces (y posiblemente con distintos 
-par·metros) lo llamamos procedimiento, funciÛn, <span class="enfasis">subrutina
+c√≥digo que deber√° ser llamado varias veces (y posiblemente con distintos 
+par√°metros) lo llamamos procedimiento, funci√≥n, <span class="enfasis">subrutina
 </span>(como se les llama en ASM), etc. Es una forma de ahorrar espacio no 
-escribiendo tanto cÛdigo, por ejemplo (ejemplo de C, si no lo entiendes mira la 
-explicaciÛn m·s abajo):</p>
+escribiendo tanto c√≥digo, por ejemplo (ejemplo de C, si no lo entiendes mira la 
+explicaci√≥n m√°s abajo):</p>
 
 
 <div class="codigo">int numero = 0;<br>
 <br>
 void main() {<br>
 &nbsp;&nbsp;&nbsp; numero = ( (numero *2) +4) *18 ;&nbsp; // en realidad no 
-entiendo por quÈ querrÌamos hacer una<br>
-&nbsp;&nbsp;&nbsp; numero = ( (numero *2) +4) *18 ;&nbsp; // operaciÛn asÌ pero 
+entiendo por qu√© querr√≠amos hacer una<br>
+&nbsp;&nbsp;&nbsp; numero = ( (numero *2) +4) *18 ;&nbsp; // operaci√≥n as√≠ pero 
 bueno, los ejemplos pueden ser a<br>
 &nbsp;&nbsp;&nbsp; numero = ( (numero *2) +4) *18 ;&nbsp; // veces un poco 
 descabellados&nbsp; <br>
 }</div>
 
 
-<p>Lo que harÌa este trozo de cÛdigo serÌa ejecutar esa operaciÛn (multiplicar 
-por 2, sumar 4, y multiplicar por 18) tres veces sobre el n˙mero, pero estamos 
-repitiendo cÛdigo que podrÌamos ahorrar usando un bucle o una llamada a funciÛn. 
+<p>Lo que har√≠a este trozo de c√≥digo ser√≠a ejecutar esa operaci√≥n (multiplicar 
+por 2, sumar 4, y multiplicar por 18) tres veces sobre el n√∫mero, pero estamos 
+repitiendo c√≥digo que podr√≠amos ahorrar usando un bucle o una llamada a funci√≥n. 
 Por ejemplo:</p>
 
 
-<h4>Usando subrutina / funciÛn</h4>
+<h4>Usando subrutina / funci√≥n</h4>
 
 
 <div class="codigo">int numero = 0;<br>
@@ -57,9 +57,9 @@ void main() {<br>
 }<br>
 <br>
 void operacion() {<br>
-&nbsp;&nbsp;&nbsp; numero = ( (numero *2) +4) *18 ;&nbsp; // la operaciÛn<br>
+&nbsp;&nbsp;&nbsp; numero = ( (numero *2) +4) *18 ;&nbsp; // la operaci√≥n<br>
 }</div>
-<p>Este cÛdigo harÌa exactamente lo mismo que el anterior, pero ocupando menos 
+<p>Este c√≥digo har√≠a exactamente lo mismo que el anterior, pero ocupando menos 
 espacio.</p>
 <h4>Usando un bucle</h4>
 
@@ -74,10 +74,10 @@ void main() {<br>
   }</div>
 
 
-<p>En este bucle (repeticiÛn), ponemos un contador a 3, y por cada vez que se 
-ejecute el cuerpo de cÛdigo decrementa el contador en 1, hasta que llega a 0 y 
-no se realiza m·s la repeticiÛn.</p>
-<h4>Usando un bucle y una subrutina / funciÛn</h4>
+<p>En este bucle (repetici√≥n), ponemos un contador a 3, y por cada vez que se 
+ejecute el cuerpo de c√≥digo decrementa el contador en 1, hasta que llega a 0 y 
+no se realiza m√°s la repetici√≥n.</p>
+<h4>Usando un bucle y una subrutina / funci√≥n</h4>
 
 
 <div class="codigo">int numero = 0;<br>
@@ -90,71 +90,71 @@ void main() {<br>
 }<br>
 <br>
 void operacion() {<br>
-&nbsp;&nbsp;&nbsp; numero = ( (numero *2) +4) *18 ;&nbsp; // la operaciÛn<br>
+&nbsp;&nbsp;&nbsp; numero = ( (numero *2) +4) *18 ;&nbsp; // la operaci√≥n<br>
 }</div>
-<p>AquÌ una combinaciÛn de las dos, no creo que haga falta una explicaciÛn, a 
+<p>Aqu√≠ una combinaci√≥n de las dos, no creo que haga falta una explicaci√≥n, a 
 menos que no hayas entendido las dos anteriores :)</p>
 
 
 <h4>Usando subrutinas</h4>
 
 
-<p>Las subrutinas son trozos comunes de cÛdigo (como los que venimos viendo) a 
-los que se llega mediante la instrucciÛn <span class="enfasis">JSR</span> (<span class="enfasis">J</span>ump 
+<p>Las subrutinas son trozos comunes de c√≥digo (como los que venimos viendo) a 
+los que se llega mediante la instrucci√≥n <span class="enfasis">JSR</span> (<span class="enfasis">J</span>ump 
 to <span class="enfasis">S</span>ub<span class="enfasis">R</span>outine), y que 
 acaba con un <span class="enfasis">RTS</span> (<span class="enfasis">R</span>e<span class="enfasis">t</span>urn 
 from <span class="enfasis">S</span>ubRoutine).</p>
 
 
-<p>Lo que realmente hace JSR es saltar a una posiciÛn (de 16bits, 2 bytes) y 
-guardar en pila <span class="enfasis">el offset del JSR + 3</span>. Esto es asÌ 
+<p>Lo que realmente hace JSR es saltar a una posici√≥n (de 16bits, 2 bytes) y 
+guardar en pila <span class="enfasis">el offset del JSR + 3</span>. Esto es as√≠ 
 porque si no guardara en pila el offset del salto (del JSR) luego el juego no 
-sabrÌa dÛnde volver cuando encuentra un RTS, ya que lo ˙nico que hace esta 
-instrucciÛn (RTS) es tomar los ˙ltimos 16bits (2 bytes) introducidos en la 
-pila y saltar a esa posiciÛn (recuerda que todo esto se hace con los valores Big-Endian, 
-es decir, invertidos). Ve·moslo con un ejemplo a ver si se entiende:</p>
+sabr√≠a d√≥nde volver cuando encuentra un RTS, ya que lo √∫nico que hace esta 
+instrucci√≥n (RTS) es tomar los √∫ltimos 16bits (2 bytes) introducidos en la 
+pila y saltar a esa posici√≥n (recuerda que todo esto se hace con los valores Big-Endian, 
+es decir, invertidos). Ve√°moslo con un ejemplo a ver si se entiende:</p>
 
 
 <p>1) $C2F0: JSR $D422<br>
 2) $C2F3: INX <br>
 3) $C2F4: JSR $D422<br>
 4) $C2F7: LDA #$80<br>
-... (m·s cÛdigo)<br>
+... (m√°s c√≥digo)<br>
 $D422: LDA $60,X<br>
 $D424: STA $4801<br>
 $D426: RTS</p>
 
 
-<p>ExplicaciÛn: Este simple trozo de cÛdigo lo que hace es:</p>
+<p>Explicaci√≥n: Este simple trozo de c√≥digo lo que hace es:</p>
 
 
 <p>1- Salta a la rutina en $D422, guardando en pila lo siguiente: OFFSET DEL JSR 
 ($C2F0) + 3 = <span class="enfasis">$C2F3</span><br>
-2- SÛlo incrementa X, lo importante de esta parte es que aquÌ viene el RTS de la 
+2- S√≥lo incrementa X, lo importante de esta parte es que aqu√≠ viene el RTS de la 
 subrutina.<br>
 3- Vuelve a llamar a la rutina de $D422, esta vez guarda en pila $C2F4 + 3 =
 <span class="enfasis">$C2F7</span><br>
-4- Y luego un LDA #$80, que es a donde vendr· el RTS de la subrutina.</p>
+4- Y luego un LDA #$80, que es a donde vendr√° el RTS de la subrutina.</p>
 
 
-<p>Realmente no es IMPRESCINDIBLE que sepas esto de cÛmo se guarda la direcciÛn 
+<p>Realmente no es IMPRESCINDIBLE que sepas esto de c√≥mo se guarda la direcci√≥n 
 de regreso del salto, simplemente JSR salta a una rutina y RTS salta a la 
-instrucciÛn que viene despuÈs del JSR. Todo esto, siempre y cuando no hayas 
-dejado alg˙n valor que no debÌas en la pila (cosa que no deberÌa pasar si 
-escribes bien tu cÛdigo :P)</p>
+instrucci√≥n que viene despu√©s del JSR. Todo esto, siempre y cuando no hayas 
+dejado alg√∫n valor que no deb√≠as en la pila (cosa que no deber√≠a pasar si 
+escribes bien tu c√≥digo :P)</p>
 
 
 <h4>Saltos comunes</h4>
 
 
-<p>Estos son m·s simples, es la instrucciÛn <span class="enfasis">JMP $XXXX</span>, 
-que sigue ejecutando cÛdigo en la direcciÛn que le especificas, por ejemplo:</p>
+<p>Estos son m√°s simples, es la instrucci√≥n <span class="enfasis">JMP $XXXX</span>, 
+que sigue ejecutando c√≥digo en la direcci√≥n que le especificas, por ejemplo:</p>
 
 
 <p>$C268: JMP $D000</p>
 
 
-<p>Dejar· de ejecutar el cÛdigo despuÈs de $C268 y pasar· a ejecutar el que se 
+<p>Dejar√° de ejecutar el c√≥digo despu√©s de $C268 y pasar√° a ejecutar el que se 
 encuentra en $D000.</p>
 
 
@@ -162,14 +162,14 @@ encuentra en $D000.</p>
 
 
 <p>Los branches son las instrucciones de control de flujo en ASM. Es decir, que 
-controlan quÈ cÛdigo ha de ejecutarse y quÈ cÛdigo no. Son esencialmente los IF-ELSE 
+controlan qu√© c√≥digo ha de ejecutarse y qu√© c√≥digo no. Son esencialmente los IF-ELSE 
 del ASM. Se utilizan tanto para los saltos condicionales como para los bucles.<br>
-Su uso es bastante f·cil, mediante las instrucciones <span class="enfasis">CMP</span>/<span class="enfasis">CPX</span>/<span class="enfasis">CPY
+Su uso es bastante f√°cil, mediante las instrucciones <span class="enfasis">CMP</span>/<span class="enfasis">CPX</span>/<span class="enfasis">CPY
 </span>se puede comparar A, X o Y respectivamente con un valor (sea una 
 constante o un valor contenido en memoria), haciendo esto se &quot;setean&quot; (ponen a 
 1) o &quot;resetean&quot; (se ponen a 0) algunos bits (denominados &quot;flags&quot;) del registro 
 P, y en ellos se fijan las instrucciones de &quot;branches&quot; (saltos condicionales) 
-para ver si se cumple su condiciÛn y si efectivamente saltan.
+para ver si se cumple su condici√≥n y si efectivamente saltan.
 <span class="enfasis">En todos estos casos el valor de A es $80</span>.</p>
 
 
@@ -195,15 +195,15 @@ igual, entonces -&gt; flag c (carry) = 0<br>
 
 
 <p>(El Flag <span class="enfasis">Z</span> se pone a 1 si el resultado de la 
-˙ltima operaciÛn fue cero, es decir, un LDA #$00 pondrÌa el flag a 1, asÌ como 
+√∫ltima operaci√≥n fue cero, es decir, un LDA #$00 pondr√≠a el flag a 1, as√≠ como 
 una resta que da como resultado 0 o un incremento/decremento, etc.)</p>
 
 
 <p>(Los flags <span class="enfasis">x</span> (overflow) y <span class="enfasis">
-n</span> (negative) tambiÈn pueden ser modificados pero no por una comparaciÛn, 
+n</span> (negative) tambi√©n pueden ser modificados pero no por una comparaci√≥n, 
 sino por una suma / resta: Si el resultado de una suma es demasiado grande para 
 caber en el acumulador entonces el flag <span class="enfasis">x</span> se pone a 
-1, y si el valor es mayor a $80 (es decir, tiene el bit m·s alto a 1 y por lo 
+1, y si el valor es mayor a $80 (es decir, tiene el bit m√°s alto a 1 y por lo 
 tanto es negativo) el flag <span class="enfasis">n</span> se pone a 1)</p>
 
 
@@ -211,7 +211,7 @@ tanto es negativo) el flag <span class="enfasis">n</span> se pone a 1)</p>
 comparar el valor de A con el del operando se compara el valor de X / Y.</p>
 
 
-<p>Una vez que se ha hecho la comparaciÛn entonces pueden usarse los branches.</p>
+<p>Una vez que se ha hecho la comparaci√≥n entonces pueden usarse los branches.</p>
 
 
 <p>BCC -&gt; Salta si flag c = 0<br>
@@ -228,26 +228,26 @@ BPL -&gt; Salta si flag n = 0</p>
 <p>LDX #$00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; carga el contador 
 del bucle (X) a 0<br>
 bucle:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; etiqueta 
-que determina dÛnde debe saltar el branch<br>
+que determina d√≥nde debe saltar el branch<br>
 LDA $60,X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; Carga un valor de $60 +X . 
 Como ves, en este ejemplo usamos X como contador y como indexador.<br>
 STA $70,X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; Lo guarda en $70 +X.<br>
 INX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-; Incrementa el contador/Ìndice<br>
+; Incrementa el contador/√≠ndice<br>
 CPX #$10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; compara con $10<br>
 BNE bucle&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; Si no es igual, es decir, 
 si X es menor a $10 vuelve a ejecutar el bucle</p>
 
 
-<p>Lo que harÌa este cÛdigo serÌa copiar $10 bytes de $60 +X a $70 +X, una 
-simple funciÛn de copiado de datos ^^</p>
+<p>Lo que har√≠a este c√≥digo ser√≠a copiar $10 bytes de $60 +X a $70 +X, una 
+simple funci√≥n de copiado de datos ^^</p>
 
 
-<h4>Ejemplo de salto condicional (CÛdigo real de Castlevania I de NES ^^)</h4>
+<h4>Ejemplo de salto condicional (C√≥digo real de Castlevania I de NES ^^)</h4>
 
 
 <p>$E77F: A5 71&nbsp; LDA $71 = #$05&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; Carga el 
-n˙mero actual de corazones en el acumulador<br>
+n√∫mero actual de corazones en el acumulador<br>
 $E781: 18&nbsp;&nbsp;&nbsp;&nbsp; CLC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 ; pone el carry a 0 para hacer una suma<br>
 $E782: 69 01&nbsp; ADC #$01&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -262,18 +262,18 @@ $E78A: 85 71&nbsp; STA $71 = #$05&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; lo guarda en
 el contador de corazones (actualiza)</p>
 
 
-<p>(En este ejemplo $71 es la posiciÛn de memoria que indica la cantidad de 
-corazones que se posee, este cÛdigo se ejecuta cuando se agarra un corazÛn 
-pequeÒo -que suma 1-)</p>
+<p>(En este ejemplo $71 es la posici√≥n de memoria que indica la cantidad de 
+corazones que se posee, este c√≥digo se ejecuta cuando se agarra un coraz√≥n 
+peque√±o -que suma 1-)</p>
 
 
-<p>Ya con sÛlo ver el cÛdigo es f·cil darse cuenta de lo que hace, pero por si 
-acaso lo explicarÈ, primero carga en el acumulador el n˙mero actual de corazones 
+<p>Ya con s√≥lo ver el c√≥digo es f√°cil darse cuenta de lo que hace, pero por si 
+acaso lo explicar√©, primero carga en el acumulador el n√∫mero actual de corazones 
 (antes de sumar el que agarramos), entonces le suma 1 (porque acabamos de 
-agarrar un corazÛn), y lo compara con 99 decimal, si es menor entonces salta a 
+agarrar un coraz√≥n), y lo compara con 99 decimal, si es menor entonces salta a 
 $E78A, es decir, guarda el viejo valor + 1 en la actual cantidad de corazones, 
 mientras que si no es menor, carga 99 decimal y lo guarda en la cantidad de 
-corazones. Esto significa que no es posible tener m·s de 99 corazones, ya que 
+corazones. Esto significa que no es posible tener m√°s de 99 corazones, ya que 
 esta rutina se encarga de limitar esa cantidad.</p>
 
 
@@ -283,7 +283,7 @@ esta rutina se encarga de limitar esa cantidad.</p>
 <p>LDA $03<br>
 JSR <span class="enfasis">subrutina<br>
 </span>STA $03<br>
-(m·s cÛdigo)<br>
+(m√°s c√≥digo)<br>
 <span class="enfasis">subrutina:<br>
 </span>ASL A<br>
 CLC<br>
@@ -296,8 +296,8 @@ valor contenido en $03, y salta a la subrutina, que lo multiplica por 2, le suma
 #$13 y regresa, entonces $03 es actualizado ^^</p>
 
 
-<p>Espero que haya quedado claro con los ejemplos, cualquier duda, comentario o correxiÛn (xD)
-o lo que sea que tengas puedes envi·rmelo a mi mail :)</p>
+<p>Espero que haya quedado claro con los ejemplos, cualquier duda, comentario o correxi√≥n (xD)
+o lo que sea que tengas puedes envi√°rmelo a mi mail :)</p>
 
 
 <center><a href="mds.html">&lt;&lt; Anterior</a> - <a href="fin.html">Siguiente &gt;&gt;</a></center>

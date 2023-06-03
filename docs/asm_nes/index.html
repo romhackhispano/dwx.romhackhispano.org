@@ -1,57 +1,57 @@
 <html>
 <head>
-<title>Curso de ASM 6502 [NES] - IntroducciÛn</title>
+<title>Curso de ASM 6502 [NES] - Introducci√≥n</title>
 
 <link href="estilo.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 <h1>CURSO de ASM 6502 [NES]</h1>
-<h2>INTRODUCCI”N</h2>
+<h2>INTRODUCCI√ìN</h2>
 Por <a href="mailto:drkwzrdx@hotmail.com">DaRKWiZaRDX</a>
-<p>°Bienvenid@ a mi curso de ASM de 6502! AquÌ explicarÈ cÛmo manipular el 
-procesador Motorola 6502 (m·s bien el 65c02), utilizado en la cÈlebre consola de 
-videojuegos &quot;Nintendo Entertainment System&quot; (NES). Si eres romhacker (lo m·s 
-probable) esto te servir· para poder modificar m·s a fondo un juego que con los 
-mÈtodos tradicionales (editor gr·fico, de texto, etc.) . Durante este curso 
-intentarÈ ir algo acelerado pero intentando dejar las bases bien puestas en cada 
-secciÛn, si aun asÌ no entiendes algo puedes enviarme un mail, buscar en otro 
-documento o preguntar en foros, que para eso est·n. TambiÈn intentarÈ que la 
-guÌa sea lo m·s comprensible que pueda, usando ejemplos simples. Algo que 
+<p>¬°Bienvenid@ a mi curso de ASM de 6502! Aqu√≠ explicar√© c√≥mo manipular el 
+procesador Motorola 6502 (m√°s bien el 65c02), utilizado en la c√©lebre consola de 
+videojuegos &quot;Nintendo Entertainment System&quot; (NES). Si eres romhacker (lo m√°s 
+probable) esto te servir√° para poder modificar m√°s a fondo un juego que con los 
+m√©todos tradicionales (editor gr√°fico, de texto, etc.) . Durante este curso 
+intentar√© ir algo acelerado pero intentando dejar las bases bien puestas en cada 
+secci√≥n, si aun as√≠ no entiendes algo puedes enviarme un mail, buscar en otro 
+documento o preguntar en foros, que para eso est√°n. Tambi√©n intentar√© que la 
+gu√≠a sea lo m√°s comprensible que pueda, usando ejemplos simples. Algo que 
 debes tener en cuenta es que esto no es para principiantes (tampoco es una cosa 
-avanzadÌsima, pero alguien que reciÈn comienza con el romhacking puede perderse 
-f·cilmente), asÌ que si crees que tienes suficiente experiencia con el 
+avanzad√≠sima, pero alguien que reci√©n comienza con el romhacking puede perderse 
+f√°cilmente), as√≠ que si crees que tienes suficiente experiencia con el 
 romhacking y quieres avanzar, sigue leyendo, de lo contrario, adquiere 
-experiencia, sube nivel, evoluciona y .... er, digo... empieza por algo m·s 
-b·sico.</p>
-<h2>INTRODUCCI”N A LA NES</h2>
-<h3>CaracterÌsticas b·sicas de la NES:</h3>
-<p>(SÛlo las que nos interesan xD)</p>
+experiencia, sube nivel, evoluciona y .... er, digo... empieza por algo m√°s 
+b√°sico.</p>
+<h2>INTRODUCCI√ìN A LA NES</h2>
+<h3>Caracter√≠sticas b√°sicas de la NES:</h3>
+<p>(S√≥lo las que nos interesan xD)</p>
 <p><span class="enfasis">* Velocidad de reloj de procesador</span>: 1.7897725 
 MHz (NTSC) o 1.773447 MHz (PAL)<br>
 <span class="enfasis">* Direccionamiento de 16bits</span>.<br>
-<span class="enfasis">* $800 bytes de RAM</span>, sÌ, es bastante poco, pero la 
-mayorÌa de las veces puedes usar tambiÈn 2 kB m·s (en $6000).<br>
-<span class="enfasis">* Tres registros de 8bits</span> a disposiciÛn del 
+<span class="enfasis">* $800 bytes de RAM</span>, s√≠, es bastante poco, pero la 
+mayor√≠a de las veces puedes usar tambi√©n 2 kB m√°s (en $6000).<br>
+<span class="enfasis">* Tres registros de 8bits</span> a disposici√≥n del 
 programador.<br>
 <span class="enfasis">* &quot;Picture processing unit&quot;</span> (Unidad procesadora de 
-gr·ficos) con 4 kB de memoria de video separada de la RAM del procesador.<br>
+gr√°ficos) con 4 kB de memoria de video separada de la RAM del procesador.<br>
 <span class="enfasis">* Lectura Big-Endian:</span> Esto significa que al 
-leer n˙meros de 16bits se lee primero el byte m·s bajo y luego el alto. <br>
+leer n√∫meros de 16bits se lee primero el byte m√°s bajo y luego el alto. <br>
 <br>
-Por supuesto tiene muchas caracterÌsticas m·s, algunas las explicarÈ (en cuanto 
-sea necesario para el curso), mientras que las m·s avanzadas tendrÌas que 
+Por supuesto tiene muchas caracter√≠sticas m√°s, algunas las explicar√© (en cuanto 
+sea necesario para el curso), mientras que las m√°s avanzadas tendr√≠as que 
 buscarlas en internet (aunque a menos que planees escribir un emulador o algo 
-asÌ, no creo que las necesites).</p>
+as√≠, no creo que las necesites).</p>
 <div id="indice">
 <h2>INDICE</h2>
 <center>
-<a href="bin.html">NumeraciÛn binaria</a><br>
+<a href="bin.html">Numeraci√≥n binaria</a><br>
 <a href="regs.html">Registros</a><br>
-<a href="instr.html">Instrucciones b&aacute;sicas</a><br>
+<a href="instr.html">Instrucciones b√°sicas</a><br>
 <a href="stack.html">La pila</a><br>
 <a href="mds.html">Modos de direccionamiento</a><br>
 <a href="saltos.html">Saltos y branchs</a><br>
-<a href="fin.html">Fin</a><h4>ApÈndices</h4>
+<a href="fin.html">Fin</a><h4>Ap√©ndices</h4>
 <p>
 <a href="apend1.html">I - Encontrar una rutina de texto con FCEUXD</a><br>
 <a href="apend2.html">II - Mapa de memoria</a><br />

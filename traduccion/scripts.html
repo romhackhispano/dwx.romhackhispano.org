@@ -1,152 +1,152 @@
 <html>
 <head>
-<title>GuÌa de traducciÛn de Roms por DaRKWiZaRDX</title>
+<title>Gu√≠a de traducci√≥n de Roms por DaRKWiZaRDX</title>
 </head>
 <link href="estilo.css" type=text/css rel=stylesheet>
 <body>
 
-<center><h1>GU&Iacute;A DE TRADUCCI&Oacute;N DE ROMS</h1></center>
+<center><h1>GU√çA DE TRADUCCI√ìN DE ROMS</h1></center>
 <p>Por <a href="mailto:drkwzrdx@hotmail.com">DaRKWiZaRDX</a> </p>
-<center><h2>TRADUCIENDO CON SCRIPTS</h2><p><font color="#FF2020">°ASEG⁄RATE 
+<center><h2>TRADUCIENDO CON SCRIPTS</h2><p><font color="#FF2020">¬°ASEG√öRATE 
 SIEMPRE DE TENER VARIAS COPIAS DE SEGURIDAD DE LAS ROMS QUE MODIFICAS!</font></p></center>
 
-<h3>INTRODUCCI”N A LOS SCRIPTS</h3>
+<h3>INTRODUCCI√ìN A LOS SCRIPTS</h3>
 
-<p>Igual que en la secciÛn anterior, seguramente te preguntar·s quÈ es un 
-script... Un script es un archivo de texto donde se ha &quot;dumpeado&quot; (extraÌdo) 
-texto del juego para poder editarlo de forma m·s cÛmoda con cualquier editor que 
+<p>Igual que en la secci√≥n anterior, seguramente te preguntar√°s qu√© es un 
+script... Un script es un archivo de texto donde se ha &quot;dumpeado&quot; (extra√≠do) 
+texto del juego para poder editarlo de forma m√°s c√≥moda con cualquier editor que 
 se tenga a mano. El programa extractor del script traduce cada byte usando la 
 tabla y lo exporta a un fichero (normalmente *.txt) para que el traductor pueda 
 modificarlo a su antojo y luego reinsertarlo, recalcular punteros (eso lo 
 veremos dentro de poco) y que el texto quede como nuevo en el juego.</p>
 
 <h3>VENTAJAS Y DESVENTAJAS</h3>
-<p>Pues el traducir cuenta con m·s ventajas que desventajas sobre traducir 
+<p>Pues el traducir cuenta con m√°s ventajas que desventajas sobre traducir 
 usando editor hex:</p>
-<p>+ Los scripts pueden ser editados de forma mucho m·s cÛmoda, ya que si se nos 
-olvida un caracter podemos volver a ponerlo f·cilmente, en editor hex quiz·s 
+<p>+ Los scripts pueden ser editados de forma mucho m√°s c√≥moda, ya que si se nos 
+olvida un caracter podemos volver a ponerlo f√°cilmente, en editor hex quiz√°s 
 tengamos que mover todo un bloque.<br>
 + El texto queda mucho mejor, ya que al reinsertar scripts y recalcular punteros 
-se aprovecha el espacio que sobrÛ de una traducciÛn corta y se puede usar para 
-una traducciÛn m·s larga.<br>
+se aprovecha el espacio que sobr√≥ de una traducci√≥n corta y se puede usar para 
+una traducci√≥n m√°s larga.<br>
 + Podemos usar buscar y reemplazar en casi todos los editores para arreglar 
-alg˙n error ortogr·fico que notemos cuando ya traducimos.<br>
+alg√∫n error ortogr√°fico que notemos cuando ya traducimos.<br>
 <br>
-Hay muchas m·s, pero estas son las m·s importantes.</p>
-<p>Aunque tambiÈn tenemos algunas (en mi opiniÛn pocas y sin importancia) 
+Hay muchas m√°s, pero estas son las m√°s importantes.</p>
+<p>Aunque tambi√©n tenemos algunas (en mi opini√≥n pocas y sin importancia) 
 desventajas al traducir con scripts:</p>
-<p>- Quiz·s al no saber bien en quÈ contexto se habla podamos confundir 
+<p>- Quiz√°s al no saber bien en qu√© contexto se habla podamos confundir 
 pronombres y/o frases (P.Ej: No sabiendo si &quot;it&quot; se trata de un objeto masculino 
 o femenino; o no saber si &quot;you&quot; habla de singular o plural, etc.)<br>
 - Cuando hay nombres de personajes variables en el script hay posibilidades de 
 que recalcules mal los punteros y salga mal el texto, aunque puede ser 
 arreglado.</p>
 <p>Realmente, aunque de a ratos pueda traerte dolores de cabeza, recomiendo 
-traducir mediante scripts antes que con editor hex, la decisiÛn es tuya :)</p>
+traducir mediante scripts antes que con editor hex, la decisi√≥n es tuya :)</p>
 <h3>EXTRAYENDO E INSERTANDO SCRIPTS</h3>
 <p>Para extraer un script necesitamos lo siguiente:<br>
-- La tabla en la que estÈn todos (o la mayorÌa) de los caracteres que hay en el 
+- La tabla en la que est√©n todos (o la mayor√≠a) de los caracteres que hay en el 
 bloque de texto.<br>
 - La ROM (obviamente).<br>
 - Un programa para extraer scripts, puedes usar Script Extractor/Inserter, 
-RomJuice u otros, aquÌ usarÈ Translhextion.</p>
+RomJuice u otros, aqu√≠ usar√© Translhextion.</p>
 <p>1. Abre el Translhextion con la ROM y la tabla.<br>
-2. Sit˙ate al final del bloque de texto y anota su offset (si prefieres usa un 
+2. Sit√∫ate al final del bloque de texto y anota su offset (si prefieres usa un 
 bookmark).<br>
-3. Sit˙ate al inicio del bloque de texto.<br>
-4. Ve al men˙ Script -&gt; Dump Script. Te aparecer· una caja asÌ:<br>
+3. Sit√∫ate al inicio del bloque de texto.<br>
+4. Ve al men√∫ Script -&gt; Dump Script. Te aparecer√° una caja as√≠:<br>
 <img border="0" src="imagenes/script1.jpg" width="251" height="371"><br>
 * En la primera caja debes introducir el offset del inicio del bloque, pero como 
 ya tenemos el cursor situado al inicio del bloque de texto el programa lo pone 
-por sÌ solo.<br>
+por s√≠ solo.<br>
 * En la segunda caja debemos poner el offset del fin del bloque de texto, o 
-podemos seleccionar el segundo botÛn redondo (el que est· debajo de la segunda 
+podemos seleccionar el segundo bot√≥n redondo (el que est√° debajo de la segunda 
 caja) y especificarle la cantidad de bytes a dumpear (extraer).<br>
-* Donde aparecen dos botones redondos es para elegir dÛnde debe dumpearse el 
-texto, si es &quot;File&quot; lo extraer· todo a un fichero com˙n de texto, si marcamos &quot;Screen 
-(Dialog)&quot; lo extraer· a una ventana desde la que podremos editarlo y se 
-reinsertar· autom·ticamente cuando terminemos.<br>
-* El ˙ltimo checkbox que aparece conviene marcarlo solo si nuestro script tiene 
-poco o nada de DTE/MTE, ya que sino quedar· en un formato muy complicado de 
+* Donde aparecen dos botones redondos es para elegir d√≥nde debe dumpearse el 
+texto, si es &quot;File&quot; lo extraer√° todo a un fichero com√∫n de texto, si marcamos &quot;Screen 
+(Dialog)&quot; lo extraer√° a una ventana desde la que podremos editarlo y se 
+reinsertar√° autom√°ticamente cuando terminemos.<br>
+* El √∫ltimo checkbox que aparece conviene marcarlo solo si nuestro script tiene 
+poco o nada de DTE/MTE, ya que sino quedar√° en un formato muy complicado de 
 editar (mira al final para ver mejor el efecto de esta casilla).</p>
-<p>Una vez le demos todos los par·metros y estÈn correctos tendremos un fichero 
-(o un di·logo) con todo nuestro texto dumpeado, de ahÌ podemos editarlo y volver 
+<p>Una vez le demos todos los par√°metros y est√©n correctos tendremos un fichero 
+(o un di√°logo) con todo nuestro texto dumpeado, de ah√≠ podemos editarlo y volver 
 a insertarlo.</p>
 <p>Para reinsertar un script debemos situar el cursor al principio del bloque a 
-reemplazar e ir al men˙ Script -&gt; Replace Script, y aparecer· un di·logo como 
-Èste:<br>
+reemplazar e ir al men√∫ Script -&gt; Replace Script, y aparecer√° un di√°logo como 
+√©ste:<br>
 <img border="0" src="imagenes/script2.jpg" width="239" height="316"><br>
 * En la primer caja debemos poner el offset del inicio del bloque a reemplazar, 
-pero como ya est· ubicado el cursor no deberemos cambiarlo.<br>
-* Si marcamos el segundo botÛn redondo podemos indicarle a quÈ offset debe dejar 
+pero como ya est√° ubicado el cursor no deberemos cambiarlo.<br>
+* Si marcamos el segundo bot√≥n redondo podemos indicarle a qu√© offset debe dejar 
 de reemplazar texto, aunque generalmente no es necesario.<br>
 * Si activamos el primer checkbox podremos indicarle que si el script acaba 
-antes del offset que pusimos como final se llenar· el espacio vacÌo con $00's. 
-Si el despuÈs del bloque ves varios $00's no habr· problema si marcas esta 
-opciÛn, la verdad, no deberÌa hacer diferencia en la traducciÛn.<br>
+antes del offset que pusimos como final se llenar√° el espacio vac√≠o con $00's. 
+Si el despu√©s del bloque ves varios $00's no habr√° problema si marcas esta 
+opci√≥n, la verdad, no deber√≠a hacer diferencia en la traducci√≥n.<br>
 * El segundo checkbox hay que marcarlo si el script fue dumpeado en formato 
-Separated-Byte (eso que recomendÈ no usar si el script tiene DTE/MTE) o si fue 
-optimizado por Translhextion (mira m·s adelante para m·s detalles en 
-optimizaciÛn).</p>
+Separated-Byte (eso que recomend√© no usar si el script tiene DTE/MTE) o si fue 
+optimizado por Translhextion (mira m√°s adelante para m√°s detalles en 
+optimizaci√≥n).</p>
 
-<p>Pulsa OK con todos los par·metros e insertar· el script modificado, aconsejo 
-que mires el ˙ltimo bloque original de texto para asegurarte de que tu script 
-modificado no ocupa m·s que el original, si eso ocurre recomiendo que cierres el 
+<p>Pulsa OK con todos los par√°metros e insertar√° el script modificado, aconsejo 
+que mires el √∫ltimo bloque original de texto para asegurarte de que tu script 
+modificado no ocupa m√°s que el original, si eso ocurre recomiendo que cierres el 
 Translhextion (no guardes los cambios, ya que pueden ocasionar problemas con el 
 juego) y acortes un poco tu scripts para que entre.</p>
 
 <h3>A RECALCULAR PUNTEROS</h3>
 
-<p>Seguramente ya te habr·s dado cuenta de esto, hemos modificado el texto del 
-juego, cambiado de lugar cÛdigos de fin de bloque y entonces seguramente 
-tendremos miles de punteros que apuntan hacia donde no deberÌan, lo que 
+<p>Seguramente ya te habr√°s dado cuenta de esto, hemos modificado el texto del 
+juego, cambiado de lugar c√≥digos de fin de bloque y entonces seguramente 
+tendremos miles de punteros que apuntan hacia donde no deber√≠an, lo que 
 debemos hacer entonces es recalcular punteros, podemos hacerlo mediante el 
-mÈtodo explicado en la secciÛn de punteros, uno por uno, o podemos usar un 
-programa diseÒado para ello, que recalcula todos los punteros y sobre-escribe la 
-tabla de punteros seg˙n dÛnde inicie cada bloque en nuestro script, el programa 
-es el recalc (recomiendo m·s a˙n la versiÛn de Vegetal, VRecalc).</p>
-<p>El programa debe usarse desde lÌnea de comando, o puedes hacerte un batch o 
-acceso directo con los par·metros para facilitarte las cosas. Los par·metros 
+m√©todo explicado en la secci√≥n de punteros, uno por uno, o podemos usar un 
+programa dise√±ado para ello, que recalcula todos los punteros y sobre-escribe la 
+tabla de punteros seg√∫n d√≥nde inicie cada bloque en nuestro script, el programa 
+es el recalc (recomiendo m√°s a√∫n la versi√≥n de Vegetal, VRecalc).</p>
+<p>El programa debe usarse desde l√≠nea de comando, o puedes hacerte un batch o 
+acceso directo con los par√°metros para facilitarte las cosas. Los par√°metros 
 para el recalc son (los offsets van en hexadecimal):</p>
 <p>&gt; recalc [rom] [offset inicio bloque] [offset final bloque] [offset inicio 
-tabla de punteros] [cÛdigo de fin de bloque] &lt;puntero default&gt;</p>
-<p>Los par·metros para el VRecalc son algo diferentes (los offsets tambiÈn van 
+tabla de punteros] [c√≥digo de fin de bloque] &lt;puntero default&gt;</p>
+<p>Los par√°metros para el VRecalc son algo diferentes (los offsets tambi√©n van 
 en hex):</p>
 <p>&gt; Vrecalc [rom] [offset inicio bloque] [offset inicio tabla de punteros] [offset 
-fin tabla de punteros] [tamaÒo de punteros] [cÛdigo de fin de bloque]</p>
-<p>Creo que se entiende bastante bien quÈ es cada cosa, pero bueno, por las 
-dudas las explicarÈ:</p>
+fin tabla de punteros] [tama√±o de punteros] [c√≥digo de fin de bloque]</p>
+<p>Creo que se entiende bastante bien qu√© es cada cosa, pero bueno, por las 
+dudas las explicar√©:</p>
 <p>[rom] -&gt; Bastante obvio, el nombre de la ROM donde hay que recalcular los 
 punteros.<br>
 [offset inicio bloque] -&gt; El offset de la primera letra del bloque de texto 
 cuyos punteros quieres recalcular.<br>
-[offset final bloque] -&gt; El offset del ˙ltimo byte del bloque de texto cuyos 
+[offset final bloque] -&gt; El offset del √∫ltimo byte del bloque de texto cuyos 
 punteros hay que recalcular.<br>
 [offset inicio tabla de punteros] -&gt;  El offset del puntero del primer 
-di·logo del bloque modificado.<br>
-[offset fin tabla de punteros] -&gt; El ˙ltimo puntero de la tabla, lo usa solo el 
+di√°logo del bloque modificado.<br>
+[offset fin tabla de punteros] -&gt; El √∫ltimo puntero de la tabla, lo usa solo el 
 VRecalc.<br>
-[tamaÒo de punteros] -&gt; El tamaÒo de los punteros (normalmente 2, pero puede 
+[tama√±o de punteros] -&gt; El tama√±o de los punteros (normalmente 2, pero puede 
 cambiar). Solo lo usa el VRecalc.<br>
-[cÛdigo de fin de bloque] -&gt; Byte que indica fin de bloque.<br>
-&lt;puntero default&gt; -&gt; No es obligatorio. ⁄salo si quieres que recalcule de un 
+[c√≥digo de fin de bloque] -&gt; Byte que indica fin de bloque.<br>
+&lt;puntero default&gt; -&gt; No es obligatorio. √ösalo si quieres que recalcule de un 
 puntero en adelante.</p>
-<p>Eso es todo, ejecuta el programa y recalcular· los punteros, si todo ha ido 
-bien el texto aparecer· correctamente en el juego, sino fÌjate bien porque alg˙n 
-error has cometido (a mÌ me pasÛ algo asÌ en FF1 cuando salteÈ un cÛdigo de fin 
-de bloque y me aparecÌan casi todos di·logos equivocados =\ ). Toma un poco de 
-tiempo dominar los punteros, pero una vez que aprendes a utilizarlos se volver·n 
-una herramienta casi fundamental para la traducciÛn.</p>
-<h3>OPTIMIZACI”N DE SCRIPTS</h3>
+<p>Eso es todo, ejecuta el programa y recalcular√° los punteros, si todo ha ido 
+bien el texto aparecer√° correctamente en el juego, sino f√≠jate bien porque alg√∫n 
+error has cometido (a m√≠ me pas√≥ algo as√≠ en FF1 cuando salte√© un c√≥digo de fin 
+de bloque y me aparec√≠an casi todos di√°logos equivocados =\ ). Toma un poco de 
+tiempo dominar los punteros, pero una vez que aprendes a utilizarlos se volver√°n 
+una herramienta casi fundamental para la traducci√≥n.</p>
+<h3>OPTIMIZACI√ìN DE SCRIPTS</h3>
 
 <p class=MsoPlainText>Si el juego utiliza DTE/MTE no te preocupes, ya que 
-igualmente podr·s usar scripts y hacer que usen la tabla DTE/MTE para
-comprimir su contenido lo m·s que puedan, la diferencia est· que al dumpear el 
+igualmente podr√°s usar scripts y hacer que usen la tabla DTE/MTE para
+comprimir su contenido lo m√°s que puedan, la diferencia est√° que al dumpear el 
 script dejes desmarcada la casilla
-&quot;Separated-byte format&quot; del Translhextion, ya que esto hace que los cÛdigos DTE/MTE 
+&quot;Separated-byte format&quot; del Translhextion, ya que esto hace que los c√≥digos DTE/MTE 
 aparezcan entre llaves.</p>
 
-<p class=MsoPlainText>Por ejemplo: AsÌ es como queda un fragmento del primer 
+<p class=MsoPlainText>Por ejemplo: As√≠ es como queda un fragmento del primer 
 bloque de texto del Final Fantasy VI con &quot;Separated-Byte format&quot;.</p>
 
 <p class=MsoPlainText>&quot;VICKS: T<font color="#008000">{he</font><font color="#008000">}{re}{'s}{ t}{he}{ t}{ow}</font>n{...}<font color="#FF00FF">{16}{18}{12}{13}</font>WEDGE: 
@@ -157,40 +157,40 @@ a}{n }</font>Es<font color="#008000">{pe}</font>r'<font color="#008000">{s
 }{of}{ t}{he}</font> M<font color="#008000">{ag}</font>i{...}<font color="#FF00FF">{16}{18}{12}{00}</font>&quot;. 
 (89 bytes)</p>
 
-<p class=MsoPlainText>-El texto que resaltÈ con <font color="#008000">verde</font><font color="#00FF00"> </font>(como ya 
-habr·s notado) son los bytes de DTE.<br>
+<p class=MsoPlainText>-El texto que resalt√© con <font color="#008000">verde</font><font color="#00FF00"> </font>(como ya 
+habr√°s notado) son los bytes de DTE.<br>
 -Los bytes en <font color="#FF00FF">violeta</font> son caracteres especiales 
-del juego, que marquÈ con otro color para que no confundan con DTE/MTE, est·n aquÌ porque en esta parte del juego (justo despuÈs de la intro) no se puede 
-pulsar ning˙n botÛn, el texto avanza solo...</p>
+del juego, que marqu√© con otro color para que no confundan con DTE/MTE, est√°n aqu√≠ porque en esta parte del juego (justo despu√©s de la intro) no se puede 
+pulsar ning√∫n bot√≥n, el texto avanza solo...</p>
 
-<p class=MsoPlainText>Y aquÌ est· el mismo texto SIN &quot;Separated-Byte format&quot;.</p>
+<p class=MsoPlainText>Y aqu√≠ est√° el mismo texto SIN &quot;Separated-Byte format&quot;.</p>
 
 <p class=MsoPlainText>&quot;VICKS: T<font color="#008000">here's</font><font color="#008000"> the tow</font>n...<font color="#FF00FF">{16}{18}{12}{13}</font>WEDGE: 
 H<font color="#008000">ard</font><font color="#008000"> to bel</font>ie<font color="#008000">ve</font><font color="#008000"> an</font><font color="#00FF00"> </font>Es<font color="#008000">pe</font>r'<font color="#008000">s</font><font color="#008000"> 
 been found intact ther</font>e, 1000 ye<font color="#008000">ars</font><font color="#00FF00"> </font>af<font color="#008000">ter</font><font color="#008000"> the</font><font color="#00FF00"> </font>Wa<font color="#008000">r</font><font color="#008000"> of the</font> M<font color="#008000">ag</font>i...<font color="#FF00FF">{16}{18}{12}{00}</font>&quot;.</p>
 
-<p class=MsoPlainText>Como ver·s es mucho m·s f·cil de editar.</p>
+<p class=MsoPlainText>Como ver√°s es mucho m√°s f√°cil de editar.</p>
 
 <p class=MsoPlainText>Una vez que modifiques todo lo que quieras en el script, 
-ve en el Translhextion a la opciÛn Script -&gt; Optimize Script. Y elige el script 
-modificado, el programa har· una pasada por el script y comprimir· el texto 
-seg˙n DTE/MTE para aprovechar al m·ximo el espacio. Luego simplemente reinserta 
-el script &quot;re-comprimido&quot; asegur·ndote de que el ˙ltimo checkbox del di·logo 
-para insertar script est· activado. Y °Voila! °Tenemos texto traducido y 
+ve en el Translhextion a la opci√≥n Script -&gt; Optimize Script. Y elige el script 
+modificado, el programa har√° una pasada por el script y comprimir√° el texto 
+seg√∫n DTE/MTE para aprovechar al m√°ximo el espacio. Luego simplemente reinserta 
+el script &quot;re-comprimido&quot; asegur√°ndote de que el √∫ltimo checkbox del di√°logo 
+para insertar script est√° activado. Y ¬°Voila! ¬°Tenemos texto traducido y 
 comprimido!</p>
 
 <p class="MsoPlainText">CONSEJO: Si modificaste la tabla DTE/MTE para aprovechar 
-m·s la compresiÛn aseg˙rate de optimizar el script usando la tabla con las 
-modificaciones, esto se puede hacer mediante la opciÛn Script -&gt; Optimize script.</p>
-<h3>CONCLUSI”N</h4>
-<p>Esta fue una de las lecciones m·s 
+m√°s la compresi√≥n aseg√∫rate de optimizar el script usando la tabla con las 
+modificaciones, esto se puede hacer mediante la opci√≥n Script -&gt; Optimize script.</p>
+<h3>CONCLUSI√ìN</h4>
+<p>Esta fue una de las lecciones m√°s 
 largas ya que introduce varios temas nuevos, pero el traducir con scripts es un 
-gran progreso, ya que se pueden hacer mejores traducciones aprovechando m·s el 
+gran progreso, ya que se pueden hacer mejores traducciones aprovechando m√°s el 
 espacio.<br>
-Esta fue la ˙ltima lecciÛn del curso, puedes ver si quieres la siguiente 
-secciÛn para ver lo que puedes seguir aprendiendo sobre romhacking. Lo que 
-he enseÒado con estos documentos hasta ahora es, al menos en mi opiniÛn, todo lo 
-que se puede enseÒar con teorÌa, lo dem·s es pr·ctica y experiencia.</p>
+Esta fue la √∫ltima lecci√≥n del curso, puedes ver si quieres la siguiente 
+secci√≥n para ver lo que puedes seguir aprendiendo sobre romhacking. Lo que 
+he ense√±ado con estos documentos hasta ahora es, al menos en mi opini√≥n, todo lo 
+que se puede ense√±ar con teor√≠a, lo dem√°s es pr√°ctica y experiencia.</p>
 <center><a href="punteros.html">&lt;&lt; Anterior</a> - <a href="index.html">Indice</a> - <a href="final.html">Siguiente &gt;&gt;</a></center>
 
 </body>

@@ -1,19 +1,19 @@
-                   BIEVENID@S AL CURSO B¡SICO DE HACKS ASM POR DARKWIZARDX
+                   BIEVENID@S AL CURSO B√ÅSICO DE HACKS ASM POR DARKWIZARDX
                                  <drkwzrdx@hotmail.com>
 
-v1.0: [18/12/2004 15:59] Primera versiÛn.
+v1.0: [18/12/2004 15:59] Primera versi√≥n.
 v1.1: [31/01/2006 00:04] Quitadas varias cosas explicadas en otros documentos, arreglado
-                         el aspecto general de la guÌa. 
+                         el aspecto general de la gu√≠a. 
 
-En este curso aprenderemos cÛmo hacer algunos simples hacks, aunque por el momento solo
-ser·n hacks de NES (6502) aunque si consigues un buen debugger para otra consola 
-(snes, por ejemplo) podr·s hacerlos en esa consola tambiÈn, son cosas muy simples de
+En este curso aprenderemos c√≥mo hacer algunos simples hacks, aunque por el momento solo
+ser√°n hacks de NES (6502) aunque si consigues un buen debugger para otra consola 
+(snes, por ejemplo) podr√°s hacerlos en esa consola tambi√©n, son cosas muy simples de
 hacer, en poco tiempo puedes hacer que un juego sume vidas en lugar de restarlas o que
 empieces con 99.
 En este documento asumo que ya tienes un dominio decente de las operaciones sencillas
-(cargar registros, operaciones aritmÈticas, etc.), si no sabes de quÈ hablo recomiendo que
-leas mi GuÌa b·sica de ASM 6502 o alg˙n otro documento, que en internet sobran xD
-AsÌ que bueno, aclarado todo eso °empecemos! :)
+(cargar registros, operaciones aritm√©ticas, etc.), si no sabes de qu√© hablo recomiendo que
+leas mi Gu√≠a b√°sica de ASM 6502 o alg√∫n otro documento, que en internet sobran xD
+As√≠ que bueno, aclarado todo eso ¬°empecemos! :)
 
 INDICE:
    I) Requerimientos
@@ -26,12 +26,12 @@ I)                                   REQUERIMIENTOS
 Para hacer los hacks necesitaremos:
 
 Un buen emulador con Debugger y cheats. Hay dos alternativas recomendadas:
-FCEUXD <http://fceuxd.infinihost.net> VersiÛn extendida del Fceud, es pr·cticamente el
+FCEUXD <http://fceuxd.infinihost.net> Versi√≥n extendida del Fceud, es pr√°cticamente el
                                       mejor.
-NESTens Un emulador tambiÈn bastante viejo y conocido, es tambiÈn muy f·cil de usar.
+NESTens Un emulador tambi√©n bastante viejo y conocido, es tambi√©n muy f√°cil de usar.
 
 Editor hexadecimal:
-Translhextion Potente editor hexadecimal, flexible y r·pido.
+Translhextion Potente editor hexadecimal, flexible y r√°pido.
 
 Un documento de referencia -> http://www.zophar.net/tech/files/6502.txt
 
@@ -39,135 +39,135 @@ Y obviamente algunas ROMs de NES.
 
 II)                         PASOS GENERALES PARA HACER UN HACK
 
-Para el Fceuxd y el NESTens son pr·cticamente los mismos pasos, asÌ que pondrÈ el ejemplo
+Para el Fceuxd y el NESTens son pr√°cticamente los mismos pasos, as√≠ que pondr√© el ejemplo
 solo una vez para los dos programas.
 
 INSTRUCCIONES
 
-(Lo que sigue a continuaciÛn son los pasos para descubrir en quÈ posiciÛn de memoria se
-guarda el valor que queremos vigilar/modificar/lo que sea. Si ya sabes en quÈ direcciÛn
-de RAM est· el valor sobre el que quieres que act˙e el hack puedes saltearte esto, hay
-otras formas de encontrar estos valores pero con cheats es muy f·cil y lo recomiendo.
+(Lo que sigue a continuaci√≥n son los pasos para descubrir en qu√© posici√≥n de memoria se
+guarda el valor que queremos vigilar/modificar/lo que sea. Si ya sabes en qu√© direcci√≥n
+de RAM est√° el valor sobre el que quieres que act√∫e el hack puedes saltearte esto, hay
+otras formas de encontrar estos valores pero con cheats es muy f√°cil y lo recomiendo.
 
 1) Abre el programa.
 2) Carga la rom.
-3) Anota el n˙mero que quieres modificar (vidas, tiempo, etc...) y pausa el juego con F2 
-   (en FCEUXD), en NESTens no estoy seguro pero creo que tambiÈn es F2, sino prueba por
-   los men˙s :)
-4) VÈ a "Tools" y elige "Cheats"
+3) Anota el n√∫mero que quieres modificar (vidas, tiempo, etc...) y pausa el juego con F2 
+   (en FCEUXD), en NESTens no estoy seguro pero creo que tambi√©n es F2, sino prueba por
+   los men√∫s :)
+4) V√© a "Tools" y elige "Cheats"
 5) Pulsa en "Reset" para que las "possibilities" se pongan a marcar toda la RAM.
-6) En la caja a la derecha de "Known Value" escribe el n˙mero que anotaste. La lista de
-   posibiliadades disminuir·.
-7) Reanuda el juego, espera a que cambie el n˙mero (p.ej: si es el tiempo, espera 1
-   segundo o algo asÌ, si es vidas, pierde una), vÈ de nuevo a "Cheats" y en "Known Value"
+6) En la caja a la derecha de "Known Value" escribe el n√∫mero que anotaste. La lista de
+   posibiliadades disminuir√°.
+7) Reanuda el juego, espera a que cambie el n√∫mero (p.ej: si es el tiempo, espera 1
+   segundo o algo as√≠, si es vidas, pierde una), v√© de nuevo a "Cheats" y en "Known Value"
    escribe el nuevo valor.
-8) La lista se disminuir·, cuando tengas pocas posibilidades (3 o menos) seleccionala, y 
-   (si usas NESTens) haz doble clic y dale alg˙n valor. Luego vuelve al juego y el valor
-   habr· cambiado, (si usas FCEUXD) selecciÛnalo y en la caja de abajo a la izquierda dale
-   un valor, sigue probando hasta que tenga el efecto deseado. Si a˙n tienes muchas
-   direcciones en la caja "possibilities" juega un poco m·s y vuelve al paso 6 pero
+8) La lista se disminuir√°, cuando tengas pocas posibilidades (3 o menos) seleccionala, y 
+   (si usas NESTens) haz doble clic y dale alg√∫n valor. Luego vuelve al juego y el valor
+   habr√° cambiado, (si usas FCEUXD) selecci√≥nalo y en la caja de abajo a la izquierda dale
+   un valor, sigue probando hasta que tenga el efecto deseado. Si a√∫n tienes muchas
+   direcciones en la caja "possibilities" juega un poco m√°s y vuelve al paso 6 pero
    escribe el valor actual.
 
-DespuÈs de esto ya tenemos la direcciÛn de memoria donde se encuentra el valor que
+Despu√©s de esto ya tenemos la direcci√≥n de memoria donde se encuentra el valor que
 necesitamos para hacer el hack.
 
-9) Ahora con Èsto tenemos un cheat code, que si lo ponemos en otro emulador tendr· el
-   mismo efecto probablemente. Pero lo que queremos es la direcciÛn de memoria, anota la
-   direcciÛn que te apareciÛ en la caja "possibilities".
-10)VÈ a "Tools" y elige "Debugger".
+9) Ahora con √©sto tenemos un cheat code, que si lo ponemos en otro emulador tendr√° el
+   mismo efecto probablemente. Pero lo que queremos es la direcci√≥n de memoria, anota la
+   direcci√≥n que te apareci√≥ en la caja "possibilities".
+10)V√© a "Tools" y elige "Debugger".
 11)Una vez en el debugger, en la caja de arriba a la derecha (Breakpoints) pulsa sobre
    "Add" o "Add breakpoint".
-12)En la primera caja escribe la direcciÛn de memoria que anotaste antes, marca la casilla
-   "Write" y aseg˙rate que estÈ marcada la casilla de "CPU Mem". (Marcamos la casilla
-   Write porque buscamos en quÈ momento SE ESCRIBE en esa posiciÛn de memoria, si
-   quisiÈramos saber cu·ndo se lee marcamos "Read" (duh) :)
+12)En la primera caja escribe la direcci√≥n de memoria que anotaste antes, marca la casilla
+   "Write" y aseg√∫rate que est√© marcada la casilla de "CPU Mem". (Marcamos la casilla
+   Write porque buscamos en qu√© momento SE ESCRIBE en esa posici√≥n de memoria, si
+   quisi√©ramos saber cu√°ndo se lee marcamos "Read" (duh) :)
 13)Vuelve al juego sin cerrar el Debugger y juega hasta que el valor sea modificado
-   (gana una vida, espera que baje el tiempo, etc...) y el debugger saltar·, mostrando un
-   cÛdigo, que es el lugar del cÛdigo del juego donde se modificÛ el valor. Es conveniente
-   que veas los ejemplos de m·s adelante para que entiendas mejor esto.
-   Si el momento en el que se modificÛ el valor no es el que t˙ buscabas, elige "Run" para
+   (gana una vida, espera que baje el tiempo, etc...) y el debugger saltar√°, mostrando un
+   c√≥digo, que es el lugar del c√≥digo del juego donde se modific√≥ el valor. Es conveniente
+   que veas los ejemplos de m√°s adelante para que entiendas mejor esto.
+   Si el momento en el que se modific√≥ el valor no es el que t√∫ buscabas, elige "Run" para
    seguir con el juego.
-14)Seguramente ver·s algo como:
+14)Seguramente ver√°s algo como:
 INC <direccion de memoria> (si el valor aumenta)
-DEC <direcciÛn de memoria> (si el valor decrementa)
+DEC <direcci√≥n de memoria> (si el valor decrementa)
 ADC <valor inmediato>      (si el valor es sumado)
 SBC <valor inmediato>      (si es valor es restado)
-STA <direcciÛn de memoria> (si el valor es depositado desde el acumulador)
-15)En los dos primeros casos lo m·s f·cil es reemplazar el "opcode" de INC por DEC o
-   viceversa (mira el paso 17) (depende de quÈ querramos hacer).
-   Pero si dice STA es otra historia (pero sigue siendo f·cil).
-   Si es ADC o SBC simplemente cambia el operando por el n˙mero que t˙ quieras.
-16)Si dice STA debemos subir lÌneas de cÛdigo y buscar en quÈ instrucciÛn se carga el
+STA <direcci√≥n de memoria> (si el valor es depositado desde el acumulador)
+15)En los dos primeros casos lo m√°s f√°cil es reemplazar el "opcode" de INC por DEC o
+   viceversa (mira el paso 17) (depende de qu√© querramos hacer).
+   Pero si dice STA es otra historia (pero sigue siendo f√°cil).
+   Si es ADC o SBC simplemente cambia el operando por el n√∫mero que t√∫ quieras.
+16)Si dice STA debemos subir l√≠neas de c√≥digo y buscar en qu√© instrucci√≥n se carga el
    acumulador (LDA XXX) y luego deberemos modificar el opcode, que eso es lo que
    veremos ahora. 
 17)En el archivo que dije antes que descargaras (6502.txt) dice todos las instrucciones
-   con sus respectivos opcodes. Esa ser· tu principal guÌa de referencia. Ahora
-   encontramos la instrucciÛn y estamos seguros que es la que afecta el valor que nosotros
+   con sus respectivos opcodes. Esa ser√° tu principal gu√≠a de referencia. Ahora
+   encontramos la instrucci√≥n y estamos seguros que es la que afecta el valor que nosotros
    queremos, ahora debemos copiar unos cuantos opcodes seguidos al portapapeles. P.ej: 
-(Este es un fragmento de Flintstones de NES en el que el n˙mero de vidas est· en $0305)
+(Este es un fragmento de Flintstones de NES en el que el n√∫mero de vidas est√° en $0305)
 $8090:CE 05 03  DEC $0305 = #$01
 $8093:10 08     BPL $809D
 $8095:A9 05     LDA #$05
 $8097:8D 8A 03  STA $038A = #$B5
 $809A:20 41 82  JSR $8241
 
-Lo que tenemos que copiar aquÌ son los opcodes, para buscarlos con el editor hexadecimal,
-mientras m·s opcodes seguidos busquemos menos resultados encontrar·, por lo que lo que
-encuentre ser· probablemente el cÛdigo correcto.
-AsÌ que copiarÌamos: CE05031008A9058D8A03204182 -> Esto seguramente encontrar· solo 1
+Lo que tenemos que copiar aqu√≠ son los opcodes, para buscarlos con el editor hexadecimal,
+mientras m√°s opcodes seguidos busquemos menos resultados encontrar√°, por lo que lo que
+encuentre ser√° probablemente el c√≥digo correcto.
+As√≠ que copiar√≠amos: CE05031008A9058D8A03204182 -> Esto seguramente encontrar√° solo 1
 
-(Este mÈtodo siempre d· resultados, si no te funciona fÌjate que en el trace no haya
-alg˙n salto o branch ya que cambian el Program Counter [PC] y esto hace que no se siga
-ejecutando el cÛdigo siguiente, sino que salte a otra posiciÛn y por eso no se encuentran
+(Este m√©todo siempre d√° resultados, si no te funciona f√≠jate que en el trace no haya
+alg√∫n salto o branch ya que cambian el Program Counter [PC] y esto hace que no se siga
+ejecutando el c√≥digo siguiente, sino que salte a otra posici√≥n y por eso no se encuentran
 todos los opcodes seguidos)
 
-resultado, que ser· el correcto :)
-18)Abrimos el editor hexadecimal, abrimos la rom, y ponemos en la funciÛn "Search",
+resultado, que ser√° el correcto :)
+18)Abrimos el editor hexadecimal, abrimos la rom, y ponemos en la funci√≥n "Search",
    marcamos "HEX" para que busque valores hexadecimales y no texto, y pegamos todo lo que
-   hemos copiado, cuando estÈ en el cÛdigo que nosotros queremos basta modificar el valor
+   hemos copiado, cuando est√© en el c√≥digo que nosotros queremos basta modificar el valor
    hex del opcode viejo por el nuevo, el Translhextion lo hace simplemente moviendo el
-   cursor hasta que estÈs en el valor que quieres modificar, y escribe el nuevo, salva la
-   ROM y pruÈbala, la lista de los opcodes recuerda que la tienes en el 6502.txt.
-   Para este ejemplo veamos, tenemos una direcciÛn de 2 bytes, sin indexado, por lo que es
+   cursor hasta que est√©s en el valor que quieres modificar, y escribe el nuevo, salva la
+   ROM y pru√©bala, la lista de los opcodes recuerda que la tienes en el 6502.txt.
+   Para este ejemplo veamos, tenemos una direcci√≥n de 2 bytes, sin indexado, por lo que es
    Absolute, entonces reemplazamos el opcode CE (DEC Oper (Absolute)) por EE 
    (INC Oper (Absolute)). Y si todo ha salido bien, cuando probemos el juego y perdamos
-   una vida (en este ejemplo del flintstones) en lugar de restar una, sumar· una :D
+   una vida (en este ejemplo del flintstones) en lugar de restar una, sumar√° una :D
 
 +----------------+-----------------------+---------+---------+----------+
 | Addressing Mode| Assembly Language Form| OP CODE |No. Bytes|No. Cycles|
 +----------------+-----------------------+---------+---------+----------+
 |  Zero Page     |   INC Oper            |    E6   |    2    |   5      |
 |  Zero Page,X   |   INC Oper,X          |    F6   |    2    |   6      |
-|  Absolute      |   INC Oper            |    EE   |    3    |   6      | ExtraÌdo de
+|  Absolute      |   INC Oper            |    EE   |    3    |   6      | Extra√≠do de
 |  Absolute,X    |   INC Oper,X          |    FE   |    3    |   7      |  6502.txt
 
 Pero claro, como todo esto no se entiende porque no soy muy buen escritor...
-°Entonces vamos a la secciÛn de ejemplos! :D
+¬°Entonces vamos a la secci√≥n de ejemplos! :D
 
 III)                                  EJEMPLOS
 
 <<< EJEMPLO 1 >>>
 Ajem, veamos, tengo el Flintstones 1 "The rescue of Dinno & Hoppy" (:D) y quiero que cada
-vez que pierda, en lugar de restarme una vida, me la sume. AsÌ que veamos:
+vez que pierda, en lugar de restarme una vida, me la sume. As√≠ que veamos:
 
-Primero, hago el proceso para encontrar la direcciÛn de memoria (con lo de "Cheat") lo que
+Primero, hago el proceso para encontrar la direcci√≥n de memoria (con lo de "Cheat") lo que
 me da $0305.
-Abro el debug y agrego el breakpoint a la direcciÛn $0305 con el modo "Write" y "CPU Mem".
+Abro el debug y agrego el breakpoint a la direcci√≥n $0305 con el modo "Write" y "CPU Mem".
 Vuelvo al juego (sin cerrar el Debug!!) y cuando pierdo una vida salta el debug y me
-muestra el siguiente cÛdigo:
+muestra el siguiente c√≥digo:
 $8090:CE 05 03  DEC $0305
 $8093:10 08     BPL $809D
 $8095:A9 05     LDA #$05
 $8097:8D 8A 03  STA $038A
 $809A:20 41 82  JSR $8241
 
-Pero lo que en realidad nos interesa es solo la primera lÌnea, si buscas en el 6502.txt
-ver·s que CE es igual a DEC <operando> pero act˙a con direcciones de 16bits (2 bytes),
-Èste es el cÛdigo que disminuye por 1 el contador de vidas cada vez que perdemos una vida
-en el juego, va a haber que cambiarlo por INC (incrementar), asÌ que copiamos varios
+Pero lo que en realidad nos interesa es solo la primera l√≠nea, si buscas en el 6502.txt
+ver√°s que CE es igual a DEC <operando> pero act√∫a con direcciones de 16bits (2 bytes),
+√©ste es el c√≥digo que disminuye por 1 el contador de vidas cada vez que perdemos una vida
+en el juego, va a haber que cambiarlo por INC (incrementar), as√≠ que copiamos varios
 opcodes al portapapeles: CE05031008A905 , buscamos en el Translhextion y nos encuentra una
-sola coincidencia (que es lo m·s normal) miramos en el doc 6502.txt y vemos que el opcode
-de INC <operador> que act˙a con direcciones de 16bits es EE, asÌ que cambiamos el CE del
+sola coincidencia (que es lo m√°s normal) miramos en el doc 6502.txt y vemos que el opcode
+de INC <operador> que act√∫a con direcciones de 16bits es EE, as√≠ que cambiamos el CE del
 principio por EE. 
 
 Si abrimos la rom de nuevo y hacemos el mismo proceso en el debug veremos:
@@ -177,94 +177,94 @@ $8095:A9 05     LDA #$05
 $8097:8D 8A 03  STA $038A
 $809A:20 41 82  JSR $8241
 
-°Aj·! °Esto es lo que queremos! :)
+¬°Aj√°! ¬°Esto es lo que queremos! :)
 Grabamos los cambios y volvemos a probar la ROM.
-Y... °Magia! Cada vez que los enemigos nos dan una paliza o caemos en un pozo o similar,
-°Se nos suma una vida en lugar de restarse!
+Y... ¬°Magia! Cada vez que los enemigos nos dan una paliza o caemos en un pozo o similar,
+¬°Se nos suma una vida en lugar de restarse!
 
 <<< EJEMPLO 2 >>> 
 hmmmm... veamos.... Que tal... Front Line? Yeeeess! Si, si no has jugado Front Line corre
-urgente a cualquier comercio cercano y cÛmprate una infancia. Quiero hacer que empiece el
-juego con 99 vidas. AsÌ que veamos, hago el proceso para sacar la direcciÛn de memoria
-(mira que en este juego, como en tantos otros, son 4 vidas, solo que me cuenta el 0, asÌ
-que si no encuentras la direcciÛn que buscas prueba a contar el 0), me d· $0021.
+urgente a cualquier comercio cercano y c√≥mprate una infancia. Quiero hacer que empiece el
+juego con 99 vidas. As√≠ que veamos, hago el proceso para sacar la direcci√≥n de memoria
+(mira que en este juego, como en tantos otros, son 4 vidas, solo que me cuenta el 0, as√≠
+que si no encuentras la direcci√≥n que buscas prueba a contar el 0), me d√° $0021.
 Hago el BP, ahora RESETEO el juego, porque lo que yo quiero es EMPEZAR con 99 vidas, y
 todos (o casi todos) los juegos ponen esos valores cuando uno comienza a jugar
-(cuando elige "1P Start", "Start", etc. :) asÌ que reiniciamos el juego y elegimos
-"Start", el debugger saltar· con el siguiente cÛdigo.
+(cuando elige "1P Start", "Start", etc. :) as√≠ que reiniciamos el juego y elegimos
+"Start", el debugger saltar√° con el siguiente c√≥digo.
 $C05A:85 21     STA $21 = #$00
 
-Mwahahahaha, que f·cil, no? Bueno, pero aquÌ solo guarda el valor, debemos ver en quÈ
+Mwahahahaha, que f√°cil, no? Bueno, pero aqu√≠ solo guarda el valor, debemos ver en qu√©
 momento lo CARGA en A.
-Subimos unas lÌneas (en este caso solo ˙na) y tenÈmos Èsto:
+Subimos unas l√≠neas (en este caso solo √∫na) y ten√©mos √©sto:
 $C058:A9 04     LDA #$04
 $C05A:85 21     STA $21
 
-Mwahahaha, no podrÌa ser m·s f·cil, Èsta instrucciÛn se ejecuta solo una vez cada vez que
-iniciamos un juego, poniendo el acumulador a 4 y guard·ndolo en $0021, la posiciÛn de
-memoria reservada para el n˙mero de vidas.
-AsÌ que ahora vamos a ver algo m·s de cÛdigo para ver m·s opcodes para copiar y que la
-b˙squeda no dÈ tantos resultados.
+Mwahahaha, no podr√≠a ser m√°s f√°cil, √©sta instrucci√≥n se ejecuta solo una vez cada vez que
+iniciamos un juego, poniendo el acumulador a 4 y guard√°ndolo en $0021, la posici√≥n de
+memoria reservada para el n√∫mero de vidas.
+As√≠ que ahora vamos a ver algo m√°s de c√≥digo para ver m√°s opcodes para copiar y que la
+b√∫squeda no d√© tantos resultados.
 $C058:A9 04     LDA #$04
 $C05A:85 21     STA $21 = #$00
 $C05C:20 26 C1  JSR $C126
 
-AsÌ que copiamos: A90485212026C1 y lo buscamos con Translhextion (o HexWorkshop o
-el que tengas :P), cuando lo encontramos cambiamos simplemente el 04 que est· despuÈs del
+As√≠ que copiamos: A90485212026C1 y lo buscamos con Translhextion (o HexWorkshop o
+el que tengas :P), cuando lo encontramos cambiamos simplemente el 04 que est√° despu√©s del
 A9 (Opcode para LDA #$xx)y le ponemos 63 (99 dec = 63 hex).
 Guardamos, abrimos de nuevo el juego, y Voila! Tenemos 99 vidas. (Obviamente esto lo
-tienes que ver por t˙ mismo, ya que no he puesto ni pondrÈ im·genes :P)
-(Nota: en el juego se ver· un n˙mero con caracteres extraÒos ("glitched"), pero
+tienes que ver por t√∫ mismo, ya que no he puesto ni pondr√© im√°genes :P)
+(Nota: en el juego se ver√° un n√∫mero con caracteres extra√±os ("glitched"), pero
 son 99 vidas, solo que al parecer el contador llegaba a tope al llegar a 10 vidas o algo
-asÌ :P)
+as√≠ :P)
 
 <<< EJEMPLO 3 >>>
-Bueno, el ˙ltimo y listo XD... Hmmmmm... Digamos... Kung Fu! Mas bien "Yie Air Kung Fu",
+Bueno, el √∫ltimo y listo XD... Hmmmmm... Digamos... Kung Fu! Mas bien "Yie Air Kung Fu",
 por si no lo conoces es un viejo juego (duh) de peleas, tu manejas a "Lee" (Bruce Lee),
 contra 5 oponentes y un bonus, cuando vences a los 5  oponentes el juego cambia el color
 de fondo y vuelve a empezar :P. Pero eso no es a lo que voy, yo lo que quiero es hacer mi
-personaje _invencible_, quiero que no importa cu·nto me golpeen mi energÌa no baje, y como
-quiero que el juego sea EXTREMADAMENTE f·cil, quiero vencer a cualquier enemigo con un
-golpe ^_^. AsÌ que bueno, yo usarÈ la rom "Yie Air Kung Fu (v1.2).nes" (supongo que para
-las dem·s ser· lo mismo pero bueno).
+personaje _invencible_, quiero que no importa cu√°nto me golpeen mi energ√≠a no baje, y como
+quiero que el juego sea EXTREMADAMENTE f√°cil, quiero vencer a cualquier enemigo con un
+golpe ^_^. As√≠ que bueno, yo usar√© la rom "Yie Air Kung Fu (v1.2).nes" (supongo que para
+las dem√°s ser√° lo mismo pero bueno).
 
-Bien, mmmmm... que pasar·? por m·s que busco no encuentro la direcciÛn de memoria que
-contiene mi energÌa... Hago que baje en el juego, busco un valor menor pero no encuentra
-nada, si Èste es el caso, hay algunos juegos que en lugar de decrementar el contador de
-energÌa lo INCREMENTAN, y cuando llegue a cierto punto (se nos acabe la energia) perdamos.
-AsÌ que buscamos valores que vayan subiendo conforme nuestra energÌa en el juego baje, y
-tenemos lo siguiente: $00DB. Probemos, sabemos que conforme la energÌa del juego baja, el
-valor sube, asÌ que poniendo el valor a $00, tendrÌa que darnos m·xima energÌa, lo
-probamos... y asÌ es, encontramos el contador, ahora hacemos el BP y jugamos hasta que
-nos saquen energÌa de nuevo. El debugger saltar· con lo siguiente:
+Bien, mmmmm... que pasar√°? por m√°s que busco no encuentro la direcci√≥n de memoria que
+contiene mi energ√≠a... Hago que baje en el juego, busco un valor menor pero no encuentra
+nada, si √©ste es el caso, hay algunos juegos que en lugar de decrementar el contador de
+energ√≠a lo INCREMENTAN, y cuando llegue a cierto punto (se nos acabe la energia) perdamos.
+As√≠ que buscamos valores que vayan subiendo conforme nuestra energ√≠a en el juego baje, y
+tenemos lo siguiente: $00DB. Probemos, sabemos que conforme la energ√≠a del juego baja, el
+valor sube, as√≠ que poniendo el valor a $00, tendr√≠a que darnos m√°xima energ√≠a, lo
+probamos... y as√≠ es, encontramos el contador, ahora hacemos el BP y jugamos hasta que
+nos saquen energ√≠a de nuevo. El debugger saltar√° con lo siguiente:
 $DD92:E6 DB     INC $DB = #$01
 
 Weeee! Eso es lo que buscamos, pero no queremos poner que DECREMENTE nuestro contador, ya
-que sino quiz·s lo trate de decrementar de $00, cuando comenzamos una batalla y nos
-golpean, y entonces se ir· a $FF y perderemos, asÌ que podemos mejor hacer que ANULE el
-INC y que la energÌa quede como est·. Y como se hace eso? Muy simple, con la siempre ˙til
-instrucciÛn "NOP" (opcode EA) simplemente reemplaza el cÛdigo con "EA"s (tienes que
-modificar el cÛdigo Y los operandos, mucho ojo con eso!) y simplemente el procesador no
-har· acciÛn al momento de ejecutar estas instrucciones.
-AsÌ que copiemos algunos opcodes m·s para hacer la b˙squeda:
+que sino quiz√°s lo trate de decrementar de $00, cuando comenzamos una batalla y nos
+golpean, y entonces se ir√° a $FF y perderemos, as√≠ que podemos mejor hacer que ANULE el
+INC y que la energ√≠a quede como est√°. Y como se hace eso? Muy simple, con la siempre √∫til
+instrucci√≥n "NOP" (opcode EA) simplemente reemplaza el c√≥digo con "EA"s (tienes que
+modificar el c√≥digo Y los operandos, mucho ojo con eso!) y simplemente el procesador no
+har√° acci√≥n al momento de ejecutar estas instrucciones.
+As√≠ que copiemos algunos opcodes m√°s para hacer la b√∫squeda:
 $DD92:E6 DB     INC $DB = #$01
 $DD94:A5 DB     LDA $DB = #$01
 $DD96:C9 05     CMP #$05
 $DD98:D0 05     BNE $DD9F
 $DD9A:A9 86     LDA #$86
 
-Hmmmmm... 10, buen n˙mero ^^: busquemos con un editor hex el valor: E6DBA5DBC905D005A986.
-°Modificamos los dos primeros opcodes (E6 DB) por EA EA y listo! Probamos la ROM y °Magia!
-°Somos invulerables! ^^.
+Hmmmmm... 10, buen n√∫mero ^^: busquemos con un editor hex el valor: E6DBA5DBC905D005A986.
+¬°Modificamos los dos primeros opcodes (E6 DB) por EA EA y listo! Probamos la ROM y ¬°Magia!
+¬°Somos invulerables! ^^.
 
-Pero a˙n nos falta algo, queremos que un solo golpe nuestro derrote a cualquier enemigo,
-asÌ que veamos...
+Pero a√∫n nos falta algo, queremos que un solo golpe nuestro derrote a cualquier enemigo,
+as√≠ que veamos...
 
-Primero tenemos que sacar la direcciÛn de memoria de la energÌa del enemigo. Pero tambiÈn
-debemos saber por las dudas cu·l es el mÌnimo de energÌa del oponente, como en este juego
-se aumenta el contador de energÌa en lugar de decrementarse entonces vamos a buscar una
-rutina que incremente el valor y luego haga alguna comparaciÛn, veamos quÈ nos salta en
-el debugger cuando le quitamos energÌa al enemigo (el contador de energÌa est· en $00DC).
+Primero tenemos que sacar la direcci√≥n de memoria de la energ√≠a del enemigo. Pero tambi√©n
+debemos saber por las dudas cu√°l es el m√≠nimo de energ√≠a del oponente, como en este juego
+se aumenta el contador de energ√≠a en lugar de decrementarse entonces vamos a buscar una
+rutina que incremente el valor y luego haga alguna comparaci√≥n, veamos qu√© nos salta en
+el debugger cuando le quitamos energ√≠a al enemigo (el contador de energ√≠a est√° en $00DC).
 $DE19:E6 DC     INC $DC = #$07
 $DE1B:A5 DC     LDA $DC = #$07
 $DE1D:C9 09     CMP #$09
@@ -272,18 +272,18 @@ $DE1F:90 25     BCC $DE46
 $DE21:A9 09     LDA #$09
 $DE23:85 DC     STA $DC = #$07
 
-AquÌ vemos que incrementa el valor contenido en $DC (baja la energÌa del oponente), luego
-lo carga y lo compara con #$09 °Esto es lo que buscamos! Seguramente 9 golpes son los que
-hacen falta para vencer al enemigo. Si no es igual a 9 (es decir, a˙n no son suficientes
+Aqu√≠ vemos que incrementa el valor contenido en $DC (baja la energ√≠a del oponente), luego
+lo carga y lo compara con #$09 ¬°Esto es lo que buscamos! Seguramente 9 golpes son los que
+hacen falta para vencer al enemigo. Si no es igual a 9 (es decir, a√∫n no son suficientes
 golpes) sigue el juego normalmente, sino carga A con #$09 y lo guarda en $DC, haciendo
-que el oponente sea vencido... O sea que deberÌamos anular las instrucciones CMP y BCC
-(y si queremos tambiÈn las primeras dos), asÌ que copiamos los opcodes:
+que el oponente sea vencido... O sea que deber√≠amos anular las instrucciones CMP y BCC
+(y si queremos tambi√©n las primeras dos), as√≠ que copiamos los opcodes:
 E6DCA5DCC9099025A90985DC : lo buscamos en el editor Hex, y modificamos los bytes
 E6DCA5DCC9099025 por EAEAEAEAEAEAEAEAEAEA.
-(AquÌ en realidad tambiÈn anulÈ otras instrucciones que debido a nuestro cambio no hacÌan
-efecto, para ahorrar ciclos de reloj innecesarios (aunque no habrÌa hecho pr·cticamente
-ning˙n cambio aquÌ)).
-Luego de los cambios quedarÌa algo como:
+(Aqu√≠ en realidad tambi√©n anul√© otras instrucciones que debido a nuestro cambio no hac√≠an
+efecto, para ahorrar ciclos de reloj innecesarios (aunque no habr√≠a hecho pr√°cticamente
+ning√∫n cambio aqu√≠)).
+Luego de los cambios quedar√≠a algo como:
 NOP
 NOP
 NOP
@@ -295,28 +295,28 @@ NOP
 LDA #$09
 STA $DC
 
-Lo que guarda $09 en el contador de energÌa enemigo, y como son 9 golpes los necesarios
+Lo que guarda $09 en el contador de energ√≠a enemigo, y como son 9 golpes los necesarios
 para vencerlo, el contador llega a 9 y el enemigo es vencido tras una ardua batalla ^^
 
-Y bueno, ya son suficientes ejemplos, seguramente habr· errores en esta guÌa, si
-encuentras alguno(s), o simplemente no se entiende algo de la guÌa puedes enviarme un mail
+Y bueno, ya son suficientes ejemplos, seguramente habr√° errores en esta gu√≠a, si
+encuentras alguno(s), o simplemente no se entiende algo de la gu√≠a puedes enviarme un mail
 a drkwzrdx@hotmail.com ^^ 
 
 IV)                                         FIN
 
-ConclusiÛn:
+Conclusi√≥n:
 
-Pues bien, estas son herramientas muy poderosas y se puede modificar pr·cticamente todo un
-juego asÌ, puedes hacer hacks para hacer m·s f·ciles o difÌciles ciertos juegos y
-muchÌsimas cosas m·s, pero eso depende de tÌ y de quÈ tan bien hayas entendido todo lo
-explicado aquÌ :)
+Pues bien, estas son herramientas muy poderosas y se puede modificar pr√°cticamente todo un
+juego as√≠, puedes hacer hacks para hacer m√°s f√°ciles o dif√≠ciles ciertos juegos y
+much√≠simas cosas m√°s, pero eso depende de t√≠ y de qu√© tan bien hayas entendido todo lo
+explicado aqu√≠ :)
 
 Contacto:
 
-Si has encontrado alg˙n error en esta guÌa (Que es muy probable porque soy de equivocarme
-MUCHO :p) envÌame un mail a drkwzrdx@hotmail.com. 
+Si has encontrado alg√∫n error en esta gu√≠a (Que es muy probable porque soy de equivocarme
+MUCHO :p) env√≠ame un mail a drkwzrdx@hotmail.com. 
 A veces estoy en IRC (EsperNet con el nick DrkWzrdX) o IRC-Hispano (mismo nick).
-Si no me encuentras dÈjame un memo y me comunicarÈ contigo en cuando pueda.
+Si no me encuentras d√©jame un memo y me comunicar√© contigo en cuando pueda.
 
 DaRKWiZaRDX
 http://www.dwxtrad.cjb.net

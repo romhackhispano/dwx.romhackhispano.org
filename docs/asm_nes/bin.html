@@ -1,35 +1,35 @@
 <html>
 <head>
-<title>Curso de ASM 6502 [NES] - Numeraci&oacute;n binaria</title>
+<title>Curso de ASM 6502 [NES] - Numeraci√≥n binaria</title>
 
 <link href="estilo.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 <h1>CURSO de ASM 6502 [NES]</h1>
-<h2>NUMERACI&Oacute;N BINARIA</h2>
+<h2>NUMERACI√ìN BINARIA</h2>
 <p>Por <a href="mailto:drkwzrdx@hotmail.com">DaRKWiZaRDX</a></p>
 
 
-<p>En esta secciÛn nos adentraremos un poco en el sistema de numeraciÛn 
-utilizado por los aparatos electrÛnicos, el sistema binario. En realidad si eres mayor de 12 aÒos deberÌas saber el sistema binario, pero 
-por si acaso lo voy a explicar r·pidamente. Este sistema cuenta con sÛlo 2 
-n˙meros, 1 o 0, &quot;encendido&quot; o &quot;apagado&quot;, &quot;seteado&quot; o &quot;reseteado&quot;, etc. Con esos 
-n˙meros debes representar cualquier otro, el mÈtodo para pasar un n˙mero decimal 
+<p>En esta secci√≥n nos adentraremos un poco en el sistema de numeraci√≥n 
+utilizado por los aparatos electr√≥nicos, el sistema binario. En realidad si eres mayor de 12 a√±os deber√≠as saber el sistema binario, pero 
+por si acaso lo voy a explicar r√°pidamente. Este sistema cuenta con s√≥lo 2 
+n√∫meros, 1 o 0, &quot;encendido&quot; o &quot;apagado&quot;, &quot;seteado&quot; o &quot;reseteado&quot;, etc. Con esos 
+n√∫meros debes representar cualquier otro, el m√©todo para pasar un n√∫mero decimal 
 a binario es el siguiente:</p>
 
 
-<p>&quot;Divides el n˙mero por dos (guardando los restos separados) hasta que ya no 
+<p>&quot;Divides el n√∫mero por dos (guardando los restos separados) hasta que ya no 
 pueda ser dividido, entonces tomas el resultado final, y le juntas a la derecha 
-todos los restos del ˙ltimo al primero y asÌ se conforma el n˙mero.&quot; <br>
-...dicho asÌ es algo complicado, pero veamos un ejemplo para entenderlo bien.<br>
+todos los restos del √∫ltimo al primero y as√≠ se conforma el n√∫mero.&quot; <br>
+...dicho as√≠ es algo complicado, pero veamos un ejemplo para entenderlo bien.<br>
 <br>
-(En realidad las fÛrmulas que doy aquÌ abajo no es necesario hacerlas, ya que 
+(En realidad las f√≥rmulas que doy aqu√≠ abajo no es necesario hacerlas, ya que 
 puedes usar la calculadora de Windows en modo binario o alguna otra utilidad, 
-pero es algo ˙til para saberlo :P)<br>
+pero es algo √∫til para saberlo :P)<br>
 Supongamos que quiero pasar 215 a binario:<br>
-(AquÌ los n˙meros de resto los pongo entre parÈntesis debajo del resultado)<br>
+(Aqu√≠ los n√∫meros de resto los pongo entre par√©ntesis debajo del resultado)<br>
 <br>
-Entonces tendrÌa : <br>
+Entonces tendr√≠a : <br>
 <br>
 215 / 2 = 107 / 2 = 53 / 2 = 26 / 2 = 13 / 2 = 6 / 2 = 3 / 2 = 1 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -38,15 +38,15 @@ Entonces tendrÌa : <br>
 </p>
 <p>Ya tenemos todos los restos y el resultado final, ponemos primero el 
 resultado final, entonces tenemos: 1XXXXXXX, y si le agregamos todos los restos 
-en orden de derecha a izquierda tendremos 11010111, ese n˙mero es 215 en 
-decimal, øcÛmo comprobarlo? Muy simple, pas·ndolo de nuevo a decimal (por si no 
+en orden de derecha a izquierda tendremos 11010111, ese n√∫mero es 215 en 
+decimal, ¬øc√≥mo comprobarlo? Muy simple, pas√°ndolo de nuevo a decimal (por si no 
 me crees xD)<br>
 <br>
-Si queremos pasar un n˙mero binario a decimal tendremos que hacer la siguiente 
-operaciÛn:<br>
+Si queremos pasar un n√∫mero binario a decimal tendremos que hacer la siguiente 
+operaci√≥n:<br>
 &quot;Tomar cada uno de derecha a izquierda y multiplicarlos por 2 elevado a una 
 potencia que comienza en 0 y suma de a 1.&quot;<br>
-°°°°°°°EJEMPLO!!!!! xD<br>
+¬°¬°¬°¬°¬°¬°¬°EJEMPLO!!!!! xD<br>
 <br>
 &nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp; 
 0&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp; 1<br>
@@ -54,26 +54,26 @@ x 2^7&nbsp; 2^6&nbsp; 2^5&nbsp; 2^4&nbsp; 2^3&nbsp; 2^2&nbsp; 2^1&nbsp; 2^0<br>
 -----------------------------------------<br>
 &nbsp; 128&nbsp;&nbsp; 64&nbsp;&nbsp; 0&nbsp;&nbsp; 16&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 
 4&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp; 1 </p>
-<p>Espero que hayas entendido la cuenta, el 1 de m·s a la derecha multiplica por 
-2 elevado a 0, y como todo n˙mero elevado a 0 da un resultado de 1, la cuenta 
+<p>Espero que hayas entendido la cuenta, el 1 de m√°s a la derecha multiplica por 
+2 elevado a 0, y como todo n√∫mero elevado a 0 da un resultado de 1, la cuenta 
 final es 1 x 1 = 1. En el segundo 1 de derecha a izquierda se lo multiplica por 
-2^1. Y como 2 elevado a la 1 da un resultado de 2, la cuenta serÌa 1 x 2 = 2. Y 
-asÌ sucesivamente.<br>
+2^1. Y como 2 elevado a la 1 da un resultado de 2, la cuenta ser√≠a 1 x 2 = 2. Y 
+as√≠ sucesivamente.<br>
 <br>
-Y ahora sumamos todos los n˙meros que nos dio:<br>
+Y ahora sumamos todos los n√∫meros que nos dio:<br>
 <br>
 128 + 64 + 16 + 4 + 2 + 1 = 215<br>
 <br>
-°Voila! ^^ AhÌ tenemos el n˙mero, o podemos hacerlo de la manera f·cil, 
+¬°Voila! ^^ Ah√≠ tenemos el n√∫mero, o podemos hacerlo de la manera f√°cil, 
 escribimos 215 con la calculadora de Windows en modo decimal, y hacemos clic en 
-el botÛn para pasar a binario, °y ahÌ lo tenemos! ^^</p>
-<h2>Operaciones lÛgicas de binario</h2>
-<p>El acceso a informaciÛn a nivel de bit se usa principalmente para 
-comparaciones y poner flags de registros (lo veremos m·s adelante)</p>
-<p>OPERACI”N AND: (&amp;)<br>
+el bot√≥n para pasar a binario, ¬°y ah√≠ lo tenemos! ^^</p>
+<h2>Operaciones l√≥gicas de binario</h2>
+<p>El acceso a informaci√≥n a nivel de bit se usa principalmente para 
+comparaciones y poner flags de registros (lo veremos m√°s adelante)</p>
+<p>OPERACI√ìN AND: (&amp;)<br>
 <br>
 Consiste en comparar los bits de los operandos y comparar cuando 2 son 1 da 1 de 
-resultado, pero como yo soy muy malo para explicarlo con palabras pondrÈ un 
+resultado, pero como yo soy muy malo para explicarlo con palabras pondr√© un 
 ejemplo :)<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp; 0 1 1 0 0 1 1 1<br>
@@ -81,12 +81,12 @@ AND&nbsp; 0 1 0 1 1 1 0 1<br>
 ----------------------<br>
 &nbsp;&nbsp;&nbsp;&nbsp; 0 1 0 0 0 1 0 1<br>
 <br>
-Como ves sÛlo cuando los dos bits son 1 da de resultado 1.<br>
+Como ves s√≥lo cuando los dos bits son 1 da de resultado 1.<br>
 <br>
-OPERACI”N OR: (|)<br>
+OPERACI√ìN OR: (|)<br>
 <br>
 Consiste en comparar los bits de los operandos y comparar cuando alguno de los 2 
-es 1, entonces dar· 1 de resultado, pero por el mismo motivo pondrÈ otro ejemplo 
+es 1, entonces dar√° 1 de resultado, pero por el mismo motivo pondr√© otro ejemplo 
 :P<br>
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp; 0 1 1 0 0 1 0 1<br>
@@ -96,7 +96,7 @@ OR&nbsp;&nbsp; 0 1 0 1 0 1 0 1<br>
 <br>
 Como ves cuando alguno es 1 el resultado es 1.<br>
 <br>
-OPERACI”N XOR:<br>
+OPERACI√ìN XOR:<br>
 <br>
 Igual a un OR excepto que para que el resultado sea 1, solo 1 de los bits debe 
 ser positivo (1).<br>
@@ -106,9 +106,9 @@ XOR&nbsp; 0 1 0 1 1 0 0 1<br>
 ----------------------<br>
 &nbsp;&nbsp;&nbsp;&nbsp; 0 0 1 1 1 0 1 0<br>
 <br>
-SÛlo cuando un bit es 1, el resultado es 1 :)<br>
+S√≥lo cuando un bit es 1, el resultado es 1 :)<br>
 <br>
-øY quÈ resultado obtengo si hago un XOR entre dos n˙meros iguales?<br>
+¬øY qu√© resultado obtengo si hago un XOR entre dos n√∫meros iguales?<br>
 <br>
 ... El resultado es 0, simplemente:<br>
 <br>
@@ -116,14 +116,14 @@ Ej:&nbsp; 1 1 0 0 1 0 0 1<br>
 XOR&nbsp; 1 1 0 0 1 0 0 1<br>
 ----------------------<br>
 &nbsp;&nbsp;&nbsp;&nbsp; 0 0 0 0 0 0 0 0</p>
-<h3>N⁄MEROS NEGATIVOS</h3>
+<h3>N√öMEROS NEGATIVOS</h3>
 <p>Aunque con 8 bits (1 byte) se pueda llegar a un rango de 0-255 se usan 
-tambiÈn en bucles y otras cosas los n˙meros negativos, que se representan como 
-n˙meros m·s arriba del tope de los n˙meros positivos (128). Para hacerlo m·s 
-f·cil, si el MSB (Most significant bit), es decir, el bit de mayor peso (°el de 
-la izquierda! xD) es 1, entonces lo m·s probable es que se trate de un n˙mero 
-negativo (digo m·s probable porque 10000000 es $80 = +128), los n˙meros mayores 
-a $80 (128 decimal) son negativos mientras que todos los dem·s son positivos.<br>
+tambi√©n en bucles y otras cosas los n√∫meros negativos, que se representan como 
+n√∫meros m√°s arriba del tope de los n√∫meros positivos (128). Para hacerlo m√°s 
+f√°cil, si el MSB (Most significant bit), es decir, el bit de mayor peso (¬°el de 
+la izquierda! xD) es 1, entonces lo m√°s probable es que se trate de un n√∫mero 
+negativo (digo m√°s probable porque 10000000 es $80 = +128), los n√∫meros mayores 
+a $80 (128 decimal) son negativos mientras que todos los dem√°s son positivos.<br>
 <br>
 $01 -&gt; +1<br>
 $02 -&gt; +2<br>
@@ -141,14 +141,14 @@ $FF -&gt; -1<br>
 <br>
 Espero que se entienda, es realmente simple, igual la NES tiene un flag negativo 
 para<br>
-saber cu·ndo la ˙ltima operaciÛn dio resultado negativo, pero eso se ver· 
-despuÈs, en el<br>
+saber cu√°ndo la √∫ltima operaci√≥n dio resultado negativo, pero eso se ver√° 
+despu√©s, en el<br>
 registro P.</p>
-<p>Y asÌ concluye este capÌtulo xDDD. Fue f·cil, øno? Aunque, en este momento te preguntar·s quÈ tiene esto que ver con el ASM, lo veremos 
-dentro de muy poco, casi toda la comunicaciÛn con hardware se realiza a nivel de 
-bits. Y adem·s es asÌ como se verifican los flags de estado contenidos en el 
-registro P, que veremos en el prÛximo capÌtulo. °Hasta entonces!</p>
-<center><a href="index.html">Õndice</a> - <a href="regs.html">Siguiente &gt;&gt;</a></center>
+<p>Y as√≠ concluye este cap√≠tulo xDDD. Fue f√°cil, ¬øno? Aunque, en este momento te preguntar√°s qu√© tiene esto que ver con el ASM, lo veremos 
+dentro de muy poco, casi toda la comunicaci√≥n con hardware se realiza a nivel de 
+bits. Y adem√°s es as√≠ como se verifican los flags de estado contenidos en el 
+registro P, que veremos en el pr√≥ximo cap√≠tulo. ¬°Hasta entonces!</p>
+<center><a href="index.html">√çndice</a> - <a href="regs.html">Siguiente &gt;&gt;</a></center>
 
 </body>
 </html>

@@ -1,12 +1,12 @@
 LISTA COMPLETA DE OPCODES PARA 6502 (NES)
 
-La lista est· en Ûrden alfabÈtico para que sea m·s f·cil ubicar la instrucciÛn, si quieres
-buscar el opcode simplemente dale a buscar y ponlo, porque no pondrÈ ejemplos con los que
+La lista est√° en √≥rden alfab√©tico para que sea m√°s f√°cil ubicar la instrucci√≥n, si quieres
+buscar el opcode simplemente dale a buscar y ponlo, porque no pondr√© ejemplos con los que
 se pueda repetir el caracter hex :)
 
 FORMATO:
 <OPCODE> <SIGNIFICADO> {
-<instrucciÛn> <formas de direccionamiento> <opcode> [operando(s)]
+<instrucci√≥n> <formas de direccionamiento> <opcode> [operando(s)]
 }
 
 Leyenda de Modos de direccionamiento:
@@ -14,8 +14,8 @@ imm         Immediate (valor de 8bits)
 zp          Zero Page
 abs         Absolute
 A           Acumulador
-X           Õndice X
-Y           Õndice Y
+X           √çndice X
+Y           √çndice Y
 (zp), y     Zero Page Indirect Indexado c/Y
 (zp, x)     Zero Page Indexado c/X Indirect
 (zp)        Zero Page Indirect
@@ -25,8 +25,8 @@ abs, x      Absolute Indexado c/X
 abs, y      Absolute Indexado c/Y
 (abs)       Absolute Indirect
 (abs, x)    Absolute Indexado c/X Indirect
-rel         Relative, significa que no se usa una direcciÛn de memoria, sino que se d· un
-            operando y se suma ese operando a la direcciÛn actual + 1, y ese es el 
+rel         Relative, significa que no se usa una direcci√≥n de memoria, sino que se d√° un
+            operando y se suma ese operando a la direcci√≥n actual + 1, y ese es el 
             operando final.
 
 INSTRUCCIONES:
@@ -96,7 +96,7 @@ Opcodes:
 +----------------+-------------+
 
 ********************************************************************************
-* AND: AND Accumulator with Memory -> Hace un AND lÛgico entre A y el operando *
+* AND: AND Accumulator with Memory -> Hace un AND l√≥gico entre A y el operando *
 ********************************************************************************
 +----------------+-------------+
 | AND imm        | 29 xx       |
@@ -112,7 +112,7 @@ Opcodes:
 
 **********************************************************************************
 * ASL: Arithmetic Shift Left -> Pasa todos los bits un lugar a la izquierda      *
-*          (Puede usarse para multiplicar por 2 de una forma muy r·pida)         *
+*          (Puede usarse para multiplicar por 2 de una forma muy r√°pida)         *
 **********************************************************************************
 +----------------+-------------+
 | ASL A          | 0A          |
@@ -123,7 +123,7 @@ Opcodes:
 +----------------+-------------+
 
 ***************************************************************************************
-* BIT: BIT Test -> Hace un AND entre A y el operando, no modifica A pero sÌ los flags *
+* BIT: BIT Test -> Hace un AND entre A y el operando, no modifica A pero s√≠ los flags *
 ***************************************************************************************
 +----------------+-------------+
 | BIT imm        | 89 xx       |
@@ -134,7 +134,7 @@ Opcodes:
 +----------------+-------------+
 
 *****************************************************
-* BRK: Software BReaK -> Forza una interrupciÛn BRK *
+* BRK: Software BReaK -> Forza una interrupci√≥n BRK *
 *****************************************************
 +----------------+-------------+
 | BRK imm        | 00          |
@@ -227,7 +227,7 @@ Opcodes:
 +----------------+-------------+
 
 *****************************************************************************************
-* EOR: Exclusive OR Accumulator with Memory -> Hace un XOR lÛgico entre A y el operando *
+* EOR: Exclusive OR Accumulator with Memory -> Hace un XOR l√≥gico entre A y el operando *
 *****************************************************************************************
 +----------------+-------------+
 | EOR imm        | 49 xx       |
@@ -267,7 +267,7 @@ Opcodes:
 +----------------+-------------+
 
 **********************************************************
-* JMP: JuMP -> Salta a una posiciÛn para ejecutar cÛdigo *
+* JMP: JuMP -> Salta a una posici√≥n para ejecutar c√≥digo *
 **********************************************************
 +----------------+-------------+
 | JMP abs        | 4C xx xx    |
@@ -337,7 +337,7 @@ Opcodes:
 +----------------+-------------+
 
 ******************************************************************************
-* ORA: OR Accumulator with Memory -> Hace un OR lÛgico entre A y el operando *
+* ORA: OR Accumulator with Memory -> Hace un OR l√≥gico entre A y el operando *
 ******************************************************************************
 +----------------+-------------+
 | ORA imm        | 09 xx       |
@@ -359,7 +359,7 @@ Opcodes:
 +----------------+-------------+
 
 *******************************************************************************
-* PLA: Pull Accumulator -> Saca el ˙ltimo valor en la pila y lo deposita en A *
+* PLA: Pull Accumulator -> Saca el √∫ltimo valor en la pila y lo deposita en A *
 *******************************************************************************
 +----------------+-------------+
 | PLA            | 68          |
@@ -388,7 +388,7 @@ Opcodes:
 +----------------+-------------+
 
 ************************************************************
-* RTI: ReTurn from Interrupt -> Vuelve de una interrupciÛn *
+* RTI: ReTurn from Interrupt -> Vuelve de una interrupci√≥n *
 ************************************************************
 +----------------+-------------+
 | RTI            | 4D          |
@@ -469,9 +469,9 @@ Opcodes:
 
 ------------------------------------------------------------------------------------------
 
-ConclusiÛn:
+Conclusi√≥n:
 
-Bueno, Èstas son las instrucciones del 6502, espero que encuentres esta guÌa como una
+Bueno, √©stas son las instrucciones del 6502, espero que encuentres esta gu√≠a como una
 buena referencia :), cualquier error, correccion, comentario o lo que quieras
 puedes enviarlo a drkwzrdx@hotmail.com :)
 

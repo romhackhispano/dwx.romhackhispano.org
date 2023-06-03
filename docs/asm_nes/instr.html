@@ -6,24 +6,24 @@
 </head>
 <body>
 <h1>CURSO de ASM 6502 [NES]</h1>
-<h2>Instrucciones básicas</h2>
+<h2>Instrucciones bÃ¡sicas</h2>
 
 
 <p>Por DaRKWiZaRDX</p>
-<p>¡Hola! ^^ Aquí toy de nuevo xD... Ahora vamos a estudiar (aunque 
-probablemente no te hará falta estudiar, se aprenden solas xD) algunas de las instrucciones más importantes del 
-6502 (todas son importantes, pero estas las usarás más :P)</p>
-<h4>INSTRUCCIONES QUE ACTÚAN SOBRE EL ACUMULADOR</h4>
+<p>Â¡Hola! ^^ AquÃ­ toy de nuevo xD... Ahora vamos a estudiar (aunque 
+probablemente no te harÃ¡ falta estudiar, se aprenden solas xD) algunas de las instrucciones mÃ¡s importantes del 
+6502 (todas son importantes, pero estas las usarÃ¡s mÃ¡s :P)</p>
+<h4>INSTRUCCIONES QUE ACTÃšAN SOBRE EL ACUMULADOR</h4>
 <table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#FFFFFF" width="100%" id="AutoNumber1" height="287">
   <tr>
     <td width="107" height="13">
-    <h3>INSTRUCCIÓN</h3>
+    <h3>INSTRUCCIÃ“N</h3>
     </td>
     <td width="85" height="13">
     <h3>EJEMPLO</h3>
     </td>
     <td width="80%" height="13">
-    <h3>DESCRIPCIÓN</h3>
+    <h3>DESCRIPCIÃ“N</h3>
     </td>
   </tr>
   <tr>
@@ -31,8 +31,8 @@ probablemente no te hará falta estudiar, se aprenden solas xD) algunas de las in
     <td width="85" height="15">LDA #$14</td>
     <td width="80%" height="15">Carga el valor en el acumulador, si el valor 
     tiene un $ antes significa que se trata de un valor hexadecimal (casi siempre :P).<br>
-    Cuando hay un # (numeral) significa que estamos cargando un valor constante, si no está significa que estamos cargando el valor que está dentro de ese offset. <br>
-    En el ejemplo estamos cargando el valor $14, si no estuviera el # estaríamos cargando lo que haya dentro del offset $14 en memoria.</td>
+    Cuando hay un # (numeral) significa que estamos cargando un valor constante, si no estÃ¡ significa que estamos cargando el valor que estÃ¡ dentro de ese offset. <br>
+    En el ejemplo estamos cargando el valor $14, si no estuviera el # estarÃ­amos cargando lo que haya dentro del offset $14 en memoria.</td>
   </tr>
   <tr>
     <td width="107" height="15">STA</td>
@@ -43,99 +43,99 @@ probablemente no te hará falta estudiar, se aprenden solas xD) algunas de las in
     <td width="107" height="15">ASL</td>
     <td width="85" height="15">ASL A (*)</td>
     <td width="80%" height="15">Gira todos los bits de A una vez a la izquierda, 
-    y pone el bit más significativo (el que está más a la izquierda) en el flag 
-    de carry, y el bit menos significativo (el de más a la derecha) pasará a ser 
+    y pone el bit mÃ¡s significativo (el que estÃ¡ mÃ¡s a la izquierda) en el flag 
+    de carry, y el bit menos significativo (el de mÃ¡s a la derecha) pasarÃ¡ a ser 
     0. Esto es equivalente a multiplicar por 2</td>
   </tr>
   <tr>
     <td width="107" height="15">LSR</td>
     <td width="85" height="15">LSR A (*)</td>
     <td width="80%" height="15">Gira todos los bits de A una vez a la derecha, y 
-    pone el bit menos significativo (el que está más a la derecha) en el flag de 
-    carry, y el bit más significativo (el de más a la izquierda) pasará a ser 0. 
+    pone el bit menos significativo (el que estÃ¡ mÃ¡s a la derecha) en el flag de 
+    carry, y el bit mÃ¡s significativo (el de mÃ¡s a la izquierda) pasarÃ¡ a ser 0. 
     Esto es equivalente a dividir por 2</td>
   </tr>
   <tr>
     <td width="107" height="15">PHA</td>
     <td width="85" height="15">PHA</td>
-    <td width="80%" height="15">Mete A en la pila (mira la sección de la pila 
-    para más detalles).</td>
+    <td width="80%" height="15">Mete A en la pila (mira la secciÃ³n de la pila 
+    para mÃ¡s detalles).</td>
   </tr>
   <tr>
     <td width="107" height="15">PLA</td>
     <td width="85" height="15">PLA</td>
-    <td width="80%" height="15">Saca el último valor puesto en la pila y lo 
+    <td width="80%" height="15">Saca el Ãºltimo valor puesto en la pila y lo 
     coloca en A.</td>
   </tr>
   <tr>
     <td width="107" height="15">AND</td>
     <td width="85" height="15">AND #$80</td>
-    <td width="80%" height="15">Hace un AND lógico entre A y el operando.</td>
+    <td width="80%" height="15">Hace un AND lÃ³gico entre A y el operando.</td>
   </tr>
   <tr>
     <td width="107" height="15">ORA</td>
     <td width="85" height="15">ORA #$80</td>
-    <td width="80%" height="15">Hace un OR lógico entre A y el operando.</td>
+    <td width="80%" height="15">Hace un OR lÃ³gico entre A y el operando.</td>
   </tr>
   <tr>
     <td width="107" height="15">EOR</td>
     <td width="85" height="15">EOR #$80</td>
-    <td width="80%" height="15">Hace un XOR lógico entre A y el operando.</td>
+    <td width="80%" height="15">Hace un XOR lÃ³gico entre A y el operando.</td>
   </tr>
   <tr>
     <td width="107" height="15">ROR</td>
     <td width="85" height="15">ROR (*)</td>
-    <td width="80%" height="15">Similar a LSR, la única diferencia es que en 
-    lugar de poner el bit más significativo a 0 lo pone al valor del carry.</td>
+    <td width="80%" height="15">Similar a LSR, la Ãºnica diferencia es que en 
+    lugar de poner el bit mÃ¡s significativo a 0 lo pone al valor del carry.</td>
   </tr>
   <tr>
     <td width="107" height="15">ROL</td>
     <td width="85" height="15">ROL (*)</td>
-    <td width="80%" height="15">Similar a ASL, la única diferencia es que en 
+    <td width="80%" height="15">Similar a ASL, la Ãºnica diferencia es que en 
     lugar de poner el bit menos significativo a 0 lo pone a lo que haya en el 
     carry.</td>
   </tr>
   <tr>
     <td width="107" height="15">SBC</td>
     <td width="85" height="15">SBC #$15</td>
-    <td width="80%" height="15">Resta un valor del acumulador, según cómo 
-    resulte la resta se &quot;setearán&quot; o &quot;resetearán&quot; algunos flags del registro P. 
-    En la sección de branches y saltos veremos esto con más detalles.</td>
+    <td width="80%" height="15">Resta un valor del acumulador, segÃºn cÃ³mo 
+    resulte la resta se &quot;setearÃ¡n&quot; o &quot;resetearÃ¡n&quot; algunos flags del registro P. 
+    En la secciÃ³n de branches y saltos veremos esto con mÃ¡s detalles.</td>
   </tr>
   <tr>
     <td width="107" height="15">ADC</td>
     <td width="85" height="15">ADC #$15</td>
-    <td width="80%" height="15">Suma un valor al acumulador, según cómo resulte 
-    la suma se &quot;setearán&quot; o &quot;resetearán&quot; algunos flags del registro P. En la 
-    sección de branches y saltos veremos esto con más detalles.</td>
+    <td width="80%" height="15">Suma un valor al acumulador, segÃºn cÃ³mo resulte 
+    la suma se &quot;setearÃ¡n&quot; o &quot;resetearÃ¡n&quot; algunos flags del registro P. En la 
+    secciÃ³n de branches y saltos veremos esto con mÃ¡s detalles.</td>
   </tr>
 </table>
 <p>(*) Algunos ensambladores piden que especifiques A como operando. Por 
-ejemplo: LSR A (ya que LSR puede usarse sobre direcciones de memoria también, no 
-sólo sobre el acumulador) mientras que otros asumirán que un LSR sin operandos 
-actúa sobre A.</p>
-<h4>INSTRUCCIONES QUE ACTÚAN SOBRE Y y/o X</h4>
+ejemplo: LSR A (ya que LSR puede usarse sobre direcciones de memoria tambiÃ©n, no 
+sÃ³lo sobre el acumulador) mientras que otros asumirÃ¡n que un LSR sin operandos 
+actÃºa sobre A.</p>
+<h4>INSTRUCCIONES QUE ACTÃšAN SOBRE Y y/o X</h4>
 <table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#FFFFFF" width="100%" id="AutoNumber2">
   <tr>
     <td width="108">
-    <h3>INSTRUCCIÓN</h3>
+    <h3>INSTRUCCIÃ“N</h3>
     </td>
     <td width="76">
     <h3>EJEMPLO</h3>
     </td>
     <td width="81%">
-    <h3>DESCRIPCIÓN</h3>
+    <h3>DESCRIPCIÃ“N</h3>
     </td>
   </tr>
   <tr>
     <td width="108">LDX</td>
     <td width="76">LDX #$14</td>
-    <td width="81%">Como un LDA, pero actúa sobre X.</td>
+    <td width="81%">Como un LDA, pero actÃºa sobre X.</td>
   </tr>
   <tr>
     <td width="108">LDY</td>
     <td width="76">LDY #$14</td>
-    <td width="81%">Como un LDA, pero actúa sobre Y.</td>
+    <td width="81%">Como un LDA, pero actÃºa sobre Y.</td>
   </tr>
   <tr>
     <td width="108">STX</td>
@@ -174,13 +174,13 @@ actúa sobre A.</p>
 <table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#FFFFFF" width="100%" id="AutoNumber3">
   <tr>
     <td width="1">
-    <h3>INSTRUCCIÓN</h3>
+    <h3>INSTRUCCIÃ“N</h3>
     </td>
     <td width="1">
     <h3>EJEMPLO</h3>
     </td>
     <td width="122%">
-    <h3>DESCRIPCIÓN</h3>
+    <h3>DESCRIPCIÃ“N</h3>
     </td>
   </tr>
   <tr>
@@ -208,13 +208,13 @@ actúa sobre A.</p>
 <table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#FFFFFF" width="100%" id="AutoNumber4">
   <tr>
     <td width="1">
-    <h3>INSTRUCCIÓN</h3>
+    <h3>INSTRUCCIÃ“N</h3>
     </td>
     <td width="1">
     <h3>EJEMPLO</h3>
     </td>
     <td width="163%">
-    <h3>DESCRIPCIÓN</h3>
+    <h3>DESCRIPCIÃ“N</h3>
     </td>
   </tr>
   <tr>
@@ -232,12 +232,12 @@ actúa sobre A.</p>
   <tr>
     <td width="108">SEI</td>
     <td width="134">SEI</td>
-    <td width="75%">Pone el flag de interrupción a 1.</td>
+    <td width="75%">Pone el flag de interrupciÃ³n a 1.</td>
   </tr>
   <tr>
     <td width="108">CLI</td>
     <td width="134">CLI</td>
-    <td width="75%">Pone el flag de interrupción a 0.</td>
+    <td width="75%">Pone el flag de interrupciÃ³n a 0.</td>
   </tr>
   <tr>
     <td width="108">CLV</td>
@@ -247,10 +247,10 @@ actúa sobre A.</p>
   <tr>
     <td width="108">NOP</td>
     <td width="134">NOP</td>
-    <td width="75%">No hace nada ¬¬ Útil para anular rutinas.</td>
+    <td width="75%">No hace nada Â¬Â¬ Ãštil para anular rutinas.</td>
   </tr>
 </table>
-<p>Aclaro un poco el funcionamiento de SBC y ADC. La ecuación real que se hace 
+<p>Aclaro un poco el funcionamiento de SBC y ADC. La ecuaciÃ³n real que se hace 
 es:</p>
 <p>ADC -&gt; <span class="enfasis">A = A + operando + carry</span> (por eso hay que 
 poner el carry a 0 antes de hacer una suma).</p>
@@ -258,15 +258,15 @@ poner el carry a 0 antes de hacer una suma).</p>
 al poner el carry a 0 se nulifica el +1)</p>
 
 
-<p>¡Oops! Por ahí lei también que la operación del SBC es <span class="enfasis">
+<p>Â¡Oops! Por ahÃ­ lei tambiÃ©n que la operaciÃ³n del SBC es <span class="enfasis">
 A = A - operando - 1 + carry</span>, pero bueno, lo importante es que hay que 
 poner el carry a 1 para hacer una resta y ponerlo a 0 para hacer una suma.</p>
 
 
-<p>También están las instrucciones de control de flujo del programa, que nos 
-permitirán controlar qué código debe ejecutarse y qué no, pero esas las veremos 
-con más detalle en la sección de saltos y branches ^^. Pero por ahora seguiremos 
-con lo más básico, lo que nos lleva a la siguiente sección, la pila ^^.</p>
+<p>TambiÃ©n estÃ¡n las instrucciones de control de flujo del programa, que nos 
+permitirÃ¡n controlar quÃ© cÃ³digo debe ejecutarse y quÃ© no, pero esas las veremos 
+con mÃ¡s detalle en la secciÃ³n de saltos y branches ^^. Pero por ahora seguiremos 
+con lo mÃ¡s bÃ¡sico, lo que nos lleva a la siguiente secciÃ³n, la pila ^^.</p>
 <center><a href="regs.html">&lt;&lt; Anterior</a> - <a href="stack.html">Siguiente &gt;&gt;</a></center>
 
 

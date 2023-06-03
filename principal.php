@@ -32,7 +32,7 @@ include("modulos/secciones.php");
  include("modulos/pie_de_pagina.php");
 ?>
 
-</div>  <!-- Cierra divisioacute;n "contenido" -->
+</div>  <!-- Cierra división "contenido" -->
 
 </body>
 </html>

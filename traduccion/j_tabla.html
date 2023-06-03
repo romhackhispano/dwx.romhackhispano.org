@@ -1,34 +1,34 @@
 <html>
 <head>
-<title>GuÌa de traducciÛn de Roms por DaRKWiZaRDX</title>
+<title>Gu√≠a de traducci√≥n de Roms por DaRKWiZaRDX</title>
 </head>
 <link href="estilo.css" type=text/css rel=stylesheet>
 <body>
 
-<center><h1>GU&Iacute;A DE TRADUCCI&Oacute;N DE ROMS</h1></center>
+<center><h1>GU√çA DE TRADUCCI√ìN DE ROMS</h1></center>
 <p>Por <a href="mailto:drkwzrdx@hotmail.com">DaRKWiZaRDX</a> </p>
 <center><h2>MODIFICANDO JUEGOS CON TABLA</h2></center>
 
-<p>°Vamos que ya tenemos buenas bases! ^^ Ya modificamos un juego ASCII y es 
+<p>¬°Vamos que ya tenemos buenas bases! ^^ Ya modificamos un juego ASCII y es 
 hora de atacar la fortaleza enemiga de Mord... Err... Es decir, ahora atacaremos 
-los juegos con tabla, es decir, juegos que no utilizan la codificaciÛn ASCII que 
+los juegos con tabla, es decir, juegos que no utilizan la codificaci√≥n ASCII que 
 vimos en el ejemplo del Zelda.<br>
-Para poder modificar el texto de un juego que no est· en ASCII necesitaremos una 
-tabla de valores (o tabla de caracteres) que nos dir· que X valor significa X 
-caracter, y asÌ se facilita la traducciÛn a una codificaciÛn diferente desde el 
-ASCII que nuestros teclados utilizan -en DOS- xD. Primero harÈ una explicaciÛn 
-r·pida sobre quÈ son las tablas:</p>
+Para poder modificar el texto de un juego que no est√° en ASCII necesitaremos una 
+tabla de valores (o tabla de caracteres) que nos dir√° que X valor significa X 
+caracter, y as√≠ se facilita la traducci√≥n a una codificaci√≥n diferente desde el 
+ASCII que nuestros teclados utilizan -en DOS- xD. Primero har√© una explicaci√≥n 
+r√°pida sobre qu√© son las tablas:</p>
 <h3>LAS TABLAS</h3>
-<p>Las tablas son ficheros comunes de texto (solo que con extensiÛn .tbl) que 
-sirven para &quot;traducir&quot; de una codificaciÛn a ASCII para poder editar el texto 
-m·s f·cilmente, las tablas tienen un formato para indicar las equivalencias:</p>
+<p>Las tablas son ficheros comunes de texto (solo que con extensi√≥n .tbl) que 
+sirven para &quot;traducir&quot; de una codificaci√≥n a ASCII para poder editar el texto 
+m√°s f√°cilmente, las tablas tienen un formato para indicar las equivalencias:</p>
 <p>&lt;valor hex&gt;=&lt;letra&gt;<br>
 P.Ej: 01=A</p>
 <p>Entonces cuando abramos la ROM y elijamos la tabla (ya veremos como hacerlo 
-m·s adelante) en cada lugar donde aparezca el hex $01 en la ventana de texto nos 
-aparecer· 'A', por lo tanto, sabremos que el $02 ser· la 'B' y asÌ continuamente 
+m√°s adelante) en cada lugar donde aparezca el hex $01 en la ventana de texto nos 
+aparecer√° 'A', por lo tanto, sabremos que el $02 ser√° la 'B' y as√≠ continuamente 
 hasta que tengas todo el abecedario (alfabeto). Las tablas pueden almacenar 
-hasta 256 caracteres como puedes ver aquÌ:</p>
+hasta 256 caracteres como puedes ver aqu√≠:</p>
 <table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#00FF00" width="432" id="AutoNumber1" bordercolorlight="#FFFFFF" bordercolordark="#FFFFFF">
   <tr>
     <td width="11">&nbsp;</td>
@@ -356,16 +356,16 @@ hasta 256 caracteres como puedes ver aquÌ:</p>
 </table>
 <p>Bueno, ahora volvamos al Romhacking :D</p>
 <h3>COMPLETANDO LAS TABLAS</h3>
-<p>Para completar las tablas deberemos hacer una b˙squeda relativa, hay varios 
+<p>Para completar las tablas deberemos hacer una b√∫squeda relativa, hay varios 
 programas especializados (p.ej: SearchrX) pero en este caso usaremos la utilidad 
-de b˙squeda relativa del HEX-Calibur que adem·s de ser muy buena y r·pida 
+de b√∫squeda relativa del HEX-Calibur que adem√°s de ser muy buena y r√°pida 
 permite crear una tabla con los valores encontrados para ahorrarnos trabajo, en 
 este caso usaremos la rom del Pokemon silver de GBC:</p>
 <ol>
-  <li>Busca en el juego alg˙n texto y anÛtalo, en este caso usaremos &quot;You woke me 
+  <li>Busca en el juego alg√∫n texto y an√≥talo, en este caso usaremos &quot;You woke me 
   up!&quot;.</li>
-  <li>Crea un fichero de texto vacÌo, y gr·balo con extensiÛn .tbl (por simpleza 
-  aquÌ lo llamarÈ pksilver.tbl)</li>
+  <li>Crea un fichero de texto vac√≠o, y gr√°balo con extensi√≥n .tbl (por simpleza 
+  aqu√≠ lo llamar√© pksilver.tbl)</li>
   <li>Abre el HEX-Calibur.</li>
   <li>Escribe el nombre de la Rom en la primera caja, avanza de caja con el 
   Intro y en la segunda escribe el nombre de la tabla (en nuestro caso 
@@ -373,100 +373,100 @@ este caso usaremos la rom del Pokemon silver de GBC:</p>
   a esto:<br>
   <img border="0" src="imagenes/j_tabl5.gif" width="647" height="333"></li>
   <li>Pulsa enter hasta que entre al programa ya que las otras cajas no las 
-  usaremos, entonces te aparecer· el editor hex.</li>
-  <li>Pulsa F5 para entrar en modo de b˙squeda relativa y escribe lo que quieras 
+  usaremos, entonces te aparecer√° el editor hex.</li>
+  <li>Pulsa F5 para entrar en modo de b√∫squeda relativa y escribe lo que quieras 
   buscas, en nuestro caso &quot;You woke&quot;.</li>
-  <li>El programa mostrar· en un men˙ los lugares en que encontrÛ la frase y a 
-  la derecha un poco m·s de texto para saber si es el bloque de texto que 
-  buscamos, en este caso no se mostrar· texto ya que se encontrÛ una sola 
+  <li>El programa mostrar√° en un men√∫ los lugares en que encontr√≥ la frase y a 
+  la derecha un poco m√°s de texto para saber si es el bloque de texto que 
+  buscamos, en este caso no se mostrar√° texto ya que se encontr√≥ una sola 
   ocurrencia.<br>
   <img border="0" src="imagenes/j_tabl6.gif" width="648" height="337"></li>
-  <li>Pulsemos enter ya que es la ˙nica vez que se encuentra eso en la ROM, 
-  tambiÈn serÌa recomendable que anotes el offset (es decir, la direcciÛn que 
-  aparece a la izquierda) para saber luego donde se encontrÛ el texto. (1638765)</li>
+  <li>Pulsemos enter ya que es la √∫nica vez que se encuentra eso en la ROM, 
+  tambi√©n ser√≠a recomendable que anotes el offset (es decir, la direcci√≥n que 
+  aparece a la izquierda) para saber luego donde se encontr√≥ el texto. (1638765)</li>
   <li>El programa te pregunta si debe hacer una tabla, pulsa 'Y' para decirle 
-  que sÌ.</li>
-  <li>Te preguntar· si debe extender la tabla anterior (la que nosotros hicimos 
-  vacÌa), generalmente es mejor poner esto en 'Y' pero en nuestro caso no 
+  que s√≠.</li>
+  <li>Te preguntar√° si debe extender la tabla anterior (la que nosotros hicimos 
+  vac√≠a), generalmente es mejor poner esto en 'Y' pero en nuestro caso no 
   importa, dale a 'N' o a 'Y'.</li>
   <li>Pregunta si debe escribir en la primera o segunda tabla, como al principio 
   no elegimos ninguna segunda tabla dale al '1'.</li>
-  <li>Por ˙ltimo preguntar· si debe guardar los cambios a la tabla en el HD, 
+  <li>Por √∫ltimo preguntar√° si debe guardar los cambios a la tabla en el HD, 
   dile que Yes 'Y' XD.</li>
   <li>Ya tenemos nuestra tabla lista, saquemos este editor, ya que no lo 
   usaremos para modificar texto, pulsa la Q y ponle que 'Y' o 'N' cuando te 
   pregunta si quieres que guarde los cambios, ya que no importa, pues no hicimos 
-  ning˙n cambio a la ROM misma.</li>
+  ning√∫n cambio a la ROM misma.</li>
 </ol>
-<p>Ya tenemos la tabla con los caracteres b·sicos, cabe destacar que es mucho 
-m·s efectivo usar una frase en la que aparezcan may˙sculas y min˙sculas, porque 
-asÌ completamos los dos alfabetos de una vez.</p>
-<p>Ahora abramos la ROM en un editor, en este caso el ThingyV y cambiÈmosle algo 
+<p>Ya tenemos la tabla con los caracteres b√°sicos, cabe destacar que es mucho 
+m√°s efectivo usar una frase en la que aparezcan may√∫sculas y min√∫sculas, porque 
+as√≠ completamos los dos alfabetos de una vez.</p>
+<p>Ahora abramos la ROM en un editor, en este caso el ThingyV y cambi√©mosle algo 
 de texto</p>
 <ol>
   <li>Abre el ThingyV</li>
-  <li>Elige la ROM del men˙.</li>
-  <li>Elige la tabla del men˙.</li>
+  <li>Elige la ROM del men√∫.</li>
+  <li>Elige la tabla del men√∫.</li>
   <li>Cuando te pida una tabla secundaria pulsa ESC ya que nosotros no tenemos 
   una.</li>
-  <li>Cuando aparezca la ventana del editor, pulsa la J y elige &quot;PosiciÛn 
-  manual&quot; para saltar a una posiciÛn que nosotros queramos. Escribe 1638765 (el 
-  n˙mero que nos dio la b˙squeda relativa) y el programa saltar· a esa posiciÛn.<br>
-  Es recomendable que hagas un &quot;bookmark&quot; para llegar r·pido al texto, para 
-  hacerlo escribe en la tabla en una lÌnea vacÌa: (offset en hexadecimal +h) &lt;nombre del 
-  bookmark&gt;. Si no agregas la 'h' tras el offset ser· tratado como decimal.<br>
-  P.ej: En este caso, algo apropiado serÌa: &quot;(19016Dh) Elegir Hora&quot;, luego en el 
-  men˙ Bookmark o Jump de casi cualquier editor puedes saltar directamente a 
-  esta posiciÛn, varios programas pueden escribir bookmarks de forma m·s 
-  sencilla, pero por ahora estar· bien asÌ. Para pasar de decimal a hexadecimal 
-  usa la calculadora de Windows en modo cientÌfico, escribe el n˙mero en modo 
-  decimal y pulsa el botÛn radio (redondo) &quot;Hex&quot; para pasarlo a Hexadecimal.</li>
-  <li>Aparecer· algo asÌ:<br>
+  <li>Cuando aparezca la ventana del editor, pulsa la J y elige &quot;Posici√≥n 
+  manual&quot; para saltar a una posici√≥n que nosotros queramos. Escribe 1638765 (el 
+  n√∫mero que nos dio la b√∫squeda relativa) y el programa saltar√° a esa posici√≥n.<br>
+  Es recomendable que hagas un &quot;bookmark&quot; para llegar r√°pido al texto, para 
+  hacerlo escribe en la tabla en una l√≠nea vac√≠a: (offset en hexadecimal +h) &lt;nombre del 
+  bookmark&gt;. Si no agregas la 'h' tras el offset ser√° tratado como decimal.<br>
+  P.ej: En este caso, algo apropiado ser√≠a: &quot;(19016Dh) Elegir Hora&quot;, luego en el 
+  men√∫ Bookmark o Jump de casi cualquier editor puedes saltar directamente a 
+  esta posici√≥n, varios programas pueden escribir bookmarks de forma m√°s 
+  sencilla, pero por ahora estar√° bien as√≠. Para pasar de decimal a hexadecimal 
+  usa la calculadora de Windows en modo cient√≠fico, escribe el n√∫mero en modo 
+  decimal y pulsa el bot√≥n radio (redondo) &quot;Hex&quot; para pasarlo a Hexadecimal.</li>
+  <li>Aparecer√° algo as√≠:<br>
   <img border="0" src="imagenes/j_tabl8.gif" width="652" height="338"><br>
-  øQuÈ son todos esos '#'s? Son los caracteres que no tienen equivalente en la 
-  tabla, asÌ que aparecer·n repesentados de esa forma, øY cÛmo los quitamos? 
-  Poniendo en la tabla cual es su equivalencia, øY cÛmo hacemos eso? Mirando en 
-  el juego, por ejemplo, entre &quot;You&quot; y &quot;woke&quot; øQuÈ hay? Un espacio, entonces 
+  ¬øQu√© son todos esos '#'s? Son los caracteres que no tienen equivalente en la 
+  tabla, as√≠ que aparecer√°n repesentados de esa forma, ¬øY c√≥mo los quitamos? 
+  Poniendo en la tabla cual es su equivalencia, ¬øY c√≥mo hacemos eso? Mirando en 
+  el juego, por ejemplo, entre &quot;You&quot; y &quot;woke&quot; ¬øQu√© hay? Un espacio, entonces 
   miramos el valor, $7F, y en la tabla ponemos:<br>
   7F= <br>
-  (hay un espacio despuÈs del = ). DespuÈs&nbsp; de &quot;up&quot; hay un signo de 
-  exclamaciÛn, miramos el valor, $E7 y agregamos a la tabla:<br>
+  (hay un espacio despu√©s del = ). Despu√©s&nbsp; de &quot;up&quot; hay un signo de 
+  exclamaci√≥n, miramos el valor, $E7 y agregamos a la tabla:<br>
   E7=!<br>
-  Y asÌ deberemos seguir hasta que tengamos en la tabla suficientes caracteres 
-  para poder traducir de una forma mas o menos decente, aquÌ te facilitarÈ unos 
+  Y as√≠ deberemos seguir hasta que tengamos en la tabla suficientes caracteres 
+  para poder traducir de una forma mas o menos decente, aqu√≠ te facilitar√© unos 
   cuantos hex con sus equivalencias en ASCII:<br>
-  54=POKÈ<br>
+  54=POK√©<br>
   75=...<br>
   D4='s<br>
   E6=?<br>
   Agrega eso a la tabla y ahora abre la ROM con el ThingyV.</li>
-  <li>Ahora ver·s el texto algo distinto:<br>
+  <li>Ahora ver√°s el texto algo distinto:<br>
   <img border="0" src="imagenes/j_tabl9.gif" width="648" height="335"><br>
-  øNotas que algunas letras y caracteres aparecen en diferentes colores? Es que 
-  se tratan de DTEs/MTEs, es decir, son m·s de una letra/caracter que se usa con 
+  ¬øNotas que algunas letras y caracteres aparecen en diferentes colores? Es que 
+  se tratan de DTEs/MTEs, es decir, son m√°s de una letra/caracter que se usa con 
   un solo byte hex, sirven para ahorrar espacio en la rom, pero por ahora no 
-  profundizaremos mucho en los DTE/MTE, eso lo haremos en su secciÛn. TambiÈn 
-  notar·s que algunos hex ($4F, $00 y $51 para ser m·s exactos) no los he puesto 
-  en la tabla, es que son cÛdigos de control, que indican cuando hay que bajar 
-  una lÌnea o pulsar un botÛn para cambiar de cuadro, por ahora tampoco los 
-  tocaremos, ya que son la siguiente secciÛn de la guÌa.</li>
-  <li>Vamos a editar texto, sit˙ate en la 'Z' (la may˙scula, es decir, la 
-  primera) y pulsa la barra espaciadora, ahora muÈvete hasta el '!' despuÈs de 
-  &quot;up&quot; y vuelve a pulsar la barra espaciadora y te aparecer· una pantalla en la 
+  profundizaremos mucho en los DTE/MTE, eso lo haremos en su secci√≥n. Tambi√©n 
+  notar√°s que algunos hex ($4F, $00 y $51 para ser m√°s exactos) no los he puesto 
+  en la tabla, es que son c√≥digos de control, que indican cuando hay que bajar 
+  una l√≠nea o pulsar un bot√≥n para cambiar de cuadro, por ahora tampoco los 
+  tocaremos, ya que son la siguiente secci√≥n de la gu√≠a.</li>
+  <li>Vamos a editar texto, sit√∫ate en la 'Z' (la may√∫scula, es decir, la 
+  primera) y pulsa la barra espaciadora, ahora mu√©vete hasta el '!' despu√©s de 
+  &quot;up&quot; y vuelve a pulsar la barra espaciadora y te aparecer√° una pantalla en la 
   que debes poner el texto modificado, escribe algo como &quot;Zzz... Uh? Que...?&quot; &lt;- 
-  Eso te ocupar· exactamente el mismo espacio ;) y pulsa enter para aceptar y 
-  volver al editor y ver·s que el cambio est· hecho en la ROM, ya que estamos 
-  cerca cambia tambiÈn &quot;You woke me up&quot; por &quot;Me despertaste!&quot;. Quiz·s</li>
+  Eso te ocupar√° exactamente el mismo espacio ;) y pulsa enter para aceptar y 
+  volver al editor y ver√°s que el cambio est√° hecho en la ROM, ya que estamos 
+  cerca cambia tambi√©n &quot;You woke me up&quot; por &quot;Me despertaste!&quot;. Quiz√°s</li>
   <li>Pulsa la 'Q' y luego la 'S' para guardar los cambios y salir del ThingyV.</li>
   <li>Abre la Rom con cualquier emulador y mira la diferencia:<br>
   <img border="0" src="imagenes/j_tabl10.gif" width="324" height="293">
   <img border="0" src="imagenes/j_tabl11.gif" width="324" height="293"><br>
-  °MisiÛn cumplida! ^^</li>
+  ¬°Misi√≥n cumplida! ^^</li>
 </ol>
-<p>Pero, despuÈs de esta secciÛn, aunque logramos nuestro objetivo, quedaron 
-varios cabos sueltos, como los cÛdigos de control, los DTE/MTE, asÌ que habr· 
+<p>Pero, despu√©s de esta secci√≥n, aunque logramos nuestro objetivo, quedaron 
+varios cabos sueltos, como los c√≥digos de control, los DTE/MTE, as√≠ que habr√° 
 que seguir para poder entenderlos y utilizarlos a nuestro favor para hacer una 
-traducciÛn m·s f·cil (por el espacio del que dispones) y con mejor calidad (por 
+traducci√≥n m√°s f√°cil (por el espacio del que dispones) y con mejor calidad (por 
 el modo en que usas ese espacio).</p>
 <center><a href="j_ascii.html">&lt;&lt; Anterior</a> - <a href="index.html">Indice</a> - <a href="controlc.html">Siguiente &gt;&gt;</a></center>
 

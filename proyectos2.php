@@ -55,7 +55,7 @@ include("modulos/secciones.php");
 
 			HARVEST MOON (GB) [DETENIDO]<br />
             <hr />
-            <center><a href="docs/aplica_ips/aplicaips.html" target="_blank">&iquest;No sabes c&oacute;mo aplicar un parche? Pulsa aqu&iacute;</a></center>
+            <center><a href="docs/aplica_ips/aplicaips.html" target="_blank">¿No sabes cómo aplicar un parche? Pulsa aquí</a></center>
 
 
 
@@ -64,7 +64,7 @@ include("modulos/secciones.php");
 include("modulos/pie_de_pagina.php");
 ?>
 
-</div>  <!-- Cierra divisi�n "contenido" -->
+</div>  <!-- Cierra división "contenido" -->
 
 </body>
 </html>

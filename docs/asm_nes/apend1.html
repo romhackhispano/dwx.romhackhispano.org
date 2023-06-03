@@ -6,106 +6,106 @@
 </head>
 <body>
 <h1>CURSO de ASM 6502 [NES]</h1>
-<h2>Ap&eacute;ndice I - Encontrar una rutina de texto usando FCEUXD</h2>
+<h2>Ap√©ndice I - Encontrar una rutina de texto usando FCEUXD</h2>
 
 
 <p>Por <a href="mailto:drkwzrdx@hotmail.com">DaRKWiZaRDX</a></p>
 
 
-<p><span class="adver">IMPORTANTE: Esta es sÛlo UNA de las tantas formas de 
-encontrar una rutina de texto, quiz·s este mÈtodo no sea el mejor y no te sirva 
-para el juego que intentas traducir, si es asÌ lo lamento, pregunta en alg˙n 
+<p><span class="adver">IMPORTANTE: Esta es s√≥lo UNA de las tantas formas de 
+encontrar una rutina de texto, quiz√°s este m√©todo no sea el mejor y no te sirva 
+para el juego que intentas traducir, si es as√≠ lo lamento, pregunta en alg√∫n 
 foro si alguien puede ayudarte, pero por favor no quiero mails de &quot;no pude 
 encontrar la rutina&quot;.</span></p>
 
 
-<p>°Hola! En este documento explicarÈ cÛmo encontrar la rutina encargada de 
+<p>¬°Hola! En este documento explicar√© c√≥mo encontrar la rutina encargada de 
 poner el texto en pantalla en una ROM de NES, utilizando el emulador/debugger 
-FCEUXD (o mejor a˙n, FCEUXD SP), usarÈ como ejemplo la ROM &quot;Final Fantasy (U)&quot;. 
-Durante la explicaciÛn utilizarÈ el emulador FCEUXD, pero te recomiendo usar 
-FCEUXD SP (en este caso es mejor), m·s adelante ver·s por quÈ. Cabe destacar que 
-esta ser· la rutina de texto de UN juego en particular, y que probablemente 
-nunca veas una rutina que sea exactamente igual a esta (tal vez en alg˙n otro 
-juego de Squaresoft, pero quiÈn sabe), por lo que queda claro que esta no es la 
-rutina universal, asÌ como el mÈtodo para hallarla tampoco es infalible, si bien 
-me ha servido siempre que lo intentÈ. Final Fantasy 1 utiliza DTE y cÛdigos de 
-control, pero eso lo veremos en la rutina. Veamos cÛmo la encontramos.</p>
+FCEUXD (o mejor a√∫n, FCEUXD SP), usar√© como ejemplo la ROM &quot;Final Fantasy (U)&quot;. 
+Durante la explicaci√≥n utilizar√© el emulador FCEUXD, pero te recomiendo usar 
+FCEUXD SP (en este caso es mejor), m√°s adelante ver√°s por qu√©. Cabe destacar que 
+esta ser√° la rutina de texto de UN juego en particular, y que probablemente 
+nunca veas una rutina que sea exactamente igual a esta (tal vez en alg√∫n otro 
+juego de Squaresoft, pero qui√©n sabe), por lo que queda claro que esta no es la 
+rutina universal, as√≠ como el m√©todo para hallarla tampoco es infalible, si bien 
+me ha servido siempre que lo intent√©. Final Fantasy 1 utiliza DTE y c√≥digos de 
+control, pero eso lo veremos en la rutina. Veamos c√≥mo la encontramos.</p>
 <p>Como lo que buscamos es la rutina que pone el texto en pantalla lo que 
-deberÌamos hacer es un breakpoint a la memoria de video, øque quÈ es un 
-breakpoint? Es muy simple, es un comando que tienen la mayorÌa de los debuggers 
-(depuradores xD), que le permite al usuario especificarle una posiciÛn de 
-memoria, y en cuanto esa posiciÛn de memoria sea escrita/leÌda/ejecutada (en 
-caso que sea cÛdigo) detiene entonces la emulaciÛn para que el usuario pueda ver 
-quÈ es lo que lee/escribe en esa posiciÛn.</p>
+deber√≠amos hacer es un breakpoint a la memoria de video, ¬øque qu√© es un 
+breakpoint? Es muy simple, es un comando que tienen la mayor√≠a de los debuggers 
+(depuradores xD), que le permite al usuario especificarle una posici√≥n de 
+memoria, y en cuanto esa posici√≥n de memoria sea escrita/le√≠da/ejecutada (en 
+caso que sea c√≥digo) detiene entonces la emulaci√≥n para que el usuario pueda ver 
+qu√© es lo que lee/escribe en esa posici√≥n.</p>
 <p>Primero abriremos la ROM de Final Fantasy y comenzaremos la partida, mientras 
-est·s en un pueblo y pulsas el botÛn A (el botÛn de acciÛn, en este juego) 
-cuando no tengas nada ni nadie delante te aparecer· el siguiente mensaje:</p>
+est√°s en un pueblo y pulsas el bot√≥n A (el bot√≥n de acci√≥n, en este juego) 
+cuando no tengas nada ni nadie delante te aparecer√° el siguiente mensaje:</p>
 <p><img border="0" src="apend11.jpg" width="332" height="306"></p>
 <p>Buscaremos el momento en que se pasa ese texto a la pantalla (a la memoria de 
-video, m·s bien :P)</p>
+video, m√°s bien :P)</p>
 <p>Para eso nos valdremos de los visores de PPU RAM, que pueden utilizarse desde 
-el men˙ &quot;Tools&quot; -&gt; &quot;PPU Viewer&quot; / &quot;Name table viewer&quot;.</p>
+el men√∫ &quot;Tools&quot; -&gt; &quot;PPU Viewer&quot; / &quot;Name table viewer&quot;.</p>
 <p>El PPU Viewer nos muestra todos los tiles que hay cargados en memoria (a esta 
 zona se denomina &quot;Pattern table&quot;) en este momento y de los cuales se puede valer 
 el juego para dibujar la pantalla, si pausamos el juego (usando la tecla F2) y 
 abrimos el PPU Viewer veremos todos los tiles que conforman la pantalla, a menos 
 que el juego haya sido programado por extraterrestes. xD</p>
-<p>El Name Table Viewer nos muestra cÛmo est·n organizados los tiles (que vimos 
+<p>El Name Table Viewer nos muestra c√≥mo est√°n organizados los tiles (que vimos 
 con el PPU Viewer) en el &quot;TileMap&quot; para formar la pantalla que ve el usuario. Si 
-nos ponemos sobre un tile en particular, nos aparecer· en el cuadro &quot;Properties&quot; 
-(abajo a la derecha) el &quot;Tile ID&quot;, que es el n˙mero de ese tile en cuestiÛn en 
-la Pattern Table (lo que vimos con el PPU Viewer), y, m·s importante para 
-nuestros propÛsitos, la &quot;PPU Address&quot;, que es la direcciÛn de memoria donde se 
-guardÛ el n˙mero de tile.</p>
+nos ponemos sobre un tile en particular, nos aparecer√° en el cuadro &quot;Properties&quot; 
+(abajo a la derecha) el &quot;Tile ID&quot;, que es el n√∫mero de ese tile en cuesti√≥n en 
+la Pattern Table (lo que vimos con el PPU Viewer), y, m√°s importante para 
+nuestros prop√≥sitos, la &quot;PPU Address&quot;, que es la direcci√≥n de memoria donde se 
+guard√≥ el n√∫mero de tile.</p>
 <p>En este juego al usar el Name Table Viewer veremos toda la pantalla mezclada, 
-esto es asÌ porque el juego usa scrolling (no hace falta que lo entiendas para 
+esto es as√≠ porque el juego usa scrolling (no hace falta que lo entiendas para 
 lo que estamos haciendo, si quieres aprender sobre esto busca en
 <a target="_blank" href="http://www.romhacking.net">Romhacking.net</a> </p>
 
 
-<p>Nos posicionaremos sobre la primer 'N', el tile ID nos dir· 97. La PPU 
+<p>Nos posicionaremos sobre la primer 'N', el tile ID nos dir√° 97. La PPU 
 Address es $2456. Entonces pongamos un breakpoint que nos avise cuando se 
-escriba en la posiciÛn $2456 de PPU RAM. Para hacer esto abriremos el debugger, 
-mediante el men˙ &quot;Tools&quot; -&gt; &quot;Debug&quot; (o la tecla F1 :P) y luego en la caja 
+escriba en la posici√≥n $2456 de PPU RAM. Para hacer esto abriremos el debugger, 
+mediante el men√∫ &quot;Tools&quot; -&gt; &quot;Debug&quot; (o la tecla F1 :P) y luego en la caja 
 superior derecha (la que dice &quot;breakpoints&quot;, obviamente xD) haremos clic en el 
-botÛn &quot;Add&quot; y luego escribiremos en la primer caja que aparece la direcciÛn 
-(2456), dejamos la segunda vacÌa, marcamos &quot;Write&quot; (porque queremos saber cu·ndo 
+bot√≥n &quot;Add&quot; y luego escribiremos en la primer caja que aparece la direcci√≥n 
+(2456), dejamos la segunda vac√≠a, marcamos &quot;Write&quot; (porque queremos saber cu√°ndo 
 se ESCRIBE) y marcamos &quot;PPU Mem&quot;, ya que estamos trabajando con la memoria de 
 video.</p>
 <p><img border="0" src="apend12.gif" width="472" height="268">
 <img border="0" src="apend13.gif" width="280" height="111"></p>
 
 
-<p>AquÌ, si usamos FCEUXD SP, dispondremos tambiÈn de una caja de texto para 
-poner una condiciÛn, ahÌ podremos poner como condiciÛn &quot;A == 97&quot; para que el 
-breakpoint sÛlo se dispare si al momento de escribirse en la direcciÛn de 
-memoria seÒalada el valor de A era $97, y podr·s saltearte el siguiente p·rrafo 
-(despuÈs de la imagen). Una vez puesto el breakpoint volvemos al juego y 
-hablamos con el aire en el pueblo, el emulador se detendr· y el debugger 
-saltar·.</p>
+<p>Aqu√≠, si usamos FCEUXD SP, dispondremos tambi√©n de una caja de texto para 
+poner una condici√≥n, ah√≠ podremos poner como condici√≥n &quot;A == 97&quot; para que el 
+breakpoint s√≥lo se dispare si al momento de escribirse en la direcci√≥n de 
+memoria se√±alada el valor de A era $97, y podr√°s saltearte el siguiente p√°rrafo 
+(despu√©s de la imagen). Una vez puesto el breakpoint volvemos al juego y 
+hablamos con el aire en el pueblo, el emulador se detendr√° y el debugger 
+saltar√°.</p>
 <p><img border="0" src="apend14.gif" width="681" height="386"></p>
-<p>QuÈ extraÒo, øno? Es que est· guardando A en VRAM (a travÈs del puerto 
+<p>Qu√© extra√±o, ¬øno? Es que est√° guardando A en VRAM (a trav√©s del puerto 
 $2007), pero el valor contenido en A no es $97 (el valor de la 'N') sino $FF (un 
 espacio en blanco). Esto sucede porque esta no es la rutina que pone el texto en 
 pantalla, sino que es la rutina que dibuja el cuadro en blanco para luego poner 
-el texto sobre Èl, primero se ponen los bordes, se llena todo de $FF (espacio en 
-blanco) y DESPU…S se empieza a pasar el texto, presiona el botÛn &quot;Run&quot; para que 
-siga el juego, pero ni bien lo presiones se detendr· de nuevo el juego y volver· 
-el debugger, y esta vez sÌ parece ser la correcta.</p>
+el texto sobre √©l, primero se ponen los bordes, se llena todo de $FF (espacio en 
+blanco) y DESPU√âS se empieza a pasar el texto, presiona el bot√≥n &quot;Run&quot; para que 
+siga el juego, pero ni bien lo presiones se detendr√° de nuevo el juego y volver√° 
+el debugger, y esta vez s√≠ parece ser la correcta.</p>
 <p><img border="0" src="apend15.gif" width="680" height="385"></p>
-<p>Digo que es la correcta porque como ves, est· guardando el contenido de A en 
+<p>Digo que es la correcta porque como ves, est√° guardando el contenido de A en 
 VRAM, y el contenido de A es $97. Hemos localizado la rutina que lee el texto y 
-lo pasa a VRAM, antes de seguir con la emulaciÛn te recomiendo que abras el 
+lo pasa a VRAM, antes de seguir con la emulaci√≥n te recomiendo que abras el 
 &quot;Trace Logger&quot; (menu Tools -&gt; Trace Logger), y elijas que pase todo el trace a 
 un fichero de texto (usando &quot;Log to file&quot;), luego pulsa &quot;Start tracing&quot;, pero la 
-emulaciÛn est· detenida, asÌ que quita el breakpoint (ya no lo necesitamos) 
-usando el botÛn &quot;Delete&quot; y pulsa &quot;Run&quot;, vuelve al trace logger cuando veas el 
-texto en pantalla y pulsa &quot;Stop logging&quot; (sino el trace puede llegar f·cilmente 
-a los 30+ mb), luego abrimos nuestro trace (recomiendo usar UltraEdit, los dem·s 
-programas que probÈ tardaban mucho o se colgaban xD) y busca en el trace la 
-prÛxima escritura a VRAM (busca &quot;STA $2007&quot;), de ahÌ sabes que el juego est· 
-guardando en VRAM, pero necesitamos saber de dÛnde viene, entonces sube unas 
-cuantas lÌneas hasta que veas un &quot;LDA&quot;, este es el cÛdigo que yo tengo: </p>
+emulaci√≥n est√° detenida, as√≠ que quita el breakpoint (ya no lo necesitamos) 
+usando el bot√≥n &quot;Delete&quot; y pulsa &quot;Run&quot;, vuelve al trace logger cuando veas el 
+texto en pantalla y pulsa &quot;Stop logging&quot; (sino el trace puede llegar f√°cilmente 
+a los 30+ mb), luego abrimos nuestro trace (recomiendo usar UltraEdit, los dem√°s 
+programas que prob√© tardaban mucho o se colgaban xD) y busca en el trace la 
+pr√≥xima escritura a VRAM (busca &quot;STA $2007&quot;), de ah√≠ sabes que el juego est√° 
+guardando en VRAM, pero necesitamos saber de d√≥nde viene, entonces sube unas 
+cuantas l√≠neas hasta que veas un &quot;LDA&quot;, este es el c√≥digo que yo tengo: </p>
 <p>$DB9C:B1 3E&nbsp;&nbsp;&nbsp;&nbsp; LDA ($3E),Y @ $8201 = #$B2&nbsp;&nbsp; 
 A:17 X:36 Y:00&nbsp;&nbsp;&nbsp;&nbsp; P:nvUBdIZc<br>
 $DB9E:F0 C0&nbsp;&nbsp;&nbsp;&nbsp; BEQ $DB60&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -124,23 +124,23 @@ $DBAC:90 16&nbsp;&nbsp;&nbsp;&nbsp; BCC $DBC4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
 A:B2 X:36 Y:00&nbsp;&nbsp;&nbsp;&nbsp; P:nvUBdIzC<br>
 $DBAE:8D 07 20&nbsp; STA $2007 = #$FF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 A:B2 X:36 Y:00&nbsp;&nbsp;&nbsp;&nbsp; P:nvUBdIzC</p>
-<p>Realmente espero que no te cueste entender lo que hace este cÛdigo, lee un 
-byte de un puntero (contenido en $3E) y lo pone en memoria, m·s al final de este 
-documento veremos la rutina m·s detenidamente. Al leer de $8201 (si miras un 
-mapa de memoria de la NES sabr·s que es ROM) sabemos que no est· leyendo de la 
-memoria. SÛlo basta con hacer un nuevo breakpoint, pero esta vez de lectura (&quot;Read&quot;) 
-en $8201 de CPU Mem, y otra vez hablamos con el aire, saltar· el debugger, 
+<p>Realmente espero que no te cueste entender lo que hace este c√≥digo, lee un 
+byte de un puntero (contenido en $3E) y lo pone en memoria, m√°s al final de este 
+documento veremos la rutina m√°s detenidamente. Al leer de $8201 (si miras un 
+mapa de memoria de la NES sabr√°s que es ROM) sabemos que no est√° leyendo de la 
+memoria. S√≥lo basta con hacer un nuevo breakpoint, pero esta vez de lectura (&quot;Read&quot;) 
+en $8201 de CPU Mem, y otra vez hablamos con el aire, saltar√° el debugger, 
 abrimos el editor hex (Tools -&gt; Hex editor), nos posicionamos en $8201, hacemos 
 clic derecho y elegimos &quot;Go here in Rom File&quot;:</p>
 <p><img border="0" src="apend16.gif" width="623" height="236"></p>
-<p>Como bonus, esto nos llevar· a la zona de la ROM donde est· el texto del 
-juego :D °Hallamos la rutina!</p>
+<p>Como bonus, esto nos llevar√° a la zona de la ROM donde est√° el texto del 
+juego :D ¬°Hallamos la rutina!</p>
 <h2>LA RUTINA</h2>
-<p>Esta rutina fue extraÌda con el desensamblador &quot;TRaCeR&quot; y no tiene valores, 
+<p>Esta rutina fue extra√≠da con el desensamblador &quot;TRaCeR&quot; y no tiene valores, 
 ya que no se hizo el trace mientras se ejecutaba el juego.<br>
-En algunos casos ver·s que hay un salto que va a una direcciÛn y yo comento 
-otra, porque en este desensamblado se incluyÛ el header de $10 bytes de las 
-roms de NES, por lo que quiz·s veas que un JMP $DB9A lleva realmente a $DBAA.</p>
+En algunos casos ver√°s que hay un salto que va a una direcci√≥n y yo comento 
+otra, porque en este desensamblado se incluy√≥ el header de $10 bytes de las 
+roms de NES, por lo que quiz√°s veas que un JMP $DB9A lleva realmente a $DBAA.</p>
 <p>07/DB74: AA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TAX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 ; ]<br>
 07/DB75: A9 0A&nbsp;&nbsp;&nbsp;&nbsp; LDA #$0A&nbsp;&nbsp;&nbsp;&nbsp; ; ]_ 
@@ -169,7 +169,7 @@ los punteros cargados<br>
 <br>
 07/DB8E: BD 00 81&nbsp; LDA $8100,X&nbsp; ; ]<br>
 07/DB91: 85 3E&nbsp;&nbsp;&nbsp;&nbsp; STA $3E&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; 
-]_ si habÌa carry carga los punteros de $8100,X / $8101,X<br>
+]_ si hab√≠a carry carga los punteros de $8100,X / $8101,X<br>
 07/DB93: BD 01 81&nbsp; LDA $8101,X&nbsp; ; ]<br>
 07/DB96: 85 3F&nbsp;&nbsp;&nbsp;&nbsp; STA $3F&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; ]<br>
 &nbsp;<br>
@@ -189,7 +189,7 @@ Un contador del juego para dibujar las ventanas<br>
 puntero de VRAM ($2006)<br>
 <br>
 07/DBAA: A0 00&nbsp;&nbsp;&nbsp;&nbsp; LDY #$00&nbsp;&nbsp;&nbsp;&nbsp; ; Pone Y 
-a 0, ser· usado como Ìndice<br>
+a 0, ser√° usado como √≠ndice<br>
 <br>
 07/DBAC: B1 3E&nbsp;&nbsp;&nbsp;&nbsp; LDA ($3E),Y&nbsp; ; Lee del puntero + Y<br>
 <br>
@@ -207,7 +207,7 @@ dicho de otra forma, &quot;incrementa la unidad de centenas&quot;<br>
 07/DBB6: C9 1A&nbsp;&nbsp;&nbsp;&nbsp; CMP #$1A&nbsp;&nbsp;&nbsp;&nbsp; ; 
 compara el byte leido con #$1A<br>
 07/DBB8: 90 4A&nbsp;&nbsp;&nbsp;&nbsp; BCC $DC04&nbsp;&nbsp;&nbsp; ; si es 
-menor, es un cÛdigo de control, salta a $DC04<br>
+menor, es un c√≥digo de control, salta a $DC04<br>
 <br>
 07/DBBA: C9 7A&nbsp;&nbsp;&nbsp;&nbsp; CMP #$7A&nbsp;&nbsp;&nbsp;&nbsp; ; 
 compara el byte leido con #$7A <br>
@@ -221,11 +221,11 @@ guarda en VRAM<br>
 07/DBC3: 18&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CLC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 ; ]<br>
 07/DBC4: 69 01&nbsp;&nbsp;&nbsp;&nbsp; ADC #$01&nbsp;&nbsp;&nbsp;&nbsp; ; ]_ 
-Verifica que no se haya pasado de largo la lÌnea, si no es asÌ, vuelve a $DBAA<br>
+Verifica que no se haya pasado de largo la l√≠nea, si no es as√≠, vuelve a $DBAA<br>
 07/DBC6: 29 3F&nbsp;&nbsp;&nbsp;&nbsp; AND #$3F&nbsp;&nbsp;&nbsp;&nbsp; ; ]&nbsp; 
 a leer otra letra y seguir con la rutina, sino, salta a la rutina $DB80 para<br>
 07/DBC8: 85 3A&nbsp;&nbsp;&nbsp;&nbsp; STA $3A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ; ]&nbsp; 
-posicionar el puntero de VRAM en una lÌnea nueva.<br>
+posicionar el puntero de VRAM en una l√≠nea nueva.<br>
 07/DBCA: 29 1F&nbsp;&nbsp;&nbsp;&nbsp; AND #$1F&nbsp;&nbsp;&nbsp;&nbsp; ; ]<br>
 07/DBCC: D0 DC&nbsp;&nbsp;&nbsp;&nbsp; BNE $DBAA&nbsp;&nbsp;&nbsp; ; ]<br>
 <br>
@@ -239,7 +239,7 @@ $DBAA, a leer otra letra de ROM.</p>
 07/DBD5: E9 1A&nbsp;&nbsp;&nbsp;&nbsp; SBC #$1A&nbsp;&nbsp;&nbsp;&nbsp; ; ]<br>
 <br>
 07/DBD7: AA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TAX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-; pasa A a X, que ser· el Ìndice de lectura<br>
+; pasa A a X, que ser√° el √≠ndice de lectura<br>
 07/DBD8: 48&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PHA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 ; guarda A en la pila<br>
 &nbsp;<br>
@@ -247,10 +247,10 @@ $DBAA, a leer otra letra de ROM.</p>
 07/DBDC: 8D 07 20&nbsp; STA $2007&nbsp;&nbsp;&nbsp; ; lo guarda en VRAM<br>
 <br>
 07/DBDF: 20 4E DC&nbsp; JSR $DC4E&nbsp;&nbsp;&nbsp; ; DC4E, rutina que verifica 
-que no se haya pasado de lÌnea y ubica el puntero de VRAM<br>
+que no se haya pasado de l√≠nea y ubica el puntero de VRAM<br>
 <br>
 07/DBE2: 68&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PLA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-; recupera A de la pila (la letra leÌda - #$1A)<br>
+; recupera A de la pila (la letra le√≠da - #$1A)<br>
 07/DBE3: AA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TAX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 ; lo pasa a A <br>
 <br>
@@ -267,7 +267,7 @@ que ubica el puntero de VRAM<br>
 scrolling de pantalla<br>
 <br>
 07/DBF4: 20 89 C6&nbsp; JSR $C689&nbsp;&nbsp;&nbsp; ; esta rutina no estoy muy 
-seguro de quÈ hace :P (al menos soy sincero xDDD)<br>
+seguro de qu√© hace :P (al menos soy sincero xDDD)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 ; manipula varias variables de memoria entre $6000-$6010.<br>
 <br>
@@ -281,10 +281,10 @@ Pone el contador en $17 a su valor #$0A<br>
 siguiente letra de ROM)</p>
 
 
-<p>Algunas secciones de la rutina no las expliquÈ (son demasiado oscuras para mÌ 
+<p>Algunas secciones de la rutina no las expliqu√© (son demasiado oscuras para m√≠ 
 xD) aunque no creo que tengan que ver con el texto que se muestra en pantalla, 
 sino con variables internas del juego, en todo caso, si llego a descubrir algo 
-sobre estas subrutinas actualizarÈ esta guÌa. Cualquier comentario/pregunta/etc. 
+sobre estas subrutinas actualizar√© esta gu√≠a. Cualquier comentario/pregunta/etc. 
 puede ser enviado a mi mail ^^</p>
 
 

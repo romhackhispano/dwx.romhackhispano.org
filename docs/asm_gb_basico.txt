@@ -1,68 +1,68 @@
-                   BIEVENID@S AL CURSO B¡SICO DE ASM DE GAMEBOY POR DARKWIZARDX
+                   BIEVENID@S AL CURSO B√ÅSICO DE ASM DE GAMEBOY POR DARKWIZARDX
                                     <drkwzrdx@hotmail.com>
 
-v1.0: [13/04/2006 19:48] Primera versiÛn.
+v1.0: [13/04/2006 19:48] Primera versi√≥n.
 
-En este tutorial aprender·s (o al menos la idea es esa :P) cÛmo trabaja el procesador
+En este tutorial aprender√°s (o al menos la idea es esa :P) c√≥mo trabaja el procesador
 de la Gameboy, sirve para tanto SGB (Super Gameboy) como GBC (Gameboy Color) ya que el
-procesador es el mismo. Como siempre empezaremos por lo m·s b·sico, registros, flags,
+procesador es el mismo. Como siempre empezaremos por lo m√°s b√°sico, registros, flags,
 posiciones de memoria, etc.
 
 INDICE:
-    0) CaracterÌsticas del Gameboy
-    I) IntroducciÛn al ASM.
+    0) Caracter√≠sticas del Gameboy
+    I) Introducci√≥n al ASM.
    Ia) Sistema Binario.
-   Ib) Operaciones lÛgicas de binario.
+   Ib) Operaciones l√≥gicas de binario.
    II) Registros.
   IIa) Registro F.
   III) Instrucciones.
    IV) Saltos y branchs.
     V) Fin.
 
-0)                            CARACTERÕSTICAS DEL GAMEBOY
+0)                            CARACTER√çSTICAS DEL GAMEBOY
 
 Procesador:                  Zilog Z-80 (modificado) (8bits)
 Endianess:                   Little-Endian
 Velocidad de procesador:     4.194304 MHz (El Super Gameboy llega a 4.295454 MHz)
-TamaÒo de pantalla:          2.6" (pulgadas, serÌan unos 6,60 centÌmetros)
-M·ximos colores disponibles: GB: 4 Tonos de gris - GBC: 32.768
-M·ximos colores en pantalla: 56
-ResoluciÛn:                  160 x 144 pÌxeles (20x18 tiles)
-M·ximo tamaÒo de sprites:    8 x 16 pÌxeles (1x2 tiles)
-M·ximos sprites:             40
-TamaÒo de cartucho:          256kBits (32Kilobytes) a 8MBits (1 Megabyte)
+Tama√±o de pantalla:          2.6" (pulgadas, ser√≠an unos 6,60 cent√≠metros)
+M√°ximos colores disponibles: GB: 4 Tonos de gris - GBC: 32.768
+M√°ximos colores en pantalla: 56
+Resoluci√≥n:                  160 x 144 p√≠xeles (20x18 tiles)
+M√°ximo tama√±o de sprites:    8 x 16 p√≠xeles (1x2 tiles)
+M√°ximos sprites:             40
+Tama√±o de cartucho:          256kBits (32Kilobytes) a 8MBits (1 Megabyte)
 Chip de sonido:              Cuatro canales stereo integrados
 
 I)                                 INTRODUCCION AL ASM
 
-El ASM (o assembler o en espaÒol, ensamblador) es un lenguaje denominado de bajo nivel
-porque trabaja a nivel m·quina, (lenguajes como Visual Basic y C/C++ son considerados de
+El ASM (o assembler o en espa√±ol, ensamblador) es un lenguaje denominado de bajo nivel
+porque trabaja a nivel m√°quina, (lenguajes como Visual Basic y C/C++ son considerados de
 alto nivel) ya que el programador opera directamente con el hardware mediante direcciones
-de memoria, (esto lo veremos m·s adelante) en ASM se maneja m·s que nada el sistema
-binario, ya que con Èl se pueden "encender" o "apagar" bits (poner a 1 o a 0), que es lo
-que m·s se utiliza para los flags por ejemplo, pero todo eso lo veremos m·s adelante :)
+de memoria, (esto lo veremos m√°s adelante) en ASM se maneja m√°s que nada el sistema
+binario, ya que con √©l se pueden "encender" o "apagar" bits (poner a 1 o a 0), que es lo
+que m√°s se utiliza para los flags por ejemplo, pero todo eso lo veremos m√°s adelante :)
 El ensamblador no es precisamente "facil" de aprender, a decir verdad, si no pones
-atenciÛn al principio y dejas las bases bien puestas despuÈs no entender·s nada de nada,
-es simplemente prestar atenciÛn y entender desde el principio como el lenguaje funciona.
+atenci√≥n al principio y dejas las bases bien puestas despu√©s no entender√°s nada de nada,
+es simplemente prestar atenci√≥n y entender desde el principio como el lenguaje funciona.
 
 Ia)                                 SISTEMA BINARIO
 
-En realidad si eres mayor de 12 aÒos deberÌas saber el sistema binario, pero por si acaso
-lo voy a explicar r·pidamente. El sistema binario cuenta con solo 2 n˙meros, 1 o 0,
+En realidad si eres mayor de 12 a√±os deber√≠as saber el sistema binario, pero por si acaso
+lo voy a explicar r√°pidamente. El sistema binario cuenta con solo 2 n√∫meros, 1 o 0,
 "encendido" o "apagado", "seteado" o "reseteado", etc.
-Con esos n˙meros debes representar cualquier otro, y se hace de la siguiente manera:
-Divides cada n˙mero por 2 y guardas el resultado, y el resto lo sigues dividiendo por 2
+Con esos n√∫meros debes representar cualquier otro, y se hace de la siguiente manera:
+Divides cada n√∫mero por 2 y guardas el resultado, y el resto lo sigues dividiendo por 2
 hasta que ya no pueda dividirse, entonces tomas el resultado final y los restos de abajo
-para arriba y asÌ conformas el n˙mero....
-...dicho asÌ es algo complicado, pero veamos un ejemplo para entenderlo bien.
+para arriba y as√≠ conformas el n√∫mero....
+...dicho as√≠ es algo complicado, pero veamos un ejemplo para entenderlo bien.
 
-(En realidad las fÛrmulas que doy aquÌ abajo no es necesario hacerlas, ya que puedes usar
-la calculadora de Windows en modo binario o alguna otra utilidad, pero es algo ˙til para
+(En realidad las f√≥rmulas que doy aqu√≠ abajo no es necesario hacerlas, ya que puedes usar
+la calculadora de Windows en modo binario o alguna otra utilidad, pero es algo √∫til para
 saberlo :P)
 Supongamos que quiero pasar 215 a binario:
-(AquÌ los n˙meros de resto los pongo entre parÈntesis)
+(Aqu√≠ los n√∫meros de resto los pongo entre par√©ntesis)
 
-Entonces tendrÌa :     
+Entonces tendr√≠a :     
 
 215 |_2_
  (1)  107 |_2_
@@ -78,7 +78,7 @@ ahora los tomamos de abajo hacia arriba:
 11010111
 
 Y ese es 215 en binario, si queremos pasarlo de binario a decimal haremos la siguiente
-operaciÛn:
+operaci√≥n:
 "Tomar cada uno de derecha a izquierda y multiplicarlos por 2 elevado a una potencia que
 arranca de 0 y suma de a 1."
 EJEMPLO!!!!!
@@ -89,23 +89,23 @@ x     2^7  2^6  2^5  2^4  2^3  2^2  2^1  2^0
       --------------------------------------
       128   64   0   16    0    4    2    1      
 
-Y ahora sumamos todos los n˙meros que nos dio:
+Y ahora sumamos todos los n√∫meros que nos dio:
 
 128 + 64 + 16 + 4 + 2 + 1 = 215
 
-Voila! ^^ AhÌ tenemos el n˙mero, o podemos hacerlo de la manera f·cil, escribimos 215 con
-la calculadora de Windows en modo decimal, y hacemos clic en el botÛn para pasar a
-binario, y ahÌ lo tenemos! ^^.
+Voila! ^^ Ah√≠ tenemos el n√∫mero, o podemos hacerlo de la manera f√°cil, escribimos 215 con
+la calculadora de Windows en modo decimal, y hacemos clic en el bot√≥n para pasar a
+binario, y ah√≠ lo tenemos! ^^.
 
-1b)                          OPERACIONES L”GICAS DE BINARIO
+1b)                          OPERACIONES L√ìGICAS DE BINARIO
 
-El acceso a informaciÛn a nivel de bit se usa principalmente para comparaciones y poner
-flags del registro P a 1 o 0. Ahora veremos cÛmo se hace.
+El acceso a informaci√≥n a nivel de bit se usa principalmente para comparaciones y poner
+flags del registro P a 1 o 0. Ahora veremos c√≥mo se hace.
 
-OPERACI”N AND: (&)
+OPERACI√ìN AND: (&)
 
 Consiste en comparar los bits de los operandos y comparar cuando 2 son 1 da 1 de
-resultado, pero como yo soy muy malo para explicarlo con palabras pondrÈ un ejemplo :)
+resultado, pero como yo soy muy malo para explicarlo con palabras pondr√© un ejemplo :)
 
        01100111
    AND 01011101
@@ -114,10 +114,10 @@ resultado, pero como yo soy muy malo para explicarlo con palabras pondrÈ un ejem
 
 Como ves solo cuando los dos bits son 1 da de resultado 1.
 
-OPERACI”N OR: (|)
+OPERACI√ìN OR: (|)
 
 Consiste en comparar los bits de los operandos y comparar cuando alguno de los 2 es 1,
-entonces dar· 1 de resultado, pero por el mismo motivo pondrÈ otro ejemplo :P
+entonces dar√° 1 de resultado, pero por el mismo motivo pondr√© otro ejemplo :P
 
       01100101
    OR 01010101
@@ -126,9 +126,9 @@ entonces dar· 1 de resultado, pero por el mismo motivo pondrÈ otro ejemplo :P
 
 Como ves cuando alguno es 1 el resultado es 1.
 
-OPERACI”N XOR:
+OPERACI√ìN XOR:
 
-Igual a un OR excepto que para que el resultado dÈ 1, solo 1 de los bits debe ser
+Igual a un OR excepto que para que el resultado d√© 1, solo 1 de los bits debe ser
 positivo (1).
 
        01100011
@@ -140,7 +140,7 @@ Solo cuando un bit es 1, el resultado es 1 :)
 
 II)                                    REGISTROS
 
-En ASM no se trabaja con variables (sÌ con constantes) sino con registros y posiciones
+En ASM no se trabaja con variables (s√≠ con constantes) sino con registros y posiciones
 de memoria, los registros que posee el Gameboy son 8 (ocho) de 8bits cada uno, es decir,
 8 bytes, que son los siguientes:
 
@@ -149,32 +149,32 @@ de memoria, los registros que posee el Gameboy son 8 (ocho) de 8bits cada uno, e
 ***************************************************
 
 [A] (Acumulador)
-Este registro ser· el que m·s usaremos, ya que en Èl se pueden cargar valores
-directamente Y realizar operaciones aritmÈticas sobre Èl. Aunque al resto de los
-registros tambiÈn se les pueden cargar valores (con la excepciÛn de F) no se pueden
-realizar operaciones aritmÈticas de suma/resta, etc. sobre ellos, por lo que usaremos A.
+Este registro ser√° el que m√°s usaremos, ya que en √©l se pueden cargar valores
+directamente Y realizar operaciones aritm√©ticas sobre √©l. Aunque al resto de los
+registros tambi√©n se les pueden cargar valores (con la excepci√≥n de F) no se pueden
+realizar operaciones aritm√©ticas de suma/resta, etc. sobre ellos, por lo que usaremos A.
 
 [B] y [C]: Se usan generalmente como contadores para loops, es decir, bucles o
-repeticiones para copiar datos o similar, se los puede usar tambiÈn para sostener
-valores temporales (recuerda que siempre es m·s r·pido el acceso al contenido de alg˙n
-registro que a alguna direcciÛn de RAM).
+repeticiones para copiar datos o similar, se los puede usar tambi√©n para sostener
+valores temporales (recuerda que siempre es m√°s r√°pido el acceso al contenido de alg√∫n
+registro que a alguna direcci√≥n de RAM).
 
 [D] y [E]: Similares a B y C, pero estos dos se usan generalmente conjuntos (como DE)
 para indicar direcciones de 16bits para el movimientos de datos. al igual que B y C
-pueden tambiÈn usarse para guardar variables temporales (aunque para eso est· la pila :P)
+pueden tambi√©n usarse para guardar variables temporales (aunque para eso est√° la pila :P)
 
-[H] y [L]: TambiÈn se usan como conjunto en 16 bits para direccionar, solo que estos dos
-est·n pr·ctica y exclusivamente para ello, ya que incluso hay instrucciones para cargar
-de ellos y aumentarlos para hacer lectura indirecta (eso lo veremos m·s adelante xD), es
+[H] y [L]: Tambi√©n se usan como conjunto en 16 bits para direccionar, solo que estos dos
+est√°n pr√°ctica y exclusivamente para ello, ya que incluso hay instrucciones para cargar
+de ellos y aumentarlos para hacer lectura indirecta (eso lo veremos m√°s adelante xD), es
 decir en lugar de hacer:
 
-     LD A,(DE)   ; cargarÌa en A el contenido de la direcciÛn que contiene DE
+     LD A,(DE)   ; cargar√≠a en A el contenido de la direcci√≥n que contiene DE
      INC DE      ; incrementa el indice DE
      LD A,(DE)   ; carga el siguiente byte.
 
-podrÌamos hacer:
+podr√≠amos hacer:
 
-     LDI A,(HL)  ; carga el contenido de la direcciÛn contenida en HL y lo incrementa.
+     LDI A,(HL)  ; carga el contenido de la direcci√≥n contenida en HL y lo incrementa.
      LDI A,(HL)  ; carga el siguiente byte y vuelve a incrementar HL.
 
      o
@@ -182,35 +182,35 @@ podrÌamos hacer:
      LD A,(HL+) ; ]_ Esto tiene el mismo efecto que las dos lineas anteriores
      LD A,(HL+) ; ]
 
-Siendo esto lo m·s r·pido y que menos lugar ocupa.
+Siendo esto lo m√°s r√°pido y que menos lugar ocupa.
 
-Estos son los registros a los que tiene acceso el programador, como ver·s dije que eran
-ocho y sÛlo nombrÈ siete, el registro que falta (F) lo veremos un poco m·s detallado
-despuÈs.
+Estos son los registros a los que tiene acceso el programador, como ver√°s dije que eran
+ocho y s√≥lo nombr√© siete, el registro que falta (F) lo veremos un poco m√°s detallado
+despu√©s.
 
 TODOS estos registros pueden juntarse con otro para formar un registro de 16bits
-(como la fusiÛn de DBZ pero sin baile ni pendientes :D), quedarÌan:
+(como la fusi√≥n de DBZ pero sin baile ni pendientes :D), quedar√≠an:
 
 A + F = AF
 B + C = BC
 D + E = DE
 H + L = HL
 
-Como ver·s no hay mucha ciencia en el tema xD
+Como ver√°s no hay mucha ciencia en el tema xD
 
-TambiÈn hay un grupo de registros que sirven solo para el procesador y por los que el
-programador no deberÌa preocuparse, ya que se manejan por sÌ solos, son los siguientes:
+Tambi√©n hay un grupo de registros que sirven solo para el procesador y por los que el
+programador no deber√≠a preocuparse, ya que se manejan por s√≠ solos, son los siguientes:
 
 ******************************************************************************
 * REGISTROS DE HARDWARE (NO ES NECESARIO QUE EL PROGRAMADOR LOS TOQUETEE xD) *
 ******************************************************************************
 
-[SP]: El registro SP es el puntero de pila (stack), es decir, apunta a la direcciÛn donde
-va a ponerse el prÛximo valor que se ponga un valor en la pila y el valor que se va a
+[SP]: El registro SP es el puntero de pila (stack), es decir, apunta a la direcci√≥n donde
+va a ponerse el pr√≥ximo valor que se ponga un valor en la pila y el valor que se va a
 sacar cuando se saque algo de la pila (duh =P).
 
 Las pilas son regiones de memoria que se utilizan para guardar datos y poder recuperarlos
-despuÈs, el ˙ltimo dato que es introducido es el ˙ltimo en sacarse, es decir:
+despu√©s, el √∫ltimo dato que es introducido es el √∫ltimo en sacarse, es decir:
 
     LD AF,1234
     PUSH AF
@@ -218,29 +218,29 @@ despuÈs, el ˙ltimo dato que es introducido es el ˙ltimo en sacarse, es decir:
     PUSH AF
 
 Ahora en la pila se encuentra lo siguiente: 56 78 12 34
-DespuÈs de:
+Despu√©s de:
 
     POP AF      ; Ahora -> AF = 5678
 
-En la pila quedarÌa: 12 34
+En la pila quedar√≠a: 12 34
 
     POP AF      ; Ahora -> AF = 1234
 
 En general se utiliza la pila para salvaguardar registros en llamadas a rutinas, y
-contiene la direcciÛn de regreso de una subrutina (eso lo veremos con m·s detalle m·s
+contiene la direcci√≥n de regreso de una subrutina (eso lo veremos con m√°s detalle m√°s
 adelante)
 
 [PC]: El registro PC (Program counter) es como indica su nombre el contador del programa,
-este registro contiene el offset de la instrucciÛn que se est· ejecutando, por lo que
-cambia constantemente, la ˙nica forma que tiene el programador de modificarlo (y tendr·
-que hacerlo en alg˙n momento ;) es usando saltos y branches.
+este registro contiene el offset de la instrucci√≥n que se est√° ejecutando, por lo que
+cambia constantemente, la √∫nica forma que tiene el programador de modificarlo (y tendr√°
+que hacerlo en alg√∫n momento ;) es usando saltos y branches.
 
 IIa)                                  REGISTRO F
 
 Como dije antes, faltaba explicar un registro al que tiene acceso el programador, se
-trata del registro F, se puede leer de Èl pero no escribirse, ya que se usa como registro
+trata del registro F, se puede leer de √©l pero no escribirse, ya que se usa como registro
 de flags, es decir banderas, que son BITS que usa el procesador para obtener ciertos
-datos sobre el resultado de la ˙ltima operaciÛn ejecutada.
+datos sobre el resultado de la √∫ltima operaci√≥n ejecutada.
 
 F = 1 byte = 8 bits
 
@@ -248,16 +248,16 @@ bits:  7   6   5   4   3   2   1   0
        
        Z   N   H   C   -   -   -   -
 
-Flag Z: Se pone a 1 si el resultado de la ˙ltima operaciÛn fue 0 (las comparaciones
+Flag Z: Se pone a 1 si el resultado de la √∫ltima operaci√≥n fue 0 (las comparaciones
 ponen este flag a 1 si los bytes comparados son iguales).
 
-Flag N: Se pone a 1 si el resultado de la ˙ltima operaciÛn fue negativo.
+Flag N: Se pone a 1 si el resultado de la √∫ltima operaci√≥n fue negativo.
 
-Flag H: Half-Carry: Se pone a 1 si el carry fue resultado de la comparaciÛn de un
-nybble (4bits) y un byte (8bits). Por si no se nota no entiendo todavÌa muy bien el
+Flag H: Half-Carry: Se pone a 1 si el carry fue resultado de la comparaci√≥n de un
+nybble (4bits) y un byte (8bits). Por si no se nota no entiendo todav√≠a muy bien el
 uso de este flag :P
 
-Flag C: Carry: Se pone a 1 si el resultado de la ˙ltima operaciÛn es m·s grande que
+Flag C: Carry: Se pone a 1 si el resultado de la √∫ltima operaci√≥n es m√°s grande que
 el registro de destino.
 P.Ej:
 
@@ -268,8 +268,8 @@ Los otros cuatro bits no se usan.
 
 III)                                  INSTRUCCIONES
 
-Bueno, esto va a ser largo xD, vamos a ver algunas instrucciones del Gameboy, las m·s
-b·sicas pero que se usan y sus correspondientes modos de direccionamiento.
+Bueno, esto va a ser largo xD, vamos a ver algunas instrucciones del Gameboy, las m√°s
+b√°sicas pero que se usan y sus correspondientes modos de direccionamiento.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~ OPERACIONES DE MOVIMIENTO DE DATOS ~
@@ -278,28 +278,28 @@ b·sicas pero que se usan y sus correspondientes modos de direccionamiento.
 ******
 * LD *
 ******
-La operaciÛn m·s b·sica y que m·s ver·s (por lejos), se usa de la siguiente forma:
+La operaci√≥n m√°s b√°sica y que m√°s ver√°s (por lejos), se usa de la siguiente forma:
 
      LD destino,origen
 
 Es decir, podemos hacer:
 
-     LD A,C0  ; esta b·sica operaciÛn carga el valor $C0 en A
+     LD A,C0  ; esta b√°sica operaci√≥n carga el valor $C0 en A
 
-La operaciÛn LD puede usarse tanto para poner datos en registros como en direcciones de
-memoria, es decir, si queremos guardar algo en una direcciÛn de memoria.
+La operaci√≥n LD puede usarse tanto para poner datos en registros como en direcciones de
+memoria, es decir, si queremos guardar algo en una direcci√≥n de memoria.
 
      LD 9512,A ; guarda el contenido de A en el offset 9512
 
-Puede utilizarse tambiÈn para cargar los registros "juntados" (o fusionados como me gusta
-decirles a mÌ :P)
+Puede utilizarse tambi√©n para cargar los registros "juntados" (o fusionados como me gusta
+decirles a m√≠ :P)
 
      LD AF,4502
 
 
 
 
-cuando se compara A, si el operando es MAYOR el carry se pone a 1 (al revÈs que los 65xx)
+cuando se compara A, si el operando es MAYOR el carry se pone a 1 (al rev√©s que los 65xx)
 
 
 
@@ -319,11 +319,11 @@ cuando se compara A, si el operando es MAYOR el carry se pone a 1 (al revÈs que 
 
 
 *********************************************************
-*  IMPOSIBLE ES S”LO UNA PALABRA QUE USAN LOS HOMBRES   *
-* D…BILES PARA VIVIR F¡CILMENTE EN EL MUNDO QUE SE LES  *
+*  IMPOSIBLE ES S√ìLO UNA PALABRA QUE USAN LOS HOMBRES   *
+* D√âBILES PARA VIVIR F√ÅCILMENTE EN EL MUNDO QUE SE LES  *
 *   DIO, SIN ATREVERSE A EXPLORAR EL PODER QUE TIENEN   *
 *   PARA CAMBIARLO. IMPOSIBLE NO ES UN HECHO, ES UNA    * (c) Adidas xD
-* OPINI”N. IMPOSIBLE NO ES UNA DECLARACI”N, ES UN RETO. *
+* OPINI√ìN. IMPOSIBLE NO ES UNA DECLARACI√ìN, ES UN RETO. *
 *     IMPOSIBLE ES POTENCIAL. IMPOSIBLE ES TEMPORAL.    *
 *********************************************************
 

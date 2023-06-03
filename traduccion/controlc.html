@@ -1,92 +1,92 @@
 <html>
 <head>
-<title>GuÌa de traducciÛn de Roms por DaRKWiZaRDX</title>
+<title>Gu√≠a de traducci√≥n de Roms por DaRKWiZaRDX</title>
 </head>
 <link href="estilo.css" type=text/css rel=stylesheet>
 <body>
 
-<center><h1>GU&Iacute;A DE TRADUCCI&Oacute;N DE ROMS</h1></center>
+<center><h1>GU√çA DE TRADUCCI√ìN DE ROMS</h1></center>
 <p>Por <a href="mailto:drkwzrdx@hotmail.com">DaRKWiZaRDX</a> </p>
-<center><h2>C”DIGOS DE CONTROL</h2></center>
+<center><h2>C√ìDIGOS DE CONTROL</h2></center>
 
-<p>Pues ya hemos modificado la primera ROM con codificaciÛn propia (es decir, no 
-ASCII), esta lecciÛn se dedicar· a develar quÈ hacen ciertos caracteres hex que 
-vimos en el ejemplo anterior (el pokÈmon silver).<br>
-A Èstos caracteres se les denomina &quot;cÛdigos de control&quot;, y justamente hacen eso, 
+<p>Pues ya hemos modificado la primera ROM con codificaci√≥n propia (es decir, no 
+ASCII), esta lecci√≥n se dedicar√° a develar qu√© hacen ciertos caracteres hex que 
+vimos en el ejemplo anterior (el pok√©mon silver).<br>
+A √©stos caracteres se les denomina &quot;c√≥digos de control&quot;, y justamente hacen eso, 
 controlan la salida de texto,<br>
-veamos quÈ pasa en el caso del pokÈmon silver, aquÌ tenemos una imagen del 
-trabajo de la secciÛn anterior:<br>
+veamos qu√© pasa en el caso del pok√©mon silver, aqu√≠ tenemos una imagen del 
+trabajo de la secci√≥n anterior:<br>
 <img border="0" src="imagenes/j_tabl9.gif" width="648" height="335"><br>
-Como ves, despuÈs del signo de interrogaciÛn de la primera frase (el de despuÈs 
+Como ves, despu√©s del signo de interrogaci√≥n de la primera frase (el de despu√©s 
 de &quot;Wha...?&quot;) hay un caracter hex que no tenemos en la tabla, la mejor forma de 
-saber quÈ representa (o mas bien que HACE) este caracter es mirando en la ROM:<br>
+saber qu√© representa (o mas bien que HACE) este caracter es mirando en la ROM:<br>
 <img border="0" src="imagenes/j_tabl10.gif" width="324" height="293"><br>
-Podemos ver que despuÈs del signo de interrogaciÛn el juego baja una lÌnea, 
-entonces sabemos que Èse byte es usado para bajar una lÌnea de texto, miramos en 
-el editor quÈ valor hex tiene, en este caso es $4F y lo agregamos a la tabla de 
+Podemos ver que despu√©s del signo de interrogaci√≥n el juego baja una l√≠nea, 
+entonces sabemos que √©se byte es usado para bajar una l√≠nea de texto, miramos en 
+el editor qu√© valor hex tiene, en este caso es $4F y lo agregamos a la tabla de 
 la siguiente forma:<br>
-*43&nbsp;&nbsp; &lt;-- <font color="#0040FF">…stos cÛdigos (los que bajan una 
-lÌnea) se denominan &quot;line break&quot;</font><br>
-No hay que agregarlo de la forma normal ( 43=* ) ya que sino lo tomarÌa como el 
-caracter '*', si usamos editor hex para traducir no ser· mucho problema, pero si 
-traducimos con scripts (eso lo veremos m·s tarde) en lugar de mostrar un salto 
-de lÌnea mostrar· un asterisco ( * ) y eso nos har· la traducciÛn bastante tediosa.<br>
-TambiÈn tenemos otro valor desconocido: El que est· despuÈs de &quot;you woke me up!&quot; 
+*43&nbsp;&nbsp; &lt;-- <font color="#0040FF">√âstos c√≥digos (los que bajan una 
+l√≠nea) se denominan &quot;line break&quot;</font><br>
+No hay que agregarlo de la forma normal ( 43=* ) ya que sino lo tomar√≠a como el 
+caracter '*', si usamos editor hex para traducir no ser√° mucho problema, pero si 
+traducimos con scripts (eso lo veremos m√°s tarde) en lugar de mostrar un salto 
+de l√≠nea mostrar√° un asterisco ( * ) y eso nos har√° la traducci√≥n bastante tediosa.<br>
+Tambi√©n tenemos otro valor desconocido: El que est√° despu√©s de &quot;you woke me up!&quot; 
 (o &quot;Me despertaste!&quot; si lo traduciste), vemos en la ROM lo que hace... El texto 
-queda en pantalla hasta que pulsamos un botÛn, y luego avanza para mostrar el 
+queda en pantalla hasta que pulsamos un bot√≥n, y luego avanza para mostrar el 
 texto que falta.</p>
 
-<p>NOTA IMPORTANTE: La mayorÌa de editores hex no manejan un cÛdigo especial para 
-realizar esto, como sÌ lo hacen por ejemplo para el salto de lÌnea (como 
+<p>NOTA IMPORTANTE: La mayor√≠a de editores hex no manejan un c√≥digo especial para 
+realizar esto, como s√≠ lo hacen por ejemplo para el salto de l√≠nea (como 
 acabamos de ver), yo recomiendo hacer lo siguiente:<br>
 Si vas a traducir utilizando editor hex (como lo he estado demostrando en lo que 
-va de la guÌa), asÌgnale un caracter que uses muy poco, para usarlo 
-especÌficamente para esta tarea, por ejemplo, un guiÛn bajo _ ).<br>
+va de la gu√≠a), as√≠gnale un caracter que uses muy poco, para usarlo 
+espec√≠ficamente para esta tarea, por ejemplo, un gui√≥n bajo _ ).<br>
 En cambio, si vas a traducir utilizando scripts, recomiendo que lo agregues como 
-(## es el cÛdigo hex):<br>
+(## es el c√≥digo hex):<br>
 ##=(NEXT)\n<br>
-y utilices para extraer los scripts alg˙n programa que admita el &quot;\n&quot; como salto 
-de lÌnea (RomJuice es uno de ellos). Es tu decisiÛn.</p>
+y utilices para extraer los scripts alg√∫n programa que admita el &quot;\n&quot; como salto 
+de l√≠nea (RomJuice es uno de ellos). Es tu decisi√≥n.</p>
 
-<p>En fin, volviendo al tema, el cÛdigo hex es $51, asÌ que lo agregamos a la tabla 
+<p>En fin, volviendo al tema, el c√≥digo hex es $51, as√≠ que lo agregamos a la tabla 
 como prefiramos.<br>
 Por ahora lo haremos como:<br>
-51=_&nbsp; &lt;-- <font color="#0040FF">…stos cÛdigos (los que esperan 
-pulsaciÛn de botÛn para seguir mostrando texto) se denominan &quot;section break&quot;<br>
+51=_&nbsp; &lt;-- <font color="#0040FF">√âstos c√≥digos (los que esperan 
+pulsaci√≥n de bot√≥n para seguir mostrando texto) se denominan &quot;section break&quot;<br>
 </font>Agregamos esos caracteres a la tabla y abrimos el editor en el offset del 
 texto:<br>
 <img border="0" src="contro1.gif" width="648" height="334"><br>
 Como ves reemplaza los caracteres por asteriscos y guiones bajos (esto supongo que ya 
-lo sabrÌas...), ahora pulsa la barra espaciadora en la 'Z' y vuelve a pulsar en 
+lo sabr√≠as...), ahora pulsa la barra espaciadora en la 'Z' y vuelve a pulsar en 
 el '!' y escribe algo como: &quot;Fin linea<font color="#0040FF">*</font>Fin mensaje<font color="#0040FF">_</font>Hola!&nbsp;&nbsp; 
-&quot; en el editor (sÛlo para probar :D)<br>
+&quot; en el editor (s√≥lo para probar :D)<br>
 <img border="0" src="contro2.gif" width="647" height="334"><br>
-Probamos la Rom en el emulador y vemos quÈ pasÛ:<br>
+Probamos la Rom en el emulador y vemos qu√© pas√≥:<br>
 <img border="0" src="imagenes/contro3.gif" width="323" height="292">
 <img border="0" src="imagenes/contro4.gif" width="322" height="291"><br>
-°Weee! °Modificamos los cÛdigos de control! …stos cÛdigos te ayudar·n a hacer 
-una traducciÛn de mejor calidad, ya que el espacio que te sobra en una lÌnea lo 
-puedes usar en la siguiente, asÌ traducciones cortas ocupan menos y las 
-traducciones m·s largas pueden ocupar ese espacio.</p>
+¬°Weee! ¬°Modificamos los c√≥digos de control! √âstos c√≥digos te ayudar√°n a hacer 
+una traducci√≥n de mejor calidad, ya que el espacio que te sobra en una l√≠nea lo 
+puedes usar en la siguiente, as√≠ traducciones cortas ocupan menos y las 
+traducciones m√°s largas pueden ocupar ese espacio.</p>
 
-<p>Ahora nos queda un cÛdigo m·s por agregar a la tabla... øCÛmo sabe el juego 
-en dÛnde acaba un di·logo y comienza en siguiente, que se dar· en otra parte del 
-juego? Mediante un cÛdigo especial, denominado &quot;<font color="#0040FF">message 
-break</font>&quot;, para encontrarlo debemos buscar el valor hex que est· despuÈs de 
-la ˙ltima letra que sale por pantalla, en nuestro caso, viene despuÈs de &quot;Hola!&nbsp;&nbsp; 
-&quot; y es el cÛdigo hex $00. Deber·s agregarlo a la tabla de la siguiente manera:</p>
+<p>Ahora nos queda un c√≥digo m√°s por agregar a la tabla... ¬øC√≥mo sabe el juego 
+en d√≥nde acaba un di√°logo y comienza en siguiente, que se dar√° en otra parte del 
+juego? Mediante un c√≥digo especial, denominado &quot;<font color="#0040FF">message 
+break</font>&quot;, para encontrarlo debemos buscar el valor hex que est√° despu√©s de 
+la √∫ltima letra que sale por pantalla, en nuestro caso, viene despu√©s de &quot;Hola!&nbsp;&nbsp; 
+&quot; y es el c√≥digo hex $00. Deber√°s agregarlo a la tabla de la siguiente manera:</p>
 
 <p>/00</p>
 
-<p>Quiz·s si traduces en editor hex no encuentres diferencia entre darle este 
-caracter (la barra) o darle otro, pero sÌ hace una gran diferencia al momento de 
-traducir con scripts. Algunos traductores prefieren usar este cÛdigo para los 
-section break, es tu decisiÛn. Yo recomiendo agregar los caracteres a la tabla 
-como lo expliquÈ aquÌ.</p>
+<p>Quiz√°s si traduces en editor hex no encuentres diferencia entre darle este 
+caracter (la barra) o darle otro, pero s√≠ hace una gran diferencia al momento de 
+traducir con scripts. Algunos traductores prefieren usar este c√≥digo para los 
+section break, es tu decisi√≥n. Yo recomiendo agregar los caracteres a la tabla 
+como lo expliqu√© aqu√≠.</p>
 
-<p>Pues bueno, fue bastante corta esta secciÛn, supongo que habr· quedado claro, 
-cualquier cosa que no se entienda puedes preguntarme a mi mail. °Nos vemos en la 
-siguiente lecciÛn!</p>
+<p>Pues bueno, fue bastante corta esta secci√≥n, supongo que habr√° quedado claro, 
+cualquier cosa que no se entienda puedes preguntarme a mi mail. ¬°Nos vemos en la 
+siguiente lecci√≥n!</p>
 <center><a href="j_tabla.html">&lt;&lt; Anterior</a> - <a href="index.html">Indice</a> - <a href="dte_mte.html">Siguiente &gt;&gt;</a></center>
 
 </body>

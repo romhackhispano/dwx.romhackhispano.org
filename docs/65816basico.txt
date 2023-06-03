@@ -1,74 +1,74 @@
-             BIEVENID@S AL CURSO B¡SICO DE ASM 65816 POR DARKWIZARDX
+             BIEVENID@S AL CURSO B√ÅSICO DE ASM 65816 POR DARKWIZARDX
                              <drkwzrdx@hotmail.com>
 
-v1.1: [30/01/2005 19:16] Corregidos algunos pequeÒos errores.
+v1.1: [30/01/2005 19:16] Corregidos algunos peque√±os errores.
 v1.2: [30/01/2006 19:44] Arreglados varios errores y agregadas algunas cosas.
 
-En este tutorial aprender·s lo b·sico e intermedio para programar en ASM 65816, el
-lenguaje del procesador 65c816 que se utilizÛ en la famosa Super Nintendo (Americana) y
-Super Famicom (japonesa), el aprender este lenguaje te servir· para descubrir algoritmos
-en los juegos (p.ej: saber cu·nto daÒo hace un ataque en un rpg), cambiar gr·ficos,
-textos, tamaÒo de fuente y muchÌsimas otras cosas m·s, pero por ahora aprenderemos solo
-las cosas m·s b·sicas, los registros, los flags, la memoria, etc...
-AsÌ que, bueno, al Ìndice. :)
+En este tutorial aprender√°s lo b√°sico e intermedio para programar en ASM 65816, el
+lenguaje del procesador 65c816 que se utiliz√≥ en la famosa Super Nintendo (Americana) y
+Super Famicom (japonesa), el aprender este lenguaje te servir√° para descubrir algoritmos
+en los juegos (p.ej: saber cu√°nto da√±o hace un ataque en un rpg), cambiar gr√°ficos,
+textos, tama√±o de fuente y much√≠simas otras cosas m√°s, pero por ahora aprenderemos solo
+las cosas m√°s b√°sicas, los registros, los flags, la memoria, etc...
+As√≠ que, bueno, al √≠ndice. :)
 
 INDICE:
-    0) CaracterÌsticas de la SNES
-    I) IntroducciÛn al ASM.
+    0) Caracter√≠sticas de la SNES
+    I) Introducci√≥n al ASM.
    Ia) Sistema Binario.
-   Ib) Operaciones lÛgicas de binario.
-   1c) N˙meros negativos
+   Ib) Operaciones l√≥gicas de binario.
+   1c) N√∫meros negativos
    II) Registros.
   IIa) Registro P.
   III) Modos de direccionamiento.
    IV) Instrucciones.
-    V) Operaciones aritmÈticas.
+    V) Operaciones aritm√©ticas.
    VI) Saltos y branchs.
   VII) Fin.
 
-0)                            CARACTERÕSTICAS DE LA SNES
+0)                            CARACTER√çSTICAS DE LA SNES
 
 Procesador:                  Motorola 65816 (16bits)
 Endianess:                   Big-Endian
 Velocidad de procesador:     2.68 o 3.58h MHz
-M·ximos colores disponibles: 32768
-M·ximos colores en pantalla: 256
-ResoluciÛn:                  512 x 448 pÌxeles (64x56 tiles)
-M·ximo tamaÒo de sprites:    64 x 64 pÌxeles (8x8 tiles)
-M·ximos sprites:             128
-TamaÒo de cartucho:          2mbits (256Kilobytes) a 48mbits (6 Megabytes)
+M√°ximos colores disponibles: 32768
+M√°ximos colores en pantalla: 256
+Resoluci√≥n:                  512 x 448 p√≠xeles (64x56 tiles)
+M√°ximo tama√±o de sprites:    64 x 64 p√≠xeles (8x8 tiles)
+M√°ximos sprites:             128
+Tama√±o de cartucho:          2mbits (256Kilobytes) a 48mbits (6 Megabytes)
 Chip de sonido:              Sony SP700 (8 canales de sonido)
 
 I)                               INTRODUCCION AL ASM
-El ASM (o assembler o en espaÒol, ensamblador) es un lenguaje denominado de bajo nivel
-porque trabaja a nivel m·quina, lenguajes como Visual Basic y C/C++ son considerados de
+El ASM (o assembler o en espa√±ol, ensamblador) es un lenguaje denominado de bajo nivel
+porque trabaja a nivel m√°quina, lenguajes como Visual Basic y C/C++ son considerados de
 alto nivel ya que el programador opera directamente con el hardware mediante direcciones
-de memoria, pero esto lo veremos m·s adelante, en ASM se maneja m·s que nada el sistema
-binario, ya que con Èl se pueden "encender" o "apagar" bits (poner a 1 o a 0), que es lo
-que m·s se utiliza para las flags por ejemplo, pero todo eso lo veremos m·s adelante :)
+de memoria, pero esto lo veremos m√°s adelante, en ASM se maneja m√°s que nada el sistema
+binario, ya que con √©l se pueden "encender" o "apagar" bits (poner a 1 o a 0), que es lo
+que m√°s se utiliza para las flags por ejemplo, pero todo eso lo veremos m√°s adelante :)
 
-El ensamblador no es precisamente "f·cil" de aprender, a decir verdad, si no pones
-atenciÛn al principio y dejas las bases bien puestas despuÈs no entender·s nada de nada,
-es simplemente prestar atenciÛn y entender desde el principio como el lenguaje funciona.
-øOK? øSi? °Entonces vamos a ello!
+El ensamblador no es precisamente "f√°cil" de aprender, a decir verdad, si no pones
+atenci√≥n al principio y dejas las bases bien puestas despu√©s no entender√°s nada de nada,
+es simplemente prestar atenci√≥n y entender desde el principio como el lenguaje funciona.
+¬øOK? ¬øSi? ¬°Entonces vamos a ello!
 
 Ia)                                 SISTEMA BINARIO
-En realidad si eres mayor de 12 aÒos deberÌas saber el sistema binario, pero por si acaso
-lo voy a explicar r·pidamente. El sistema binario cuenta con solo 2 n˙meros, 1 o 0,
+En realidad si eres mayor de 12 a√±os deber√≠as saber el sistema binario, pero por si acaso
+lo voy a explicar r√°pidamente. El sistema binario cuenta con solo 2 n√∫meros, 1 o 0,
 "encendido" o "apagado", "seteado" o "reseteado", etc.
-Con esos n˙meros debes representar cualquier otro, y se hace de la siguiente manera:
-Divides cada n˙mero por 2 y guardas el resultado, y el resto lo sigues dividiendo por 2
+Con esos n√∫meros debes representar cualquier otro, y se hace de la siguiente manera:
+Divides cada n√∫mero por 2 y guardas el resultado, y el resto lo sigues dividiendo por 2
 hasta que ya no pueda dividirse, entonces tomas el resultado final y los restos de abajo
-para arriba y asÌ conformas el n˙mero....
-...dicho asÌ es algo complicado, pero veamos un ejemplo para entenderlo bien.
+para arriba y as√≠ conformas el n√∫mero....
+...dicho as√≠ es algo complicado, pero veamos un ejemplo para entenderlo bien.
 
-(En realidad las fÛrmulas que doy aquÌ abajo no es necesario hacerlas, ya que puedes usar
-la calculadora de Windows en modo binario o alguna otra utilidad, pero es algo ˙til para
+(En realidad las f√≥rmulas que doy aqu√≠ abajo no es necesario hacerlas, ya que puedes usar
+la calculadora de Windows en modo binario o alguna otra utilidad, pero es algo √∫til para
 saberlo :P)
 Supongamos que quiero pasar 215 a binario:
-(AquÌ los n˙meros de resto los pongo entre parÈntesis)
+(Aqu√≠ los n√∫meros de resto los pongo entre par√©ntesis)
 
-Entonces tendrÌa :     
+Entonces tendr√≠a :     
 
 215 |_2_
  (1)  107 |_2_
@@ -84,7 +84,7 @@ ahora los tomamos de abajo hacia arriba:
 11010111
 
 Y ese es 215 en binario, si queremos pasarlo de binario a decimal haremos la siguiente
-operaciÛn:
+operaci√≥n:
 "Tomar cada uno de derecha a izquierda y multiplicarlos por 2 elevado a una potencia que
 arranca de 0 y suma de a 1."
 EJEMPLO!!!!!
@@ -95,23 +95,23 @@ x     2^7  2^6  2^5  2^4  2^3  2^2  2^1  2^0
       --------------------------------------
       128   64   0   16    0    4    2    1      
 
-Y ahora sumamos todos los n˙meros que nos dio:
+Y ahora sumamos todos los n√∫meros que nos dio:
 
 128 + 64 + 16 + 4 + 2 + 1 = 215
 
-Voila! ^^ AhÌ tenemos el n˙mero, o podemos hacerlo de la manera f·cil, escribimos 215 con
-la calculadora de Windows en modo decimal, y hacemos clic en el botÛn para pasar a
-binario, y ahÌ lo tenemos! ^^.
+Voila! ^^ Ah√≠ tenemos el n√∫mero, o podemos hacerlo de la manera f√°cil, escribimos 215 con
+la calculadora de Windows en modo decimal, y hacemos clic en el bot√≥n para pasar a
+binario, y ah√≠ lo tenemos! ^^.
 
-OPERACIONES L”GICAS DE BINARIO:
+OPERACIONES L√ìGICAS DE BINARIO:
 
-El acceso a informaciÛn a nivel de bit se usa principalmente para comparaciones y poner
-flags del registro P a 1 o 0. Ahora veremos cÛmo se hace.
+El acceso a informaci√≥n a nivel de bit se usa principalmente para comparaciones y poner
+flags del registro P a 1 o 0. Ahora veremos c√≥mo se hace.
 
-OPERACI”N AND: (&)
+OPERACI√ìN AND: (&)
 
 Consiste en comparar los bits de los operandos y comparar cuando 2 son 1 da 1 de
-resultado, pero como yo soy muy malo para explicarlo con palabras pondrÈ un ejemplo :)
+resultado, pero como yo soy muy malo para explicarlo con palabras pondr√© un ejemplo :)
 
        01100111
    AND 01011101
@@ -120,10 +120,10 @@ resultado, pero como yo soy muy malo para explicarlo con palabras pondrÈ un ejem
 
 Como ves solo cuando los dos bits son 1 da de resultado 1.
 
-OPERACI”N OR: (|)
+OPERACI√ìN OR: (|)
 
 Consiste en comparar los bits de los operandos y comparar cuando alguno de los 2 es 1,
-entonces dar· 1 de resultado, pero por el mismo motivo pondrÈ otro ejemplo :P
+entonces dar√° 1 de resultado, pero por el mismo motivo pondr√© otro ejemplo :P
 
       01100101
    OR 01010101
@@ -132,9 +132,9 @@ entonces dar· 1 de resultado, pero por el mismo motivo pondrÈ otro ejemplo :P
 
 Como ves cuando alguno es 1 el resultado es 1.
 
-OPERACI”N XOR:
+OPERACI√ìN XOR:
 
-Igual a un OR excepto que para que el resultado dÈ 1, solo 1 de los bits debe ser
+Igual a un OR excepto que para que el resultado d√© 1, solo 1 de los bits debe ser
 positivo (1).
 
        01100011
@@ -144,14 +144,14 @@ positivo (1).
 
 Solo cuando un bit es 1, el resultado es 1 :)
 
-1c)                                  N⁄MEROS NEGATIVOS
+1c)                                  N√öMEROS NEGATIVOS
 
-Aunque con 8 bits (1 byte) se pueda llegar a un rango de 0-255 se usan tambiÈn en bucles
-y otras cosas los n˙meros negativos, que se representan como n˙meros m·s arriba del tope
-de los n˙meros positivos (128). Para hacerlo m·s f·cil, si el MSB (Most significant bit),
-es decir, el bit de mayor peso (°el de la izquierda! xD) es 1, entonces se trata de un
-n˙mero negativo, los n˙meros mayores a $80 (128 decimal) son negativos mientras que todos
-los dem·s son positivos.
+Aunque con 8 bits (1 byte) se pueda llegar a un rango de 0-255 se usan tambi√©n en bucles
+y otras cosas los n√∫meros negativos, que se representan como n√∫meros m√°s arriba del tope
+de los n√∫meros positivos (128). Para hacerlo m√°s f√°cil, si el MSB (Most significant bit),
+es decir, el bit de mayor peso (¬°el de la izquierda! xD) es 1, entonces se trata de un
+n√∫mero negativo, los n√∫meros mayores a $80 (128 decimal) son negativos mientras que todos
+los dem√°s son positivos.
 
  $01 -> +1
  $02 -> +2
@@ -168,43 +168,43 @@ los dem·s son positivos.
  $FF -> -1
 
 Espero que se entienda, es realmente simple, igual la SNES tiene un flag negativo para
-saber cu·ndo la ˙ltima operaciÛn dio resultado negativo, pero eso se ver· despuÈs, en el
+saber cu√°ndo la √∫ltima operaci√≥n dio resultado negativo, pero eso se ver√° despu√©s, en el
 registro P.
 
 Bueno, vamos con los registros!
 
 II)                                  REGISTROS
 
-En ASM no se trabaja con variables (sÌ con constantes) sino con registros y posiciones de
+En ASM no se trabaja con variables (s√≠ con constantes) sino con registros y posiciones de
 memoria, los registros pueden ser de 16 u 8 bits depende del flag m de P, que eso lo
-veremos luego, como supongo ya sabr·n 16 bits son 2 bytes y lÛgicamente 8 son 1 byte,
-en ASM se cuenta con varios registros y cada uno tiene una utilidad especÌfica.
+veremos luego, como supongo ya sabr√°n 16 bits son 2 bytes y l√≥gicamente 8 son 1 byte,
+en ASM se cuenta con varios registros y cada uno tiene una utilidad espec√≠fica.
 
 A (Acumulador)
 
-…ste ser· el registro que m·s uses, ya que es el ˙nico registro sobre el que se pueden
-hacer operaciones aritmÈticas, y adem·s suele usarse para modificar a los que no pueden
-usarse con tal fin, una vez que veas algo de cÛdigo (si no lo viste a˙n) ver·s lo ˙til 
+√âste ser√° el registro que m√°s uses, ya que es el √∫nico registro sobre el que se pueden
+hacer operaciones aritm√©ticas, y adem√°s suele usarse para modificar a los que no pueden
+usarse con tal fin, una vez que veas algo de c√≥digo (si no lo viste a√∫n) ver√°s lo √∫til 
 que llega a ser este registro (realmente es vital :P). A es por defecto un registro de
-16 bits, si quieres cargarlo con valores de 1 byte tendr·s que achicarlo con el
+16 bits, si quieres cargarlo con valores de 1 byte tendr√°s que achicarlo con el
 flag m de P.
 
 X (Indexer X)
 
-Es tambiÈn otro registro muy ˙til, para "indexar" direcciones (ya veremos quÈ significa
-eso m·s adelante), se usa para hacer bucles (tambiÈn llamados "ciclos"), X no puede
-realizar ninguna operaciÛn aritmÈtica excepto las de incremento y decremento (por 1),
-que es lo ˙til para los bucles, cuando empecemos a ver direcciones indexadas veremos
-m·s a fondo este registro.
+Es tambi√©n otro registro muy √∫til, para "indexar" direcciones (ya veremos qu√© significa
+eso m√°s adelante), se usa para hacer bucles (tambi√©n llamados "ciclos"), X no puede
+realizar ninguna operaci√≥n aritm√©tica excepto las de incremento y decremento (por 1),
+que es lo √∫til para los bucles, cuando empecemos a ver direcciones indexadas veremos
+m√°s a fondo este registro.
 
 Y (Indexer Y)
 
-Es tambiÈn otro registro muy ˙til, para "indexar" direcciones (ya veremos quÈ significa
-eso m·s adelante), se usa para hacer bucles (tambiÈn llamados "ciclos"), y no puede
-realizar ninguna operaciÛn aritmÈtica excepto las de incremento y decremento (por 1),
-que es lo ˙til para los bucles, cuando empecemos a ver direcciones indexadas veremos m·s
-a fondo este registro. (Si, ya sÈ que hice un c&p de lo anterior, si sirven para
-pr·cticamente lo mismo).
+Es tambi√©n otro registro muy √∫til, para "indexar" direcciones (ya veremos qu√© significa
+eso m√°s adelante), se usa para hacer bucles (tambi√©n llamados "ciclos"), y no puede
+realizar ninguna operaci√≥n aritm√©tica excepto las de incremento y decremento (por 1),
+que es lo √∫til para los bucles, cuando empecemos a ver direcciones indexadas veremos m√°s
+a fondo este registro. (Si, ya s√© que hice un c&p de lo anterior, si sirven para
+pr√°cticamente lo mismo).
 
 D (Direct Page Address)
 
@@ -212,25 +212,25 @@ Provee los 8 bits altos para las operaciones con modo de direccionamiento direct
 normalmente es $00.
 P.Ej:
 D = $00
-LDA $8F   ;en realidad cargarÌa de $008F
+LDA $8F   ;en realidad cargar√≠a de $008F
 
 D = $10
-LDA $7F   ;en realidad cargarÌa de $107F
+LDA $7F   ;en realidad cargar√≠a de $107F
 
 S (Stack)
 
-Es la stack, o pila, que se le dice asÌ porque allÌ se apilan valores que no debas perder,
-y sirve para hacer operaciones aritmÈticas a la vez, imagÌnate la pila como si apilaras
-cajas una arriba de la otra, cuando tengas que sacar una caja no sacar·s la del fondo
-porque todo se derrumbar·, asÌ que primero sacas la ˙ltima que colocaste, y asÌ pasa
+Es la stack, o pila, que se le dice as√≠ porque all√≠ se apilan valores que no debas perder,
+y sirve para hacer operaciones aritm√©ticas a la vez, imag√≠nate la pila como si apilaras
+cajas una arriba de la otra, cuando tengas que sacar una caja no sacar√°s la del fondo
+porque todo se derrumbar√°, as√≠ que primero sacas la √∫ltima que colocaste, y as√≠ pasa
 exactamente con la pila de una ROM, es un espacio de memoria reservado para meter valores
 que no debas perder por nada.
 
-VOY A EXPLICAR LA PILA AHORA, PARA QUE QUEDE CLARO DESDE EL PRINCIPIO: (intentarÈ :P)
+VOY A EXPLICAR LA PILA AHORA, PARA QUE QUEDE CLARO DESDE EL PRINCIPIO: (intentar√© :P)
 
 La pila es un espacio de RAM en la que se guardan datos que no deben perderse para
-operaciones aritmÈticas, cuando se quiere hacer una operaciÛn que involucra un dato que
-no debe perderse, se guarda en la pila carg·ndolo en el Acumulador y usando PHA
+operaciones aritm√©ticas, cuando se quiere hacer una operaci√≥n que involucra un dato que
+no debe perderse, se guarda en la pila carg√°ndolo en el Acumulador y usando PHA
 (Push Accumulator), si el valor estaba en X o Y basta con PHX o PHY respectivamente,
 cuando se quiere sacar un valor basta con PLA / PLX / PLY, que sacan el valor de la pila
 y lo guardan en el registro correspondiente.
@@ -238,43 +238,43 @@ y lo guardan en el registro correspondiente.
 P.Ej:
 LDA #$15  ;cargamos A con #$15
 PHA	      ;metemos A en la pila (A=$15)
-PLY	      ;sacamos el ˙ltimo valor de la pila y lo ponemos en Y ( A=$15 / Y=$15 )
+PLY	      ;sacamos el √∫ltimo valor de la pila y lo ponemos en Y ( A=$15 / Y=$15 )
 
-En este caso A e Y valdr·n #$15 (cuando se empuja por un registro en la pila el registro
-NO PIERDE SU VALOR). SerÌa m·s f·cil hacer TAY, pero esto fue solo para demostrar cÛmo
+En este caso A e Y valdr√°n #$15 (cuando se empuja por un registro en la pila el registro
+NO PIERDE SU VALOR). Ser√≠a m√°s f√°cil hacer TAY, pero esto fue solo para demostrar c√≥mo
 funciona la pila.
-TambiÈn se usa la pila autom·ticamente en algunas funciones como JSR o RTS, que guardan
-direcciones para volver de subrutinas, pero eso lo veremos m·s adelante :)
+Tambi√©n se usa la pila autom√°ticamente en algunas funciones como JSR o RTS, que guardan
+direcciones para volver de subrutinas, pero eso lo veremos m√°s adelante :)
 
 DBR (Data Bank Register)
 
-Es un registro que contiene el actual banco de trabajo, para asÌ no tener que andar
+Es un registro que contiene el actual banco de trabajo, para as√≠ no tener que andar
 pasando direcciones de 24 bits (3 bytes) cuando tienes que direccionar un salto o
-cualquier otra cosa, si para una direcciÛn de memoria o un salto pones por ejemplo
-JMP $1287 (salta a la posiciÛn 0x1287 en memoria) al no darle una direcciÛn del banco
-utilizar· DB en su lugar, o en cambio podrÌas poner JMP $811287 y saltarÌa al offset $1287
+cualquier otra cosa, si para una direcci√≥n de memoria o un salto pones por ejemplo
+JMP $1287 (salta a la posici√≥n 0x1287 en memoria) al no darle una direcci√≥n del banco
+utilizar√° DB en su lugar, o en cambio podr√≠as poner JMP $811287 y saltar√≠a al offset $1287
 en el banco 81 :), generalmente no debe tocarse a menos que ya se cierre el programa
-porque puede traer problemas para leer cÛdigo (intenta leerlo donde no lo hay :)
+porque puede traer problemas para leer c√≥digo (intenta leerlo donde no lo hay :)
 A diferencia de PBR, DBR se utiliza cuando hay transferencias de datos (STA, LDA, etc.)
 
 PC (Program Counter)
 
-Contador de programa, este registro contiene la direcciÛn actual de proceso.
+Contador de programa, este registro contiene la direcci√≥n actual de proceso.
 
 PBR (Program Bank Register)
 
-Es un registro que contiene el banco actual, junto a PC conformarÌa la direcciÛn total
+Es un registro que contiene el banco actual, junto a PC conformar√≠a la direcci√≥n total
 PBR(1 byte):PC(2 bytes)
 
-A˙n queda un registro, que se merece secciÛn aparte por lo complicado que es
-(en realidad no tanto, pero es m·s complicado que los dem·s :P)
+A√∫n queda un registro, que se merece secci√≥n aparte por lo complicado que es
+(en realidad no tanto, pero es m√°s complicado que los dem√°s :P)
 
 IIa)                                REGISTRO P
 
 El registro P no se utiliza directamente para algo, solo lo consulta el CPU para saber
-determinadas cosas antes de seguir una instrucciÛn. El registro P es de 1 byte, o sea
-8 bits, y como todos sabemos, cada bit puede ser 1 o 0, y es asÌ como funciona este
-registro. Veamos como est· compuesto:
+determinadas cosas antes de seguir una instrucci√≥n. El registro P es de 1 byte, o sea
+8 bits, y como todos sabemos, cada bit puede ser 1 o 0, y es as√≠ como funciona este
+registro. Veamos como est√° compuesto:
 
              REGISTRO P
                               E
@@ -286,66 +286,66 @@ Cada uno de estos bits (los famosos flags), al estar "seteados" (1) o "reseteado
 controla una cosa diferente.
 
 flag n (Negative):
-Este flag se activa si el resultado de la ˙ltima operaciÛn aritmÈtica da resultado
-negativo, mayor al lÌmite de +127 uno se da cuenta f·cilmente tambiÈn de esto cuando el
-resultado en binario de una operaciÛn aritmÈtica tiene un 1 a la izquierda de todo, como
-bit de mayor peso, ya que 10000000 es el menor n˙mero que puede hacerse con un 1 como
-mayor peso y da 128, lo que supera el m·ximo (127).
+Este flag se activa si el resultado de la √∫ltima operaci√≥n aritm√©tica da resultado
+negativo, mayor al l√≠mite de +127 uno se da cuenta f√°cilmente tambi√©n de esto cuando el
+resultado en binario de una operaci√≥n aritm√©tica tiene un 1 a la izquierda de todo, como
+bit de mayor peso, ya que 10000000 es el menor n√∫mero que puede hacerse con un 1 como
+mayor peso y da 128, lo que supera el m√°ximo (127).
 
 flag v (Overflow):
-Este flag se activa si el resultado de la ˙ltima operaciÛn aritmÈtica hay "desbordamiento"
-de dÌgitos. Puede ser activado por las instrucciones aritmÈticas ADC y SBC.
+Este flag se activa si el resultado de la √∫ltima operaci√≥n aritm√©tica hay "desbordamiento"
+de d√≠gitos. Puede ser activado por las instrucciones aritm√©ticas ADC y SBC.
 El desbordamiento se produce cuando el resultado no entra en un byte.
 Para desactivarlo: CLV
 
 flag m (Memory Select):
 Este flag controla el largo del Acumulador (Registro A), que puede ser de 8 o 16 bits, el
-bit est· puesto por defecto en 0, lo que significa que A tiene un largo de 16bits,
-recuerda siempre eso, la SNES tiene los registros por defecto en 16 bits (0) asÌ que si
-est·n en 1 est· en 8bits, hay que cambiar este flag antes de cargar un valor de tamaÒo
+bit est√° puesto por defecto en 0, lo que significa que A tiene un largo de 16bits,
+recuerda siempre eso, la SNES tiene los registros por defecto en 16 bits (0) as√≠ que si
+est√°n en 1 est√° en 8bits, hay que cambiar este flag antes de cargar un valor de tama√±o
 diferente al de A.
 Para activarlo:    SEP #$20
 Para desactivarlo: REP #$20
 
 Flag x (Index Register Select):
 Este flag es igual a m pero en lugar de controlar el largo de A controla el largo de los
-registros Ìndices X e Y.
+registros √≠ndices X e Y.
 Para activarlo:    SEP #$10
 Para desactivarlo: REP #$10
 
-(NOTA SI QUIERES ACTIVAR EL FLAG M Y EL FLAG X M¡S R¡PIDO SIMPLEMENTE HAZ SEP #$30 O PARA
+(NOTA SI QUIERES ACTIVAR EL FLAG M Y EL FLAG X M√ÅS R√ÅPIDO SIMPLEMENTE HAZ SEP #$30 O PARA
 DESACTIVAR REP #$30)
 
 flag D (Decimal):
 Flag que activa el modo por defecto de Decimal a Binario o viceversa (cuando no se usa el
 $ antes del valor).
-Si el flag est· a 1 se est· en modo decimal, si est· a 0 se est· en modo binario.
+Si el flag est√° a 1 se est√° en modo decimal, si est√° a 0 se est√° en modo binario.
 Para activarlo:    SED
 Para desactivarlo: CLD
 
 flag i (Interrupt):
-Si este flag est· a 1 se aceptar· cualquier interrupciÛn externa
-(p.ej: enchufar/desenchufar un joypad), si est· a 0 la interrupciÛn externa ser· ignorada
-y el programa seguir· su funcionamiento normal.
+Si este flag est√° a 1 se aceptar√° cualquier interrupci√≥n externa
+(p.ej: enchufar/desenchufar un joypad), si est√° a 0 la interrupci√≥n externa ser√° ignorada
+y el programa seguir√° su funcionamiento normal.
 Para activarlo:    SEI
 Para desactivarlo: CLI
 
 flag z (Zero):
-Este flag se activa cuando el resultado de la ˙ltima operaciÛn aritmÈtica fue 0, a algunas
-mentes r·pidas se les estar· viniendo ya una idea de cÛmo utilizarlo ;), simplemente para
+Este flag se activa cuando el resultado de la √∫ltima operaci√≥n aritm√©tica fue 0, a algunas
+mentes r√°pidas se les estar√° viniendo ya una idea de c√≥mo utilizarlo ;), simplemente para
 comparar dos valores los restas y si el flag z se activa que haga un salto/bucle/lo que
 sea... ;D
 
 flag c (Carry):
-Este flag se activa si en la ˙ltima operaciÛn aritmÈtica produjo acarreo, el acarreo
-influye sobre las sumas y las restas asÌ que a estar atentos a este flag antes de hacer
+Este flag se activa si en la √∫ltima operaci√≥n aritm√©tica produjo acarreo, el acarreo
+influye sobre las sumas y las restas as√≠ que a estar atentos a este flag antes de hacer
 alguna de estas operaciones ;)
 Para activarlo:    SEC
 para desactivarlo: CLC
 
 flag E (Emulation flag):
-Si este flag est· activado el procesador emular· 100% el comportamiento del 6502, el
-procesador que se utilizÛ en la NES.
+Si este flag est√° activado el procesador emular√° 100% el comportamiento del 6502, el
+procesador que se utiliz√≥ en la NES.
 para activarlo:    SEC ;poner carry en 1
                    XCE ;intercambia flag c y e
 para desactivarlo: CLC ;poner carry a 0
@@ -353,11 +353,11 @@ para desactivarlo: CLC ;poner carry a 0
 
 En algunos de los flags para activarlo o desactivarlo dice que hay que hacer un SEP ??
 o un REP ??.
-Eso es porque esas instrucciones (SEP y REP) hacen operaciones lÛgicas sobre el
+Eso es porque esas instrucciones (SEP y REP) hacen operaciones l√≥gicas sobre el
 registro P).
 
-AsÌ que por ejemplo si pongo SEP #$20 (20 hexadecimal = 00100000 binario). Entonces la
-operaciÛn serÌa asÌ:
+As√≠ que por ejemplo si pongo SEP #$20 (20 hexadecimal = 00100000 binario). Entonces la
+operaci√≥n ser√≠a as√≠:
 
       nvmxdizc
    OR 00100000   ; %00100000 binario = $20 hex
@@ -365,12 +365,12 @@ operaciÛn serÌa asÌ:
       nv1xdizc
 
 Ya que no importa si el otro valor es 0, el OR da 1 de resultado si al menos uno de los
-dos es 1, los dem·s no son tocados, asÌ que quedan a los valores que tenÌan antes.
+dos es 1, los dem√°s no son tocados, as√≠ que quedan a los valores que ten√≠an antes.
 (Por eso puse de nuevo las letras en el resultado excepto para m).
 
 Esto entonces pone el flag m (largo de Acumulador) a 1, poniendo A en modo de 8bits.
 
-TambiÈn podrÌamos hacer:
+Tambi√©n podr√≠amos hacer:
 
       nvmxdizc
    OR 00010000   ; %00010000 binario = $10 hexadecimal
@@ -379,7 +379,7 @@ TambiÈn podrÌamos hacer:
 
 Esto entonces pone el flag X (largo de X e Y) a 1, poniendo X e Y en modo de 8bits.
 
-Y si queremos poner los dos bytes (x y m), o sea, poner A, X e Y en modo 8bits podrÌamos
+Y si queremos poner los dos bytes (x y m), o sea, poner A, X e Y en modo 8bits podr√≠amos
 hacer.
 
 SEP #$30 (30 hexadecimal = 00110000)
@@ -389,21 +389,21 @@ SEP #$30 (30 hexadecimal = 00110000)
   -------------
       nv11dizc
 
-AsÌ es como se controla los flags del largo del acumulador y los registros Ìndice X e Y.
-El REP funciona al revÈs que el SEP, cuando el SEP los pone a 1, el REP los pone a 0 :)
+As√≠ es como se controla los flags del largo del acumulador y los registros √≠ndice X e Y.
+El REP funciona al rev√©s que el SEP, cuando el SEP los pone a 1, el REP los pone a 0 :)
 
-Si tienes alguna duda envÌame un mail :)
+Si tienes alguna duda env√≠ame un mail :)
 
 III)                         MODOS DE DIRECCIONAMIENTO
 
-En ASM se cuenta con varios tipos de direcciones, aquÌ las listarÈ.
+En ASM se cuenta con varios tipos de direcciones, aqu√≠ las listar√©.
 
-? = Alg˙n registro, puede ser A, X o Y.
+? = Alg√∫n registro, puede ser A, X o Y.
 
 FORMATO:
-[Nombre del Modo de Direccionamiento]  [Ejemplo]      [DescripciÛn]
+[Nombre del Modo de Direccionamiento]  [Ejemplo]      [Descripci√≥n]
 
-Implied                                TAY            No tienen operando. La funciÛn misma
+Implied                                TAY            No tienen operando. La funci√≥n misma
                                                       afecta cierto(s) registro(s)
 
 Inmediate                              LD? #$15       ? = Operando.
@@ -441,60 +441,60 @@ Direct Page Indirect Long Indexed Y    LD? [$12],Y    ? = Contenido del offset (
                                                          que apunta el operando (8bits)+Y
 
 Stack Relative                         LD? $12,S      ? = Contenido de la pila en la
-                                                         posiciÛn del operando. (*)
+                                                         posici√≥n del operando. (*)
 
 Stack Relative indirect indexed X      LD? ($12,S),X  ? = Contenido de la pila en la
-                                                         posiciÛn del operando +X (*)
+                                                         posici√≥n del operando +X (*)
                                                          
 Stack Relative indirect indexed Y      LD? ($12,S),Y  ? = Contenido de la pila en la
-                                                         posiciÛn del operando +Y (*)
+                                                         posici√≥n del operando +Y (*)
                                                          
-Accumulator                            ASL A	        Act˙a directamente sobre el
+Accumulator                            ASL A	        Act√∫a directamente sobre el
                                                       acumulador.
 
-Index X                                INX            Act˙a directamente sobre el
+Index X                                INX            Act√∫a directamente sobre el
                                                       registro X.
 
-Index Y                                DEY            Act˙a directamente sobre el
+Index Y                                DEY            Act√∫a directamente sobre el
                                                       registro Y.
 
 NOTA: Algo importante para aclarar es que cuando usamos []s accedemos a un offset de 3
-bytes, y () a uno de 2. Es decir, cuando por ejemplo hacemos: LDA [$1234] cargar· el byte
+bytes, y () a uno de 2. Es decir, cuando por ejemplo hacemos: LDA [$1234] cargar√° el byte
 de menos valor de $1234, el byte de mayor valor de $1235 y el byte de banco de $1236.
-En cambio si hacemos: LDA ($1234) cargar· el byte de menos valor de $1234, el byte de
-mayor valor de $1235 y como byte de banco usar· el que se encuentre en el registro DBR.
+En cambio si hacemos: LDA ($1234) cargar√° el byte de menos valor de $1234, el byte de
+mayor valor de $1235 y como byte de banco usar√° el que se encuentre en el registro DBR.
 
-(*) Hago el asterisco para explicar un poco mejor cÛmo se act˙a sobre la pila, cuando
+(*) Hago el asterisco para explicar un poco mejor c√≥mo se act√∫a sobre la pila, cuando
     guardas un valor en la pila queda "apilado" (duh), y el primer valor que saques/uses
-    ser· el ˙ltimo que hayas apilado, en las operaciones de suma y resta con pila puedes
-    usar otros valores de la pila, y la posiciÛn (de abajo hacia arriba, del ˙ltimo que
+    ser√° el √∫ltimo que hayas apilado, en las operaciones de suma y resta con pila puedes
+    usar otros valores de la pila, y la posici√≥n (de abajo hacia arriba, del √∫ltimo que
     empilaste hacia el primero) que quieras la especificas en el operando, es decir:
 
     ADC $01,S
-    Esa instrucciÛn suma al acumulador el ˙ltimo valor que fue guardado en la pila.
+    Esa instrucci√≥n suma al acumulador el √∫ltimo valor que fue guardado en la pila.
 
     LDA $02,S
-    Esa instrucciÛn carga en el acumulador el pen˙ltimo valor que fue guardado en la pila.
+    Esa instrucci√≥n carga en el acumulador el pen√∫ltimo valor que fue guardado en la pila.
 
-    Si usamos $00 como operando entonces nos devolver· el ˙ltimo valor que SACAMOS.
+    Si usamos $00 como operando entonces nos devolver√° el √∫ltimo valor que SACAMOS.
 
-IV)                               INSTRUCCIONES B¡SICAS
+IV)                               INSTRUCCIONES B√ÅSICAS
 
-Ahora empezaremos a ver las instrucciones, no listarÈ todas ya que eso tomarÌa bastante
+Ahora empezaremos a ver las instrucciones, no listar√© todas ya que eso tomar√≠a bastante
 tiempo de mi parte, y muchas instrucciones no se usan para nada (p.ej: WDM).
 
 FORMATO:
 <instr> | <ejemplo> |  <notas> 
 
-INSTRUCCIONES QUE ACT⁄AN SOBRE EL ACUMULADOR:
+INSTRUCCIONES QUE ACT√öAN SOBRE EL ACUMULADOR:
 
 LDA     | LDA #$14  | Carga el valor en el acumulador, si el valor tiene un $ antes
         |           | significa que se trata de un valor hexadecimal (casi siempre :P).
         |           | Cuando hay un # (numeral) significa que estamos cargando un valor
-        |           | constante, si no est· significa que estamos cargando el valor que
-        |           | est· dentro de ese offset. 
+        |           | constante, si no est√° significa que estamos cargando el valor que
+        |           | est√° dentro de ese offset. 
         |           | En el ejemplo estamos cargando el valor $14, si no estuviera el #
-        |           | estarÌamos cargando lo que haya dentro del offset $14 en memoria.
+        |           | estar√≠amos cargando lo que haya dentro del offset $14 en memoria.
 STA     | STA $2112 | Guarda el valor contenido en A en el offset del operando.
 ASL     | ASL A	    | Multiplica A x 2.
 LSR     | LSR A	    | Divide A x 2.
@@ -504,23 +504,23 @@ TAX     | TAX       | Transfiere A a X.
 TAY     | TAY       | Transfiere A a Y.
 TXA     | TXA       | Transfiere X a A.
 TYA     | TYA       | Transfiere Y a A.
-AND     | AND #$80  | Hace un AND lÛgico entre A y el operando.
-ORA     | ORA #$80  | Hace un OR lÛgico entre A y el operando.
-XOR     | XOR #$80  | Hace un XOR lÛgico entre A y el operando.
+AND     | AND #$80  | Hace un AND l√≥gico entre A y el operando.
+ORA     | ORA #$80  | Hace un OR l√≥gico entre A y el operando.
+XOR     | XOR #$80  | Hace un XOR l√≥gico entre A y el operando.
 ROR     | ROR A	    | Rota A una vez hacia la derecha.
 ROL     | ROL A	    | Rota A una vez hacia la izquierda.
 TCS     | TCS       | Transfiere A hacia el puntero de Stack.
 SBC     | SBC #$15  | Hace una resta ( A = A - operando + carry - 1 ), antes de hacer una
-        |           | operaciÛn de estas hay que "setear" el carry, asÌ la resta final no
+        |           | operaci√≥n de estas hay que "setear" el carry, as√≠ la resta final no
         |           | tiene efecto sobre la cuenta y se obtiene el resultado esperado.
 ADC     | ADC #$15  | Hace una suma ( A = A + operando - carry ), antes de hacer una 
-        |           | operaciÛn de estas hay que "resetear" el carry, asÌ la suma final no
+        |           | operaci√≥n de estas hay que "resetear" el carry, as√≠ la suma final no
         |           | tiene efecto sobre la cuenta y se obtiene el resultado esperad.
 
-INSTRUCCIONES QUE ACT⁄AN SOBRE Y y/o X.
+INSTRUCCIONES QUE ACT√öAN SOBRE Y y/o X.
 
-LDX     | LDX #$14  | Igual a LDA solo que act˙a sobre X.
-LDY     | LDY #$14  | Igual a LDA solo que act˙a sobre Y.
+LDX     | LDX #$14  | Igual a LDA solo que act√∫a sobre X.
+LDY     | LDY #$14  | Igual a LDA solo que act√∫a sobre Y.
 STX     | STX $1248 | Guarda el valor contenido en X en el offset del operando.
 STY     | STY $1248 | Guarda el valor contenido en Y en el offset del operando.
 TAX    	| TAX       | Transfiere A a X.
@@ -531,8 +531,8 @@ TXY     | TXY       | Transfiere X a Y.
 TYX    	| TYX       | Transfiere Y a X.
 PHX     | PHX       | Guarda X en la pila.
 PHY     | PHY       | Guarda Y en la pila.
-PLX     | PLX       | Pone el ˙ltimo valor empilado en X
-PLY     | PLY       | Pone el ˙ltimo valor empilado en Y
+PLX     | PLX       | Pone el √∫ltimo valor empilado en X
+PLY     | PLY       | Pone el √∫ltimo valor empilado en Y
 INX    	| INX       | Incrementa X por 1.
 INY     | INY       | Incrementa Y por 1.
 DEX     | DEX       | Decrementa X por 1.
@@ -544,20 +544,20 @@ SEC     | SEC       |	Pone el Carry a 1. -> Hay que poner el carry a 1 antes de 
         |           | resta.
 CLC     | CLC       |	Pone el Carry a 0. -> Hay que poner el carry a 0 antes de hacer una
         |           | suma.
-SEI     | SEI       |	Pone el flag de InterrupciÛn a 1.
-CLI     | CLI       |	Pone el flag de InterrupciÛn a 0.
+SEI     | SEI       |	Pone el flag de Interrupci√≥n a 1.
+CLI     | CLI       |	Pone el flag de Interrupci√≥n a 0.
 STZ     | STZ $1234 |	Guarda 0 en el offset del operando.
 CLV     | CLV       |	Pone el flag de desbordamiento (Overflow) a 0.
 NOP     | NOP       |	No hace nada :P. Sirve para anular rutinas.
 
-V)                             OPERACIONES ARITM…TICAS
+V)                             OPERACIONES ARITM√âTICAS
 
-Ahora empezaremos a hacer operaciones aritmÈticas, es importante que las hagas por ti
-mismo (en el bloc de notas por ejemplo) y luego las compares con las soluciones de m·s
-abajo, sino no servir· de nada, hay que hacer esto para dejar las bases bien puestas ya
-que lo que se viene despuÈs es muy difÌcil y necesitaremos saber esto.
+Ahora empezaremos a hacer operaciones aritm√©ticas, es importante que las hagas por ti
+mismo (en el bloc de notas por ejemplo) y luego las compares con las soluciones de m√°s
+abajo, sino no servir√° de nada, hay que hacer esto para dejar las bases bien puestas ya
+que lo que se viene despu√©s es muy dif√≠cil y necesitaremos saber esto.
 
-NOTA: En todos los ejercicios se est· suponiendo que los flags x y m est·n a 1, para poder
+NOTA: En todos los ejercicios se est√° suponiendo que los flags x y m est√°n a 1, para poder
 cargar valores de 8bits.
 
 Operaciones solo con Acumulador
@@ -572,7 +572,7 @@ III) A = A - #$14
 SOLUCIONES:
 I)
 ASL A
-(F·cil, øno?) xD
+(F√°cil, ¬øno?) xD
 
 II)
 CLC
@@ -584,14 +584,14 @@ SBC #$14
 
 IV)
 LSR A
-(Otro f·cil, recuerda que esto son las B¡SICAS)
+(Otro f√°cil, recuerda que esto son las B√ÅSICAS)
 
 V)
 CLC
 ADC #$06
 SEC
 SBC #$04
-(Este era un poco m·s difÌcil, pero seguramente no hubo problemas para resolverlo. øNo? :)
+(Este era un poco m√°s dif√≠cil, pero seguramente no hubo problemas para resolverlo. ¬øNo? :)
 
 VI)
 SEC
@@ -602,7 +602,7 @@ ADC #$18
 resta y viceversa)
 
 
-Operaciones con Acumulador, Ìndices X e Y.
+Operaciones con Acumulador, √≠ndices X e Y.
 (Recuerda que no se pueden hacer cuentas sobre X e Y ;)
 
   I) Y = Y * 2
@@ -645,9 +645,9 @@ CLC
 ADC #$06
 TAY
 
-Eran todos f·ciles, ahora vamos a enseÒar algo nuevo para los ejercicios con pila.
+Eran todos f√°ciles, ahora vamos a ense√±ar algo nuevo para los ejercicios con pila.
 Cuando guardamos en la pila (esto ya lo he explicado antes, pero para refrescar un poco
-la mente...) lo ˙ltimo que guardamos es lo primero que sale, asÌ que si ponemos:
+la mente...) lo √∫ltimo que guardamos es lo primero que sale, as√≠ que si ponemos:
 
 LDA #$15  ;Cargamos A con $15
 PHA       ;Guardamos el valor de A en la pila
@@ -660,16 +660,16 @@ PLA       ;Sacamos lo que se puso en pila y lo guardamos en A
 TAX       ;Transferimos A X
 PLA       ;Sacamos lo que se puso en pila y lo guardamos en A
 
-AquÌ el primer valor que sacamos lo pusimos en X para no perderlo, y si miramos los
-valores veremos que X ser· $18 y A ser· $15, ya que lo primero que entra es lo ˙ltimo
+Aqu√≠ el primer valor que sacamos lo pusimos en X para no perderlo, y si miramos los
+valores veremos que X ser√° $18 y A ser√° $15, ya que lo primero que entra es lo √∫ltimo
 que sale.
 
-Si queremos hacer una operaciÛn que involucre a un valor que est· apilado (guardado en
+Si queremos hacer una operaci√≥n que involucre a un valor que est√° apilado (guardado en
 la pila), debemos usar el "registro" S antecedido por el lugar que el valor ocupa en la
 pila.
 Por ejemplo:
-(AquÌ siempre usaremos el ˙ltimo valor que se puso en la pila, por lo que el valor que
-antecede a S ser· siempre $01.)
+(Aqu√≠ siempre usaremos el √∫ltimo valor que se puso en la pila, por lo que el valor que
+antecede a S ser√° siempre $01.)
 
 CLC
 LDA #$15
@@ -677,16 +677,16 @@ PHA
 LDA #$12
 ADC $01,S
 
-(Esto harÌa que A se sume con el antiguo valor de A (que est· depositado en la pila),
+(Esto har√≠a que A se sume con el antiguo valor de A (que est√° depositado en la pila),
 esto sirve para cuando tenemos que hacer operaciones involucrando muchos registros y no
 tenemos lugar para guardar valores que no debemos perder).
 
-En el registro de pila tampoco se pueden hacer operaciones aritmÈticas directas.
+En el registro de pila tampoco se pueden hacer operaciones aritm√©ticas directas.
 Es decir, no se puede hacer por ejemplo "ASL S" o "ASL X"
 
-AsÌ que ahora ya debes poder resolver los siguiente ejercicios.
+As√≠ que ahora ya debes poder resolver los siguiente ejercicios.
 
-Ejercicios involucrando Acumulador, Õndices X e Y, y pila (S).
+Ejercicios involucrando Acumulador, √çndices X e Y, y pila (S).
 
   I) X = A + Y 
  II) A = X + Y
@@ -725,7 +725,7 @@ TXA
 PHA
 TYA
 SBC $01,S
-(Mwahahaha, este costÛ, no?)
+(Mwahahaha, este cost√≥, no?)
 
 V)
 ASL A
@@ -734,10 +734,10 @@ TXA
 SBC $01,S
 TAX
 
-Operaciones involucrando Acumulador, Ìndices X e Y y direcciones de memoria.
+Operaciones involucrando Acumulador, √≠ndices X e Y y direcciones de memoria.
 
-Estas operaciones son las que m·s utilizar·s (especialmente al inicializar los registros
-de la SNES), consisten en grabar en memoria valores, pero solo se puede hacer a travÈs de
+Estas operaciones son las que m√°s utilizar√°s (especialmente al inicializar los registros
+de la SNES), consisten en grabar en memoria valores, pero solo se puede hacer a trav√©s de
 LDA, LDX, LDY y STA, STX, STY y STZ.
 
   I) $1234 = #$14
@@ -787,7 +787,7 @@ CLC
 ADC #$12
 STA $1234
 
-Bien, ya esos ejercicios fueron m·s complicados, espero que no hayas mirado las soluciones
+Bien, ya esos ejercicios fueron m√°s complicados, espero que no hayas mirado las soluciones
 directamente porque esto es imprescindible para seguir. 
 
 V)                                     SALTOS Y BRANCHS
@@ -798,32 +798,32 @@ Y eso es precisamente lo que voy a explicar ahora :)
 
 Subrutinas:
 
-Cuando creamos alguna subrutina en alg˙n lenguaje de programaciÛn, (yo aquÌ me referirÈ
-m·s que nada a C, porque es con el lenguaje con el que soy m·s familiar :) y tenemos una
-operaciÛn o proceso que se repite varias veces en el programa, lo hacemos separado como
+Cuando creamos alguna subrutina en alg√∫n lenguaje de programaci√≥n, (yo aqu√≠ me referir√©
+m√°s que nada a C, porque es con el lenguaje con el que soy m√°s familiar :) y tenemos una
+operaci√≥n o proceso que se repite varias veces en el programa, lo hacemos separado como
 un "procedimiento" y cada vez que lo necesitemos lo llamamos por el nombre que le dimos
-y se ejecuta todo el cÛdigo. Es algo para abreviar en lugar de escribir todo el cÛdigo
+y se ejecuta todo el c√≥digo. Es algo para abreviar en lugar de escribir todo el c√≥digo
 de nuevo :)
 
-øCÛmo se usan? Mediante JSR $xxxx y JSL $xxxx
-…stas instrucciÛn (Jump to SubRoutine/Subroutine Long) saltan a una subrutina (duh), pero
-antes guardan en la pila la direcciÛn de la instrucciÛn +3 o +4 (porque JSR $xxxx es de
-3 bytes y JSL de 4) y salta a la direcciÛn que se indica ($xxxx), ejecuta el cÛdigo de
-allÌ, hasta que encuentra un RTS/RTL (Return from subroutine/Subroutine Long), que toma
-la direcciÛn que se guardÛ en la pila y salta a esa posiciÛn, o sea que la pila tenÌa
-<offset del JSR $xxxx> + 3 o 4, como JSR/JSL $xxxx ocupa 3 o 4 bytes, la instrucciÛn
-saltarÌa a la siguiente instrucciÛn despuÈs del JSR/JSL :) (*) y asÌ es b·sicamente como
-funciona una subrutina, pero como no se entiende nada por palabras, pondrÈ un ejemplo:
+¬øC√≥mo se usan? Mediante JSR $xxxx y JSL $xxxx
+√âstas instrucci√≥n (Jump to SubRoutine/Subroutine Long) saltan a una subrutina (duh), pero
+antes guardan en la pila la direcci√≥n de la instrucci√≥n +3 o +4 (porque JSR $xxxx es de
+3 bytes y JSL de 4) y salta a la direcci√≥n que se indica ($xxxx), ejecuta el c√≥digo de
+all√≠, hasta que encuentra un RTS/RTL (Return from subroutine/Subroutine Long), que toma
+la direcci√≥n que se guard√≥ en la pila y salta a esa posici√≥n, o sea que la pila ten√≠a
+<offset del JSR $xxxx> + 3 o 4, como JSR/JSL $xxxx ocupa 3 o 4 bytes, la instrucci√≥n
+saltar√≠a a la siguiente instrucci√≥n despu√©s del JSR/JSL :) (*) y as√≠ es b√°sicamente como
+funciona una subrutina, pero como no se entiende nada por palabras, pondr√© un ejemplo:
 
-(*)en realidad no hace falta que entiendas todo esto de <offset> + 3 ni nada, pero es ˙til
-para saber si toqueteas la pila :), simplemente cuando usas JSR salta a una ubicaciÛn y
-cuando usas RTS salta a la siguiente instrucciÛn del JSR que la llamÛ :)
+(*)en realidad no hace falta que entiendas todo esto de <offset> + 3 ni nada, pero es √∫til
+para saber si toqueteas la pila :), simplemente cuando usas JSR salta a una ubicaci√≥n y
+cuando usas RTS salta a la siguiente instrucci√≥n del JSR que la llam√≥ :)
 
-.... cÛdigo ....
-LDA $7E0000,X        ;carga alg˙n valor en el acumulador
+.... c√≥digo ....
+LDA $7E0000,X        ;carga alg√∫n valor en el acumulador
 JSL subrutina_larga  ;salta la subrutina larga
 STA $7E0000,X        ;guarda el valor modificado de A
-.... mucho cÛdigo xD ....
+.... mucho c√≥digo xD ....
 
 subrutina_larga:
 CLC                  ;limpia el flag de carry
@@ -839,40 +839,40 @@ ASL A                ; ]
 RTS                  ;vuelve de la subrutina
 
 Lo que se hace cuando hace "subrutina_larga" es sumar $20 al valor de A y multiplicarlo
-por 16, y una vez que se vuelve de la subrutina el cÛdigo guarda A modificado en el lugar
-de donde lo sacÛ.
+por 16, y una vez que se vuelve de la subrutina el c√≥digo guarda A modificado en el lugar
+de donde lo sac√≥.
 
-Un ejemplo mucho m·s simple serÌa:
+Un ejemplo mucho m√°s simple ser√≠a:
 
 LDA #$04             ;carga A con #$04
 JSR sub_1            ;salta a la subrutina de $12F7
 STA $0100            ;guarda A en $100
-.... m·s cÛdigo xD....
+.... m√°s c√≥digo xD....
 sub_1:
 ASL A                ;multiplica A por 2
 RTS                  ;vuelve de la subrutina (a $1238)
 
-…ste cÛdigo, en lugar de guardar #$04 en $100, guarda #$08, porque A es multiplicado por
+√âste c√≥digo, en lugar de guardar #$04 en $100, guarda #$08, porque A es multiplicado por
 2 en la subrutina.
 
 SALTOS COMUNES:
 
-Simplemente usa la instrucciÛn JMP $xxxx para saltar a una direcciÛn de memoria y el
-programa ir·, pero ten cuidado, porque no se guarda la direcciÛn en ning˙n lado, o sea que
-no hay vuelta atr·s, a menos que en alguna parte del cÛdigo haya un salto hacia allÌ.
+Simplemente usa la instrucci√≥n JMP $xxxx para saltar a una direcci√≥n de memoria y el
+programa ir√°, pero ten cuidado, porque no se guarda la direcci√≥n en ning√∫n lado, o sea que
+no hay vuelta atr√°s, a menos que en alguna parte del c√≥digo haya un salto hacia all√≠.
 
 BRANCHS:
 
-Las instrucciones de Branch se utilizan generalmente despuÈs de una comparaciÛn.
+Las instrucciones de Branch se utilizan generalmente despu√©s de una comparaci√≥n.
 Y vienen a ser los if...then...else del ASM.
-Cuando uno hace una comparaciÛn setea los flags, y las instrucciones de branchs se fijan
-en los flags para ver si se cumple su condiciÛn y hacen el salto. 
+Cuando uno hace una comparaci√≥n setea los flags, y las instrucciones de branchs se fijan
+en los flags para ver si se cumple su condici√≥n y hacen el salto. 
 
-CMP #$04  ;Esta instrucciÛn compara A con #$04
-CPX #$04  ;Esta instrucciÛn compara X con #$04
-CPY #$04  ;Esta instrucciÛn compara Y con #$04
+CMP #$04  ;Esta instrucci√≥n compara A con #$04
+CPX #$04  ;Esta instrucci√≥n compara X con #$04
+CPY #$04  ;Esta instrucci√≥n compara Y con #$04
 
-Dependiendo de la comparaciÛn se setean flags:
+Dependiendo de la comparaci√≥n se setean flags:
 
 Si el operando es mayor, el flag de carry (c) se pone a 0.
 Si el operando es menor, el flag de carry (c) se pone a 1.
@@ -882,33 +882,33 @@ Si el operando no es igual, el flag zero (z) se pone a 0.
 Si A/X/Y (depende de si es CMP/CPX/CPY) es menor a #$04 en el ejemplo entonces pone el
 flag de carry a 1.
 Ten en cuenta que los branches usan el modo de direccionamiento relativo, es decir, que
-no se le da una direcciÛn absoluta a la que debe saltar (ie. BRA $C8DA). Sino que el
+no se le da una direcci√≥n absoluta a la que debe saltar (ie. BRA $C8DA). Sino que el
 modo de direccionamiento relativo se basa en el actual PC (es decir, el offset del que se
-est· ejecutando el cÛdigo). Por lo tanto la operaciÛn para determinar hacia dÛnde saltar·
+est√° ejecutando el c√≥digo). Por lo tanto la operaci√≥n para determinar hacia d√≥nde saltar√°
 el branch es la siguiente:
 PC + operando + 2
 Siempre se le suma el 2 al final ya que el procesador asume que no se quiere ejecutar de
 nuevo el branch, aunque igualmente puedes hacerlo usando $FE (-2) como operando.
-EJEMPLO: (de m·s est· decir que esta rutina no sirve para nada, es solo para
-          demostrar cÛmo funcionan los modos de direccionamiento relativos)
+EJEMPLO: (de m√°s est√° decir que esta rutina no sirve para nada, es solo para
+          demostrar c√≥mo funcionan los modos de direccionamiento relativos)
 
-$C85D: LDA $74  (carga A con alg˙n valor de RAM)
+$C85D: LDA $74  (carga A con alg√∫n valor de RAM)
 $C85F: CMP #$20 (en este caso A = $08)
 $C861: BEQ $03  (si es igual a #$20 salta a -> $C861 + $02 + $03 = $C866
 $C863: BCS $05  (si es mayor que #$20 salta a -> $C863 + $02 + $05 = $C86A
 $C865: RTS
 
-;Ac· se saltarÌa si A = $20
+;Ac√° se saltar√≠a si A = $20
 $C866: CLC
 $C867: ADC #$10
 $C869: RTS
 
-;Ac· se saltarÌa si A > $20
+;Ac√° se saltar√≠a si A > $20
 $C86A: SEC
 $C86B: SBC #$05
 $C86D: RTS
 
-…stas son las instrucciones de branch:
+√âstas son las instrucciones de branch:
 
 Instr:	Notas:
 BCC	Salta si flag Carry = 0
@@ -923,11 +923,11 @@ BRA	Salta siempre
 BRL 	Salta siempre (el operando es de 2 bytes)
 (BLT y BGR son iguales a BCC y BCS respectivamente)
 
-AsÌ que veamos, vamos a hacer un ejemplo algo m·s complicado :) Quiero que me tome un
+As√≠ que veamos, vamos a hacer un ejemplo algo m√°s complicado :) Quiero que me tome un
 valor de 8 bits de $1234, lo incremente por uno, y lo vuelva a guardar en $1234, si el
 valor es 100, que incremente por 1 el valor contenido en $1238 y vuelva poner $1234 a 0.
-(Intenta hacerlo por ti mismo, si no puedes (aunque DEBERÕAS PODER) mira a continuaciÛn :)
-(Haz de cuenta que llamamos a esta subrutina por un JSR y que tenemos la direcciÛn de
+(Intenta hacerlo por ti mismo, si no puedes (aunque DEBER√çAS PODER) mira a continuaci√≥n :)
+(Haz de cuenta que llamamos a esta subrutina por un JSR y que tenemos la direcci√≥n de
 regreso en la pila para el RTS :)
 
 SEP #$20     ;Ponemos el flag m a 1, por si no estaba puesto antes :)
@@ -935,36 +935,36 @@ LDA $1234    ;cargamos A con el contenido de $1234 (un valor de 8bits)
 INC A        ;incrementamos A
 CMP #$64     ;lo comparamos con 64 hex (64 hex = 100 decimal)
 BCC $07      ;si es menor saltamos a lo guardamos directamente en $1234
-STZ $1234    ;Si no guardamos 0 en $1234 (con la instrucciÛn STZ)
+STZ $1234    ;Si no guardamos 0 en $1234 (con la instrucci√≥n STZ)
 INC $1238    ;Incrementamos el contenido de $1238 por 1.
-RTS          ;Volvemos de subrutina - Esto ya terminÛ :)
-             ;AquÌ saltarÌa el branch anterior si el valor fuera menos de #$64
-STA $1234    ;AquÌ llegamos con el branch, si A es menor a 100 simplemente guarda el valor
+RTS          ;Volvemos de subrutina - Esto ya termin√≥ :)
+             ;Aqu√≠ saltar√≠a el branch anterior si el valor fuera menos de #$64
+STA $1234    ;Aqu√≠ llegamos con el branch, si A es menor a 100 simplemente guarda el valor
              ;aumentado en $1234.
-RTS          ;Volvemos de subrutina - Esto ya terminÛ :)
+RTS          ;Volvemos de subrutina - Esto ya termin√≥ :)
 
-Espero que haya quedado claro con el ejemplo, cualquier duda, comentario o correxiÛn (xD)
-o lo que sea que tengas puedes envi·rmelo a drkwzrdx@hotmail.com :)
+Espero que haya quedado claro con el ejemplo, cualquier duda, comentario o correxi√≥n (xD)
+o lo que sea que tengas puedes envi√°rmelo a drkwzrdx@hotmail.com :)
 
 VII)                                      FIN
 
 Herrar es umano:
 
-Gracias a Dark-N por notificarme de algunos errores, repetÌa las utilidades de ORA,XOR,AND
-y ponÌa que AND 1 y 1 daba 0 >_<
+Gracias a Dark-N por notificarme de algunos errores, repet√≠a las utilidades de ORA,XOR,AND
+y pon√≠a que AND 1 y 1 daba 0 >_<
 
-ConclusiÛn:
+Conclusi√≥n:
 
-Bueno, si has leÌdo y entendido todo lo que has visto en Èsta guÌa deberÌas tener
-conocimientos suficientes para entender los capÌtulos m·s avanzados, como gr·ficas de ASM,
-y m·s adelante SONIDOS, y asÌ podr·s crear tu propia ROM de pruebas, el ASM puede servir
-adem·s para expandir fuentes y muchas otras cosas en las roms.
-Por el momento yo no he hecho ninguna guÌa de gr·ficos o sonidos, asÌ que busca en
-internet (los mejores est·n en inglÈs) y encontrar·s de seguro :)
+Bueno, si has le√≠do y entendido todo lo que has visto en √©sta gu√≠a deber√≠as tener
+conocimientos suficientes para entender los cap√≠tulos m√°s avanzados, como gr√°ficas de ASM,
+y m√°s adelante SONIDOS, y as√≠ podr√°s crear tu propia ROM de pruebas, el ASM puede servir
+adem√°s para expandir fuentes y muchas otras cosas en las roms.
+Por el momento yo no he hecho ninguna gu√≠a de gr√°ficos o sonidos, as√≠ que busca en
+internet (los mejores est√°n en ingl√©s) y encontrar√°s de seguro :)
 
 Contacto:
 
-Si has encontrado alg˙n error en esta guÌa (Que es muy probable porque soy de equivocarme
+Si has encontrado alg√∫n error en esta gu√≠a (Que es muy probable porque soy de equivocarme
 MUCHO :p) puedes enviarme un mail a drkwzrdx@hotmail.com.
 
 DaRKWiZaRDX
